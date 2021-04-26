@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
     int tdim = mesh->topology().dim();
     const auto &topology = mesh->topology();
     int ncells = topology.index_map(tdim)->size_global();
-    int ndofs_cell = V->element()->space_dimension();
 
     std::vector<std::int32_t> active_cells(ncells);
     std::iota(active_cells.begin(), active_cells.end(), 0);
