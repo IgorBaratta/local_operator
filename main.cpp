@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         kernel(Ae, nullptr, nullptr, coordinate_dofs.data(), 0, 0, 0);
     }
     auto end = std::chrono::steady_clock::now();
-    double duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() / 1.e3;
+    double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;
     std::cout << ncells << ", " << duration;
     return 0;
 }
