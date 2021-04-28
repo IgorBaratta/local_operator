@@ -5,6 +5,12 @@ Depends on:
 
 
 ## How to run:
+### Lagrange - Stiffness Matrix
+cd lagrange
+python3 run_lagrange.py
+
+### Nedelec - Stiffness Matrix (curl, curl)
+cd lagrange
 python3 run_lagrange.py
 
 
