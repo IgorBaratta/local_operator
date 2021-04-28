@@ -26,27 +26,26 @@ typedef double ufc_scalar_t;
 
 // Code for element element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
 
-ufc_finite_element element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
-    = {.signature = "FiniteElement('Lagrange', tetrahedron, 1)",
-       .cell_shape = tetrahedron,
-       .topological_dimension = 3,
-       .geometric_dimension = 3,
-       .space_dimension = 4,
-       .value_rank = 0,
-       .value_shape = NULL,
-       .value_size = 1,
-       .reference_value_rank = 0,
-       .reference_value_shape = NULL,
-       .reference_value_size = 1,
-       .degree = 1,
-       .family = "Lagrange",
-       .block_size = 1,
+ufc_finite_element element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4 = {.signature = "FiniteElement('Lagrange', tetrahedron, 1)",
+                                                                       .cell_shape = tetrahedron,
+                                                                       .topological_dimension = 3,
+                                                                       .geometric_dimension = 3,
+                                                                       .space_dimension = 4,
+                                                                       .value_rank = 0,
+                                                                       .value_shape = NULL,
+                                                                       .value_size = 1,
+                                                                       .reference_value_rank = 0,
+                                                                       .reference_value_shape = NULL,
+                                                                       .reference_value_size = 1,
+                                                                       .degree = 1,
+                                                                       .family = "Lagrange",
+                                                                       .block_size = 1,
 
-       .needs_transformation_data = 0,
-       .interpolation_is_identity = 1,
+                                                                       .needs_transformation_data = 0,
+                                                                       .interpolation_is_identity = 1,
 
-       .num_sub_elements = 0,
-       .sub_elements = NULL};
+                                                                       .num_sub_elements = 0,
+                                                                       .sub_elements = NULL};
 
 // End of code for element element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
 
@@ -54,10 +53,9 @@ ufc_finite_element element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
 
 int value_shape_element_f98876eb49550d506341b4c1d32d16b6eec2e3aa[1] = {3};
 int reference_value_shape_element_f98876eb49550d506341b4c1d32d16b6eec2e3aa[1] = {3};
-ufc_finite_element* sub_elements_element_f98876eb49550d506341b4c1d32d16b6eec2e3aa[3]
-    = {&element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
+ufc_finite_element *sub_elements_element_f98876eb49550d506341b4c1d32d16b6eec2e3aa[3] = {&element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                                                        &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                                                        &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
 
 ufc_finite_element element_f98876eb49550d506341b4c1d32d16b6eec2e3aa = {
     .signature = "VectorElement(FiniteElement('Lagrange', tetrahedron, 1), dim=3)",
@@ -85,7 +83,7 @@ ufc_finite_element element_f98876eb49550d506341b4c1d32d16b6eec2e3aa = {
 
 // Code for dofmap dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
 
-void tabulate_entity_dofs_dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4(int* restrict dofs, int d,
+void tabulate_entity_dofs_dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4(int *restrict dofs, int d,
                                                                           int i)
 {
   switch (d)
@@ -110,29 +108,27 @@ void tabulate_entity_dofs_dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4(int* r
   }
 }
 
-ufc_dofmap dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
-    = {.signature = "FFCX dofmap for FiniteElement('Lagrange', tetrahedron, 1)",
-       .block_size = 1,
-       .num_global_support_dofs = 0,
-       .num_element_support_dofs = 4,
-       .num_entity_dofs[0] = 1,
-       .num_entity_dofs[1] = 0,
-       .num_entity_dofs[2] = 0,
-       .num_entity_dofs[3] = 0,
-       .tabulate_entity_dofs = tabulate_entity_dofs_dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       .num_sub_dofmaps = 0,
-       .sub_dofmaps = NULL};
+ufc_dofmap dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4 = {.signature = "FFCX dofmap for FiniteElement('Lagrange', tetrahedron, 1)",
+                                                              .block_size = 1,
+                                                              .num_global_support_dofs = 0,
+                                                              .num_element_support_dofs = 4,
+                                                              .num_entity_dofs[0] = 1,
+                                                              .num_entity_dofs[1] = 0,
+                                                              .num_entity_dofs[2] = 0,
+                                                              .num_entity_dofs[3] = 0,
+                                                              .tabulate_entity_dofs = tabulate_entity_dofs_dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                              .num_sub_dofmaps = 0,
+                                                              .sub_dofmaps = NULL};
 
 // End of code for dofmap dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4
 
 // Code for dofmap dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa
 
-ufc_dofmap* sub_dofmaps_dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa[3]
-    = {&dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
+ufc_dofmap *sub_dofmaps_dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa[3] = {&dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                                              &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                                              &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
 
-void tabulate_entity_dofs_dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa(int* restrict dofs, int d,
+void tabulate_entity_dofs_dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa(int *restrict dofs, int d,
                                                                           int i)
 {
   switch (d)
@@ -175,9 +171,9 @@ ufc_dofmap dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa = {
 // Code for integral integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5
 
 void tabulate_tensor_integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5(
-    ufc_scalar_t* restrict A, const ufc_scalar_t* restrict w, const ufc_scalar_t* restrict c,
-    const double* restrict coordinate_dofs, const int* restrict entity_local_index,
-    const uint8_t* restrict quadrature_permutation, const uint32_t cell_permutation)
+    ufc_scalar_t *restrict A, const ufc_scalar_t *restrict w, const ufc_scalar_t *restrict c,
+    const double *restrict coordinate_dofs, const int *restrict entity_local_index,
+    const uint8_t *restrict quadrature_permutation, const uint32_t cell_permutation)
 {
   // Quadrature rules
   static const double weights_421[1] = {0.1666666666666667};
@@ -187,42 +183,15 @@ void tabulate_tensor_integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067
   static const double FE8_C0_D010_Q421[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
   static const double FE8_C0_D100_Q421[1][1][1][4] = {{{{-1.0, 1.0, 0.0, 0.0}}}};
   // Quadrature loop independent computations for quadrature rule 421
-  const double J_c4 = coordinate_dofs[1] * FE8_C0_D010_Q421[0][0][0][0]
-                      + coordinate_dofs[4] * FE8_C0_D010_Q421[0][0][0][1]
-                      + coordinate_dofs[7] * FE8_C0_D010_Q421[0][0][0][2]
-                      + coordinate_dofs[10] * FE8_C0_D010_Q421[0][0][0][3];
-  const double J_c8 = coordinate_dofs[2] * FE8_C0_D001_Q421[0][0][0][0]
-                      + coordinate_dofs[5] * FE8_C0_D001_Q421[0][0][0][1]
-                      + coordinate_dofs[8] * FE8_C0_D001_Q421[0][0][0][2]
-                      + coordinate_dofs[11] * FE8_C0_D001_Q421[0][0][0][3];
-  const double J_c5 = coordinate_dofs[1] * FE8_C0_D001_Q421[0][0][0][0]
-                      + coordinate_dofs[4] * FE8_C0_D001_Q421[0][0][0][1]
-                      + coordinate_dofs[7] * FE8_C0_D001_Q421[0][0][0][2]
-                      + coordinate_dofs[10] * FE8_C0_D001_Q421[0][0][0][3];
-  const double J_c7 = coordinate_dofs[2] * FE8_C0_D010_Q421[0][0][0][0]
-                      + coordinate_dofs[5] * FE8_C0_D010_Q421[0][0][0][1]
-                      + coordinate_dofs[8] * FE8_C0_D010_Q421[0][0][0][2]
-                      + coordinate_dofs[11] * FE8_C0_D010_Q421[0][0][0][3];
-  const double J_c0 = coordinate_dofs[0] * FE8_C0_D100_Q421[0][0][0][0]
-                      + coordinate_dofs[3] * FE8_C0_D100_Q421[0][0][0][1]
-                      + coordinate_dofs[6] * FE8_C0_D100_Q421[0][0][0][2]
-                      + coordinate_dofs[9] * FE8_C0_D100_Q421[0][0][0][3];
-  const double J_c1 = coordinate_dofs[0] * FE8_C0_D010_Q421[0][0][0][0]
-                      + coordinate_dofs[3] * FE8_C0_D010_Q421[0][0][0][1]
-                      + coordinate_dofs[6] * FE8_C0_D010_Q421[0][0][0][2]
-                      + coordinate_dofs[9] * FE8_C0_D010_Q421[0][0][0][3];
-  const double J_c6 = coordinate_dofs[2] * FE8_C0_D100_Q421[0][0][0][0]
-                      + coordinate_dofs[5] * FE8_C0_D100_Q421[0][0][0][1]
-                      + coordinate_dofs[8] * FE8_C0_D100_Q421[0][0][0][2]
-                      + coordinate_dofs[11] * FE8_C0_D100_Q421[0][0][0][3];
-  const double J_c3 = coordinate_dofs[1] * FE8_C0_D100_Q421[0][0][0][0]
-                      + coordinate_dofs[4] * FE8_C0_D100_Q421[0][0][0][1]
-                      + coordinate_dofs[7] * FE8_C0_D100_Q421[0][0][0][2]
-                      + coordinate_dofs[10] * FE8_C0_D100_Q421[0][0][0][3];
-  const double J_c2 = coordinate_dofs[0] * FE8_C0_D001_Q421[0][0][0][0]
-                      + coordinate_dofs[3] * FE8_C0_D001_Q421[0][0][0][1]
-                      + coordinate_dofs[6] * FE8_C0_D001_Q421[0][0][0][2]
-                      + coordinate_dofs[9] * FE8_C0_D001_Q421[0][0][0][3];
+  const double J_c4 = coordinate_dofs[1] * FE8_C0_D010_Q421[0][0][0][0] + coordinate_dofs[4] * FE8_C0_D010_Q421[0][0][0][1] + coordinate_dofs[7] * FE8_C0_D010_Q421[0][0][0][2] + coordinate_dofs[10] * FE8_C0_D010_Q421[0][0][0][3];
+  const double J_c8 = coordinate_dofs[2] * FE8_C0_D001_Q421[0][0][0][0] + coordinate_dofs[5] * FE8_C0_D001_Q421[0][0][0][1] + coordinate_dofs[8] * FE8_C0_D001_Q421[0][0][0][2] + coordinate_dofs[11] * FE8_C0_D001_Q421[0][0][0][3];
+  const double J_c5 = coordinate_dofs[1] * FE8_C0_D001_Q421[0][0][0][0] + coordinate_dofs[4] * FE8_C0_D001_Q421[0][0][0][1] + coordinate_dofs[7] * FE8_C0_D001_Q421[0][0][0][2] + coordinate_dofs[10] * FE8_C0_D001_Q421[0][0][0][3];
+  const double J_c7 = coordinate_dofs[2] * FE8_C0_D010_Q421[0][0][0][0] + coordinate_dofs[5] * FE8_C0_D010_Q421[0][0][0][1] + coordinate_dofs[8] * FE8_C0_D010_Q421[0][0][0][2] + coordinate_dofs[11] * FE8_C0_D010_Q421[0][0][0][3];
+  const double J_c0 = coordinate_dofs[0] * FE8_C0_D100_Q421[0][0][0][0] + coordinate_dofs[3] * FE8_C0_D100_Q421[0][0][0][1] + coordinate_dofs[6] * FE8_C0_D100_Q421[0][0][0][2] + coordinate_dofs[9] * FE8_C0_D100_Q421[0][0][0][3];
+  const double J_c1 = coordinate_dofs[0] * FE8_C0_D010_Q421[0][0][0][0] + coordinate_dofs[3] * FE8_C0_D010_Q421[0][0][0][1] + coordinate_dofs[6] * FE8_C0_D010_Q421[0][0][0][2] + coordinate_dofs[9] * FE8_C0_D010_Q421[0][0][0][3];
+  const double J_c6 = coordinate_dofs[2] * FE8_C0_D100_Q421[0][0][0][0] + coordinate_dofs[5] * FE8_C0_D100_Q421[0][0][0][1] + coordinate_dofs[8] * FE8_C0_D100_Q421[0][0][0][2] + coordinate_dofs[11] * FE8_C0_D100_Q421[0][0][0][3];
+  const double J_c3 = coordinate_dofs[1] * FE8_C0_D100_Q421[0][0][0][0] + coordinate_dofs[4] * FE8_C0_D100_Q421[0][0][0][1] + coordinate_dofs[7] * FE8_C0_D100_Q421[0][0][0][2] + coordinate_dofs[10] * FE8_C0_D100_Q421[0][0][0][3];
+  const double J_c2 = coordinate_dofs[0] * FE8_C0_D001_Q421[0][0][0][0] + coordinate_dofs[3] * FE8_C0_D001_Q421[0][0][0][1] + coordinate_dofs[6] * FE8_C0_D001_Q421[0][0][0][2] + coordinate_dofs[9] * FE8_C0_D001_Q421[0][0][0][3];
   ufc_scalar_t sp_421[80];
   sp_421[0] = J_c4 * J_c8;
   sp_421[1] = J_c5 * J_c7;
@@ -313,6 +282,7 @@ void tabulate_tensor_integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067
     const ufc_scalar_t fw4 = sp_421[78] * weights_421[iq];
     const ufc_scalar_t fw5 = sp_421[79] * weights_421[iq];
     for (int i = 0; i < 4; ++i)
+    {
       for (int j = 0; j < 4; ++j)
       {
         A[4 * i + j] += fw0 * FE8_C0_D100_Q421[0][0][0][i] * FE8_C0_D100_Q421[0][0][0][j];
@@ -325,33 +295,30 @@ void tabulate_tensor_integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067
         A[4 * i + j] += fw4 * FE8_C0_D001_Q421[0][0][0][i] * FE8_C0_D010_Q421[0][0][0][j];
         A[4 * i + j] += fw5 * FE8_C0_D001_Q421[0][0][0][i] * FE8_C0_D001_Q421[0][0][0][j];
       }
+    }
   }
 }
 
-ufc_integral integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5
-    = {.enabled_coefficients = NULL,
-       .tabulate_tensor
-       = tabulate_tensor_integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5,
-       .needs_transformation_data = 0};
+ufc_integral integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5 = {.enabled_coefficients = NULL,
+                                                                                 .tabulate_tensor = tabulate_tensor_integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5,
+                                                                                 .needs_transformation_data = 0};
 
 // End of code for integral integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5
 
 // Code for form form_6169f1b8b02a174df5aa5b2135c811df067e58d5
 
-ufc_dofmap* dofmaps_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[2]
-    = {&dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
-ufc_finite_element* finite_elements_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[2]
-    = {&element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-       &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
+ufc_dofmap *dofmaps_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[2] = {&dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                                        &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
+ufc_finite_element *finite_elements_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[2] = {&element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                                                                        &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4};
 
 // Return a list of the coefficient names.
-const char** coefficient_name_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(void) { return NULL; }
+const char **coefficient_name_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(void) { return NULL; }
 
 // Return a list of the constant names.
-const char** constant_name_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(void) { return NULL; }
+const char **constant_name_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(void) { return NULL; }
 
-int* integral_ids_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(ufc_integral_type integral_type)
+int *integral_ids_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(ufc_integral_type integral_type)
 {
   static int integral_ids_cell_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[1] = {-1};
   switch (integral_type)
@@ -378,11 +345,10 @@ int num_integrals_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(ufc_integral_typ
   }
 }
 
-ufc_integral**
+ufc_integral **
 integrals_form_6169f1b8b02a174df5aa5b2135c811df067e58d5(ufc_integral_type integral_type)
 {
-  static ufc_integral* integrals_cell_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[1]
-      = {&integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5};
+  static ufc_integral *integrals_cell_form_6169f1b8b02a174df5aa5b2135c811df067e58d5[1] = {&integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5};
   switch (integral_type)
   {
   case cell:
@@ -413,20 +379,18 @@ ufc_form form_6169f1b8b02a174df5aa5b2135c811df067e58d5 = {
     .integrals = integrals_form_6169f1b8b02a174df5aa5b2135c811df067e58d5};
 
 // Alias name
-ufc_form* form_lagrange_a = &form_6169f1b8b02a174df5aa5b2135c811df067e58d5;
+ufc_form *form_lagrange_a = &form_6169f1b8b02a174df5aa5b2135c811df067e58d5;
 
-ufc_function_space* functionspace_form_lagrange_a(const char* function_name)
+ufc_function_space *functionspace_form_lagrange_a(const char *function_name)
 {
-  static ufc_function_space functionspace_v
-      = {.finite_element = &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-         .dofmap = &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-         .geometry_family = "Lagrange",
-         .geometry_degree = 1};
-  static ufc_function_space functionspace_u
-      = {.finite_element = &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-         .dofmap = &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
-         .geometry_family = "Lagrange",
-         .geometry_degree = 1};
+  static ufc_function_space functionspace_v = {.finite_element = &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                               .dofmap = &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                               .geometry_family = "Lagrange",
+                                               .geometry_degree = 1};
+  static ufc_function_space functionspace_u = {.finite_element = &element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                               .dofmap = &dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4,
+                                               .geometry_family = "Lagrange",
+                                               .geometry_degree = 1};
   if (strcmp(function_name, "v") == 0)
     return &functionspace_v;
   else if (strcmp(function_name, "u") == 0)

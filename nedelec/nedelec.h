@@ -12,7 +12,7 @@
 //   'table_atol': 1e-09,
 //   'table_rtol': 1e-06,
 //   'tabulate_tensor_void': False,
-//   'ufl_file': ['lagrange.ufl'],
+//   'ufl_file': ['nedelec.ufl'],
 //   'verbosity': 30,
 //   'visualise': False}
 
@@ -26,28 +26,32 @@ typedef double ufc_scalar_t;
 extern "C" {
 #endif
 
-extern ufc_finite_element element_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4;
+extern ufc_finite_element element_1e7b188ba5b2a0548504cad148255ba9d1ff10f5;
 
-extern ufc_finite_element element_f98876eb49550d506341b4c1d32d16b6eec2e3aa;
+extern ufc_finite_element element_cb15d806737b06fdda339e0a558cac340bf163aa;
 
-extern ufc_dofmap dofmap_0867dce6bf5c3352d4f192cc2fe32c1c51c671a4;
+extern ufc_finite_element element_d2601577696ce1640523e2c96d9c7b76321caeca;
 
-extern ufc_dofmap dofmap_f98876eb49550d506341b4c1d32d16b6eec2e3aa;
+extern ufc_dofmap dofmap_1e7b188ba5b2a0548504cad148255ba9d1ff10f5;
 
-extern ufc_integral integral_cell_otherwise_6169f1b8b02a174df5aa5b2135c811df067e58d5;
+extern ufc_dofmap dofmap_cb15d806737b06fdda339e0a558cac340bf163aa;
 
-extern ufc_form form_6169f1b8b02a174df5aa5b2135c811df067e58d5;
+extern ufc_dofmap dofmap_d2601577696ce1640523e2c96d9c7b76321caeca;
+
+extern ufc_integral integral_cell_otherwise_576745ebb82397e793d990f4b5f963dd6af6032a;
+
+extern ufc_form form_576745ebb82397e793d990f4b5f963dd6af6032a;
 
 // Helper used to create form using name which was given to the
 // form in the UFL file.
 // This helper is called in user c++ code.
 //
-extern ufc_form* form_lagrange_a;
+extern ufc_form* form_nedelec_a;
 
 // Helper used to create function space using function name
 // i.e. name of the Python variable.
 //
-ufc_function_space* functionspace_form_lagrange_a(const char* function_name);
+ufc_function_space* functionspace_form_nedelec_a(const char* function_name);
 
 #ifdef __cplusplus
 }

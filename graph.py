@@ -4,10 +4,7 @@ import matplotlib.pyplot as plt
 import numpy
 
 
-dt = pd.read_csv("results_archer")
-matrix_name = "Mass"
-# seaborn.set_theme(style="darkgrid")
-# seaborn.set_theme(style="ticks")
+dt = pd.read_csv("nedelec/results")
 
 seaborn.set(style="ticks")
 seaborn.set_style("darkgrid")
