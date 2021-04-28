@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     auto &&kernel = a.integrals(ufc_integral_type::cell)[0]->tabulate_tensor;
 
     xt::xtensor<double, 2> coordinate_dofs = {{0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}};
-    // xt::xtensor<double, 2> Ae = xt::empty<double>({ndofs_cell, ndofs_cell});
 
     double *Ae = new double[ndofs_cell * ndofs_cell];
 

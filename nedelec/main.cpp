@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[])
 {
-    int ncells = 100;
+    int ncells = 100'000;
 
     ufc_form a = *form_nedelec_a;
     int ndofs_cell = a.finite_elements[1]->space_dimension;
