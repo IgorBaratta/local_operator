@@ -1,1 +1,217 @@
-method,compiler,flags,degree,cells,time
+
+ffcx, g++, "-O3 ", 1, 100, 0.000171
+ffcx, g++, "-O3 ", 1, 100, 0.000136
+ffcx, g++, "-O3 ", 1, 100, 0.000134
+fused, g++, "-O3 ", 1, 100, 0.000123
+fused, g++, "-O3 ", 1, 100, 0.000115
+fused, g++, "-O3 ", 1, 100, 0.000109
+ffcx, g++, "-O3 ", 2, 100, 0.004442
+ffcx, g++, "-O3 ", 2, 100, 0.004891
+ffcx, g++, "-O3 ", 2, 100, 0.006638
+fused, g++, "-O3 ", 2, 100, 0.000926
+fused, g++, "-O3 ", 2, 100, 0.000939
+fused, g++, "-O3 ", 2, 100, 0.00083
+ffcx, g++, "-O3 ", 3, 100, 0.087101
+ffcx, g++, "-O3 ", 3, 100, 0.077571
+ffcx, g++, "-O3 ", 3, 100, 0.081041
+fused, g++, "-O3 ", 3, 100, 0.080016
+fused, g++, "-O3 ", 3, 100, 0.078243
+fused, g++, "-O3 ", 3, 100, 0.071374
+ffcx, clang++, "-O3 ", 1, 100, 0.000104
+ffcx, clang++, "-O3 ", 1, 100, 0.000103
+ffcx, clang++, "-O3 ", 1, 100, 0.000107
+fused, clang++, "-O3 ", 1, 100, 9.3e-05
+fused, clang++, "-O3 ", 1, 100, 0.00012
+fused, clang++, "-O3 ", 1, 100, 0.0001
+ffcx, clang++, "-O3 ", 2, 100, 0.009616
+ffcx, clang++, "-O3 ", 2, 100, 0.008758
+ffcx, clang++, "-O3 ", 2, 100, 0.007478
+fused, clang++, "-O3 ", 2, 100, 0.001372
+fused, clang++, "-O3 ", 2, 100, 0.00156
+fused, clang++, "-O3 ", 2, 100, 0.001427
+ffcx, clang++, "-O3 ", 3, 100, 0.065388
+ffcx, clang++, "-O3 ", 3, 100, 0.089572
+ffcx, clang++, "-O3 ", 3, 100, 0.091453
+fused, clang++, "-O3 ", 3, 100, 0.099509
+fused, clang++, "-O3 ", 3, 100, 0.10926
+fused, clang++, "-O3 ", 3, 100, 0.110942
+ffcx, g++, "-O3 -march=native ", 1, 100, 6.2e-05
+ffcx, g++, "-O3 -march=native ", 1, 100, 5.5e-05
+ffcx, g++, "-O3 -march=native ", 1, 100, 5.3e-05
+fused, g++, "-O3 -march=native ", 1, 100, 0.000142
+fused, g++, "-O3 -march=native ", 1, 100, 0.000116
+fused, g++, "-O3 -march=native ", 1, 100, 0.000113
+ffcx, g++, "-O3 -march=native ", 2, 100, 0.002559
+ffcx, g++, "-O3 -march=native ", 2, 100, 0.002368
+ffcx, g++, "-O3 -march=native ", 2, 100, 0.002712
+fused, g++, "-O3 -march=native ", 2, 100, 0.000815
+fused, g++, "-O3 -march=native ", 2, 100, 0.000648
+fused, g++, "-O3 -march=native ", 2, 100, 0.000684
+ffcx, g++, "-O3 -march=native ", 3, 
+ffcx, g++, "-O3 -march=native ", 3, 
+ffcx, g++, "-O3 -march=native ", 3, 
+fused, g++, "-O3 -march=native ", 3, 100, 0.044471
+fused, g++, "-O3 -march=native ", 3, 100, 0.050872
+fused, g++, "-O3 -march=native ", 3, 100, 0.050328
+ffcx, clang++, "-O3 -march=native ", 1, 100, 5.8e-05
+ffcx, clang++, "-O3 -march=native ", 1, 100, 5.7e-05
+ffcx, clang++, "-O3 -march=native ", 1, 100, 6.6e-05
+fused, clang++, "-O3 -march=native ", 1, 100, 4.4e-05
+fused, clang++, "-O3 -march=native ", 1, 100, 8.3e-05
+fused, clang++, "-O3 -march=native ", 1, 100, 8.2e-05
+ffcx, clang++, "-O3 -march=native ", 2, 100, 0.004266
+ffcx, clang++, "-O3 -march=native ", 2, 100, 0.00385
+ffcx, clang++, "-O3 -march=native ", 2, 100, 0.004095
+fused, clang++, "-O3 -march=native ", 2, 100, 0.002489
+fused, clang++, "-O3 -march=native ", 2, 100, 0.008441
+fused, clang++, "-O3 -march=native ", 2, 100, 0.002419
+ffcx, clang++, "-O3 -march=native ", 3, 100, 0.0376
+ffcx, clang++, "-O3 -march=native ", 3, 100, 0.039885
+ffcx, clang++, "-O3 -march=native ", 3, 100, 0.041311
+fused, clang++, "-O3 -march=native ", 3, 100, 0.078646
+fused, clang++, "-O3 -march=native ", 3, 100, 0.08593
+fused, clang++, "-O3 -march=native ", 3, 100, 0.064332
+ffcx, g++, "-Ofast -march=native ", 1, 100, 1.4e-05
+ffcx, g++, "-Ofast -march=native ", 1, 100, 1.6e-05
+ffcx, g++, "-Ofast -march=native ", 1, 100, 1.8e-05
+fused, g++, "-Ofast -march=native ", 1, 100, 2.5e-05
+fused, g++, "-Ofast -march=native ", 1, 100, 1.9e-05
+fused, g++, "-Ofast -march=native ", 1, 100, 1.8e-05
+ffcx, g++, "-Ofast -march=native ", 2, 100, 0.001167
+ffcx, g++, "-Ofast -march=native ", 2, 100, 0.001002
+ffcx, g++, "-Ofast -march=native ", 2, 100, 0.000812
+fused, g++, "-Ofast -march=native ", 2, 100, 0.000102
+fused, g++, "-Ofast -march=native ", 2, 100, 9.4e-05
+fused, g++, "-Ofast -march=native ", 2, 100, 8.6e-05
+ffcx, g++, "-Ofast -march=native ", 3, 100, 0.020851
+ffcx, g++, "-Ofast -march=native ", 3, 100, 0.015299
+ffcx, g++, "-Ofast -march=native ", 3, 100, 0.012254
+fused, g++, "-Ofast -march=native ", 3, 100, 0.012124
+fused, g++, "-Ofast -march=native ", 3, 100, 0.012147
+fused, g++, "-Ofast -march=native ", 3, 100, 0.010991
+ffcx, clang++, "-Ofast -march=native ", 1, 100, 4.3e-05
+ffcx, clang++, "-Ofast -march=native ", 1, 100, 5.1e-05
+ffcx, clang++, "-Ofast -march=native ", 1, 100, 6.2e-05
+fused, clang++, "-Ofast -march=native ", 1, 100, 3.1e-05
+fused, clang++, "-Ofast -march=native ", 1, 100, 3.1e-05
+fused, clang++, "-Ofast -march=native ", 1, 100, 3e-05
+ffcx, clang++, "-Ofast -march=native ", 2, 100, 0.002216
+ffcx, clang++, "-Ofast -march=native ", 2, 100, 0.001608
+ffcx, clang++, "-Ofast -march=native ", 2, 100, 0.001864
+fused, clang++, "-Ofast -march=native ", 2, 100, 0.000133
+fused, clang++, "-Ofast -march=native ", 2, 100, 0.000131
+fused, clang++, "-Ofast -march=native ", 2, 100, 0.000151
+ffcx, clang++, "-Ofast -march=native ", 3, 100, 0.019637
+ffcx, clang++, "-Ofast -march=native ", 3, 100, 0.01444
+ffcx, clang++, "-Ofast -march=native ", 3, 100, 0.015769
+fused, clang++, "-Ofast -march=native ", 3, 100, 0.009585
+fused, clang++, "-Ofast -march=native ", 3, 100, 0.011211
+fused, clang++, "-Ofast -march=native ", 3, 100, 0.011093
+ffcx, g++, "-Ofast ", 1, 100, 2.1e-05
+ffcx, g++, "-Ofast ", 1, 100, 2.1e-05
+ffcx, g++, "-Ofast ", 1, 100, 1.4e-05
+fused, g++, "-Ofast ", 1, 100, 1.1e-05
+fused, g++, "-Ofast ", 1, 100, 1e-05
+fused, g++, "-Ofast ", 1, 100, 1.2e-05
+ffcx, g++, "-Ofast ", 2, 100, 0.003751
+ffcx, g++, "-Ofast ", 2, 100, 0.003299
+ffcx, g++, "-Ofast ", 2, 100, 0.003702
+fused, g++, "-Ofast ", 2, 100, 0.000137
+fused, g++, "-Ofast ", 2, 100, 0.000131
+fused, g++, "-Ofast ", 2, 100, 0.000121
+ffcx, g++, "-Ofast ", 3, 100, 0.043832
+ffcx, g++, "-Ofast ", 3, 100, 0.04034
+ffcx, g++, "-Ofast ", 3, 100, 0.040512
+fused, g++, "-Ofast ", 3, 100, 0.025302
+fused, g++, "-Ofast ", 3, 100, 0.017182
+fused, g++, "-Ofast ", 3, 100, 0.024148
+ffcx, clang++, "-Ofast ", 1, 100, 0.00015
+ffcx, clang++, "-Ofast ", 1, 100, 8.5e-05
+ffcx, clang++, "-Ofast ", 1, 100, 8.8e-05
+fused, clang++, "-Ofast ", 1, 100, 4.3e-05
+fused, clang++, "-Ofast ", 1, 100, 3.7e-05
+fused, clang++, "-Ofast ", 1, 100, 3.7e-05
+ffcx, clang++, "-Ofast ", 2, 100, 0.004385
+ffcx, clang++, "-Ofast ", 2, 100, 0.003458
+ffcx, clang++, "-Ofast ", 2, 100, 0.002896
+fused, clang++, "-Ofast ", 2, 100, 0.000118
+fused, clang++, "-Ofast ", 2, 100, 0.000192
+fused, clang++, "-Ofast ", 2, 100, 0.000218
+ffcx, clang++, "-Ofast ", 3, 100, 0.054563
+ffcx, clang++, "-Ofast ", 3, 100, 0.036536
+ffcx, clang++, "-Ofast ", 3, 100, 0.037818
+fused, clang++, "-Ofast ", 3, 100, 0.024798
+fused, clang++, "-Ofast ", 3, 100, 0.023083
+fused, clang++, "-Ofast ", 3, 100, 0.023548
+ffcx, g++, "-O2 -march=native ", 1, 
+ffcx, g++, "-O2 -march=native ", 1, 
+ffcx, g++, "-O2 -march=native ", 1, 
+fused, g++, "-O2 -march=native ", 1, 
+fused, g++, "-O2 -march=native ", 1, 
+fused, g++, "-O2 -march=native ", 1, 
+ffcx, g++, "-O2 -march=native ", 2, 
+ffcx, g++, "-O2 -march=native ", 2, 
+ffcx, g++, "-O2 -march=native ", 2, 
+fused, g++, "-O2 -march=native ", 2, 
+fused, g++, "-O2 -march=native ", 2, 
+fused, g++, "-O2 -march=native ", 2, 
+ffcx, g++, "-O2 -march=native ", 3, 
+ffcx, g++, "-O2 -march=native ", 3, 
+ffcx, g++, "-O2 -march=native ", 3, 
+fused, g++, "-O2 -march=native ", 3, 
+fused, g++, "-O2 -march=native ", 3, 
+fused, g++, "-O2 -march=native ", 3, 
+ffcx, clang++, "-O2 -march=native ", 1, 
+ffcx, clang++, "-O2 -march=native ", 1, 
+ffcx, clang++, "-O2 -march=native ", 1, 
+fused, clang++, "-O2 -march=native ", 1, 
+fused, clang++, "-O2 -march=native ", 1, 
+fused, clang++, "-O2 -march=native ", 1, 
+ffcx, clang++, "-O2 -march=native ", 2, 
+ffcx, clang++, "-O2 -march=native ", 2, 
+ffcx, clang++, "-O2 -march=native ", 2, 
+fused, clang++, "-O2 -march=native ", 2, 
+fused, clang++, "-O2 -march=native ", 2, 
+fused, clang++, "-O2 -march=native ", 2, 
+ffcx, clang++, "-O2 -march=native ", 3, 
+ffcx, clang++, "-O2 -march=native ", 3, 
+ffcx, clang++, "-O2 -march=native ", 3, 
+fused, clang++, "-O2 -march=native ", 3, 
+fused, clang++, "-O2 -march=native ", 3, 
+fused, clang++, "-O2 -march=native ", 3, 
+ffcx, g++, "-O2 ", 1, 
+ffcx, g++, "-O2 ", 1, 
+ffcx, g++, "-O2 ", 1, 
+fused, g++, "-O2 ", 1, 
+fused, g++, "-O2 ", 1, 
+fused, g++, "-O2 ", 1, 
+ffcx, g++, "-O2 ", 2, 
+ffcx, g++, "-O2 ", 2, 
+ffcx, g++, "-O2 ", 2, 
+fused, g++, "-O2 ", 2, 
+fused, g++, "-O2 ", 2, 
+fused, g++, "-O2 ", 2, 
+ffcx, g++, "-O2 ", 3, 
+ffcx, g++, "-O2 ", 3, 
+ffcx, g++, "-O2 ", 3, 
+fused, g++, "-O2 ", 3, 
+fused, g++, "-O2 ", 3, 
+fused, g++, "-O2 ", 3, 
+ffcx, clang++, "-O2 ", 1, 
+ffcx, clang++, "-O2 ", 1, 
+ffcx, clang++, "-O2 ", 1, 
+fused, clang++, "-O2 ", 1, 
+fused, clang++, "-O2 ", 1, 
+fused, clang++, "-O2 ", 1, 
+ffcx, clang++, "-O2 ", 2, 
+ffcx, clang++, "-O2 ", 2, 
+ffcx, clang++, "-O2 ", 2, 
+fused, clang++, "-O2 ", 2, 
+fused, clang++, "-O2 ", 2, 
+fused, clang++, "-O2 ", 2, 
+ffcx, clang++, "-O2 ", 3, 
+ffcx, clang++, "-O2 ", 3, 
+ffcx, clang++, "-O2 ", 3, 
+fused, clang++, "-O2 ", 3, 
+fused, clang++, "-O2 ", 3, 
+fused, clang++, "-O2 ", 3, 
