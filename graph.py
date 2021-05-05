@@ -2,19 +2,19 @@ import seaborn
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy
+import sys
 
+if len(sys.argv) > 1:
+    degree = sys.argv[1]
+else:
+    degree = 0
 
-dt = pd.read_csv("nedelec/results")
+dt = pd.read_csv("Lagrange" + degree)
 
 seaborn.set(style="ticks")
 seaborn.set_style("darkgrid")
 
-dt1 = dt[dt["method"] == "ffcx"].copy()
-dt2 = dt[dt["method"] == "fused"].copy()
-
-dt1["speedup"] = dt1.time/dt2.time.array
-
-
-g = seaborn.catplot(x="degree", y="speedup", hue="compiler", col="flags", kind="bar", data=dt1)
-g.set(yticks=list(range(5)), ylim=(0, 5))
+g = seaborn.catplot(x="compiler", y="time", hue="method", col="flags", kind="bar", data=dt)
+# g.set(yticks=list(range(5)), ylim=(0, 6))
+g.set_titles("Lagrange" + degree)
 plt.show()

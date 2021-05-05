@@ -1,5 +1,5 @@
 // #define XTENSOR_USE_XSIMD 1
-#include "nedelec.h"
+#include "problem.h"
 #include <iostream>
 #include <xtensor/xtensor.hpp>
 #include <xtensor/xio.hpp>
@@ -8,15 +8,15 @@
 
 int main(int argc, char *argv[])
 {
-    int ncells = 100'000;
+    int ncells = 10'000;
 
-    ufc_form a = *form_nedelec_a;
+    ufc_form a = *form_problem_a;
     int ndofs_cell = a.finite_elements[1]->space_dimension;
     auto &&kernel = a.integrals(ufc_integral_type::cell)[0]->tabulate_tensor;
 
-    xt::xtensor<double, 2> coordinate_dofs = {{0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}};
+    xt::xtensor<double, 2> coordinate_dofs = {{0.1, 0.0, 0.1}, {1.0, 0.0, 0.1}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}};
 
-    double *Ae = new double[ndofs_cell * ndofs_cell];
+    double Ae[ndofs_cell * ndofs_cell];
 
     auto start = std::chrono::steady_clock::now();
     for (int c = 0; c < ncells; c++)
