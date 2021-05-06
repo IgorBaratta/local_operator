@@ -4,8 +4,6 @@ import sys
 import platform
 from string import Template
 
-processor = platform.processor()
-
 if len(sys.argv) > 1:
     problem = sys.argv[1]
 else:
@@ -17,7 +15,10 @@ else:
 #########################
 compilers = [["g++", "gcc"], ["clang++", "clang"]]
 opt_flags = ["\"-Ofast -march=native\""]
-machine =
+machine = None
+
+if not machine:
+    machine = platform.processor()
 
 os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
 
@@ -41,7 +42,7 @@ for flag in opt_flags:
             os.environ["CC"] = compiler[1]
             compiler_name = os.environ.get("PE_ENV", compiler[0]) # Uses PE_ENV if on Cray
 
-            d = {'degree': str(degree)}
+            d = {'degree': str(degree), 'vdegree': str(degree + 1)}
             with open(problem, 'r') as f:
                 src = Template(f.read())
                 result = src.substitute(d)
@@ -55,7 +56,7 @@ for flag in opt_flags:
                         "fused + full_tables": "--fuse_loops --full_tables",
                         "fused + hoist": "--fuse_loops --full_tables --code_hoisting problem.ufl"}
 
-            text = f"\n{processor}, {family}, {compiler_name}, {flag}, {degree}, "
+            text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
             for opt in ffc_opts:
                 print(f"ffcx {ffc_opts[opt]} problem.ufl")
                 if os.system(f"ffcx {ffc_opts[opt]} problem.ufl") !=0 : raise RuntimeError("ffcx failed")
