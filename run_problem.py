@@ -63,7 +63,7 @@ for flag in opt_flags:
                 if os.system(build) !=0 : raise RuntimeError("build failed")
 
                 for i in range(nrepeats):
-                    text1 = text + f"{ffc_opts[opt]}, "
+                    text1 = text + f"\"{opt}\", "
                     print(i, text1)
                     with open(out_file, "a") as file:
                         file.write(text1)
