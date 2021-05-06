@@ -5,22 +5,22 @@ Depends on:
 
 
 ## How to run:
-### Lagrange - Stiffness Matrix - problem 0
+### Lagrange - Stiffness Matrix
 ```bash
-python3 run_problem.py 0
+python3 run_problem.py Lagrange.ufl
 ```
-### N1curl - curl curl - problem 1
+### N1curl - curl curl 
 ```bash
-python3 run_problem.py 1
+python3 run_problem.py N1curl.ufl
 ```
 
-### DG - ?? - problem 2
+### Stokes Taylor-Hood mixed
 ```bash
-python3 run_problem.py 2
+python3 run_problem.py Stokes.ufl
 ```
 
 Results:
-{Name}+degre.txt
+{Name}.txt
 
 
 ## Add more compilers or flags:
@@ -29,12 +29,12 @@ Append compiler names and flags to lines 10 and 11 of [run_problem](https://gith
 
 ## Plotting data:
 ```bash
-python3 graph.py degree
-python3 graph.py 1
-python3 graph.py 2
+python3 graph.py Stokes.txt 2
+python3 graph.py Lagrange.txt 3
 ```
+etc.
 
 ## Data description
 ```
-table = [method, compiler name, compiler flags, polyonomial degree, number of cells, local assemble time]
+table = [machine, kernel, compiler name, compiler flags, polyonomial degree, ffc opts, number of cells, local assemble time]
 ```

@@ -1,112 +1,78 @@
 import os
 import ffcx.codegeneration
 import sys
+import platform
+from string import Template
 
 if len(sys.argv) > 1:
-    problem = int(sys.argv[1])
+    problem = sys.argv[1]
 else:
-    problem = 0
+    problem = "Lagrange.ufl"
+
 
 #########################
 # COMPILERS AND FLAGS
 #########################
-compilers = [["g++-10", "gcc-10"], ["clang++-12", "clang-12"]]
+compilers = [["g++", "gcc"], ["clang++", "clang"]]
 opt_flags = ["\"-Ofast -march=native\""]
 
+# Set machine name, or leave as None to get architecture from platform
+machine = None
+if not machine:
+    machine = platform.processor()
 
 os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
 
-if problem == 0:
-    forms = ["a = inner(grad(u), grad(v))*dx"]
-    family = "Lagrange"
+family = problem.split(".")[0]
+nrepeats = 10
+degrees = [1, 2, 3]
+
+if family == "Lagrange":
     degrees = [1, 2, 3, 4, 5]
-    nrepeats = 10
 
-elif problem == 1:
-    forms = ["a = inner(curl(u), curl(v))*dx"]
-    family = "N1curl"
-    degrees = [1, 2, 3, 4]
-    nrepeats = 10
+ffc_opts = {"ffcx": "",
+            "fused": "--fuse_loops",
+            "fused + full_tables": "--fuse_loops --full_tables",
+            "fused + hoist": "--fuse_loops --code_hoisting",
+            "fused + ft + hoist": "--fuse_loops --full_tables --code_hoisting"}
 
-elif problem == 2:
-    forms = ["a = inner(k * grad(u), grad(v)) * dx"]
-    family = "DG"
-    degrees = [1, 2, 3]
-    nrepeats = 10
 
-else:
-    raise RuntimeError("Problems form 0 to 2")
 
-title = "method,compiler,flags,degree,ncells,time"
-for d in degrees:
-    out_file = str(family) + str(d)
-    with open(out_file, "a") as file:
-        file.write(title)
+title = "machine,problem,compiler,flags,degree,method,ncells,time"
+out_file = str(family) + ".txt"
+if not os.path.exists(out_file):
+    with open(out_file, "a") as f:
+        f.write(title)
 
 for flag in opt_flags:
     for compiler in compilers:
-        for form in forms:
-            for degree in degrees:
-                out_file = str(family) + str(degree)
-                os.environ["CXX"] = compiler[0]
-                os.environ["CC"] = compiler[1]
+        for degree in degrees:
+            os.environ["CXX"] = compiler[0]
+            os.environ["CC"] = compiler[1]
+            # Uses PE_ENV if on Cray
+            compiler_name = os.environ.get("PE_ENV", compiler[0])
 
-                with open("problem.ufl", "r") as file:
-                    lines = file.readlines()
+            d = {'degree': str(degree), 'vdegree': str(degree + 1)}
+            with open(problem, 'r') as f:
+                src = Template(f.read())
+                result = src.substitute(d)
+                print(result)
+                with open("problem.ufl", "w") as f2:
+                    f2.writelines(result)
 
-                lines[0] = "degree = " + str(degree) + "\n"
-                lines[1] = "family = \"" + family + "\"\n"
-                lines[9] = form
-
-                with open("problem.ufl", "w") as file:
-                    file.writelines(lines)
-
-                text = f"\n{compiler[0]}, {flag}, {degree}, "
-                print(text)
-                build = f"cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
-                os.system("ffcx problem.ufl")
-                os.system("rm -rf build")
-                os.system("mkdir build")
-
-                os.system(build)
-                for i in range(nrepeats):
-                    text = f"\nffcx, {compiler[0]}, {flag}, {degree}, "
-                    with open(out_file, "a") as file:
-                        file.write(text)
-                    os.system(f"./build/benchmark >>{out_file}")
-
-                # run fused loops case
-                os.system("ffcx --fuse_loops problem.ufl")
-                os.system("rm -rf build")
-                os.system("mkdir build")
-                os.system(build)
+            build = f"rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+            text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
+            for opt in ffc_opts:
+                print(f"ffcx {ffc_opts[opt]} problem.ufl")
+                if os.system(f"ffcx {ffc_opts[opt]} problem.ufl") != 0:
+                    raise RuntimeError("ffcx failed")
+                if os.system(build) != 0:
+                    raise RuntimeError("build failed")
 
                 for i in range(nrepeats):
-                    text = f"\nfused, {compiler[0]}, {flag}, {degree}, "
+                    text1 = text + f"\"{opt}\", "
+                    print(i, text1)
                     with open(out_file, "a") as file:
-                        file.write(text)
-                    os.system(f"./build/benchmark >>{out_file}")
-
-                # run fused loops case
-                os.system("ffcx --fuse_loops --full_tables problem.ufl")
-                os.system("rm -rf build")
-                os.system("mkdir build")
-                os.system(build)
-
-                for i in range(nrepeats):
-                    text = f"\nfused + full_tables, {compiler[0]}, {flag}, {degree}, "
-                    with open(out_file, "a") as file:
-                        file.write(text)
-                    os.system(f"./build/benchmark >>{out_file}")
-
-                # run fused loops case
-                os.system("ffcx --fuse_loops --full_tables --code_hoisting problem.ufl")
-                os.system("rm -rf build")
-                os.system("mkdir build")
-                os.system(build)
-
-                for i in range(nrepeats):
-                    text = f"\nfused + hoist, {compiler[0]}, {flag}, {degree}, "
-                    with open(out_file, "a") as file:
-                        file.write(text)
-                    os.system(f"./build/benchmark >>{out_file}")
+                        file.write(text1)
+                    if os.system(f"./build/benchmark >>{out_file}") != 0:
+                        raise RuntimeError("benchmark failed")

@@ -1,5 +1,5 @@
-degree = 5
-family = "Lagrange"
+degree = $degree
+family = "N1curl"
 cell_type = tetrahedron
 element = FiniteElement(family, cell_type, degree)
 coord_element = VectorElement("Lagrange", cell_type, 1)
@@ -7,4 +7,4 @@ mesh = Mesh(coord_element)
 V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
-a = inner(grad(u), grad(v))*dx
+a = inner(curl(u), curl(v))*dx
