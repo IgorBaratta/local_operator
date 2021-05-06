@@ -30,6 +30,14 @@ degrees = [1, 2, 3]
 if family == "Lagrange":
     degrees = [1, 2, 3, 4, 5]
 
+ffc_opts = {"ffcx": "",
+            "fused": "--fuse_loops",
+            "fused + full_tables": "--fuse_loops --full_tables",
+            "fused + hoist": "--fuse_loops --code_hoisting",
+            "fused + ft + hoist": "--fuse_loops --full_tables --code_hoisting"}
+
+
+
 title = "machine,problem,compiler,flags,degree,method,ncells,time"
 out_file = str(family) + ".txt"
 if not os.path.exists(out_file):
@@ -53,11 +61,6 @@ for flag in opt_flags:
                     f2.writelines(result)
 
             build = f"rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
-            ffc_opts = {"ffcx": "",
-                        "fused": "--fuse_loops",
-                        "fused + full_tables": "--fuse_loops --full_tables",
-                        "fused + hoist": "--fuse_loops --full_tables --code_hoisting problem.ufl"}
-
             text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
             for opt in ffc_opts:
                 print(f"ffcx {ffc_opts[opt]} problem.ufl")
