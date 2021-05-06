@@ -8,7 +8,7 @@ if len(sys.argv) < 2:
 data_filename = sys.argv[1]
 
 if len(sys.argv) > 2:
-    degree = sys.argv[-1]
+    degree = int(sys.argv[-1])
 else:
     degree = 1
 
@@ -16,7 +16,11 @@ dt = pd.read_csv(data_filename)
 
 problem = dt['problem'][0]
 assert all(dt['problem'] == problem)
+
 print(problem, degree)
+
+# Select only chosen degree
+dt = dt.loc[dt['degree'] == degree]
 
 seaborn.set(style="ticks")
 seaborn.set_style("darkgrid")
