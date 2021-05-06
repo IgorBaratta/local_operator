@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# C files
+*.c
+*.h
+
 # Compiled Object files
 *.slo
 *.lo
