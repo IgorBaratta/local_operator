@@ -15,8 +15,9 @@ else:
 #########################
 compilers = [["g++", "gcc"], ["clang++", "clang"]]
 opt_flags = ["\"-Ofast -march=native\""]
-machine = None
 
+# Set machine name, or leave as None to get architecture from platform
+machine = None
 if not machine:
     machine = platform.processor()
 
@@ -25,9 +26,9 @@ os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
 family = problem.split(".")[0]
 nrepeats = 10
 degrees = [1, 2, 3]
-# if family == "Lagrange":
-#    degrees = [1, 2, 3, 4, 5]
 
+if family == "Lagrange":
+    degrees = [1, 2, 3, 4, 5]
 
 title = "machine,problem,compiler,flags,degree,method,ncells,time"
 out_file = str(family) + ".txt"
@@ -40,7 +41,8 @@ for flag in opt_flags:
         for degree in degrees:
             os.environ["CXX"] = compiler[0]
             os.environ["CC"] = compiler[1]
-            compiler_name = os.environ.get("PE_ENV", compiler[0]) # Uses PE_ENV if on Cray
+            # Uses PE_ENV if on Cray
+            compiler_name = os.environ.get("PE_ENV", compiler[0])
 
             d = {'degree': str(degree), 'vdegree': str(degree + 1)}
             with open(problem, 'r') as f:
@@ -59,12 +61,15 @@ for flag in opt_flags:
             text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
             for opt in ffc_opts:
                 print(f"ffcx {ffc_opts[opt]} problem.ufl")
-                if os.system(f"ffcx {ffc_opts[opt]} problem.ufl") !=0 : raise RuntimeError("ffcx failed")
-                if os.system(build) !=0 : raise RuntimeError("build failed")
+                if os.system(f"ffcx {ffc_opts[opt]} problem.ufl") != 0:
+                    raise RuntimeError("ffcx failed")
+                if os.system(build) != 0:
+                    raise RuntimeError("build failed")
 
                 for i in range(nrepeats):
                     text1 = text + f"\"{opt}\", "
                     print(i, text1)
                     with open(out_file, "a") as file:
                         file.write(text1)
-                    if os.system(f"./build/benchmark >>{out_file}") != 0 : raise RuntimeError("benchmark failed")
+                    if os.system(f"./build/benchmark >>{out_file}") != 0:
+                        raise RuntimeError("benchmark failed")
