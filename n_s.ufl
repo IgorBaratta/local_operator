@@ -1,0 +1,27 @@
+cell = triangle
+V = VectorElement("Lagrange", cell, 2)
+Q = FiniteElement("Lagrange", cell, 1)
+
+# Define trial and test functions
+u = TrialFunction(V)
+v = TestFunction(V)
+
+k = Constant(cell)        
+mu = Constant(cell)  # Dynamic viscosity
+rho = Constant(cell)     # Density
+
+u_ = Coefficient(V)
+u_s = Coefficient(V)
+u_n = Coefficient(V)
+u_n1 = Coefficient(V)
+p_ = Coefficient(Q)
+
+
+f = VectorConstant(cell)
+F1 = rho / k * dot(u - u_n, v) * dx 
+F1 += inner(1.5 * dot(u_n, nabla_grad(u_n)) - 0.5 * dot(u_n1, nabla_grad(u_n1)), v) * dx
+F1 += 0.5 * mu * inner(grad(u+u_n), grad(v))*dx - dot(p_, div(v))*dx
+F1 += dot(f, v) * dx
+a = lhs(F1)
+L = rhs(F1)
+
