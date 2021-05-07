@@ -15,11 +15,15 @@ int main(int argc, char *argv[])
                                         0.0, 0.0, 0.0, 1.0};
 
     double Ae[ndofs_cell * ndofs_cell];
+    double coefficients[ndofs_cell];
+
+    for (int i = 0; i < ndofs_cell; i ++)
+        coefficients[i] = 1.0;
 
     auto start = std::chrono::steady_clock::now();
     for (int c = 0; c < ncells; c++)
     {
-        kernel(Ae, nullptr, nullptr, coordinate_dofs, 0, 0, 0);
+        kernel(Ae, coefficients, nullptr, coordinate_dofs, 0, 0, 0);
     }
     auto end = std::chrono::steady_clock::now();
     double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;
