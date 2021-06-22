@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     auto start = std::chrono::steady_clock::now();
     for (int c = 0; c < ncells; c++)
     {
-        kernel(Ae, coefficients, nullptr, coordinate_dofs, 0, 0, 0);
+        kernel(Ae, coefficients, nullptr, coordinate_dofs, 0, 0);
     }
     auto end = std::chrono::steady_clock::now();
     double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;

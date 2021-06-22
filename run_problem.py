@@ -30,13 +30,7 @@ degrees = [1, 2, 3]
 if family == "Lagrange":
     degrees = [1, 2, 3, 4, 5]
 
-ffc_opts = {"ffcx": "",
-            "fused": "--fuse_loops",
-            "fused + full_tables": "--fuse_loops --full_tables",
-            "fused + hoist": "--fuse_loops --code_hoisting",
-            "fused + ft + hoist": "--fuse_loops --full_tables --code_hoisting"}
-
-
+ffc_opts = {"ffcx": ""}
 
 title = "machine,problem,compiler,flags,degree,method,ncells,time"
 out_file = str(family) + ".txt"
