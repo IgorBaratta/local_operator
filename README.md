@@ -1,7 +1,8 @@
 # Benchmark FFCx
 
 Depends on:
-- ffcx -  branch https://github.com/FEniCS/ffcx/tree/igor/loop-invariant
+- FFCx: The FEniCSx Form Compiler
+  -  https://github.com/FEniCS/ffcx.git
 
 
 ## How to run:
