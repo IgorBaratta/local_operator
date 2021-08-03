@@ -52,7 +52,7 @@ for flag in opt_flags:
                     f2.writelines(result)
                 with open("problem.py", "w") as f2:
                     f2.writelines(result)
-            
+
             # Generate TSFC kernels
             os.system('python3 tsfc_kernel.py > tsfc_kernel.hpp')
 
@@ -73,7 +73,7 @@ for flag in opt_flags:
                     if os.system(f"./build/benchmark >>{out_file}") != 0:
                         raise RuntimeError("benchmark failed")
                     text2 = text + f"\"tsfc\", "
-                    
+                    print(i, text1)
                     with open(out_file, "a") as file:
                         file.write(text2)
                     if os.system(f"./build/benchmark >>{out_file} 1") != 0:
