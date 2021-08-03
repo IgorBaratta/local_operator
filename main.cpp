@@ -1,4 +1,6 @@
 #include "problem.h"
+#include "tsfc_kernel.hpp"
+
 #include <iostream>
 #include <ufc.h>
 #include <chrono>
@@ -14,19 +16,38 @@ int main(int argc, char *argv[])
     const double coordinate_dofs[12] = {0.1, 0.0, 0.1, 1.0, 0.0, 0.1, 0.0, 1.0,
                                         0.0, 0.0, 0.0, 1.0};
 
-    double Ae[ndofs_cell * ndofs_cell];
-    double coefficients[ndofs_cell];
+    std::size_t type = 0;
+    if (argc == 2)
+        type = std::stoi(argv[1]);
 
-    for (int i = 0; i < ndofs_cell; i ++)
-        coefficients[i] = 1.0;
-
-    auto start = std::chrono::steady_clock::now();
-    for (int c = 0; c < ncells; c++)
+    if (type == 0)
     {
-        kernel(Ae, coefficients, nullptr, coordinate_dofs, 0, 0);
+        double Ae[DOFS * DOFS];
+        double coefficients[DOFS];
+
+        for (int i = 0; i < DOFS; i++)
+            coefficients[i] = 1.0;
+        
+        auto start = std::chrono::steady_clock::now();
+        for (int c = 0; c < ncells; c++)
+        {
+            kernel(Ae, coefficients, nullptr, coordinate_dofs, 0, 0);
+        }
+        auto end = std::chrono::steady_clock::now();
+        double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;
+        std::cout << ncells << ", " << duration;
     }
-    auto end = std::chrono::steady_clock::now();
-    double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;
-    std::cout << ncells << ", " << duration;
+    else
+    {
+        double Ae[DOFS][DOFS];
+        auto start = std::chrono::steady_clock::now();
+        for (int c = 0; c < ncells; c++)
+        {
+            form_cell_integral_otherwise(Ae, coordinate_dofs);
+        }
+        auto end = std::chrono::steady_clock::now();
+        double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;
+        std::cout << ncells << ", " << duration;
+    }
     return 0;
 }

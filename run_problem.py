@@ -24,11 +24,8 @@ if not machine:
 os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
 
 family = problem.split(".")[0]
-nrepeats = 10
-degrees = [1, 2, 3]
-
-if family == "Lagrange":
-    degrees = [1, 2, 3, 4, 5]
+nrepeats = 5
+degrees = [1, 2, 3, 4, 5]
 
 ffc_opts = {"ffcx": ""}
 
@@ -53,6 +50,11 @@ for flag in opt_flags:
                 print(result)
                 with open("problem.ufl", "w") as f2:
                     f2.writelines(result)
+                with open("problem.py", "w") as f2:
+                    f2.writelines(result)
+            
+            # Generate TSFC kernels
+            os.system('python3 tsfc_kernel.py > tsfc_kernel.hpp')
 
             build = f"rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
             text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
@@ -69,4 +71,10 @@ for flag in opt_flags:
                     with open(out_file, "a") as file:
                         file.write(text1)
                     if os.system(f"./build/benchmark >>{out_file}") != 0:
+                        raise RuntimeError("benchmark failed")
+                    text2 = text + f"\"tsfc\", "
+                    
+                    with open(out_file, "a") as file:
+                        file.write(text2)
+                    if os.system(f"./build/benchmark >>{out_file} 1") != 0:
                         raise RuntimeError("benchmark failed")

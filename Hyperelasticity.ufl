@@ -1,3 +1,5 @@
+from ufl import *
+
 # UFL input for hyperleasticity
 # =============================
 #
