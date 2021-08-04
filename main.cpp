@@ -1,5 +1,5 @@
 #include "problem.h"
-#include "tsfc_kernel.hpp"
+#include "tsfc_kernel.cpp"
 
 #include <iostream>
 #include <ufc.h>
@@ -20,18 +20,22 @@ int main(int argc, char *argv[])
     if (argc == 2)
         type = std::stoi(argv[1]);
 
+    constexpr std::size_t dofs = DOFS;
+    std::vector<double> A(ncells * ndofs_cell * ndofs_cell);
+
+    double coefficients[dofs];
+    std::fill_n(coefficients, dofs, 1);
+
     if (type == 0)
     {
-        double Ae[DOFS * DOFS];
-        double coefficients[DOFS];
 
-        for (int i = 0; i < DOFS; i++)
-            coefficients[i] = 1.0;
-        
         auto start = std::chrono::steady_clock::now();
         for (int c = 0; c < ncells; c++)
         {
+            double Ae[DOFS * DOFS] = {0};
             kernel(Ae, coefficients, nullptr, coordinate_dofs, 0, 0);
+            double *data = A.data() + c * dofs * dofs;
+            std::copy_n(Ae, dofs * dofs, data);
         }
         auto end = std::chrono::steady_clock::now();
         double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;
@@ -39,11 +43,13 @@ int main(int argc, char *argv[])
     }
     else
     {
-        double Ae[DOFS][DOFS];
         auto start = std::chrono::steady_clock::now();
         for (int c = 0; c < ncells; c++)
         {
+            double Ae[DOFS][DOFS] = {0};
             form_cell_integral_otherwise(Ae, coordinate_dofs);
+            double *data = A.data() + c * DOFS * DOFS;
+            std::copy_n(&Ae[0][0], dofs * dofs, data);
         }
         auto end = std::chrono::steady_clock::now();
         double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() / 1.e6;

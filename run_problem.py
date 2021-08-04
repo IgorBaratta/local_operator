@@ -13,7 +13,7 @@ else:
 #########################
 # COMPILERS AND FLAGS
 #########################
-compilers = [["g++", "gcc"], ["clang++", "clang"]]
+compilers = [["g++-10", "gcc-10"]]
 opt_flags = ["\"-Ofast -march=native\""]
 
 # Set machine name, or leave as None to get architecture from platform
@@ -24,8 +24,8 @@ if not machine:
 os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
 
 family = problem.split(".")[0]
-nrepeats = 5
-degrees = [1, 2, 3, 4, 5]
+nrepeats = 3
+degrees = [1, 2, 3, 4]
 
 ffc_opts = {"ffcx": ""}
 
@@ -54,7 +54,7 @@ for flag in opt_flags:
                     f2.writelines(result)
 
             # Generate TSFC kernels
-            os.system('python3 tsfc_kernel.py > tsfc_kernel.hpp')
+            os.system('python3 tsfc_kernel.py > tsfc_kernel.cpp')
 
             build = f"rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
             text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
@@ -73,7 +73,7 @@ for flag in opt_flags:
                     if os.system(f"./build/benchmark >>{out_file}") != 0:
                         raise RuntimeError("benchmark failed")
                     text2 = text + f"\"tsfc\", "
-                    print(i, text1)
+                    print(i, text2)
                     with open(out_file, "a") as file:
                         file.write(text2)
                     if os.system(f"./build/benchmark >>{out_file} 1") != 0:
