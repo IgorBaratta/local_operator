@@ -1,6 +1,6 @@
 from ufl import *
 
-degree = $degree
+degree = 4
 family = "N1curl"
 cell_type = tetrahedron
 element = FiniteElement(family, cell_type, degree)

@@ -1,6 +1,6 @@
 from ufl import *
 
-degree = $degree
+degree = 4
 family = "N1curl"
 cell_type = tetrahedron
 element = FiniteElement(family, cell_type, degree)
@@ -9,4 +9,4 @@ mesh = Mesh(coord_element)
 V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
-a = inner(curl(u), curl(v))*dx
+a = inner(curl(u), curl(v))*dx + inner(u, v)*dx
