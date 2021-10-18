@@ -13,7 +13,7 @@ else:
 #########################
 # COMPILERS AND FLAGS
 #########################
-compilers = [["g++-10", "gcc-10"]]
+compilers = [["g++", "gcc"]]
 opt_flags = ["\"-Ofast -march=native\""]
 
 # Set machine name, or leave as None to get architecture from platform
