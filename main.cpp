@@ -5,7 +5,6 @@
 #include <chrono>
 #include <vector>
 #include <algorithm>
-#include <xsimd/xsimd.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +12,7 @@ int main(int argc, char *argv[])
 
     ufc_form a = *form_problem_a;
     int ndofs = a.finite_elements[1]->space_dimension;
-    ufc_tabulate_tensor *kernel = a.integrals(ufc_integral_type::cell)[0]->tabulate_tensor;
+    auto kernel = a.integrals(ufc_integral_type::cell)[0]->tabulate_tensor_float64;
 
     const double coordinate_dofs[12] = {0.1, 0.0, 0.1, 1.0, 0.0, 0.1, 0.0, 1.0,
                                         0.0, 0.0, 0.0, 1.0};
@@ -24,14 +23,14 @@ int main(int argc, char *argv[])
 
     std::vector<double> A(ncells * ndofs * (ndofs + 1));
 
-    std::vector<double, xsimd::aligned_allocator<double, 256>> coefficients(ndofs + 1);
+    std::vector<double> coefficients(ndofs + 1);
     std::fill(coefficients.begin(), coefficients.end(), 0.5);
 
     if (type == 0)
     {
         // FFCx
         auto start = std::chrono::steady_clock::now();
-        std::vector<double, xsimd::aligned_allocator<double, 256>> Ae(ndofs * ndofs);
+        std::vector<double> Ae(ndofs * ndofs);
         for (int c = 0; c < ncells; c++)
         {
             std::size_t offset = c * ndofs * ndofs;
@@ -53,7 +52,7 @@ int main(int argc, char *argv[])
         {
             std::size_t offset = c * ndofs * ndofs;
             std::fill(Ae.begin(), Ae.end(), 0);
-            form_cell_integral_otherwise(Ae.data(), coordinate_dofs);
+            form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coefficients.data());
             auto result = std::next(A.begin(), offset);
             std::copy(Ae.begin(), Ae.end(), result);
         }

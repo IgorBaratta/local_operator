@@ -9,4 +9,8 @@ mesh = Mesh(coord_element)
 V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
-a = inner(grad(u), grad(v))*dx
+
+W = FunctionSpace(mesh, FiniteElement(family, cell_type, 1))
+k = Coefficient(W)
+
+a = k*inner(grad(u), grad(v))*dx
