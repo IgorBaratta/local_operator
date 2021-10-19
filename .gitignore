@@ -39,3 +39,5 @@ build*/
 .vscode
 *.png
 *.txt
+__pycache__/problem.cpython-38.pyc
+tsfc_kernel.cpp
