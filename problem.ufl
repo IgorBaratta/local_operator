@@ -1,6 +1,6 @@
 from ufl import *
 
-degree = $degree
+degree = 4
 
 element = FiniteElement("Lagrange", tetrahedron, degree)
 mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))

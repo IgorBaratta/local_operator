@@ -76,5 +76,5 @@ for flag in opt_flags:
                     print(i, text2)
                     with open(out_file, "a") as file:
                         file.write(text2)
-                    if os.system(f"./build/benchmark >>{out_file} 1") != 0:
+                    if os.system(f"./build/benchmark >>{out_file} tsfc") != 0:
                         raise RuntimeError("benchmark failed")
