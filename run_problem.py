@@ -53,9 +53,6 @@ for flag in opt_flags:
                 with open("problem.py", "w") as f2:
                     f2.writelines(result)
 
-            # Generate TSFC kernels
-            os.system('python3 tsfc_kernel.py')
-
             build = f"rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
             text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
             for opt in ffc_opts:
@@ -71,10 +68,4 @@ for flag in opt_flags:
                     with open(out_file, "a") as file:
                         file.write(text1)
                     if os.system(f"./build/benchmark >>{out_file}") != 0:
-                        raise RuntimeError("benchmark failed")
-                    text2 = text + f"\"tsfc\", "
-                    print(i, text2)
-                    with open(out_file, "a") as file:
-                        file.write(text2)
-                    if os.system(f"./build/benchmark >>{out_file} tsfc") != 0:
                         raise RuntimeError("benchmark failed")
