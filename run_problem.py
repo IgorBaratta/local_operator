@@ -2,6 +2,7 @@ import os
 import ffcx.codegeneration
 import sys
 import platform
+from subprocess import Popen, PIPE
 from string import Template
 
 if len(sys.argv) > 1:
@@ -14,11 +15,16 @@ else:
 # COMPILERS AND FLAGS
 #########################
 compilers = [["g++", "gcc"]]
-opt_flags = ["\"-Ofast -march=native\""]
+opt_flags = ["\"-Ofast -march=native -mprefer-vector-width=512\"",
+             "\"-Ofast -march=native\"", 
+             "\"-O3\""]
 
-# Set machine name, or leave as None to get architecture from platform
-machine = None
-if not machine:
+
+# Set architecture from platform
+try:
+    with open("/sys/devices/cpu/caps/pmu_name", "r") as pmu:
+        machine = pmu.readlines()[0].strip()
+except:
     machine = platform.processor()
 
 os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
@@ -38,6 +44,11 @@ if not os.path.exists(out_file):
 for flag in opt_flags:
     for compiler in compilers:
         for degree in degrees:
+            try:
+                with Popen([compiler[0], "-dumpversion"], stdout=PIPE) as p:
+                    compiler_version = p.stdout.read().decode("ascii").strip()
+            except:
+                compiler_version = "unknown"
             os.environ["CXX"] = compiler[0]
             os.environ["CC"] = compiler[1]
             # Uses PE_ENV if on Cray
@@ -54,7 +65,7 @@ for flag in opt_flags:
                     f2.writelines(result)
 
             build = f"rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
-            text = f"\n{machine}, {family}, {compiler_name}, {flag}, {degree}, "
+            text = f"\n{machine}, {family}, {compiler_name}, {compiler_version}, {flag}, {degree}, "
             for opt in ffc_opts:
                 print(f"ffcx {ffc_opts[opt]} problem.ufl")
                 if os.system(f"ffcx {ffc_opts[opt]} problem.ufl") != 0:
@@ -63,9 +74,11 @@ for flag in opt_flags:
                     raise RuntimeError("build failed")
 
                 for i in range(nrepeats):
-                    text1 = text + f"\"{opt}\", "
+                    with Popen(["./build/benchmark"], stdout=PIPE) as p:
+                        result = p.stdout.read().decode("ascii").strip()
+                    text1 = text + f"\"{opt}\", {result}"
+
                     print(i, text1)
                     with open(out_file, "a") as file:
                         file.write(text1)
-                    if os.system(f"./build/benchmark >>{out_file}") != 0:
-                        raise RuntimeError("benchmark failed")
+
