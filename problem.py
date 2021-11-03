@@ -1,15 +1,15 @@
 from ufl import *
 
-degree = 4
+P2 = VectorElement("Lagrange", tetrahedron, 4)
+P1 = FiniteElement("Lagrange", tetrahedron, 3)
+TH = P2 * P1
 
-element = FiniteElement("Lagrange", tetrahedron, degree)
-mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
 
-V = FunctionSpace(mesh, element)
-u = TrialFunction(V)
-v = TestFunction(V)
+(u, p) = TrialFunctions(TH)
+(v, q) = TestFunctions(TH)
 
-W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
-k = Coefficient(W)
+a = (inner(grad(u), grad(v)) - div(v)*p + div(u)*q)*dx
 
-a = k*inner(grad(u), grad(v))*dx
+
+(un, pn) = Coefficients(TH)
+L = (inner(grad(un), grad(v)) - div(v)*pn + div(un)*q)*dx

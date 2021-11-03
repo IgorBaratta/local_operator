@@ -1,12 +1,16 @@
 from ufl import *
 
-degree = $degree
-family = "N1curl"
-cell_type = tetrahedron
-element = FiniteElement(family, cell_type, degree)
-coord_element = VectorElement("Lagrange", cell_type, 1)
+element = FiniteElement("N1curl", tetrahedron, $degree)
+coord_element = VectorElement("Lagrange", tetrahedron, 1)
 mesh = Mesh(coord_element)
+
 V = FunctionSpace(mesh, element)
+W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, $degree))
+
 u = TrialFunction(V)
 v = TestFunction(V)
-a = inner(curl(u), curl(v))*dx
+k = Coefficient(W)
+a = k*inner(curl(u), curl(v))*dx
+
+un = Coefficient(V)
+L = action(a, un)

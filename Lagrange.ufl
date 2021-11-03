@@ -1,15 +1,13 @@
 from ufl import *
 
-degree = $degree
-
-element = FiniteElement("Lagrange", tetrahedron, degree)
-mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
+element = FiniteElement("Lagrange", tetrahedron, $degree)
+mesh = Mesh(VectorElement("Lagrange", tetrahedron, $gdegree))
 
 V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
 
-W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
+W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, degree))
 k = Coefficient(W)
 
 a = k*inner(grad(u), grad(v))*dx

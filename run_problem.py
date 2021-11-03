@@ -14,10 +14,10 @@ else:
 #########################
 # COMPILERS AND FLAGS
 #########################
-compilers = [["g++", "gcc"]]
-opt_flags = ["\"-Ofast -march=native -mprefer-vector-width=512\"",
-             "\"-Ofast -march=native\"", 
-             "\"-O3\""]
+compilers = [["g++-11", "gcc-11"], ["clang++-12", "clang-12"]]
+opt_flags = ["\"-Ofast -march=native -mprefer-vector-width=256\"",
+             "\"-Ofast -march=native -fno-tree-vectorize\"",
+             "\"-O3 -march=native\""]
 
 
 # Set architecture from platform
@@ -31,11 +31,11 @@ os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
 
 family = problem.split(".")[0]
 nrepeats = 3
-degrees = [1, 2, 3, 4]
+degrees = [3]
 
 ffc_opts = {"ffcx": ""}
 
-title = "machine,problem,compiler,flags,degree,method,ncells,time"
+title = "machine,problem,compiler,version,flags,degree,method,ncells,time"
 out_file = str(family) + ".txt"
 if not os.path.exists(out_file):
     with open(out_file, "a") as f:
@@ -74,11 +74,10 @@ for flag in opt_flags:
                     raise RuntimeError("build failed")
 
                 for i in range(nrepeats):
-                    with Popen(["./build/benchmark"], stdout=PIPE) as p:
+                    with Popen(["./build/benchmark-mf"], stdout=PIPE) as p:
                         result = p.stdout.read().decode("ascii").strip()
                     text1 = text + f"\"{opt}\", {result}"
 
                     print(i, text1)
                     with open(out_file, "a") as file:
                         file.write(text1)
-
