@@ -1,16 +1,17 @@
 from ufl import *
 
-element = FiniteElement("Lagrange", tetrahedron, 4)
+element = VectorElement("Lagrange", tetrahedron, $degree)
 mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
 
 V = FunctionSpace(mesh, element)
+
 u = TrialFunction(V)
 v = TestFunction(V)
 
-W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
-k = Coefficient(W)
+def eps(v):
+    return sym(grad(v))
 
-a = k*inner(grad(u), grad(v))*dx
+a = inner(eps(u), eps(v))*dx
 
 un = Coefficient(V)
 L = action(a, un)

@@ -1,0 +1,16 @@
+from ufl import *
+
+element = FiniteElement("N1curl", tetrahedron, $degree)
+coord_element = VectorElement("Lagrange", tetrahedron, 1)
+mesh = Mesh(coord_element)
+
+V = FunctionSpace(mesh, element)
+W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, $degree))
+
+u = TrialFunction(V)
+v = TestFunction(V)
+k = Coefficient(W)
+a = k*inner(curl(u), curl(v))*dx
+
+un = Coefficient(V)
+L = action(a, un)
