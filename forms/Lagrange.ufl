@@ -1,6 +1,6 @@
 from ufl import *
 
-element = FiniteElement("Lagrange", tetrahedron, 4)
+element = FiniteElement("Lagrange", tetrahedron, $degree)
 mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
 
 V = FunctionSpace(mesh, element)
