@@ -45,7 +45,8 @@ def create_ouput(problem):
     out_file = path + str(problem) + ".txt"
 
     if not os.path.exists(out_file):
-        os.mkdir(path)
+        if not os.path.isdir(path):
+            os.mkdir(path)
         with open(out_file, "a") as f:
             f.write(header)
     return out_file
