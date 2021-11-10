@@ -73,7 +73,6 @@ def generate_code(matrix_free):
     ffcx_element = create_element(problem.element)
 
     headers = "#include <cmath>"
-
     headers += "\n#include <cstdint>"
     headers += "\n\n#define restrict __restrict__"
     headers += "\n\nusing namespace std;"

@@ -37,7 +37,12 @@ int main(int argc, char *argv[]) {
   for (int cell = 0; cell < ncells; cell++) {
     std::fill(Ae.begin(), Ae.end(), 0);
     double *coeffs = coefficients.data() + cell * stride;
-    kernel(Ae.data(), coeffs, nullptr, coordinate_dofs, 0, 0);
+#if MF == 1
+    form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs,
+                                 coeffs + ndofs);
+#else
+    form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs);
+#endif
     auto result = std::next(A.begin(), cell * local_size);
     std::copy(Ae.begin(), Ae.end(), result);
   }

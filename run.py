@@ -19,10 +19,10 @@ if __name__ == "__main__":
     parser.add_argument('--conf', dest='conf', type=str, default="compilers.yaml",
                         help="Configuration file describing the compilers and flags.")
 
-    parser.add_argument('--degree', dest='degree', default=range(4), nargs='+',
+    parser.add_argument('--degree', dest='degree', default=range(1, 4), nargs='+',
                         help='Polynomial degree to evaluate the operators.')
 
-    parser.add_argument('--nrepeats', dest='nrepeats', default=3, choices=range(1, 11),
+    parser.add_argument('--nrepeats', dest='nrepeats', type=int, default=3, choices=range(1, 11),
                         help='Polynomial degree to evaluate the operators')
 
     parser.add_argument('--matrix_free', dest='mf', action='store_true',
@@ -54,8 +54,17 @@ if __name__ == "__main__":
         for flag in flags:
             flag = "\"" + ''.join(map(str, flag)) + "\""
             for degree in degrees:
-                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree},"
-                results = utils.run_ffcx(problem, degree, nrepeats, flag, mf)
+                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, "
+                if form_compiler == "ffcx":
+                    results = utils.run_ffcx(
+                        problem, degree, nrepeats, flag, mf)
+                elif form_compiler == "tsfc":
+                    results = utils.run_tsfc(
+                        problem, degree, nrepeats, flag, mf)
+                else:
+                    results = utils.run_ffc(
+                        problem, degree, nrepeats, flag, mf)
+
                 for result in results:
                     row = text + f"\"{opt}\", {rank}, {result}"
                     with open(out_file, "a") as file:

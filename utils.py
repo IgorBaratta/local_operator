@@ -5,7 +5,6 @@ from string import Template
 from subprocess import Popen, PIPE
 
 import sys
-sys.path.insert(1, 'ffcx/')
 
 
 def set_compiler(compiler):
@@ -41,7 +40,7 @@ def machine_name():
 
 
 def create_ouput(problem):
-    header = "machine,problem,compiler,version,flags,degree,rank,ncells,time"
+    header = "machine,problem,compiler,version,flags,degree,fcomp,rank,ncells,time"
     path = "output/"
     out_file = path + str(problem) + ".txt"
 
@@ -67,6 +66,7 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
         with open("./ffcx/problem.py", "w") as f2:
             f2.writelines(result)
 
+    sys.path.insert(1, 'ffcx/')
     from compile import generate_code
     generate_code(matrix_free)
 
@@ -80,5 +80,39 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
         with Popen([run], stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
+
+    return result
+
+
+def run_tsfc(problem: str, degree: int, nrepeats: int,
+             flag: list, matrix_free: bool):
+    try:
+        import ffcx
+        import ffcx
+    except ImportError:
+        print("tsfc is no available")
+
+    with open("forms/" + problem + ".ufl", 'r') as f:
+        src = Template(f.read())
+        d = {'degree': str(degree), 'vdegree': str(degree + 1)}
+        result = src.substitute(d)
+        with open("./tsfc/problem.py", "w") as f2:
+            f2.writelines(result)
+
+    sys.path.insert(1, 'tsfc/')
+    from generate_tsfc import generate_code
+    generate_code(matrix_free)
+
+    run = "./tsfc/build/benchmark"
+    build = f"cd tsfc && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+
+    if os.system(build) != 0:
+        raise RuntimeError("build failed")
+    result = []
+    for i in range(nrepeats):
+        with Popen([run], stdout=PIPE) as p:
+            out = p.stdout.read().decode("ascii").strip()
+        result.append(out)
+    print(result)
 
     return result
