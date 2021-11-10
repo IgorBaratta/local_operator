@@ -56,8 +56,7 @@ if __name__ == "__main__":
             for degree in degrees:
                 text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree},"
                 results = utils.run_ffcx(problem, degree, nrepeats, flag, mf)
-                row = utils.append_Reu
                 for result in results:
-                    row = text + f"\"{opt}\", {1}, {result}"
+                    row = text + f"\"{opt}\", {rank}, {result}"
                     with open(out_file, "a") as file:
                         file.write(row)

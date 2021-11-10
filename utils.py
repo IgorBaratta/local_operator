@@ -4,6 +4,9 @@ import yaml
 from string import Template
 from subprocess import Popen, PIPE
 
+import sys
+sys.path.insert(1, 'ffcx/')
+
 
 def set_compiler(compiler):
     try:
@@ -34,6 +37,7 @@ def machine_name():
             machine = pmu.readlines()[0].strip()
     except:
         machine = platform.processor()
+    return machine
 
 
 def create_ouput(problem):
@@ -56,29 +60,24 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
     except ImportError:
         print("ffcx is no available")
 
-    os.environ["UFC_INCLUDE_DIR"] = ffcx.codegeneration.get_include_path()
-
     with open("forms/" + problem + ".ufl", 'r') as f:
         src = Template(f.read())
         d = {'degree': str(degree), 'vdegree': str(degree + 1)}
         result = src.substitute(d)
-        with open("problem.ufl", "w") as f2:
+        with open("./ffcx/problem.py", "w") as f2:
             f2.writelines(result)
 
-    if matrix_free:
-        run = "./ffcx/build/benchmark-mf"
-    else:
-        run = "./ffcx/build/benchmark"
+    from compile import generate_code
+    generate_code(matrix_free)
 
+    run = "./ffcx/build/benchmark"
     build = f"cd ffcx && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
 
-    if os.system(f"ffcx problem.ufl -o ffcx/") != 0:
-        raise RuntimeError("ffcx failed")
     if os.system(build) != 0:
         raise RuntimeError("build failed")
     result = []
     for i in range(nrepeats):
-        with Popen(["./ffcx/build/benchmark-mf"], stdout=PIPE) as p:
+        with Popen([run], stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
 
