@@ -1,13 +1,12 @@
-from utils import run_ffcx, create_ouput
-
+import utils
 import argparse
-import yaml
 import os
 from subprocess import Popen, PIPE
 import platform
 
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(
         description='Run local assembly benchmark.')
 
@@ -28,48 +27,37 @@ if __name__ == "__main__":
     parser.add_argument('--nrepeats', dest='nrepeats', default=3, choices=range(1, 11),
                         help='Polynomial degree to evaluate the operators')
 
+    parser.add_argument('--matrix_free', dest='mf', action='store_true')
+
     args = parser.parse_args()
     form_compiler = args.form_compiler
     problem = args.problem
     conf_file = args.conf
     degrees = [int(d) for d in args.degree]
     nrepeats = args.nrepeats
+    mf = args.mf
 
-    # Set architecture from platform
-    try:
-        with open("/sys/devices/cpu/caps/pmu_name", "r") as pmu:
-            machine = pmu.readlines()[0].strip()
-    except:
-        machine = platform.processor()
+    machine = utils.machine_name()
+    out_file = utils.create_ouput(problem)
+    compilers = utils.parse_compiler_configuration(conf_file)
 
-    # Read Compiler configuration file
-    with open(conf_file, "r") as stream:
-        try:
-            compilers = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+    # Set rank to 1 for matrix free, 2 otherwise
+    rank = 1 if mf else 2
 
+    # TODO: Add ffcx options
     opt = ""
-
-    out_file = create_ouput(problem)
 
     for c_name in compilers:
         compiler = compilers[c_name]
+        compiler_version = utils.set_compiler(compiler)
+        # Get set of flags to use
         flags = compiler["flags"]
-        try:
-            with Popen([compiler["cpp"][0], "-dumpversion"], stdout=PIPE) as p:
-                compiler_version = p.stdout.read().decode("ascii").strip()
-        except:
-            compiler_version = compiler["version"][0]
-
-        os.environ["CXX"] = compiler["cpp"][0]
-        os.environ["CC"] = compiler["cc"][0]
-
         for flag in flags:
             flag = "\"" + ''.join(map(str, flag)) + "\""
             for degree in degrees:
-                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, "
-                results = run_ffcx(problem, degree, nrepeats, flag)
+                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree},"
+                results = utils.run_ffcx(problem, degree, nrepeats, flag, mf)
+                row = utils.append_Reu
                 for result in results:
                     row = text + f"\"{opt}\", {1}, {result}"
                     with open(out_file, "a") as file:
