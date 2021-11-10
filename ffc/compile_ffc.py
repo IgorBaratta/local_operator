@@ -1,5 +1,6 @@
 import problem
 import os
+import ffc
 from ffc.fiatinterface import create_element
 
 
@@ -8,6 +9,8 @@ def generate_code(matrix_free: bool):
         rank = 1
     else:
         rank = 2
+
+    os.environ["UFC_INCLUDE_DIR"] = ffc.get_include_path()
 
     if os.system(f"cd ffc && ffc problem.ufl") != 0:
         raise RuntimeError("ffc failed")
