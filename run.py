@@ -1,14 +1,12 @@
 import utils
 import argparse
-import os
-from subprocess import Popen, PIPE
-import platform
 
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(
-        description='Run local assembly benchmark.')
+        description='Run local assembly benchmark.',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--form_compiler', dest='form_compiler', type=str,
                         default="ffcx", choices=['ffcx', 'ffc', 'tsfc'],
@@ -27,7 +25,8 @@ if __name__ == "__main__":
     parser.add_argument('--nrepeats', dest='nrepeats', default=3, choices=range(1, 11),
                         help='Polynomial degree to evaluate the operators')
 
-    parser.add_argument('--matrix_free', dest='mf', action='store_true')
+    parser.add_argument('--matrix_free', dest='mf', action='store_true',
+                        help='Specify whether to run the problems with matrix freee approach.')
 
     args = parser.parse_args()
     form_compiler = args.form_compiler
