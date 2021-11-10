@@ -5,14 +5,38 @@ Depends on:
   -  https://github.com/FEniCS/ffcx.git
 
 
+## Compiler Configuration File
+Example of compiler configuration file (compilers.yaml):
+```yaml
+gcc-11:
+  version:
+    - 11.1.0
+  cpp:
+    - /usr/bin/g++-11
+  cc:
+    - /usr/bin/gcc-11
+  flags:
+    - -Ofast -march=native -mprefer-vector-width=256
+
+clang:
+  version:
+    - 12.0.1
+  cpp:
+    - /usr/bin/clang++
+  cc:
+    - /usr/bin/clang
+  flags:
+    - -Ofast -march=native -mprefer-vector-width=256
+```
+
 ## How to run:
 ### Lagrange - Stiffness Matrix
 ```bash
-python3 run_problem.py Lagrange.ufl
+python3 run.py Lagrange
 ```
 ### N1curl - curl curl 
 ```bash
-python3 run_problem.py N1curl.ufl
+python3 run N1curl --degre 1 2 3
 ```
 
 ### Stokes Taylor-Hood mixed
