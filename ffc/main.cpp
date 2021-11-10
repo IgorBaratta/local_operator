@@ -1,3 +1,4 @@
+#include "data.hpp"
 #include "problem.h"
 #include <algorithm>
 #include <chrono>
@@ -12,14 +13,14 @@ std::mt19937 gen(rd());
 
 int main(int argc, char *argv[]) {
 
-  lagrange_cell_integral_0_otherwise a;
-  lagrange_cell_integral_1_otherwise L;
+  problem_cell_integral_0_otherwise a;
+  problem_cell_integral_1_otherwise L;
 
   // Read input
   int ncells = 1'000'000;
-  constexpr int ndofs = 10;
+  constexpr int ndofs = dim;
   constexpr int ncoeffs = 2;
-  constexpr int rank = 1;
+  constexpr int rank = kernel_rank;
 
   const double coordinate_dofs[24] = {0.1, 0.0, 0.1, 1.0, 0.0, 0.1, 0.0, 1.0,
                                       0.0, 0.0, 0.0, 1.0, 0.1, 0.0, 0.1, 1.0,

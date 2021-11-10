@@ -88,7 +88,7 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 def run_tsfc(problem: str, degree: int, nrepeats: int,
              flag: list, matrix_free: bool):
     try:
-        import ffcx
+        import tsfc
         import ffcx
     except ImportError:
         print("tsfc is no available")
@@ -106,6 +106,42 @@ def run_tsfc(problem: str, degree: int, nrepeats: int,
 
     run = "./tsfc/build/benchmark"
     build = f"cd tsfc && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+
+    if os.system(build) != 0:
+        raise RuntimeError("build failed")
+    result = []
+    for i in range(nrepeats):
+        with Popen([run], stdout=PIPE) as p:
+            out = p.stdout.read().decode("ascii").strip()
+        result.append(out)
+    print(result)
+
+    return result
+
+
+def run_ffc(problem: str, degree: int, nrepeats: int,
+            flag: list, matrix_free: bool):
+    try:
+        import ffc
+    except ImportError:
+        print("ffc is no available")
+
+    with open("forms/" + problem + ".ufl", 'r') as f:
+        src = Template(f.read())
+        d = {'degree': str(degree), 'vdegree': str(degree + 1)}
+        result = src.substitute(d)
+
+        with open("./ffc/problem.py", "w") as f2:
+            f2.writelines(result)
+        with open("./ffc/problem.ufl", "w") as f2:
+            f2.writelines(result)
+
+    sys.path.insert(1, 'ffc/')
+    from compile_ffc import generate_code
+    generate_code(matrix_free)
+
+    run = "./ffc/build/benchmark"
+    build = f"cd ffc && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
