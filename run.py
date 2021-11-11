@@ -66,6 +66,6 @@ if __name__ == "__main__":
                         problem, degree, nrepeats, flag, mf)
 
                 for result in results:
-                    row = text + f"\"{opt}\", {rank}, {result}"
+                    row = text + f"{rank}, {result}"
                     with open(out_file, "a") as file:
                         file.write(row)
