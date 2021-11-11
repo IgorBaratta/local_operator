@@ -41,8 +41,11 @@ build*/
 *.txt
 */__pycache__/*
 tsfc_kernel.cpp
+__pycache__/*
 
 
 #generated code
 problem.hpp
 problem.py
+problem.ufl
+data.hpp
