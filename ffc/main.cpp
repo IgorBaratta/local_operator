@@ -17,10 +17,11 @@ int main(int argc, char *argv[]) {
   problem_cell_integral_1_otherwise L;
 
   // Read input
-  int ncells = 1'000'000;
   constexpr int ndofs = dim;
   constexpr int ncoeffs = 2;
   constexpr int rank = kernel_rank;
+  int ncells = rank == 1 ? 500000 : 100000;
+
 
   const double coordinate_dofs[24] = {0.1, 0.0, 0.1, 1.0, 0.0, 0.1, 0.0, 1.0,
                                       0.0, 0.0, 0.0, 1.0, 0.1, 0.0, 0.1, 1.0,
