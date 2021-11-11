@@ -8,14 +8,14 @@ import sys
 
 
 def set_compiler(compiler):
+    os.environ["CXX"] = compiler["cpp"][0]
+    os.environ["CC"] = compiler["cc"][0]
+
     try:
         with Popen([compiler["cpp"][0], "-dumpversion"], stdout=PIPE) as p:
             compiler_version = p.stdout.read().decode("ascii").strip()
     except:
         compiler_version = compiler["version"][0]
-
-        os.environ["CXX"] = compiler["cpp"][0]
-        os.environ["CC"] = compiler["cc"][0]
     return compiler_version
 
 
