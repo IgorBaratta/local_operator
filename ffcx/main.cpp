@@ -12,7 +12,7 @@ std::mt19937 gen(rd());
 int main(int argc, char *argv[]) {
 
   // Read input
-  int ncells = 1'000'000;
+  int ncells = 1000000;
   constexpr int ndofs = dim;
   constexpr int ncoeffs = 2;
   constexpr int rank = kernel_rank;

@@ -2,9 +2,11 @@ import problem
 import os
 import ffc
 from ffc.fiatinterface import create_element
+from importlib import reload
 
 
 def generate_code(matrix_free: bool):
+    reload(problem)
     if matrix_free:
         rank = 1
     else:

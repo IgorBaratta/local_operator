@@ -2,9 +2,11 @@ import problem
 import tsfc
 import loopy
 from ffcx.element_interface import create_element
+from importlib import reload
 
 
 def generate_code(matrix_free: bool):
+    reload(problem)
 
     if matrix_free:
         form, = tsfc.compile_form(problem.L, coffee=False)

@@ -64,7 +64,8 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
         src = Template(f.read())
         d = {'degree': str(degree), 'vdegree': str(degree + 1)}
         result = src.substitute(d)
-        with open("./ffcx/problem.py", "w") as f2:
+
+        with open("ffcx/problem.py", "w") as f2:
             f2.writelines(result)
 
     sys.path.insert(1, 'ffcx/')
@@ -81,7 +82,8 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
         with Popen([run], stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
-
+    print(result)
+    
     return result
 
 
@@ -97,7 +99,7 @@ def run_tsfc(problem: str, degree: int, nrepeats: int,
         src = Template(f.read())
         d = {'degree': str(degree), 'vdegree': str(degree + 1)}
         result = src.substitute(d)
-        with open("./tsfc/problem.py", "w") as f2:
+        with open("tsfc/problem.py", "w") as f2:
             f2.writelines(result)
 
     sys.path.insert(1, 'tsfc/')
@@ -131,9 +133,9 @@ def run_ffc(problem: str, degree: int, nrepeats: int,
         d = {'degree': str(degree), 'vdegree': str(degree + 1)}
         result = src.substitute(d)
 
-        with open("./ffc/problem.py", "w") as f2:
+        with open("ffc/problem.py", "w") as f2:
             f2.writelines(result)
-        with open("./ffc/problem.ufl", "w") as f2:
+        with open("ffc/problem.ufl", "w") as f2:
             f2.writelines(result)
 
     sys.path.insert(1, 'ffc/')

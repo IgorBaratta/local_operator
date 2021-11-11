@@ -10,6 +10,7 @@ import basix
 import ufl
 import typing
 import problem
+from importlib import reload
 
 
 def compute_integral_body(ir, backend):
@@ -63,6 +64,8 @@ def compile_form(form: ufl.Form, name: str,
 
 
 def generate_code(matrix_free):
+    reload(problem)
+
     if matrix_free:
         code = compile_form(problem.L, "kernel")
         rank = 1
