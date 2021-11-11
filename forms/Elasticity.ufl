@@ -8,10 +8,13 @@ V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
 
+W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
+k = Coefficient(W)
+
 def eps(v):
     return sym(grad(v))
 
-a = inner(eps(u), eps(v))*dx
+a = k*inner(eps(u), eps(v))*dx
 
 un = Coefficient(V)
 L = action(a, un)

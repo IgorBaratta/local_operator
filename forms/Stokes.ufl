@@ -2,13 +2,13 @@ from ufl import *
 
 P2 = VectorElement("Lagrange", tetrahedron, $vdegree)
 P1 = FiniteElement("Lagrange", tetrahedron, $degree)
-TH = P2 * P1
+element = P2 * P1
 
-(u, p) = TrialFunctions(TH)
-(v, q) = TestFunctions(TH)
+(u, p) = TrialFunctions(element)
+(v, q) = TestFunctions(element)
 
 a = (inner(grad(u), grad(v)) - div(v)*p + div(u)*q)*dx
 
 
-(un, pn) = Coefficients(TH)
+(un, pn) = Coefficients(element)
 L = (inner(grad(un), grad(v)) - div(v)*pn + div(un)*q)*dx
