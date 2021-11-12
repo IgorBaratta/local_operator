@@ -5,7 +5,7 @@ coord_element = VectorElement("Lagrange", tetrahedron, 1)
 mesh = Mesh(coord_element)
 
 V = FunctionSpace(mesh, element)
-W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, $degree))
+W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
 
 u = TrialFunction(V)
 v = TestFunction(V)
