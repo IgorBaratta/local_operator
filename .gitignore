@@ -49,3 +49,4 @@ problem.hpp
 problem.py
 problem.ufl
 data.hpp
+output/*
