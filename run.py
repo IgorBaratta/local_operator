@@ -13,7 +13,7 @@ if __name__ == "__main__":
                         help="Form Compiler to use")
 
     parser.add_argument('--problem', dest='problem', type=str,
-                        default="Lagrange", choices=['Lagrange', 'Elasticity', 'N1curl', 'Stokes'],
+                        default="Lagrange", choices=['Laplacian', 'Mass', 'Elasticity', 'N1curl', 'Stokes'],
                         help="Problem to run")
 
     parser.add_argument('--conf', dest='conf', type=str, default="compilers.yaml",
