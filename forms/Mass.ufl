@@ -1,0 +1,13 @@
+from ufl import *
+
+element = FiniteElement("Lagrange", tetrahedron, $degree)
+mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
+
+V = FunctionSpace(mesh, element)
+u = TrialFunction(V)
+v = TestFunction(V)
+
+a = inner(u, v)*dx
+
+un = Coefficient(V)
+L = action(a, un)

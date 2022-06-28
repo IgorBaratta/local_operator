@@ -9,11 +9,11 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--form_compiler', dest='form_compiler', type=str,
-                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc'],
+                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc', 'cross'],
                         help="Form Compiler to use")
 
     parser.add_argument('--problem', dest='problem', type=str,
-                        default="Lagrange", choices=['Lagrange', 'Elasticity', 'N1curl', 'Stokes'],
+                        default="Laplacian", choices=['Laplacian', 'Mass', 'Elasticity', 'N1curl', 'Stokes'],
                         help="Problem to run")
 
     parser.add_argument('--conf', dest='conf', type=str, default="compilers.yaml",
@@ -23,6 +23,9 @@ if __name__ == "__main__":
                         help='Polynomial degree to evaluate the operators.')
 
     parser.add_argument('--nrepeats', dest='nrepeats', type=int, default=3, choices=range(1, 11),
+                        help='Polynomial degree to evaluate the operators')
+
+    parser.add_argument('--batch_size', dest='batch_size', type=int, default=1, choices=[1, 4, 8],
                         help='Polynomial degree to evaluate the operators')
 
     parser.add_argument('--matrix_free', dest='mf', action='store_true',
@@ -35,6 +38,7 @@ if __name__ == "__main__":
     degrees = [int(d) for d in args.degree]
     nrepeats = args.nrepeats
     mf = args.mf
+    batch_size = args.batch_size
 
     machine = utils.machine_name()
     out_file = utils.create_ouput(problem)
@@ -42,9 +46,6 @@ if __name__ == "__main__":
 
     # Set rank to 1 for matrix free, 2 otherwise
     rank = 1 if mf else 2
-
-    # TODO: Add ffcx options
-    opt = ""
 
     for c_name in compilers:
         compiler = compilers[c_name]
@@ -61,10 +62,12 @@ if __name__ == "__main__":
                 elif form_compiler == "tsfc":
                     results = utils.run_tsfc(
                         problem, degree, nrepeats, flag, mf)
-                else:
+                elif form_compiler == "ffc":
                     results = utils.run_ffc(
                         problem, degree, nrepeats, flag, mf)
-
+                else:
+                    results = utils.run_cross(
+                        problem, degree, nrepeats, flag, mf, batch_size)
                 for result in results:
                     row = text + f"{rank}, {result}"
                     with open(out_file, "a") as file:
