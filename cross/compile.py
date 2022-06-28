@@ -30,6 +30,7 @@ definitions = """
 #endif
 
 using scalar_type = {scalar_type}{batch_size};
+constexpr int batch_size = {batch_size};
 
 """
 
