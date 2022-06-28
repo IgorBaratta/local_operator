@@ -7,10 +7,7 @@ V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
 
-W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
-k = Coefficient(W)
-
-a = k*inner(grad(u), grad(v))*dx
+a = inner(u, v)*dx
 
 un = Coefficient(V)
 L = action(a, un)
