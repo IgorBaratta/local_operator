@@ -1,35 +1,69 @@
+# gcc-4:
+#   version:
+#     - 4.9.4
+#   cpp:
+#     - /usr/local/software/master/gcc/4/bin/g++
+#   cc:
+#     - /usr/local/software/master/gcc/4/bin/gcc
+#   flags:
+#     - -Ofast -march=native
+#     - -Ofast -march=native -fno-tree-vectorize
+
+# gcc-6:
+#   version:
+#     - 6.5.0
+#   cpp:
+#     - /usr/local/software/master/gcc/6/bin/g++
+#   cc:
+#     - /usr/local/software/master/gcc/6/bin/gcc
+#   flags:
+#     - -Ofast -march=native
+#     - -Ofast -march=native -fno-tree-vectorize
+
+# gcc-8:
+#   version:
+#     - 8.5.0
+#   cpp:
+#     - /usr/bin/g++
+#   cc:
+#     - /usr/bin/gcc
+#   flags:
+#     - -Ofast -march=native -mprefer-vector-width=512
+#     - -Ofast -march=native -fno-tree-vectorize
+
 gcc-11:
   version:
     - 11.1.0
   cpp:
-    - /usr/bin/g++-11
+    - /usr/local/software/master/gcc/11/bin/g++
   cc:
-    - /usr/bin/gcc-11
+    - /usr/local/software/master/gcc/11/bin/gcc
   flags:
-    - -Ofast -march=native -mprefer-vector-width=256
-    - -Ofast -march=native -fno-tree-vectorize
-    - -O3 -march=native
+    - -Ofast -march=native -mprefer-vector-width=512
+    # - -Ofast -march=native -fno-tree-vectorize
 
-gcc-9:
-  version:
-    - 9.3.0
-  cpp:
-    - /usr/bin/g++
-  cc:
-    - /usr/bin/gcc
-  flags:
-    - -Ofast -march=native -mprefer-vector-width=256
-    - -Ofast -march=native -fno-tree-vectorize
-    - -O3 -march=native
 
-clang:
-  version:
-    - 12.0.1
-  cpp:
-    - /usr/bin/clang++
-  cc:
-    - /usr/bin/clang
-  flags:
-    - -Ofast -march=native -mprefer-vector-width=256
-    - -Ofast -march=native -fno-tree-vectorize
-    - -O3 -march=native
+
+# gcc-9:
+#   version:
+#     - 9.3.0
+#   cpp:
+#     - /usr/bin/g++
+#   cc:
+#     - /usr/bin/gcc
+#   flags:
+#     - -Ofast -march=native -mprefer-vector-width=256
+#     - -Ofast -march=native -fno-tree-vectorize
+#     - -O3 -march=native
+
+# clang:
+#   version:
+#     - 12.0.1
+#   cpp:
+#     - /usr/bin/clang++
+#   cc:
+#     - /usr/bin/clang
+#   flags:
+#     - -Ofast -march=native -mprefer-vector-width=256
+#     - -Ofast -march=native -fno-tree-vectorize
+#     - -O3 -march=native

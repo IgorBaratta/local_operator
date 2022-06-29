@@ -92,7 +92,7 @@ def generate_code(matrix_free, batch_size):
         code = compile_form(problem.L, "kernel", batch_size=batch_size)
         rank = 1
     else:
-        code = compile_form(problem.a, "kernel")
+        code = compile_form(problem.a, "kernel", batch_size=batch_size)
         rank = 2
 
     ffcx_element = create_element(problem.element)
