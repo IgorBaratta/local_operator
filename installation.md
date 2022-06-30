@@ -1,7 +1,6 @@
 Python >=3.7
 
 
-
 # Install dependencies ffcx
 python3 -m venv env/ffcx
 source env/ffcx/bin/activate
@@ -36,9 +35,7 @@ python3 -m pip install git+https://github.com/FEniCS/ffcx.git
 python3 -m pip install pyyaml
 ```
 
-#
-
+# Intel advisor commands
 advisor --collect=survey --project-dir=./advi --search-dir src:r=. -- ./build/benchmark
 advisor -collect tripcounts -flop -stacks --project-dir=./advi --search-dir src:r=. -- ./build/benchmark
 advisor --report=roofline --with-stack --project-dir=./advi --report-output=./out/roofline.html
-

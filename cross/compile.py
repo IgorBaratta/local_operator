@@ -13,14 +13,22 @@ import problem
 from importlib import reload
 
 
-arguments = """({scalar_type}{batch_size}* restrict A,
+_arguments = """({scalar_type}{batch_size}* restrict A,
                 const {scalar_type}{batch_size}* restrict w,
                 const {scalar_type}{batch_size}* restrict c,
                 const {scalar_type}{batch_size}* restrict coordinate_dofs,
                 const int* restrict entity_local_index,
                 const uint8_t* restrict quadrature_permutation)"""
 
-definitions = """
+_headers = """
+#include <cmath>
+#include <cstdint>
+#define restrict __restrict__
+
+constexpr int dim = {dim};
+constexpr int global_size = {global_size};
+constexpr int kernel_rank = {rank};
+
 #if defined(__clang__)
     typedef {scalar_type} {scalar_type}{batch_size} __attribute__((ext_vector_type({batch_size})));
 #elif defined(__GNUC__) || defined(__GNUG__)
@@ -31,7 +39,7 @@ definitions = """
 
 using scalar_type = {scalar_type}{batch_size};
 constexpr int batch_size = {batch_size};
-
+using namespace std;
 """
 
 
@@ -51,14 +59,13 @@ def compute_integral_body(ir, backend):
 
 def compile_form(form: ufl.Form, name: str,
                  parameters: typing.Dict = None,
-                 visualise: bool = False,
-                 batch_size: int = 1):
+                 visualise: bool = False):
 
     if parameters is None:
         parameters = get_parameters()
 
-    parameters["batch_size"] = batch_size
-    scalar_type = "double"
+    batch_size = parameters["batch_size"]
+    scalar_type = parameters["scalar_type"]
 
     # Stage 1: analysis
     analysis = analyze_ufl_objects([form], parameters)
@@ -74,35 +81,35 @@ def compile_form(form: ufl.Form, name: str,
     integral_ir = ir.integrals[0]
     backend = FFCXBackend(integral_ir, parameters)
 
-    settings = {'scalar_type': scalar_type, "batch_size": batch_size}
-    args = arguments.format(**settings)
-    defs = definitions.format(**settings)
+    arguments = _arguments.format(
+        scalar_type=scalar_type, batch_size=batch_size)
 
-    signature = "inline void " + name + args + "{"
+    signature = "inline void " + name + arguments + "{"
     body = compute_integral_body(integral_ir, backend)
-    code = defs + signature + body + "\n}\n"
+    code = signature + body + "\n}\n"
 
     return code
 
 
-def generate_code(matrix_free, batch_size):
+def generate_code(action, scalar_type, global_size, batch_size):
     reload(problem)
 
-    if matrix_free:
-        code = compile_form(problem.L, "kernel", batch_size=batch_size)
+    parameters = get_parameters()
+    parameters["scalar_type"] = scalar_type
+    parameters["batch_size"] = batch_size
+
+
+    if action:
+        code = compile_form(problem.L, "kernel", parameters)
         rank = 1
     else:
-        code = compile_form(problem.a, "kernel", batch_size=batch_size)
+        code = compile_form(problem.a, "kernel", parameters)
         rank = 2
 
     ffcx_element = create_element(problem.element)
 
-    headers = "#include <cmath>"
-    headers += "\n#include <cstdint>"
-    headers += "\n\n#define restrict __restrict__"
-    headers += "\n\nusing namespace std;"
-    headers += f"\n\nconstexpr int dim = {ffcx_element.dim};"
-    headers += f"\n\nconstexpr int kernel_rank = {rank}; \n\n"
+    headers = _headers.format(dim=ffcx_element.dim, global_size=global_size,
+                              scalar_type=scalar_type, rank=rank, batch_size=batch_size)
 
     with open("cross/problem.hpp", "w") as file:
         file.write(headers)

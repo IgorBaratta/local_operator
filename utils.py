@@ -6,6 +6,8 @@ from subprocess import Popen, PIPE
 
 import sys
 
+_build_cmd = "cd {form_compiler} && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+
 
 def set_compiler(compiler):
     os.environ["CXX"] = compiler["cpp"][0]
@@ -40,7 +42,7 @@ def machine_name():
 
 
 def create_ouput(problem):
-    header = "machine,problem,compiler,version,flags,degree,fcomp,rank,ncells,time"
+    header = "machine,problem,compiler,version,flags,degree,fcomp,scalar,batch_size,rank,ncells,time"
     path = "output/"
     out_file = path + str(problem) + ".txt"
 
@@ -52,13 +54,25 @@ def create_ouput(problem):
     return out_file
 
 
+def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type, global_size, batch_size):
+    if form_compiler == "ffcx" and batch_size is None:
+        result = run_ffcx(problem, degree, nrepeats, flag,
+                          action, scalar_type, global_size)
+    elif form_compiler == "ffcx" and batch_size:
+        result = run_cross(problem, degree, nrepeats, flag,
+                           action, scalar_type, global_size, batch_size)
+
+    return result
+
+
 def run_ffcx(problem: str, degree: int, nrepeats: int,
-             flag: list, matrix_free: bool):
+             flag: list, action: bool, scalar_type: str,
+             global_size: int):
     try:
         import ffcx
         import ffcx.codegeneration
     except ImportError:
-        print("ffcx is no available")
+        print("ffcx is not available")
 
     with open("forms/" + problem + ".ufl", 'r') as f:
         src = Template(f.read())
@@ -70,10 +84,10 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 
     sys.path.insert(1, 'ffcx/')
     from compile import generate_code
-    generate_code(matrix_free)
+    generate_code(action, scalar_type, global_size)
 
     run = "./ffcx/build/benchmark"
-    build = f"cd ffcx && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+    build = _build_cmd.format(form_compiler="ffcx", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
@@ -158,12 +172,13 @@ def run_ffc(problem: str, degree: int, nrepeats: int,
 
 
 def run_cross(problem: str, degree: int, nrepeats: int,
-              flag: list, matrix_free: bool, batch_size: int):
+              flag: list, action: bool, scalar_type: str,
+              global_size: int, batch_size: int):
     try:
         import ffcx
         import ffcx.codegeneration
     except ImportError:
-        print("ffcx is no available")
+        print("ffcx is not available")
 
     with open("forms/" + problem + ".ufl", 'r') as f:
         src = Template(f.read())
@@ -175,10 +190,10 @@ def run_cross(problem: str, degree: int, nrepeats: int,
 
     sys.path.insert(1, 'cross/')
     from compile import generate_code
-    generate_code(matrix_free, batch_size)
+    generate_code(action, scalar_type, global_size, batch_size)
 
     run = "./cross/build/benchmark"
-    build = f"cd cross && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+    build = _build_cmd.format(form_compiler="cross", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
