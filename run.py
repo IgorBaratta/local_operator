@@ -1,16 +1,18 @@
 import utils
 import argparse
 
-
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(
         description='Run local assembly benchmark.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--form_compiler', dest='form_compiler', type=str,
-                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc', 'cross'],
+                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc'],
                         help="Form Compiler to use")
+
+    parser.add_argument('--scalar_type', dest='scalar_type', type=str,
+                        default="double", choices=['double', 'float'],
+                        help="Scalar type to use")
 
     parser.add_argument('--problem', dest='problem', type=str,
                         default="Laplacian", choices=['Laplacian', 'Mass', 'Elasticity', 'N1curl', 'Stokes'],
@@ -22,14 +24,17 @@ if __name__ == "__main__":
     parser.add_argument('--degree', dest='degree', default=range(1, 4), nargs='+',
                         help='Polynomial degree to evaluate the operators.')
 
-    parser.add_argument('--nrepeats', dest='nrepeats', type=int, default=3, choices=range(1, 11),
-                        help='Polynomial degree to evaluate the operators')
+    parser.add_argument('--nrepeats', dest='nrepeats', type=int, default=3,
+                        help='Number of times to run each experiment.')
 
-    parser.add_argument('--batch_size', dest='batch_size', type=int, default=1, choices=[1, 4, 8],
-                        help='Polynomial degree to evaluate the operators')
+    parser.add_argument('--batch_size', dest='batch_size', type=int, default=None, choices=[None, 4, 8],
+                        help='')
 
-    parser.add_argument('--matrix_free', dest='mf', action='store_true',
-                        help='Specify whether to run the problems with matrix freee approach.')
+    parser.add_argument('--global_size', dest='global_size', type=int, default=1e6,
+                        help='Global number of dofs (assuming shared are dofs are duplicated).')
+
+    parser.add_argument('--action', dest='action', action='store_true',
+                        help='Specify whether to run the problems with matrix free approach.')
 
     args = parser.parse_args()
     form_compiler = args.form_compiler
@@ -37,37 +42,28 @@ if __name__ == "__main__":
     conf_file = args.conf
     degrees = [int(d) for d in args.degree]
     nrepeats = args.nrepeats
-    mf = args.mf
+    action = args.action
     batch_size = args.batch_size
+    global_size = args.global_size
+    scalar_type = args.scalar_type
 
     machine = utils.machine_name()
     out_file = utils.create_ouput(problem)
     compilers = utils.parse_compiler_configuration(conf_file)
 
     # Set rank to 1 for matrix free, 2 otherwise
-    rank = 1 if mf else 2
+    rank = 1 if action else 2
 
     for c_name in compilers:
         compiler = compilers[c_name]
         compiler_version = utils.set_compiler(compiler)
-        # Get set of flags to use
         flags = compiler["flags"]
         for flag in flags:
             flag = "\"" + ''.join(map(str, flag)) + "\""
             for degree in degrees:
-                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, "
-                if form_compiler == "ffcx":
-                    results = utils.run_ffcx(
-                        problem, degree, nrepeats, flag, mf)
-                elif form_compiler == "tsfc":
-                    results = utils.run_tsfc(
-                        problem, degree, nrepeats, flag, mf)
-                elif form_compiler == "ffc":
-                    results = utils.run_ffc(
-                        problem, degree, nrepeats, flag, mf)
-                else:
-                    results = utils.run_cross(
-                        problem, degree, nrepeats, flag, mf, batch_size)
+                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, {scalar_type}, {batch_size}, "
+                results = utils.run(form_compiler, problem, degree, nrepeats,
+                                    flag, action, scalar_type, global_size, batch_size)
                 for result in results:
                     row = text + f"{rank}, {result}"
                     with open(out_file, "a") as file:

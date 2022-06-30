@@ -11,6 +11,14 @@ std::mt19937 gen(rd());
 
 int main(int argc, char *argv[]) {
 
+  constexpr int ndofs = dim;
+  constexpr int ncoeffs = 2;
+  constexpr int rank = kernel_rank;
+  constexpr int local_size = rank == 1 ? dim : dim * dim;
+  constexpr int stride = ndofs * ncoeffs;
+  constexpr int ncells = global_size / ndofs;
+  constexpr int num_batches = ncells / batch_size;
+
   const double coordinate_dofs[24] = {0.1, 0.0, 0.1, 1.0, 0.0, 0.1, 0.0, 1.0,
                                       0.0, 0.0, 0.0, 1.0, 0.1, 0.0, 0.1, 1.0,
                                       0.0, 0.1, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
@@ -20,34 +28,20 @@ int main(int argc, char *argv[]) {
     for (int j = 0; j < batch_size; j++)
       coords[i][j] = coordinate_dofs[i];
 
-  // Read input
-  constexpr int ndofs = dim;
-  constexpr int ncoeffs = 2;
-  constexpr int rank = kernel_rank;
-  int ncells = rank == 1 ? 5000000 : 100000;
-
-  std::size_t local_size = rank == 1 ? dim : dim * dim;
-
   // Allocate and initialize data
-  std::vector<scalar_type> A(ncells/batch_size * local_size);
+  std::vector<scalar_type> A(num_batches * local_size);
   std::vector<scalar_type> Ae(local_size);
-  std::size_t stride = ndofs * ncoeffs;
-
-  std::vector<double> c(ncells/batch_size * stride);
-  std::vector<scalar_type> coefficients(ncells/batch_size * stride);
-
-  std::uniform_real_distribution<double> dis(0, 1);
-  std::generate(c.begin(), c.end(), [&]() { return dis(gen); });
+  std::vector<scalar_type> coefficients(num_batches * stride);
 
   for (std::size_t i = 0; i < coefficients.size(); i++)
     for (int j = 0; j < batch_size; j++)
-      coefficients[i][j] = c[i];
+      coefficients[i][j] = 1.;
 
   scalar_type zero = {0.0};
 
   // FFCx
   auto start = std::chrono::steady_clock::now();
-  for (int cell = 0; cell < ncells / batch_size; cell++) {
+  for (int cell = 0; cell < num_batches; cell++) {
     std::fill(Ae.begin(), Ae.end(), zero);
     scalar_type *coeffs = coefficients.data() + cell * stride;
     kernel(Ae.data(), coeffs, nullptr, coords.data(), 0, 0);

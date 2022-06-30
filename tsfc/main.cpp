@@ -38,8 +38,7 @@ int main(int argc, char *argv[]) {
     std::fill(Ae.begin(), Ae.end(), 0);
     double *coeffs = coefficients.data() + cell * stride;
 #if MF == 1
-    form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs,
-                                 coeffs + ndofs);
+    form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs);
 #else
     form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs);
 #endif
