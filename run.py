@@ -36,6 +36,9 @@ if __name__ == "__main__":
     parser.add_argument('--action', dest='action', action='store_true',
                         help='Specify whether to run the problems with matrix free approach.')
 
+    parser.add_argument('--mpi_size', dest='mpi_size', type=int, default=1,
+                        help='The number of mpi processes to use.')
+
     args = parser.parse_args()
     form_compiler = args.form_compiler
     problem = args.problem
@@ -46,6 +49,7 @@ if __name__ == "__main__":
     batch_size = args.batch_size
     global_size = args.global_size
     scalar_type = args.scalar_type
+    mpi_size = args.mpi_size
 
     machine = utils.machine_name()
     out_file = utils.create_ouput(problem)
@@ -63,7 +67,8 @@ if __name__ == "__main__":
             for degree in degrees:
                 text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, {scalar_type}, {batch_size}, "
                 results = utils.run(form_compiler, problem, degree, nrepeats,
-                                    flag, action, scalar_type, global_size, batch_size)
+                                    flag, action, scalar_type, global_size, batch_size,
+                                    mpi_size)
                 for result in results:
                     row = text + f"{rank}, {result}"
                     with open(out_file, "a") as file:

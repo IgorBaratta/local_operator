@@ -54,20 +54,23 @@ def create_ouput(problem):
     return out_file
 
 
-def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type, global_size, batch_size):
+def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type,
+        global_size, batch_size, mpi_size):
     if form_compiler == "ffcx" and batch_size is None:
         result = run_ffcx(problem, degree, nrepeats, flag,
-                          action, scalar_type, global_size)
+                          action, scalar_type, global_size,
+                          mpi_size)
     elif form_compiler == "ffcx" and batch_size:
         result = run_cross(problem, degree, nrepeats, flag,
-                           action, scalar_type, global_size, batch_size)
+                           action, scalar_type, global_size,
+                           batch_size, mpi_size)
 
     return result
 
 
 def run_ffcx(problem: str, degree: int, nrepeats: int,
              flag: list, action: bool, scalar_type: str,
-             global_size: int):
+             global_size: int, mpi_size: int):
     try:
         import ffcx
         import ffcx.codegeneration
@@ -86,14 +89,14 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
     from compile import generate_code
     generate_code(action, scalar_type, global_size)
 
-    run = "./ffcx/build/benchmark"
+    run = f"mpirun -n {mpi_size} ./ffcx/build/benchmark"
     build = _build_cmd.format(form_compiler="ffcx", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
     result = []
     for i in range(nrepeats):
-        with Popen([run], stdout=PIPE) as p:
+        with Popen(run.split(), stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
     print(result)
@@ -163,7 +166,7 @@ def run_ffc(problem: str, degree: int, nrepeats: int,
         raise RuntimeError("build failed")
     result = []
     for i in range(nrepeats):
-        with Popen([run], stdout=PIPE) as p:
+        with Popen(run.split(), stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
     print(result)
@@ -173,7 +176,7 @@ def run_ffc(problem: str, degree: int, nrepeats: int,
 
 def run_cross(problem: str, degree: int, nrepeats: int,
               flag: list, action: bool, scalar_type: str,
-              global_size: int, batch_size: int):
+              global_size: int, batch_size: int, mpi_size: int):
     try:
         import ffcx
         import ffcx.codegeneration
@@ -192,14 +195,14 @@ def run_cross(problem: str, degree: int, nrepeats: int,
     from compile import generate_code
     generate_code(action, scalar_type, global_size, batch_size)
 
-    run = "./cross/build/benchmark"
+    run = f"mpirun -n {mpi_size} ./cross/build/benchmark"
     build = _build_cmd.format(form_compiler="cross", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
     result = []
     for i in range(nrepeats):
-        with Popen([run], stdout=PIPE) as p:
+        with Popen(run.split(), stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
     print(result)
