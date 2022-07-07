@@ -8,9 +8,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-find_package(OpenMP)
-if(OpenMP_CXX_FOUND)
-    target_link_libraries(${PROJECT_NAME} PUBLIC OpenMP::OpenMP_CXX)
-endif()
+find_package(MPI 3 REQUIRED)
+target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX)
 
 message(${CMAKE_CXX_FLAGS})
