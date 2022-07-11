@@ -27,7 +27,7 @@ python3 -m venv env/tsfc
 
 source env/tsfc/bin/activate
 python3 -m pip install -r tsfc/requirements.txt
-python3 -m pip install tsfc
+python3 -m pip install tsfc/
 
 python3 -m pip install git+https://github.com/FEniCS/basix.git
 python3 -m pip install git+https://github.com/FEniCS/ffcx.git
