@@ -64,6 +64,13 @@ def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type,
         result = run_cross(problem, degree, nrepeats, flag,
                            action, scalar_type, global_size,
                            batch_size, mpi_size)
+    elif form_compiler == "tsfc":
+        if batch_size:
+            raise Exception(
+                "Sorry, don't know how to use batch_size and tsfc.")
+        else:
+            result = run_tsfc(problem, degree, nrepeats, flag,
+                              action, scalar_type, global_size, mpi_size)
 
     return result
 
@@ -105,7 +112,8 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 
 
 def run_tsfc(problem: str, degree: int, nrepeats: int,
-             flag: list, matrix_free: bool):
+             flag: list, action: bool, scalar_type: str,
+             global_size: int, mpi_size: int):
     try:
         import tsfc
         import ffcx
@@ -121,16 +129,16 @@ def run_tsfc(problem: str, degree: int, nrepeats: int,
 
     sys.path.insert(1, 'tsfc/')
     from generate_tsfc import generate_code
-    generate_code(matrix_free)
+    generate_code(action, scalar_type, global_size)
 
-    run = "./tsfc/build/benchmark"
-    build = f"cd tsfc && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+    run = f"mpirun -n {mpi_size} ./tsfc/build/benchmark"
+    build = _build_cmd.format(form_compiler="tsfc", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
     result = []
     for i in range(nrepeats):
-        with Popen([run], stdout=PIPE) as p:
+        with Popen(run.split(), stdout=PIPE) as p:
             out = p.stdout.read().decode("ascii").strip()
         result.append(out)
     print(result)
