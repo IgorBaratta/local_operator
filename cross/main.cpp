@@ -21,9 +21,16 @@ int main(int argc, char *argv[]) {
     constexpr int ncells = global_size / ndofs;
     constexpr int num_batches = ncells / batch_size;
 
-    const double coordinate_dofs[24] = {0.1, 0.0, 0.1, 1.0, 0.0, 0.1, 0.0, 1.0,
-                                        0.0, 0.0, 0.0, 1.0, 0.1, 0.0, 0.1, 1.0,
-                                        0.0, 0.1, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
+    const double coordinate_dofs[24] = {
+      0.0, 0.0, 0.0,
+      0.0, 0.0, 1.0,
+      0.0, 1.0, 0.0,
+      0.0, 1.0, 1.0,
+      1.0, 0.0, 0.0,
+      1.0, 0.0, 1.0,
+      1.0, 1.0, 0.0,
+      1.0, 1.0, 1.0
+    };
 
     std::vector<scalar_type> coords(24);
     for (std::size_t i = 0; i < coords.size(); i++)
