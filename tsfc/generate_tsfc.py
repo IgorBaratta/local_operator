@@ -26,7 +26,7 @@ using namespace std;
 def generate_code(action: bool, scalar_type: str, global_size: int):
     reload(problem)
 
-    # tsfc_default_parameters["scalar_type"] = cdtype_to_numpy(scalar_type)
+    tsfc_default_parameters["scalar_type"] = cdtype_to_numpy(scalar_type)
     tsfc_default_parameters["scalar_type_c"] = scalar_type
 
     if action:

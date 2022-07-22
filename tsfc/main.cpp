@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
       0.0, 0.0, 0.0,
       0.0, 0.0, 1.0,
       0.0, 1.0, 0.0,
-      0.0, 1.0, 1.0,
+      0.1, 1.0, 1.0,
       1.0, 0.0, 0.0,
       1.0, 0.0, 1.0,
       1.0, 1.0, 0.0,
@@ -44,8 +44,7 @@ int main(int argc, char *argv[]) {
       std::fill(Ae.begin(), Ae.end(), 0);
       scalar_type *coeffs0 = coefficients.data() + cell * stride;
       scalar_type *coeffs1 = coefficients.data() + cell * stride + ndofs;
-      form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs0,
-                                   coeffs1);
+      form_cell_integral_otherwise(Ae.data(), coordinate_dofs, coeffs0);
       auto result = std::next(A.begin(), cell * local_size);
       std::copy(Ae.begin(), Ae.end(), result);
     }

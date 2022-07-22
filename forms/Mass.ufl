@@ -1,7 +1,8 @@
 from ufl import *
 
-element = FiniteElement("Lagrange", tetrahedron, $degree)
-mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
+cell = hexahedron
+element = FiniteElement("Lagrange", cell, $degree)
+mesh = Mesh(VectorElement("Lagrange", cell, 1))
 
 V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
