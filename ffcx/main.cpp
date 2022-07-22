@@ -13,16 +13,10 @@ int main(int argc, char *argv[]) {
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
-    const scalar_type coordinate_dofs[24] = {
-      0.0, 0.0, 0.0,
-      0.0, 0.0, 1.0,
-      0.0, 1.0, 0.0,
-      0.1, 1.0, 1.0,
-      1.0, 0.0, 0.0,
-      1.0, 0.0, 1.0,
-      1.0, 1.0, 0.0,
-      1.0, 1.0, 1.0
-    };
+    // coordinate of a single cell
+    std::array<scalar_type, 24> coords = {
+        0.1, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.1, 1.0, 1.0,
+        1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0};
 
     // Read input
     constexpr int ndofs = dim;
@@ -31,6 +25,13 @@ int main(int argc, char *argv[]) {
     constexpr int local_size = rank == 1 ? dim : dim * dim;
     constexpr int stride = ndofs * ncoeffs;
     constexpr int ncells = global_size / ndofs;
+
+    std::vector<scalar_type> geometry(ncells * 24);
+
+    for (int cell = 0; cell < ncells; cell++) {
+      auto it = std::next(geometry.begin(), 24 * cell);
+      std::copy_n(coords.begin(), 24, it);
+    }
 
     // Allocate and initialize data
     std::vector<scalar_type> A(ncells * local_size);
@@ -42,7 +43,8 @@ int main(int argc, char *argv[]) {
     for (int cell = 0; cell < ncells; cell++) {
       std::fill(Ae.begin(), Ae.end(), 0);
       scalar_type *coeffs = coefficients.data() + cell * stride;
-      kernel(Ae.data(), coeffs, nullptr, coordinate_dofs, 0, 0);
+      auto geo = geometry.data() + 24 * cell;
+      kernel(Ae.data(), coeffs, nullptr, geo, 0, 0);
       auto result = std::next(A.begin(), cell * local_size);
       std::copy(Ae.begin(), Ae.end(), result);
     }
