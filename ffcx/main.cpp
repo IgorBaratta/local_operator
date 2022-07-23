@@ -1,5 +1,6 @@
 #include "problem.hpp"
 #include <algorithm>
+#include <array>
 #include <chrono>
 #include <iostream>
 #include <mpi.h>
@@ -26,18 +27,17 @@ int main(int argc, char *argv[]) {
     constexpr int stride = ndofs * ncoeffs;
     constexpr int ncells = global_size / ndofs;
 
+    // Allocate and initialize data
     std::vector<scalar_type> geometry(ncells * 24);
+    std::vector<scalar_type> A(ncells * local_size);
+    std::vector<scalar_type> Ae(local_size);
+    std::vector<scalar_type> coefficients(ncells * stride);
 
+    std::fill(coefficients.begin(), coefficients.end(), 1.0);
     for (int cell = 0; cell < ncells; cell++) {
       auto it = std::next(geometry.begin(), 24 * cell);
       std::copy_n(coords.begin(), 24, it);
     }
-
-    // Allocate and initialize data
-    std::vector<scalar_type> A(ncells * local_size);
-    std::vector<scalar_type> Ae(local_size);
-    std::vector<scalar_type> coefficients(ncells * stride);
-    std::fill(coefficients.begin(), coefficients.end(), 1.0);
 
     auto start = std::chrono::steady_clock::now();
     for (int cell = 0; cell < ncells; cell++) {

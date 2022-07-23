@@ -21,21 +21,15 @@ int main(int argc, char *argv[]) {
     constexpr int ncells = global_size / ndofs;
     constexpr int num_batches = ncells / batch_size;
 
-    const double coordinate_dofs[24] = {
-      0.0, 0.0, 0.0,
-      0.0, 0.0, 1.0,
-      0.0, 1.0, 0.0,
-      0.0, 1.0, 1.0,
-      1.0, 0.0, 0.0,
-      1.0, 0.0, 1.0,
-      1.0, 1.0, 0.0,
-      1.0, 1.0, 1.0
-    };
+    std::array<double, 24> coordinate_dofs = {
+        0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0,
+        1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0};
 
-    std::vector<scalar_type> coords(24);
-    for (std::size_t i = 0; i < coords.size(); i++)
-      for (int j = 0; j < batch_size; j++)
-        coords[i][j] = coordinate_dofs[i];
+    std::vector<scalar_type> coords(24 * num_batches);
+    for (std::size_t c = 0; c < num_batches; c++)
+      for (std::size_t i = 0; i < 24; i++)
+        for (int j = 0; j < batch_size; j++)
+          coords[c * 24 + i][j] = coordinate_dofs[i];
 
     // Allocate and initialize data
     std::vector<scalar_type> A(num_batches * local_size);
@@ -53,7 +47,8 @@ int main(int argc, char *argv[]) {
     for (int cell = 0; cell < num_batches; cell++) {
       std::fill(Ae.begin(), Ae.end(), zero);
       scalar_type *coeffs = coefficients.data() + cell * stride;
-      kernel(Ae.data(), coeffs, nullptr, coords.data(), 0, 0);
+      scalar_type *geo = coords.data() + 24 * cell;
+      kernel(Ae.data(), coeffs, nullptr, geo, 0, 0);
       auto result = std::next(A.begin(), cell * local_size);
       std::copy(Ae.begin(), Ae.end(), result);
     }
