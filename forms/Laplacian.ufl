@@ -1,14 +1,13 @@
 from ufl import *
 
-cell = hexahedron  
-element = FiniteElement("Lagrange", cell, $degree)
-mesh = Mesh(VectorElement("Lagrange", cell, 1))
+element = FiniteElement("Lagrange", $cell, $degree)
+mesh = Mesh(VectorElement("Lagrange", $cell, 1))
 
 V = FunctionSpace(mesh, element)
 u = TrialFunction(V)
 v = TestFunction(V)
 
-W = FunctionSpace(mesh, FiniteElement("Lagrange", cell, 1))
+W = FunctionSpace(mesh, FiniteElement("Lagrange", $cell, 1))
 k = Coefficient(W)
 
 a = k*inner(grad(u), grad(v))*dx

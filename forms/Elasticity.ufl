@@ -1,14 +1,14 @@
 from ufl import *
 
-element = VectorElement("Lagrange", tetrahedron, $degree)
-mesh = Mesh(VectorElement("Lagrange", tetrahedron, 1))
+element = VectorElement("Lagrange", $cell, $degree)
+mesh = Mesh(VectorElement("Lagrange", $cell, 1))
 
 V = FunctionSpace(mesh, element)
 
 u = TrialFunction(V)
 v = TestFunction(V)
 
-W = FunctionSpace(mesh, FiniteElement("Lagrange", tetrahedron, 1))
+W = FunctionSpace(mesh, FiniteElement("Lagrange", $cell, 1))
 k = Coefficient(W)
 
 def eps(v):
