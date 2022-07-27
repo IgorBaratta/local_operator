@@ -42,7 +42,7 @@ def machine_name():
 
 
 def create_ouput(problem):
-    header = "machine,problem,compiler,version,flags,degree,fcomp,scalar,batch_size,rank,ncells,time"
+    header = "machine,problem,compiler,version,flags,degree,fcomp,scalar,batch_size,rank,cell_type,ncells,time"
     path = "output/"
     out_file = path + str(problem) + ".txt"
 
@@ -55,29 +55,29 @@ def create_ouput(problem):
 
 
 def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type,
-        global_size, batch_size, mpi_size):
+        global_size, batch_size, mpi_size, cell_type):
     if form_compiler == "ffcx" and batch_size is None:
         result = run_ffcx(problem, degree, nrepeats, flag,
                           action, scalar_type, global_size,
-                          mpi_size)
+                          mpi_size, cell_type)
     elif form_compiler == "ffcx" and batch_size:
         result = run_cross(problem, degree, nrepeats, flag,
                            action, scalar_type, global_size,
-                           batch_size, mpi_size)
+                           batch_size, mpi_size, cell_type)
     elif form_compiler == "tsfc":
         if batch_size:
             raise Exception(
                 "Sorry, don't know how to use batch_size and tsfc.")
         else:
             result = run_tsfc(problem, degree, nrepeats, flag,
-                              action, scalar_type, global_size, mpi_size)
+                              action, scalar_type, global_size, mpi_size, cell_type)
 
     return result
 
 
 def run_ffcx(problem: str, degree: int, nrepeats: int,
              flag: list, action: bool, scalar_type: str,
-             global_size: int, mpi_size: int):
+             global_size: int, mpi_size: int, cell_type: str):
     try:
         import ffcx
         import ffcx.codegeneration
@@ -86,7 +86,8 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 
     with open("forms/" + problem + ".ufl", 'r') as f:
         src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(degree + 1)}
+        d = {'degree': str(degree), 'vdegree': str(
+            degree + 1), "cell": cell_type}
         result = src.substitute(d)
 
         with open("ffcx/problem.py", "w") as f2:
@@ -113,7 +114,7 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 
 def run_tsfc(problem: str, degree: int, nrepeats: int,
              flag: list, action: bool, scalar_type: str,
-             global_size: int, mpi_size: int):
+             global_size: int, mpi_size: int, cell_type: str):
     try:
         import tsfc
         import ffcx
@@ -122,7 +123,8 @@ def run_tsfc(problem: str, degree: int, nrepeats: int,
 
     with open("forms/" + problem + ".ufl", 'r') as f:
         src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(degree + 1)}
+        d = {'degree': str(degree), 'vdegree': str(
+            degree + 1), "cell": cell_type}
         result = src.substitute(d)
         with open("tsfc/problem.py", "w") as f2:
             f2.writelines(result)
@@ -184,7 +186,8 @@ def run_ffc(problem: str, degree: int, nrepeats: int,
 
 def run_cross(problem: str, degree: int, nrepeats: int,
               flag: list, action: bool, scalar_type: str,
-              global_size: int, batch_size: int, mpi_size: int):
+              global_size: int, batch_size: int, mpi_size: int,
+              cell_type: str):
     try:
         import ffcx
         import ffcx.codegeneration
@@ -193,7 +196,8 @@ def run_cross(problem: str, degree: int, nrepeats: int,
 
     with open("forms/" + problem + ".ufl", 'r') as f:
         src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(degree + 1)}
+        d = {'degree': str(degree), 'vdegree': str(
+            degree + 1), "cell": cell_type}
         result = src.substitute(d)
 
         with open("cross/problem.py", "w") as f2:

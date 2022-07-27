@@ -39,6 +39,10 @@ if __name__ == "__main__":
     parser.add_argument('--mpi_size', dest='mpi_size', type=int, default=1,
                         help='The number of mpi processes to use.')
 
+    parser.add_argument('--cell_type', dest='cell_type', type=str,
+                        default="tetrahedron", choices=['tetrahedron', 'hexahedron'],
+                        help="Cell type to use")
+
     args = parser.parse_args()
     form_compiler = args.form_compiler
     problem = args.problem
@@ -50,6 +54,7 @@ if __name__ == "__main__":
     global_size = args.global_size
     scalar_type = args.scalar_type
     mpi_size = args.mpi_size
+    cell_type = args.cell_type
 
     machine = utils.machine_name()
     out_file = utils.create_ouput(problem)
@@ -65,10 +70,10 @@ if __name__ == "__main__":
         for flag in flags:
             flag = "\"" + ''.join(map(str, flag)) + "\""
             for degree in degrees:
-                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, {scalar_type}, {batch_size}, "
+                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, {scalar_type}, {batch_size}, {cell_type}, "
                 results = utils.run(form_compiler, problem, degree, nrepeats,
                                     flag, action, scalar_type, global_size, batch_size,
-                                    mpi_size)
+                                    mpi_size, cell_type)
                 for result in results:
                     row = text + f"{rank}, {result}"
                     with open(out_file, "a") as file:
