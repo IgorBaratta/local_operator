@@ -3,6 +3,9 @@
 Depends on:
 - FFCx: The FEniCSx Form Compiler
   -  https://github.com/FEniCS/ffcx.git
+  
+- For sum-factorization:
+  - https://github.com/FEniCS/ffcx/tree/igor/tensor
 
 Optional dependencies:
 - TSFC : The form compiler for the Firedrake project.
@@ -77,13 +80,11 @@ python3 run.py --problem Lagrange  --degree 5 6 --form_compiler=ffc --matrix_fre
 python3 run.py --problem N1curl --degree 5
 ```
 
-
-
-## Data description
+## Output data description
 
 Results:
 output/{Problem}.txt
 
 ```
-table = [machine, kernel, compiler name, compiler flags, polyonomial degree, ffc opts, number of cells, local assemble time]
+table = [machine,problem,compiler,version,flags,degree,form_compiler,scalar_type,batch_size,form_rank,cell_type,num_cells,time]
 ```
