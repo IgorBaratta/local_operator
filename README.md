@@ -12,8 +12,10 @@ Optional dependencies:
 
 ## Usage
 ```bash
-usage: run.py [-h] [--form_compiler {ffcx,ffc,tsfc}] [--scalar_type {double,float}] [--problem {Laplacian,Mass,Elasticity,N1curl,Stokes}] [--conf CONF] [--degree DEGREE [DEGREE ...]] [--nrepeats NREPEATS]
-              [--batch_size {None,4,8}] [--global_size GLOBAL_SIZE] [--action] [--mpi_size MPI_SIZE]
+python3 run.py --help
+usage: run.py [-h] [--form_compiler {ffcx,ffc,tsfc}] [--scalar_type {double,float}] [--problem {Laplacian,Mass,Elasticity,N1curl,Stokes}] [--conf CONF]
+              [--degree DEGREE [DEGREE ...]] [--nrepeats NREPEATS] [--batch_size {None,1,2,4,8,16}] [--global_size GLOBAL_SIZE] [--action] [--mpi_size MPI_SIZE]
+              [--cell_type {tetrahedron,hexahedron}]
 
 Run local assembly benchmark.
 
@@ -29,11 +31,13 @@ optional arguments:
   --degree DEGREE [DEGREE ...]
                         Polynomial degree to evaluate the operators. (default: range(1, 4))
   --nrepeats NREPEATS   Number of times to run each experiment. (default: 3)
-  --batch_size {None,4,8}
+  --batch_size {None,1,2,4,8,16}
   --global_size GLOBAL_SIZE
                         Global number of dofs (assuming shared are dofs are duplicated). (default: 1000000.0)
   --action              Specify whether to run the problems with matrix free approach. (default: False)
   --mpi_size MPI_SIZE   The number of mpi processes to use. (default: 1)
+  --cell_type {tetrahedron,hexahedron}
+                        Cell type to use (default: tetrahedron)
 
 ```
 
