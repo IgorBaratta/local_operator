@@ -1,4 +1,4 @@
-# Benchmark Local Tensor Assembly
+# Local Finite ELement Operator Benchmarks
 
 Depends on:
 - FFCx: The FEniCSx Form Compiler
