@@ -1,5 +1,6 @@
 #include "problem.hpp"
 #include <algorithm>
+#include <array>
 #include <chrono>
 #include <iostream>
 #include <mpi.h>
