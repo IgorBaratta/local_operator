@@ -1,6 +1,5 @@
 from ufl import *
 
-cell = hexahedron
 element = FiniteElement("Lagrange", $cell, $degree)
 mesh = Mesh(VectorElement("Lagrange", $cell, 1))
 
