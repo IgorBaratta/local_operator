@@ -5,7 +5,7 @@ from ffcx.ir.representation import compute_ir
 from ffcx.codegeneration.integrals import IntegralGenerator
 from ffcx.element_interface import create_element
 from ffcx.codegeneration.C.format_lines import format_indented_lines
-from ffcx import get_parameters
+from ffcx import get_options
 import basix
 import ufl
 import typing
@@ -62,7 +62,7 @@ def compile_form(form: ufl.Form, name: str,
                  visualise: bool = False):
 
     if parameters is None:
-        parameters = get_parameters()
+        parameters = get_options()
 
     batch_size = parameters["batch_size"]
     scalar_type = parameters["scalar_type"]
@@ -94,7 +94,7 @@ def compile_form(form: ufl.Form, name: str,
 def generate_code(action, scalar_type, global_size, batch_size):
     reload(problem)
 
-    parameters = get_parameters()
+    parameters = get_options()
     parameters["scalar_type"] = scalar_type
     parameters["batch_size"] = batch_size
 
