@@ -11,7 +11,7 @@ if __name__ == "__main__":
                         help="Form Compiler to use")
 
     parser.add_argument('--scalar_type', dest='scalar_type', type=str,
-                        default="double", choices=['double', 'float'],
+                        default="double", choices=['double', 'float', '_Float16'],
                         help="Scalar type to use")
 
     parser.add_argument('--problem', dest='problem', type=str,
