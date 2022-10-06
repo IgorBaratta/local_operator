@@ -44,8 +44,8 @@ int main(int argc, char *argv[])
       scalar_type *coeffs = coefficients.data() + batch * stride;
       geom_type *geo = geometry.data() + geom_size * batch;
       kernel(Ae.data(), coeffs, nullptr, geo, 0, 0);
-      scalar_type *result = A.data() + batch * local_size;
-      std::copy_n(Ae.begin(), num_dofs, result);
+      auto result = std::next(A.begin(), batch * local_size);
+      std::transform(Ae.begin(), Ae.end(), result, result, std::plus<scalar_type>());
     }
     auto end = std::chrono::steady_clock::now();
     auto t = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
