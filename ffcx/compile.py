@@ -5,7 +5,7 @@ from ffcx.ir.representation import compute_ir
 from ffcx.codegeneration.integrals import IntegralGenerator
 from ffcx.element_interface import create_element
 from ffcx.codegeneration.C.format_lines import format_indented_lines
-from ffcx import get_options
+from ffcx.options import get_options
 import basix
 import ufl
 import typing
@@ -114,7 +114,7 @@ def compile_form(form: ufl.Form, name: str,
     geom_type = scalar_type.replace(' _Complex', '')
     batch_size = parameters["batch_size"]
 
-    if batch_size > 1:
+    if batch_size and batch_size > 1:
         geom_type += str(batch_size)
         scalar_type += str(batch_size)
 
@@ -130,6 +130,7 @@ def compile_form(form: ufl.Form, name: str,
 def generate_code(action, scalar_type, global_size, batch_size):
     reload(problem)
 
+    batch_size = batch_size if batch_size else 1
     parameters = get_options()
     parameters["scalar_type"] = scalar_type
     parameters["batch_size"] = batch_size

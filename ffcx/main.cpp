@@ -34,13 +34,18 @@ int main(int argc, char *argv[])
         coefficients.begin(), coefficients.end(), [=](auto &e)
         { e = one; });
 
+    std::vector<scalar_type> Ae(local_size);
+    scalar_type zero = {0.};
+
     auto start = std::chrono::steady_clock::now();
     for (int batch = 0; batch < num_batches; batch++)
     {
+      std::fill(Ae.begin(), Ae.end(), zero);
       scalar_type *coeffs = coefficients.data() + batch * stride;
       geom_type *geo = geometry.data() + geom_size * batch;
+      kernel(Ae.data(), coeffs, nullptr, geo, 0, 0);
       scalar_type *result = A.data() + batch * local_size;
-      kernel(result, coeffs, nullptr, geo, 0, 0);
+      std::copy_n(Ae.begin(), num_dofs, result);
     }
     auto end = std::chrono::steady_clock::now();
     auto t = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
