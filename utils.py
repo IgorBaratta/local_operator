@@ -54,30 +54,10 @@ def create_ouput(problem):
     return out_file
 
 
-def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type,
-        global_size, batch_size, mpi_size, cell_type):
-    if form_compiler == "ffcx" and batch_size is None:
-        result = run_ffcx(problem, degree, nrepeats, flag,
-                          action, scalar_type, global_size,
-                          mpi_size, cell_type)
-    elif form_compiler == "ffcx" and batch_size:
-        result = run_cross(problem, degree, nrepeats, flag,
-                           action, scalar_type, global_size,
-                           batch_size, mpi_size, cell_type)
-    elif form_compiler == "tsfc":
-        if batch_size:
-            raise Exception(
-                "Sorry, don't know how to use batch_size and tsfc.")
-        else:
-            result = run_tsfc(problem, degree, nrepeats, flag,
-                              action, scalar_type, global_size, mpi_size, cell_type)
+def run(problem: str, degree: int, nrepeats: int, flag: str, action: bool,
+        scalar_type: str, global_size: int, batch_size: int, mpi_size: int,
+        cell_type: str):
 
-    return result
-
-
-def run_ffcx(problem: str, degree: int, nrepeats: int,
-             flag: list, action: bool, scalar_type: str,
-             global_size: int, mpi_size: int, cell_type: str):
     try:
         import ffcx
         import ffcx.codegeneration
@@ -95,120 +75,10 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 
     sys.path.insert(1, 'ffcx/')
     from compile import generate_code
-    generate_code(action, scalar_type, global_size)
+    generate_code(action, scalar_type, global_size, batch_size)
 
     run = f"mpirun -n {mpi_size} ./ffcx/build/benchmark"
     build = _build_cmd.format(form_compiler="ffcx", flag=flag)
-
-    if os.system(build) != 0:
-        raise RuntimeError("build failed")
-    result = []
-    for i in range(nrepeats):
-        with Popen(run.split(), stdout=PIPE) as p:
-            out = p.stdout.read().decode("ascii").strip()
-        result.append(out)
-    print(result)
-
-    return result
-
-
-def run_tsfc(problem: str, degree: int, nrepeats: int,
-             flag: list, action: bool, scalar_type: str,
-             global_size: int, mpi_size: int, cell_type: str):
-    try:
-        import tsfc
-        import ffcx
-    except ImportError:
-        print("tsfc is no available")
-
-    with open("forms/" + problem + ".ufl", 'r') as f:
-        src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(
-            degree + 1), "cell": cell_type}
-        result = src.substitute(d)
-        with open("tsfc/problem.py", "w") as f2:
-            f2.writelines(result)
-
-    sys.path.insert(1, 'tsfc/')
-    from generate_tsfc import generate_code
-    generate_code(action, scalar_type, global_size)
-
-    run = f"mpirun -n {mpi_size} ./tsfc/build/benchmark"
-    build = _build_cmd.format(form_compiler="tsfc", flag=flag)
-
-    if os.system(build) != 0:
-        raise RuntimeError("build failed")
-    result = []
-    for i in range(nrepeats):
-        with Popen(run.split(), stdout=PIPE) as p:
-            out = p.stdout.read().decode("ascii").strip()
-        result.append(out)
-    print(result)
-
-    return result
-
-
-def run_ffc(problem: str, degree: int, nrepeats: int,
-            flag: list, matrix_free: bool):
-    try:
-        import ffc
-    except ImportError:
-        print("ffc is no available")
-
-    with open("forms/" + problem + ".ufl", 'r') as f:
-        src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(degree + 1)}
-        result = src.substitute(d)
-
-        with open("ffc/problem.py", "w") as f2:
-            f2.writelines(result)
-        with open("ffc/problem.ufl", "w") as f2:
-            f2.writelines(result)
-
-    sys.path.insert(1, 'ffc/')
-    from compile_ffc import generate_code
-    generate_code(matrix_free)
-
-    run = "./ffc/build/benchmark"
-    build = f"cd ffc && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
-
-    if os.system(build) != 0:
-        raise RuntimeError("build failed")
-    result = []
-    for i in range(nrepeats):
-        with Popen(run.split(), stdout=PIPE) as p:
-            out = p.stdout.read().decode("ascii").strip()
-        result.append(out)
-    print(result)
-
-    return result
-
-
-def run_cross(problem: str, degree: int, nrepeats: int,
-              flag: list, action: bool, scalar_type: str,
-              global_size: int, batch_size: int, mpi_size: int,
-              cell_type: str):
-    try:
-        import ffcx
-        import ffcx.codegeneration
-    except ImportError:
-        print("ffcx is not available")
-
-    with open("forms/" + problem + ".ufl", 'r') as f:
-        src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(
-            degree + 1), "cell": cell_type}
-        result = src.substitute(d)
-
-        with open("cross/problem.py", "w") as f2:
-            f2.writelines(result)
-
-    sys.path.insert(1, 'cross/')
-    from compile import generate_code
-    generate_code(action, scalar_type, global_size, batch_size)
-
-    run = f"mpirun -n {mpi_size} ./cross/build/benchmark"
-    build = _build_cmd.format(form_compiler="cross", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
