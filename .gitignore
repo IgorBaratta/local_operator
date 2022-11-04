@@ -50,3 +50,4 @@ problem.py
 problem.ufl
 data.hpp
 output/*
+problem*.py
