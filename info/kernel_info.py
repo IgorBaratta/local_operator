@@ -11,7 +11,7 @@ from ffcx.element_interface import create_element
 
 
 problem_ = "Laplacian"
-degrees = numpy.arange(1, 15)
+degrees = numpy.arange(1, 16)
 cell_type = "hexahedron"
 
 for degree in degrees:
@@ -48,14 +48,16 @@ for i, degree in enumerate(degrees):
     flops_per_dof[i], cache_per_dof[i] = count_flops(form)
     bytes_per_dof[i] = ((coeff_size + 2*dofs + geometry_size) * 8)/dofs
     cache_per_dof[i] = (cache_per_dof[i] * 8)/dofs
-    flops_per_dof[i] = flops_per_dof[i]/dofs
+    # flops_per_dof[i] = flops_per_dof[i]/dofs
 
+print(repr(flops_per_dof))
 
-FLOPS = numpy.full_like(degrees, 5e12, dtype=float)
+print(cache_per_dof)
+FLOPS = numpy.full_like(degrees, 1e100, dtype=float)
 BW = numpy.full_like(degrees, 300e9, dtype=float)
-BW1 = numpy.full_like(degrees, 2.0e4*1e9, dtype=float)
-BW2 = numpy.full_like(degrees, 0.5e4*1e9, dtype=float)
-BW3 = numpy.full_like(degrees, 2.3e3*1e9, dtype=float)
+BW1 = numpy.full_like(degrees, 1.5e4*1e9, dtype=float)
+BW2 = numpy.full_like(degrees, 0.8e4*1e9, dtype=float)
+BW3 = numpy.full_like(degrees, 1.5e3*1e9, dtype=float)
 
 
 cache_rate = numpy.zeros_like(BW)
@@ -64,13 +66,13 @@ level = numpy.zeros_like(BW)
 for i, num_dofs in enumerate(dofs_list):
     size = num_dofs * (cache_per_dof[i] + bytes_per_dof[i])
     ai_cache = numpy.divide(flops_per_dof[i], size/num_dofs)
-    if size*1.5 < 32e3:
+    if size < 32e3:
         cache_rate[i] = ai_cache * BW1[i]
         level[i] = 1
-    elif size*1.5 < 1280e3:
+    elif size < 1280e3:
         cache_rate[i] = ai_cache * BW2[i]
         level[i] = 2
-    else:
+    elif size < 1800e3:
         cache_rate[i] = ai_cache * BW3[i]
         level[i] = 3
 
