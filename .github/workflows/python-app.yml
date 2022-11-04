@@ -32,7 +32,10 @@ jobs:
         sudo apt-get -y install mpich
         python -m pip install --upgrade pip
         pip install flake8 pytest pyyaml scikit-build
-        pip install fenics-ffcx
+        python3 -m pip install git+https://github.com/FEniCS/ufl.git
+        python3 -m pip install git+https://github.com/FEniCS/basix.git
+        python3 -m pip install git+https://github.com/FEniCS/ffcx.git
+        python3 -m pip install pyyaml
     - name: Run local assembly
       run: |
         python run.py --form_compiler=ffcx --scalar_type=double --action --global_size=10000000 --degree 5 --problem=Mass --nrepeats 5 --cell_type=hexahedron

@@ -11,7 +11,7 @@ if __name__ == "__main__":
                         help="Form Compiler to use")
 
     parser.add_argument('--scalar_type', dest='scalar_type', type=str,
-                        default="double", choices=['double', 'float', '_Float16'],
+                        default="double", choices=['double', 'float', '_Float16', 'double _Complex', 'float _Complex'],
                         help="Scalar type to use")
 
     parser.add_argument('--problem', dest='problem', type=str,
@@ -71,8 +71,8 @@ if __name__ == "__main__":
             flag = "\"" + ''.join(map(str, flag)) + "\""
             for degree in degrees:
                 text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, {scalar_type}, {batch_size}, {cell_type}, "
-                results = utils.run(form_compiler, problem, degree, nrepeats,
-                                    flag, action, scalar_type, global_size, batch_size,
+                results = utils.run(problem, degree, nrepeats, flag, action,
+                                    scalar_type, global_size, batch_size,
                                     mpi_size, cell_type)
                 for result in results:
                     row = text + f"{rank}, {result}"
