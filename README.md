@@ -1,13 +1,12 @@
 # Local Finite ELement Operator Benchmarks
 
 Depends on:
-- FFCx: The FEniCSx Form Compiler
-  -  https://github.com/FEniCS/ffcx.git
-  
-- For sum-factorization:
-  - https://github.com/FEniCS/ffcx/tree/igor/tensor
+
+- FFCx: The FEniCSx Form Compiler: [https://github.com/FEniCS/ffcx.git]
+- For sum-factorization: [https://github.com/FEniCS/ffcx/tree/igor/tensor]
 
 ## Usage
+
 ```bash
 python3 run.py --help
 usage: run.py [-h] [--form_compiler {ffcx,ffc,tsfc}] [--scalar_type {double,float,_Float16,double _Complex,float _Complex}]
