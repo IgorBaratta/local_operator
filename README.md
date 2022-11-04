@@ -71,9 +71,13 @@ clang:
 ## Examples:
 ### Matrix free Weighted Laplacian degrees 5 and 6
 ```bash
+<<<<<<< Updated upstream
 python3 run.py --problem Lagrange  --degree 5 6 --form_compiler=ffcx --matrix_free
 python3 run.py --problem Lagrange  --degree 5 6 --form_compiler=tsfc --matrix_free
 python3 run.py --problem Lagrange  --degree 5 6 --form_compiler=ffc --matrix_free
+=======
+python3 run.py --problem Lagrange  --degree 1 2 3 4 5 6 7 8 --form_compiler=ffcx --action --global_size 1
+>>>>>>> Stashed changes
 ```
 ### N1curl - curl curl - Rank 2
 ```bash
