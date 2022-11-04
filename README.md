@@ -67,13 +67,13 @@ clang:
 ### Matrix free Weighted Laplacian degrees 1-8
 
 ```bash
-python3 run.py --problem Lagrange  --degree 1 2 3 4 5 6 7 8 --form_compiler=ffcx --action
+python3 run.py --problem Lagrange  --degree 1 2 3 4 5 6 7 8 --form_compiler=ffcx --action --global_size 10000000
 ```
 
 ### Single Precision Mass operator on 76 cores
 
 ```bash
-python3 run.py --problem Mass --degree 1 2 3 4 5 6 7 8 --form_compiler=ffcx --action --mpi_size 76
+python3 run.py --problem Mass --degree 1 2 3 4 5 6 7 8 --form_compiler=ffcx --action --mpi_size 76 --global_size 10000000
 ```
 
 ## Output data description
