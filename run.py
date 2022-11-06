@@ -27,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument('--nrepeats', dest='nrepeats', type=int, default=3,
                         help='Number of times to run each experiment.')
 
-    parser.add_argument('--batch_size', dest='batch_size', type=int, default=None, choices=[None, 1, 2, 4, 8, 16],
+    parser.add_argument('--batch_size', dest='batch_size', type=int, default=None, choices=[None, 1, 2, 4, 8, 16, 32, 64],
                         help='')
 
     parser.add_argument('--global_size', dest='global_size', type=int, default=1e6,
