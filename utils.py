@@ -90,3 +90,24 @@ def run(problem: str, degree: int, nrepeats: int, flag: str, action: bool,
     print(result)
 
     return result
+
+
+def compile_form(problem, degree, cell_type, scalar_type, batch_size, global_size, action):
+    try:
+        import ffcx
+        import ffcx.codegeneration
+    except ImportError:
+        print("ffcx is not available")
+
+    with open("forms/" + problem + ".ufl", 'r') as f:
+        src = Template(f.read())
+        d = {'degree': str(degree), 'vdegree': str(
+            degree + 1), "cell": cell_type}
+        result = src.substitute(d)
+
+        with open("ffcx/problem.py", "w") as f2:
+            f2.writelines(result)
+
+    sys.path.insert(1, 'ffcx/')
+    from compile import generate_code
+    generate_code(action, scalar_type, global_size, batch_size)
