@@ -6,11 +6,10 @@ from ffcx.codegeneration.integrals import IntegralGenerator
 from ffcx.element_interface import create_element
 from ffcx.codegeneration.C.format_lines import format_indented_lines
 from ffcx.options import get_options
-import basix
 import ufl
 import typing
-import problem
 from importlib import reload
+from compiler import problem
 
 
 _arguments = """({scalar_type}* restrict A,
@@ -160,6 +159,6 @@ def generate_code(action, scalar_type, global_size, batch_size):
                                   scalar_type=scalar_type, rank=rank, geom_type=geom_type,
                                   batch_size=batch_size, num_nodes=num_nodes, num_coefficients=num_coefficients)
 
-    with open("ffcx/problem.hpp", "w") as file:
+    with open("compiler/problem.hpp", "w") as file:
         file.write(headers)
         file.write(code)

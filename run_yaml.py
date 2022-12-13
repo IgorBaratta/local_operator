@@ -1,4 +1,5 @@
 import yaml
+import utils
 
 
 file = "problem.yaml"
@@ -31,18 +32,21 @@ for problem in problems:
     mpi_processes = problem.get("mpi_processes", [1])
     assert isinstance(mpi_processes, list)
 
+    action = problem.get("action", True)
+    assert isinstance(action, bool)
+
     compilers = problem.get("compiler")
 
-
     scalar_type_list = problem.get("scalar_type")
-    for scalar_type in scalar_type_list:
+    for type_t in scalar_type_list:
+        batch_size = type_t["batch_size"]
+        scalar_type = type_t["type"]
+
         for degree in degrees:
-            utils.compile_form()
-            for compiler in compilers:
-                print(compiler)
+            utils.compile_form(name, degree, cell_type,
+                               scalar_type, batch_size, num_dofs[0], action)
 
-
-
-
-
-
+        for compiler in compilers:
+            flags = compiler["flags"]
+            for flag in flags:
+                utils.compile_cpp(flag)
