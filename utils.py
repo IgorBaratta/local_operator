@@ -60,6 +60,10 @@ def run(form_compiler, problem, degree, nrepeats, flag, action, scalar_type,
         result = run_ffcx(problem, degree, nrepeats, flag,
                           action, scalar_type, global_size,
                           mpi_size, cell_type)
+    elif form_compiler == "bernstein" and batch_size is None:
+        result = run_bernstein(problem, degree, nrepeats, flag,
+                               action, scalar_type, global_size,
+                               mpi_size, cell_type)
     elif form_compiler == "ffcx" and batch_size:
         result = run_cross(problem, degree, nrepeats, flag,
                            action, scalar_type, global_size,
@@ -99,6 +103,38 @@ def run_ffcx(problem: str, degree: int, nrepeats: int,
 
     run = f"mpirun -n {mpi_size} ./ffcx/build/benchmark"
     build = _build_cmd.format(form_compiler="ffcx", flag=flag)
+
+    if os.system(build) != 0:
+        raise RuntimeError("build failed")
+    result = []
+    for i in range(nrepeats):
+        with Popen(run.split(), stdout=PIPE) as p:
+            out = p.stdout.read().decode("ascii").strip()
+        result.append(out)
+    print(result)
+
+    return result
+
+
+def run_bernstein(problem: str, degree: int, nrepeats: int,
+                  flag: list, action: bool, scalar_type: str,
+                  global_size: int, mpi_size: int, cell_type: str):
+
+    if problem != "Laplacian":
+        raise RuntimeError("Only know Laplacian")
+    if not action:
+        raise RuntimeError("Only know action");
+    if cell_type != 'tetrahedron':
+        raise RuntimeError("Only know tetrahedron");
+    if scalar_type != 'double':
+        raise RuntimeError("Only know double");
+
+    sys.path.insert(1, 'bernstein/')
+    from compile import generate_code
+    generate_code(degree, scalar_type, global_size)
+
+    run = f"mpirun -n {mpi_size} ./bernstein/build/benchmark"
+    build = _build_cmd.format(form_compiler="bernstein", flag=flag)
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")

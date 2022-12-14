@@ -7,7 +7,7 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--form_compiler', dest='form_compiler', type=str,
-                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc'],
+                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc', 'bernstein'],
                         help="Form Compiler to use")
 
     parser.add_argument('--scalar_type', dest='scalar_type', type=str,

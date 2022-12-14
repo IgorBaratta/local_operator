@@ -1,9 +1,9 @@
-gcc-10:
+clang:
   version:
-    - 11
+    - 14
   cpp:
-    - g++-11
+    - clang++
   cc:
-    - gcc-11
+    - clang
   flags:
-    - -Ofast -march=native -mprefer-vector-width=256
+    - -Ofast
