@@ -7,3 +7,13 @@ clang:
     - clang
   flags:
     - -Ofast
+
+gcc:
+  version:
+    - 12
+  cpp:
+    - g++-12
+  cc:
+    - gcc-12
+  flags:
+    - -Ofast -march=native
