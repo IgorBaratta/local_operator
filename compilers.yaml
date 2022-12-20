@@ -1,12 +1,12 @@
-clang:
-  version:
-    - 14
-  cpp:
-    - clang++
-  cc:
-    - clang
-  flags:
-    - -Ofast
+# clang:
+#   version:
+#     - 14
+#   cpp:
+#     - clang++
+#   cc:
+#     - clang
+#   flags:
+#     - -Ofast
 
 gcc:
   version:
