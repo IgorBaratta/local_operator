@@ -41,14 +41,10 @@ def machine_name():
     return machine
 
 
-def create_ouput(problem):
+def create_output(problem, out_file):
     header = "machine,problem,compiler,version,flags,degree,fcomp,scalar,batch_size,rank,cell_type,ncells,time"
-    path = "output/"
-    out_file = path + str(problem) + ".txt"
 
     if not os.path.exists(out_file):
-        if not os.path.isdir(path):
-            os.mkdir(path)
         with open(out_file, "a") as f:
             f.write(header)
     return out_file
