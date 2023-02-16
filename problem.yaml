@@ -1,21 +1,20 @@
 ---
-- name: Laplacian
+- name: Helmholtz
   degree: [1, 2, 3]
   cell_type: tetrahedron
   action: True
   num_dofs: 
-    - 100000
-  mpi_processes: 
-    - 10
+    - 10000000
+  mpi_processes: [1, 10]
   scalar_type:
     - type: float
       batch_size: 1
-    - type: float
-      batch_size: 8
-    - type: double
-      batch_size: 1
-    - type: double
-      batch_size: 4
+    # - type: double
+    #   batch_size: 1
+    # - type: double
+    #   batch_size: 1
+    # - type: double
+    #   batch_size: 1
   num_repeats: 5
   compiler:
     - name: gcc11
@@ -23,3 +22,9 @@
       cxx: g++
       flags: 
         - -Ofast -march=native -mprefer-vector-width=256
+  compiler:
+    - name: gcc11
+      cc: gcc
+      cxx: g++
+      flags: 
+        - -O0 -march=native -mprefer-vector-width=256

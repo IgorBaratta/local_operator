@@ -9,8 +9,6 @@ from ffcx.options import get_options
 import ufl
 import typing
 from importlib import reload
-from compiler import problem
-
 
 _arguments = """({scalar_type}* restrict A,
                    const {scalar_type}* restrict w,
@@ -127,6 +125,10 @@ def compile_form(form: ufl.Form, name: str,
 
 
 def generate_code(action, scalar_type, global_size, batch_size):
+    try:
+        from compiler import problem                     
+    except ImportError:
+        raise "Python code"
     reload(problem)
 
     batch_size = batch_size if batch_size else 1

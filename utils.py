@@ -6,108 +6,51 @@ from compiler import generate_code
 
 import sys
 
-# _build_cmd = "cd {form_compiler} && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS={flag} -DCMAKE_CXX_FLAGS={flag} .. && make"
+
+def machine_name():
+    # Set architecture from platform
+    try:
+        with open("/sys/devices/cpu/caps/pmu_name", "r") as pmu:
+            machine = pmu.readlines()[0].strip()
+    except:
+        machine = platform.processor()
+    return machine
 
 
-# def set_compiler(compiler):
-#     os.environ["CXX"] = compiler["cpp"][0]
-#     os.environ["CC"] = compiler["cc"][0]
+def create_ouput(problem, header):
+    path = "output/"
+    out_file = path + str(problem) + ".txt"
 
-#     try:
-#         with Popen([compiler["cpp"][0], "-dumpversion"], stdout=PIPE) as p:
-#             compiler_version = p.stdout.read().decode("ascii").strip()
-#     except:
-#         compiler_version = compiler["version"][0]
-#     return compiler_version
-
-
-# def parse_compiler_configuration(file):
-#     # Read Compiler configuration file
-#     with open(file, "r") as stream:
-#         try:
-#             compilers = yaml.safe_load(stream)
-#         except yaml.YAMLError as exc:
-#             print(exc)
-#     return compilers
+    if not os.path.exists(out_file):
+        if not os.path.isdir(path):
+            os.mkdir(path)
+        with open(out_file, "a") as f:
+            f.write(header + "\n")
+    return out_file
 
 
-# def machine_name():
-#     # Set architecture from platform
-#     try:
-#         with open("/sys/devices/cpu/caps/pmu_name", "r") as pmu:
-#             machine = pmu.readlines()[0].strip()
-#     except:
-#         machine = platform.processor()
-#     return machine
-
-
-# def create_ouput(problem):
-#     header = "machine,problem,compiler,version,flags,degree,fcomp,scalar,batch_size,rank,cell_type,ncells,time"
-#     path = "output/"
-#     out_file = path + str(problem) + ".txt"
-
-#     if not os.path.exists(out_file):
-#         if not os.path.isdir(path):
-#             os.mkdir(path)
-#         with open(out_file, "a") as f:
-#             f.write(header)
-#     return out_file
-
-
-# def run(problem: str, degree: int, nrepeats: int, flag: str, action: bool,
-#         scalar_type: str, global_size: int, batch_size: int, mpi_size: int,
-#         cell_type: str):
-
-#     try:
-#         import ffcx
-#         import ffcx.codegeneration
-#     except ImportError:
-#         print("ffcx is not available")
-
-#     with open("forms/" + problem + ".ufl", 'r') as f:
-#         src = Template(f.read())
-#         d = {'degree': str(degree), 'vdegree': str(
-#             degree + 1), "cell": cell_type}
-#         result = src.substitute(d)
-
-#         with open("ffcx/problem.py", "w") as f2:
-#             f2.writelines(result)
-
-#     sys.path.insert(1, 'ffcx/')
-#     from compile import generate_code
-#     generate_code(action, scalar_type, global_size, batch_size)
-
-#     run = f"mpirun -n {mpi_size} ./ffcx/build/benchmark"
-#     build = _build_cmd.format(form_compiler="ffcx", flag=flag)
-
-#     if os.system(build) != 0:
-#         raise RuntimeError("build failed")
-#     result = []
-#     for i in range(nrepeats):
-#         with Popen(run.split(), stdout=PIPE) as p:
-#             out = p.stdout.read().decode("ascii").strip()
-#         result.append(out)
-#     print(result)
-
-#     return result
-
-
-def compile_form(problem, degree, cell_type, scalar_type, batch_size, global_size, action):
+def compile_form(problem):
     try:
         import ffcx
         import ffcx.codegeneration
     except ImportError:
         print("ffcx is not available")
 
-    with open("forms/" + problem + ".ufl", 'r') as f:
+    with open("forms/" + problem.problem + ".ufl", 'r') as f:
         src = Template(f.read())
-        d = {'degree': str(degree), 'vdegree': str(
-            degree + 1), "cell": cell_type}
+        d = {'degree': str(problem.degree),
+             'vdegree': str(problem.degree + 1),
+             'cell': problem.cell_type}
         result = src.substitute(d)
+        print("==========================")
+        print(result)
+        print("==========================")
 
         with open("compiler/problem.py", "w") as f2:
             f2.writelines(result)
-    generate_code(action, scalar_type, global_size, batch_size)
+    action = problem.form_rank == 1
+    generate_code(action, problem.scalar_type,
+                  problem.num_dofs, problem.batch_size)
 
 
 _build_cmd = "cd compiler && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_FLAGS='{flag}' -DCMAKE_CXX_FLAGS='{flag}' .. && make"
@@ -115,6 +58,14 @@ _build_cmd = "cd compiler && rm -rf build && mkdir build && cd build && cmake -D
 
 def compile_cpp(flag):
     build_cmd = _build_cmd.format(form_compiler="ffcx", flag=flag)
-    # os.system(build)
     if os.system(build_cmd) != 0:
         raise RuntimeError("build failed")
+
+
+def run_code(mpi_size):
+    run = f"mpirun -n {mpi_size} ./compiler/build/benchmark"
+    with Popen(run.split(), stdout=PIPE) as p:
+        out = p.stdout.read().decode("ascii").strip()
+    out = out.split(", ")
+    out = [float(o) for o in out]
+    return out

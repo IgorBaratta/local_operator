@@ -1,80 +1,109 @@
+import yaml
+import utils
 import utils
 import argparse
+from dataclasses import dataclass
+
+
+@dataclass
+class Results:
+    machine: str | None = None
+    problem: str | None = None
+    compiler: str | None = None
+    flags: str | None = None
+    scalar_type: str | None = None
+    batch_size: int | None = None
+    form_rank: int | None = None
+    degree: int | None = None
+    cell_type: str | None = None
+    num_dofs: int | None = None
+    mpi_processes: int | None = None
+    time: float | None = None
+    num_cells: int | None = None
+
+    def flush(self):
+        out = ", ".join(str(value) for _, value in self.__dict__.items())
+        return out
+
+    def header(self):
+        out = ",".join(str(key) for key, _ in self.__dict__.items())
+        return out
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Run local assembly benchmark.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--form_compiler', dest='form_compiler', type=str,
-                        default="ffcx", choices=['ffcx', 'ffc', 'tsfc'],
-                        help="Form Compiler to use")
-
-    parser.add_argument('--scalar_type', dest='scalar_type', type=str,
-                        default="double", choices=['double', 'float', '_Float16', 'double _Complex', 'float _Complex'],
-                        help="Scalar type to use")
-
-    parser.add_argument('--problem', dest='problem', type=str,
-                        default="Laplacian", choices=['Laplacian', 'Mass', 'Elasticity', 'N1curl', 'Stokes'],
-                        help="Problem to run")
-
-    parser.add_argument('--conf', dest='conf', type=str, default="compilers.yaml",
-                        help="Configuration file describing the compilers and flags.")
-
-    parser.add_argument('--degree', dest='degree', default=range(1, 4), nargs='+',
-                        help='Polynomial degree to evaluate the operators.')
-
-    parser.add_argument('--nrepeats', dest='nrepeats', type=int, default=3,
-                        help='Number of times to run each experiment.')
-
-    parser.add_argument('--batch_size', dest='batch_size', type=int, default=None, choices=[None, 1, 2, 4, 8, 16, 32, 64],
-                        help='')
-
-    parser.add_argument('--global_size', dest='global_size', type=int, default=1e6,
-                        help='Global number of dofs (assuming shared are dofs are duplicated).')
-
-    parser.add_argument('--action', dest='action', action='store_true',
-                        help='Specify whether to run the problems with matrix free approach.')
-
-    parser.add_argument('--mpi_size', dest='mpi_size', type=int, default=1,
-                        help='The number of mpi processes to use.')
-
-    parser.add_argument('--cell_type', dest='cell_type', type=str,
-                        default="tetrahedron", choices=['tetrahedron', 'hexahedron'],
-                        help="Cell type to use")
+    parser.add_argument('--file_name', dest='file_name', type=str, default="problem.yaml",
+                        help="Configuration file describing the problem.")
 
     args = parser.parse_args()
-    form_compiler = args.form_compiler
-    problem = args.problem
-    conf_file = args.conf
-    degrees = [int(d) for d in args.degree]
-    nrepeats = args.nrepeats
-    action = args.action
-    batch_size = args.batch_size
-    global_size = args.global_size
-    scalar_type = args.scalar_type
-    mpi_size = args.mpi_size
-    cell_type = args.cell_type
+    file_name = args.file_name
 
-    machine = utils.machine_name()
-    out_file = utils.create_ouput(problem)
-    compilers = utils.parse_compiler_configuration(conf_file)
+    with open(file_name, "r") as stream:
+        try:
+            problems = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
 
-    # Set rank to 1 for matrix free, 2 otherwise
-    rank = 1 if action else 2
+    for problem in problems:
 
-    for c_name in compilers:
-        compiler = compilers[c_name]
-        compiler_version = utils.set_compiler(compiler)
-        flags = compiler["flags"]
-        for flag in flags:
-            flag = "\"" + ''.join(map(str, flag)) + "\""
+        assert isinstance(problem, dict), 'Argument of wrong type!'
+        fields = problem.keys()
+
+        benchmark = Results()
+
+        name = problem.get("name", "Laplacian")
+        out_file = utils.create_ouput(name, benchmark.header())
+        benchmark.problem = name
+        assert name in ['Laplacian', 'Mass', 'Elasticity', 'Helmholtz']
+
+        degrees = problem.get("degree", [1, 2, 3])
+        assert isinstance(degrees, list)
+
+        num_repeats = problem.get("num_repeats", 3)
+        assert num_repeats > 0
+
+        num_dofs = [float(e) for e in problem.get("num_dofs", 1)]
+        assert isinstance(num_dofs, list)
+
+        cell_type = problem.get("cell_type", "tetrahedron")
+        benchmark.cell_type = cell_type
+        assert cell_type in ['tetrahedron', 'hexahedron']
+
+        mpi_processes = problem.get("mpi_processes", [1])
+        assert isinstance(mpi_processes, list)
+
+        action = problem.get("action", True)
+        assert isinstance(action, bool)
+        benchmark.form_rank = 1 if action else 2
+
+        compilers = problem.get("compiler")
+
+        scalar_type_list = problem.get("scalar_type")
+
+        benchmark.machine = utils.machine_name()
+
+        for type_t in scalar_type_list:
+            benchmark.batch_size = type_t["batch_size"]
+            benchmark.scalar_type = type_t["type"]
             for degree in degrees:
-                text = f"\n{machine}, {problem}, {c_name}, {compiler_version}, {flag}, {degree}, {form_compiler}, {scalar_type}, {batch_size}, {cell_type}, "
-                results = utils.run(problem, degree, nrepeats, flag, action,
-                                    scalar_type, global_size, batch_size,
-                                    mpi_size, cell_type)
-                for result in results:
-                    row = text + f"{rank}, {result}"
-                    with open(out_file, "a") as file:
-                        file.write(row)
+                benchmark.degree = degree
+                for n in num_dofs:
+                    benchmark.num_dofs = n
+                    utils.compile_form(benchmark)
+                    for compiler in compilers:
+                        benchmark.compiler = compiler["name"]
+                        flags = compiler["flags"]
+                        for flag in flags:
+                            utils.compile_cpp(flag)
+                            benchmark.flags = flag
+                            for i in range(num_repeats):
+                                for num_procs in mpi_processes:
+                                    benchmark.mpi_processes = num_procs
+                                    benchmark.num_cells, benchmark.time = utils.run_code(
+                                        num_procs)
+                                    row = benchmark.flush()
+                                    with open(out_file, "a") as file:
+                                        file.write(row + "\n")

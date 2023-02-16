@@ -1,9 +1,0 @@
-gcc-10:
-  version:
-    - 10
-  cpp:
-    - g++-10
-  cc:
-    - gcc-10
-  flags:
-    - -Ofast -march=native -mprefer-vector-width=256
