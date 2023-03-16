@@ -94,8 +94,8 @@ if __name__ == "__main__":
                     benchmark.num_dofs = n
                     utils.compile_form(benchmark)
                     for compiler in compilers:
-                        benchmark.compiler = compiler["name"]
                         flags = compiler["flags"]
+                        benchmark.compiler = utils.set_compiler(compiler)
                         for flag in flags:
                             utils.compile_cpp(flag)
                             benchmark.flags = flag

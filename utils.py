@@ -4,9 +4,6 @@ from string import Template
 from subprocess import Popen, PIPE
 from compiler import generate_code
 
-import sys
-
-
 def machine_name():
     # Set architecture from platform
     try:
@@ -69,3 +66,9 @@ def run_code(mpi_size):
     out = out.split(", ")
     out = [float(o) for o in out]
     return out
+
+
+def set_compiler(compiler):
+    os.environ["CXX"] = compiler["cxx"]
+    os.environ["CC"] = compiler["cc"]
+    return compiler["name"]

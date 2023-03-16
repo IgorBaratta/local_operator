@@ -1,2 +1,6 @@
 from .compile import generate_code
-from . import problem
+
+try:
+    from . import problem
+except:
+    f = open("problem.py", 'w+')
