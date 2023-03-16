@@ -1,14 +1,14 @@
 ---
-- name: Helmholtz
-  degree: [1, 2, 3]
+- name: Mass
+  degree: [2]
   cell_type: tetrahedron
   action: True
   num_dofs: 
     - 10000000
   mpi_processes: [1, 10]
   scalar_type:
-    - type: float
-      batch_size: 1
+    - type: double
+      batch_size: 4
     # - type: double
     #   batch_size: 1
     # - type: double
