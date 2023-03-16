@@ -79,7 +79,10 @@ int main(int argc, char *argv[])
     MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);
 
     if (mpi_rank == 0)
+    {
       std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
+      std::cout << std::endl;
+    }
   }
   MPI_Finalize();
 
