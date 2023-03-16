@@ -13,4 +13,6 @@ do
     cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} .
     cmake --build build -j 10
     mpirun -n ${NUM_PROCS} ./build/benchmark >> out.txt
+    echo ", '${CXX_FLAGS}'" >> out.txt
+
 done

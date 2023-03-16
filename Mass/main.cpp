@@ -81,7 +81,6 @@ int main(int argc, char *argv[])
     if (mpi_rank == 0)
     {
       std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
-      std::cout << std::endl;
     }
   }
   MPI_Finalize();
