@@ -230,7 +230,7 @@ struct Operator
             for (int ic0 = 0; ic0 < Nd; ++ic0)
                 for (int ic1 = 0; ic1 < Nd; ++ic1)
                     for (int ic2 = 0; ic2 < Nd; ++ic2)
-                        wtransp[Nd * Nd * ic0 + Nd * ic1 + ic2] += w[Nd * Nd * ic0 + Nd * ic1 + ic2];
+                        wtransp[Nd * Nd * ic0 + Nd * ic1 + ic2] = w[Nd * Nd * ic0 + Nd * ic1 + ic2];
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
                     for (int id = 0; id < Nd * Nd; ++id)
@@ -240,7 +240,7 @@ struct Operator
             for (int ic1 = 0; ic1 < Nd; ++ic1)
                 for (int iq0 = 0; iq0 < Nq; ++iq0)
                     for (int ic2 = 0; ic2 < Nd; ++ic2)
-                        temp0transp[Nd * Nq * ic1 + Nd * iq0 + ic2] += temp0[Nd * Nd * iq0 + Nd * ic1 + ic2];
+                        temp0transp[Nd * Nq * ic1 + Nd * iq0 + ic2] = temp0[Nd * Nd * iq0 + Nd * ic1 + ic2];
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int ic1 = 0; ic1 < Nd; ++ic1)
                     for (int id = 0; id < Nd * Nq; ++id)
@@ -249,7 +249,7 @@ struct Operator
             for (int ic2 = 0; ic2 < Nd; ++ic2)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] += temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                        temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int id = 0; id < Nq * Nq; ++id)
@@ -267,17 +267,17 @@ struct Operator
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw0transp[Nq * Nq * iq0 + Nq * iq1 + iq2] += fw0[iq0][iq1][iq2];
+                        fw0transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw0[iq0][iq1][iq2];
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int id = 0; id < Nq * Nq; ++id)
                         temp0[Nq * Nq * i0 + id] += phi[iq0][i0] * fw0transp[Nq * Nq * iq0 + id];
             T temp1[Nd * Nd * Nq] = {0};
-            T temp0transp[Nd * Nq * Nq] = {0};
+            T temp0transp[Nq * Nq * Nq] = {0};
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        temp0transp[Nd * Nq * iq1 + Nq * i0 + iq2] += temp0[Nq * Nq * i0 + Nq * iq1 + iq2];
+                        temp0transp[Nd * Nq * iq1 + Nq * i0 + iq2] = temp0[Nq * Nq * i0 + Nq * iq1 + iq2];
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int i1 = 0; i1 < Nd; ++i1)
                     for (int id = 0; id < Nd * Nq; ++id)
@@ -286,7 +286,7 @@ struct Operator
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int i1 = 0; i1 < Nd; ++i1)
                     for (int i0 = 0; i0 < Nd; ++i0)
-                        temp1transp[Nd * Nd * iq2 + Nd * i1 + i0] += temp1[Nd * Nq * i1 + Nq * i0 + iq2];
+                        temp1transp[Nd * Nd * iq2 + Nd * i1 + i0] = temp1[Nd * Nq * i1 + Nq * i0 + iq2];
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int i2 = 0; i2 < Nd; ++i2)
                     for (int id = 0; id < Nd * Nd; ++id)
