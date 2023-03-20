@@ -222,19 +222,13 @@ struct Operator
         constexpr int Nd = P + 1;
         constexpr int Nq = P + 2;
 
-        T fw0[Nq][Nq][Nq] = {{{0}}};
         T w0[Nq * Nq * Nq] = {0};
         {
             T temp0[Nq * Nd * Nd] = {0};
-            T wtransp[Nd * Nd * Nd] = {0};
-            for (int ic0 = 0; ic0 < Nd; ++ic0)
-                for (int ic1 = 0; ic1 < Nd; ++ic1)
-                    for (int ic2 = 0; ic2 < Nd; ++ic2)
-                        wtransp[Nd * Nd * ic0 + Nd * ic1 + ic2] += w[Nd * Nd * ic0 + Nd * ic1 + ic2];
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
                     for (int id = 0; id < Nd * Nd; ++id)
-                        temp0[Nd * Nd * iq0 + id] += phi[iq0][ic0] * wtransp[Nd * Nd * ic0 + id];
+                        temp0[Nd * Nd * iq0 + id] += phi[iq0][ic0] * w[Nd * Nd * ic0 + id];
             T temp1[Nq * Nq * Nd] = {0};
             T temp0transp[Nq * Nd * Nd] = {0};
             for (int ic1 = 0; ic1 < Nd; ++ic1)
@@ -255,42 +249,37 @@ struct Operator
                     for (int id = 0; id < Nq * Nq; ++id)
                         w0[Nq * Nq * iq2 + id] += phi[iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
         }
+        T fw0[Nq * Nq * Nq] = {0};
         {
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw0[iq0][iq1][iq2] = w0[Nq * Nq * iq0 + Nq * iq1 + iq2] * detJ[Nq * Nq * iq0 + Nq * iq1 + iq2] * (weights[iq0] * weights[iq1] * weights[iq2]);
+                        fw0[Nq * Nq * iq0 + Nq * iq1 + iq2] = w0[Nq * Nq * iq0 + Nq * iq1 + iq2] * detJ[Nq * Nq * iq0 + Nq * iq1 + iq2] * (weights[iq0] * weights[iq1] * weights[iq2]);
         }
-        {
-            T temp0[Nq * Nq * Nd] = {0};
-            T fw0transp[Nq * Nq * Nq] = {0};
-            for (int iq0 = 0; iq0 < Nq; ++iq0)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
-                    for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw0transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw0[iq0][iq1][iq2];
-            for (int iq0 = 0; iq0 < Nq; ++iq0)
+
+        T temp0[Nq * Nq * Nd] = {0};
+        for (int iq0 = 0; iq0 < Nq; ++iq0)
+            for (int i0 = 0; i0 < Nd; ++i0)
+                for (int id = 0; id < Nq * Nq; ++id)
+                    temp0[Nq * Nq * i0 + id] += phi[iq0][i0] * fw0[Nq * Nq * iq0 + id];
+        T temp1[Nq * Nd * Nd] = {0};
+        T temp0transp[Nq * Nq * Nd] = {0};
+        for (int iq1 = 0; iq1 < Nq; ++iq1)
+            for (int i0 = 0; i0 < Nd; ++i0)
+                for (int iq2 = 0; iq2 < Nq; ++iq2)
+                    temp0transp[Nq * Nd * iq1 + Nq * i0 + iq2] = temp0[Nq * Nq * i0 + Nq * iq1 + iq2];
+        for (int iq1 = 0; iq1 < Nq; ++iq1)
+            for (int i1 = 0; i1 < Nd; ++i1)
+                for (int id = 0; id < Nq * Nd; ++id)
+                    temp1[Nq * Nd * i1 + id] += phi[iq1][i1] * temp0transp[Nq * Nd * iq1 + id];
+        T temp1transp[Nq * Nd * Nd] = {0};
+        for (int iq2 = 0; iq2 < Nq; ++iq2)
+            for (int i1 = 0; i1 < Nd; ++i1)
                 for (int i0 = 0; i0 < Nd; ++i0)
-                    for (int id = 0; id < Nq * Nq; ++id)
-                        temp0[Nq * Nq * i0 + id] += phi[iq0][i0] * fw0transp[Nq * Nq * iq0 + id];
-            T temp1[Nq * Nd * Nd] = {0};
-            T temp0transp[Nq * Nq * Nd] = {0};
-            for (int iq1 = 0; iq1 < Nq; ++iq1)
-                for (int i0 = 0; i0 < Nd; ++i0)
-                    for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        temp0transp[Nq * Nd * iq1 + Nq * i0 + iq2] = temp0[Nq * Nq * i0 + Nq * iq1 + iq2];
-            for (int iq1 = 0; iq1 < Nq; ++iq1)
-                for (int i1 = 0; i1 < Nd; ++i1)
-                    for (int id = 0; id < Nq * Nd; ++id)
-                        temp1[Nq * Nd * i1 + id] += phi[iq1][i1] * temp0transp[Nq * Nd * iq1 + id];
-            T temp1transp[Nq * Nd * Nd] = {0};
-            for (int iq2 = 0; iq2 < Nq; ++iq2)
-                for (int i1 = 0; i1 < Nd; ++i1)
-                    for (int i0 = 0; i0 < Nd; ++i0)
-                        temp1transp[Nd * Nd * iq2 + Nd * i1 + i0] = temp1[Nq * Nd * i1 + Nq * i0 + iq2];
-            for (int iq2 = 0; iq2 < Nq; ++iq2)
-                for (int i2 = 0; i2 < Nd; ++i2)
-                    for (int id = 0; id < Nd * Nd; ++id)
-                        A[Nd * Nd * i2 + id] += phi[iq2][i2] * temp1transp[Nd * Nd * iq2 + id];
-        }
+                    temp1transp[Nd * Nd * iq2 + Nd * i1 + i0] = temp1[Nq * Nd * i1 + Nq * i0 + iq2];
+        for (int iq2 = 0; iq2 < Nq; ++iq2)
+            for (int i2 = 0; i2 < Nd; ++i2)
+                for (int id = 0; id < Nd * Nd; ++id)
+                    A[Nd * Nd * i2 + id] += phi[iq2][i2] * temp1transp[Nd * Nd * iq2 + id];
     }
 };
