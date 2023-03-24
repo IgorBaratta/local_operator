@@ -28,19 +28,19 @@ struct Operator<T, S, 1>
     static const S FE9_C1_D010_Q421[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Q421[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule 421
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
-    T w1_d100 = {0.0};
-    T w1_d010 = {0.0};
-    T w1_d001 = {0.0};
-    T w0 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
+    T w1_d100 = {0};
+    T w1_d010 = {0};
+    T w1_d001 = {0};
+    T w0 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q421[0][0][0][ic];
@@ -190,15 +190,15 @@ struct Operator<T, S, 2>
     static const S FE9_C1_D010_Q175[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Q175[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule 175
-    T J_c4 = 0.0;
-    T J_c8 = 0.0;
-    T J_c5 = 0.0;
-    T J_c7 = 0.0;
-    T J_c0 = 0.0;
-    T J_c1 = 0.0;
-    T J_c6 = 0.0;
-    T J_c3 = 0.0;
-    T J_c2 = 0.0;
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q175[0][0][0][ic];
@@ -260,10 +260,10 @@ struct Operator<T, S, 2>
     {
       // Quadrature loop body setup for quadrature rule 175
       // Varying computations for quadrature rule 175
-      T w1_d100 = 0.0;
-      T w1_d010 = 0.0;
-      T w1_d001 = 0.0;
-      T w0 = 0.0;
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 10; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Q175[0][0][iq][ic];
@@ -400,15 +400,15 @@ struct Operator<T, S, 3>
     static const S FE9_C1_D010_Q929[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Q929[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule 929
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q929[0][0][0][ic];
@@ -470,10 +470,10 @@ struct Operator<T, S, 3>
     {
       // Quadrature loop body setup for quadrature rule 929
       // Varying computations for quadrature rule 929
-      T w1_d100 = {0.0};
-      T w1_d010 = {0.0};
-      T w1_d001 = {0.0};
-      T w0 = {0.0};
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 20; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Q929[0][0][iq][ic];
@@ -674,15 +674,15 @@ struct Operator<T, S, 4>
     static const S FE9_C1_D010_Qa12[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Qa12[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule a12
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qa12[0][0][0][ic];
@@ -744,10 +744,10 @@ struct Operator<T, S, 4>
     {
       // Quadrature loop body setup for quadrature rule a12
       // Varying computations for quadrature rule a12
-      T w1_d100 = {0.0};
-      T w1_d010 = {0.0};
-      T w1_d001 = {0.0};
-      T w0 = {0.0};
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 35; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Qa12[0][0][iq][ic];
@@ -1052,15 +1052,15 @@ struct Operator<T, S, 5>
     static const S FE9_C1_D010_Qc37[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Qc37[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule c37
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qc37[0][0][0][ic];
@@ -1122,10 +1122,10 @@ struct Operator<T, S, 5>
     {
       // Quadrature loop body setup for quadrature rule c37
       // Varying computations for quadrature rule c37
-      T w1_d100 = {0.0};
-      T w1_d010 = {0.0};
-      T w1_d001 = {0.0};
-      T w0 = {0.0};
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 56; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Qc37[0][0][iq][ic];
@@ -1582,15 +1582,15 @@ struct Operator<T, S, 6>
     static const S FE9_C1_D010_Qfcc[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Qfcc[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule fcc
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qfcc[0][0][0][ic];
@@ -1653,10 +1653,10 @@ struct Operator<T, S, 6>
     {
       // Quadrature loop body setup for quadrature rule fcc
       // Varying computations for quadrature rule fcc
-      T w1_d100 = {0.0};
-      T w1_d010 = {0.0};
-      T w1_d001 = {0.0};
-      T w0 = {0.0};
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 84; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Qfcc[0][0][iq][ic];
@@ -2317,15 +2317,15 @@ struct Operator<T, S, 7>
     static const S FE9_C1_D010_Q3b7[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Q3b7[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule 3b7
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q3b7[0][0][0][ic];
@@ -2387,10 +2387,10 @@ struct Operator<T, S, 7>
     {
       // Quadrature loop body setup for quadrature rule 3b7
       // Varying computations for quadrature rule 3b7
-      T w1_d100 = {0.0};
-      T w1_d010 = {0.0};
-      T w1_d001 = {0.0};
-      T w0 = {0.0};
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 120; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Q3b7[0][0][iq][ic];
@@ -3323,15 +3323,15 @@ struct Operator<T, S, 8>
     static const S FE9_C1_D010_Q530[1][1][1][4] = {{{{-1.0, 0.0, 1.0, 0.0}}}};
     static const S FE9_C2_D001_Q530[1][1][1][4] = {{{{-1.0, 0.0, 0.0, 1.0}}}};
     // Quadrature loop independent computations for quadrature rule 530
-    T J_c4 = {0.0};
-    T J_c8 = {0.0};
-    T J_c5 = {0.0};
-    T J_c7 = {0.0};
-    T J_c0 = {0.0};
-    T J_c1 = {0.0};
-    T J_c6 = {0.0};
-    T J_c3 = {0.0};
-    T J_c2 = {0.0};
+    T J_c4 = {0};
+    T J_c8 = {0};
+    T J_c5 = {0};
+    T J_c7 = {0};
+    T J_c0 = {0};
+    T J_c1 = {0};
+    T J_c6 = {0};
+    T J_c3 = {0};
+    T J_c2 = {0};
     for (int ic = 0; ic < 4; ++ic)
     {
       J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q530[0][0][0][ic];
@@ -3393,10 +3393,10 @@ struct Operator<T, S, 8>
     {
       // Quadrature loop body setup for quadrature rule 530
       // Varying computations for quadrature rule 530
-      T w1_d100 = {0.0};
-      T w1_d010 = {0.0};
-      T w1_d001 = {0.0};
-      T w0 = {0.0};
+      T w1_d100 = {0};
+      T w1_d010 = {0};
+      T w1_d001 = {0};
+      T w0 = {0};
       for (int ic = 0; ic < 165; ++ic)
       {
         w1_d100 += w[4 + ic] * FE15_C0_D100_Q530[0][0][iq][ic];
