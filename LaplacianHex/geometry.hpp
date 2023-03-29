@@ -5,8 +5,13 @@
 template <typename T>
 std::vector<T> create_geometry(int num_batches, int batch_size, int geom_size)
 {
-    std::array<double, 24> coords = {0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0,
-                                     1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0};
+    std::vector<double> coords = {0.5, 0.0, 0.0, 0.0,
+                                  1.0, 1.0, 1.0, 1.0,
+                                  0.0, 0.0, 1.0, 1.0,
+                                  0.0, 0.0, 1.0, 1.0,
+                                  0.1, 1.0, 0.0, 1.0,
+                                  0.1, 1.0, 0.0, 1.0};
+
     std::vector<T> geometry(num_batches * geom_size);
     if constexpr (std::is_same<T, double>::value or std::is_same<T, float>::value)
     {

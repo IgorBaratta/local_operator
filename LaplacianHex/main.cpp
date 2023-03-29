@@ -1,6 +1,7 @@
 #include "types.hpp"
-
+#include "geometry.hpp"
 #include "problem.hpp"
+
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -11,15 +12,15 @@
 #include <any>
 
 #ifndef PRECISION
-#  error Floating point precision not defined.
+#error Floating point precision not defined.
 #endif
 
 #ifndef BATCH_SIZE
-#  error Batch size not defined.
+#error Batch size not defined.
 #endif
 
 #ifndef DEGREE
-#  error Polynomial degree not defined.
+#error Polynomial degree not defined.
 #endif
 
 int main(int argc, char *argv[])
@@ -36,15 +37,14 @@ int main(int argc, char *argv[])
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
-    Operator<T, S, DEGREE> op;
+    Operator<T, S, DEGREE, 8> op;
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
     constexpr int stride = op.num_dofs + 4;
     constexpr int num_cells = global_size / op.num_dofs;
     constexpr int num_batches = num_cells / BATCH_SIZE;
-    constexpr int Nq = DEGREE + 3;
-    constexpr int geom_size = 9 * Nq * Nq;
+    constexpr int geom_size = 8 * 3;
 
     // Allocate and initialize data
     std::vector<T> A(num_batches * local_size);
@@ -54,13 +54,12 @@ int main(int argc, char *argv[])
     T zero = {0.};
 
     // Create geometry and coefficients
-    std::vector<T> geometry(num_batches * geom_size);
+    std::vector<T> geometry = create_geometry<T>(num_batches, BATCH_SIZE, geom_size);
     std::vector<T> coefficients(num_batches * stride);
     auto set_ = [one](auto &e)
     { e = one; };
     std::for_each(coefficients.begin(), coefficients.end(), set_);
     std::for_each(geometry.begin(), geometry.end(), set_);
-
 
     std::array<T, op.num_dofs> Ae;
 
