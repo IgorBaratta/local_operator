@@ -8,7 +8,7 @@ template <typename T, typename S, int P>
 struct Operator
 {
     constexpr static std::size_t num_dofs = (P + 1) * (P + 1) * (P + 1);
-    inline void apply(T *restrict A, const T *restrict w, const T *restrict jacobian)
+    inline void apply(T *restrict A, const T *restrict w, const T *restrict jac)
     {
 #if DEGREE == 1
 #error "not implemented"
@@ -608,10 +608,11 @@ struct Operator
 #endif
         constexpr int Nq = P + 3;
         constexpr int Nd = P + 1;
+        constexpr int cubNq = Nq * Nq * Nq;
         // Quadrature loop independent computations for quadrature rule 037
         // Quadrature loop body setup for quadrature rule 037
         // Varying computations for quadrature rule 037
-        T w1_d100[Nq * Nq * Nq] = {0};
+        T w1_d[3][Nq * Nq * Nq] = {{0}};
         {
             T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
@@ -636,9 +637,8 @@ struct Operator
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int id = 0; id < Nq * Nq; ++id)
-                        w1_d100[Nq * Nq * iq2 + id] += FE_TF1[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
+                        w1_d[0][Nq * Nq * iq2 + id] += FE_TF1[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
         }
-        T w1_d010[Nq * Nq * Nq] = {0};
         {
             T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
@@ -663,9 +663,8 @@ struct Operator
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int id = 0; id < Nq * Nq; ++id)
-                        w1_d010[Nq * Nq * iq2 + id] += FE_TF1[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
+                        w1_d[1][Nq * Nq * iq2 + id] += FE_TF1[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
         }
-        T w1_d001[Nq * Nq * Nq] = {0};
         {
             T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
@@ -690,7 +689,7 @@ struct Operator
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int id = 0; id < Nq * Nq; ++id)
-                        w1_d001[Nq * Nq * iq2 + id] += FE_TF0[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
+                        w1_d[2][Nq * Nq * iq2 + id] += FE_TF0[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
         }
         T w0[Nq * Nq * Nq] = {0};
         {
@@ -719,119 +718,61 @@ struct Operator
                     for (int id = 0; id < Nq * Nq; ++id)
                         w0[Nq * Nq * iq2 + id] += FE_TF2[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
         }
-        T fw0[Nq][Nq][Nq] = {{{0}}};
-        T fw1[Nq][Nq][Nq] = {{{0}}};
-        T fw2[Nq][Nq][Nq] = {{{0}}};
-        for (int iq0 = 0; iq0 < Nq; ++iq0)
-        {
-            for (int iq1 = 0; iq1 < Nq; ++iq1)
-            {
-                for (int iq2 = 0; iq2 < Nq; ++iq2)
-                {
-                    T J_c0 = jacobian[9 * Nq * iq1 + iq2 + 0];
-                    T J_c1 = jacobian[9 * Nq * iq0 + iq2 + 1];
-                    T J_c2 = jacobian[9 * Nq * iq0 + iq1 + 2];
-                    T J_c3 = jacobian[9 * Nq * iq1 + iq2 + 3];
-                    T J_c4 = jacobian[9 * Nq * iq0 + iq2 + 4];
-                    T J_c5 = jacobian[9 * Nq * iq0 + iq1 + 5];
-                    T J_c6 = jacobian[9 * Nq * iq1 + iq2 + 6];
-                    T J_c7 = jacobian[9 * Nq * iq0 + iq2 + 7];
-                    T J_c8 = jacobian[9 * Nq * iq0 + iq1 + 8];
 
-                    T sv_037[83];
-                    sv_037[0] = J_c4 * J_c8;
-                    sv_037[1] = J_c5 * J_c7;
-                    sv_037[2] = sv_037[0] - sv_037[1];
-                    sv_037[3] = J_c0 * sv_037[2];
-                    sv_037[4] = J_c5 * J_c6;
-                    sv_037[5] = J_c3 * J_c8;
-                    sv_037[6] = sv_037[4] - sv_037[5];
-                    sv_037[7] = J_c1 * sv_037[6];
-                    sv_037[8] = sv_037[3] + sv_037[7];
-                    sv_037[9] = J_c3 * J_c7;
-                    sv_037[10] = J_c4 * J_c6;
-                    sv_037[11] = sv_037[9] - sv_037[10];
-                    sv_037[Nq] = J_c2 * sv_037[11];
-                    sv_037[13] = sv_037[8] + sv_037[Nq];
-                    sv_037[14] = sv_037[2] / sv_037[13];
-                    sv_037[15] = J_c3 * (-1 * J_c8);
-                    sv_037[16] = sv_037[4] + sv_037[15];
-                    sv_037[17] = sv_037[16] / sv_037[13];
-                    sv_037[18] = sv_037[11] / sv_037[13];
-                    sv_037[19] = w1_d100[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[14];
-                    sv_037[20] = w1_d010[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[17];
-                    sv_037[21] = sv_037[19] + sv_037[20];
-                    sv_037[22] = w1_d001[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[18];
-                    sv_037[23] = sv_037[21] + sv_037[22];
-                    sv_037[24] = sv_037[23] * sv_037[14];
-                    sv_037[25] = sv_037[23] * sv_037[17];
-                    sv_037[26] = sv_037[23] * sv_037[18];
-                    sv_037[27] = J_c2 * J_c7;
-                    sv_037[28] = J_c8 * (-1 * J_c1);
-                    sv_037[29] = sv_037[27] + sv_037[28];
-                    sv_037[30] = sv_037[29] / sv_037[13];
-                    sv_037[31] = J_c0 * J_c8;
-                    sv_037[32] = J_c6 * (-1 * J_c2);
-                    sv_037[33] = sv_037[31] + sv_037[32];
-                    sv_037[34] = sv_037[33] / sv_037[13];
-                    sv_037[35] = J_c1 * J_c6;
-                    sv_037[36] = J_c0 * J_c7;
-                    sv_037[37] = sv_037[35] - sv_037[36];
-                    sv_037[38] = sv_037[37] / sv_037[13];
-                    sv_037[39] = w1_d100[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[30];
-                    sv_037[40] = w1_d010[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[34];
-                    sv_037[41] = sv_037[39] + sv_037[40];
-                    sv_037[42] = w1_d001[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[38];
-                    sv_037[43] = sv_037[41] + sv_037[42];
-                    sv_037[44] = sv_037[43] * sv_037[30];
-                    sv_037[45] = sv_037[43] * sv_037[34];
-                    sv_037[46] = sv_037[43] * sv_037[38];
-                    sv_037[47] = sv_037[44] + sv_037[24];
-                    sv_037[48] = sv_037[45] + sv_037[25];
-                    sv_037[49] = sv_037[26] + sv_037[46];
-                    sv_037[50] = J_c1 * J_c5;
-                    sv_037[51] = J_c2 * J_c4;
-                    sv_037[52] = sv_037[50] - sv_037[51];
-                    sv_037[53] = sv_037[52] / sv_037[13];
-                    sv_037[54] = J_c2 * J_c3;
-                    sv_037[55] = J_c0 * J_c5;
-                    sv_037[56] = sv_037[54] - sv_037[55];
-                    sv_037[57] = sv_037[56] / sv_037[13];
-                    sv_037[58] = J_c0 * J_c4;
-                    sv_037[59] = J_c1 * J_c3;
-                    sv_037[60] = sv_037[58] - sv_037[59];
-                    sv_037[61] = sv_037[60] / sv_037[13];
-                    sv_037[62] = w1_d100[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[53];
-                    sv_037[63] = w1_d010[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[57];
-                    sv_037[64] = sv_037[62] + sv_037[63];
-                    sv_037[65] = w1_d001[Nq * Nq * iq0 + Nq * iq1 + iq2] * sv_037[61];
-                    sv_037[66] = sv_037[64] + sv_037[65];
-                    sv_037[67] = sv_037[66] * sv_037[53];
-                    sv_037[68] = sv_037[66] * sv_037[57];
-                    sv_037[69] = sv_037[66] * sv_037[61];
-                    sv_037[70] = sv_037[47] + sv_037[67];
-                    sv_037[71] = sv_037[48] + sv_037[68];
-                    sv_037[72] = sv_037[49] + sv_037[69];
-                    sv_037[73] = sv_037[70] * w0[Nq * Nq * iq0 + Nq * iq1 + iq2];
-                    sv_037[74] = sv_037[71] * w0[Nq * Nq * iq0 + Nq * iq1 + iq2];
-                    sv_037[75] = sv_037[72] * w0[Nq * Nq * iq0 + Nq * iq1 + iq2];
-                    sv_037[76] = sv_037[13];
-                    sv_037[80] = sv_037[73] * sv_037[76];
-                    sv_037[81] = sv_037[74] * sv_037[76];
-                    sv_037[82] = sv_037[75] * sv_037[76];
-                    fw0[iq0][iq1][iq2] = sv_037[80] * (weights[iq0] * weights[iq1] * weights[iq2]);
-                    fw1[iq0][iq1][iq2] = sv_037[81] * (weights[iq0] * weights[iq1] * weights[iq2]);
-                    fw2[iq0][iq1][iq2] = sv_037[82] * (weights[iq0] * weights[iq1] * weights[iq2]);
-                }
-            }
+        // Compute determinant of the jacobian
+        // FLOPS : 4 * 3 * Nq
+        T detJ[Nq * Nq * Nq] = {0};
+        for (int iq = 0; iq < Nq * Nq * Nq; iq++)
+        {
+            detJ[iq] = jac[iq] * (jac[4 * cubNq + iq] * jac[8 * cubNq + iq] - jac[7 * cubNq + iq] * jac[5 * cubNq + iq]);
+            detJ[iq] -= jac[1 * cubNq + iq] * (jac[3 * cubNq + iq] * jac[8 * cubNq + iq] - jac[6 * cubNq + iq] * jac[5 * cubNq + iq]);
+            detJ[iq] += jac[2 * cubNq + iq] * (jac[3 * cubNq + iq] * jac[7 * cubNq + iq] - jac[6 * cubNq + iq] * jac[4 * cubNq + iq]);
         }
+
+        // Compute the inverse of the jacobian
+        // FLOPS : 9 * 5 * Nq
+        T invJ[3][3][Nq * Nq * Nq] = {0.0};
+        for (int iq = 0; iq < Nq * Nq * Nq; iq++)
+        {
+            invJ[0][0][iq] = (jac[4 * cubNq + iq] * jac[8 * cubNq + iq] - jac[5 * cubNq + iq] * jac[7 * cubNq + iq]) / detJ[iq];
+            invJ[0][1][iq] = (jac[2 * cubNq + iq] * jac[7 * cubNq + iq] - jac[1 * cubNq + iq] * jac[8 * cubNq + iq]) / detJ[iq];
+            invJ[0][2][iq] = (jac[1 * cubNq + iq] * jac[5 * cubNq + iq] - jac[2 * cubNq + iq] * jac[4 * cubNq + iq]) / detJ[iq];
+            invJ[1][0][iq] = (jac[5 * cubNq + iq] * jac[6 * cubNq + iq] - jac[3 * cubNq + iq] * jac[8 * cubNq + iq]) / detJ[iq];
+            invJ[1][1][iq] = (jac[iq] * jac[8 * cubNq + iq] - jac[2 * cubNq + iq] * jac[6 * cubNq + iq]) / detJ[iq];
+            invJ[1][2][iq] = (jac[2 * cubNq + iq] * jac[3 * cubNq + iq] - jac[iq] * jac[5 * cubNq + iq]) / detJ[iq];
+            invJ[2][0][iq] = (jac[3 * cubNq + iq] * jac[7 * cubNq + iq] - jac[4 * cubNq + iq] * jac[6 * cubNq + iq]) / detJ[iq];
+            invJ[2][1][iq] = (jac[1 * cubNq + iq] * jac[6 * cubNq + iq] - jac[iq] * jac[7 * cubNq + iq]) / detJ[iq];
+            invJ[2][2][iq] = (jac[iq] * jac[4 * cubNq + iq] - jac[1 * cubNq + iq] * jac[3 * cubNq + iq]) / detJ[iq];
+        }
+
+        // FLOPS : 3 * 5 * Nq
+        T t[3][Nq * Nq * Nq] = {{0}};
+        for (int iq = 0; iq < Nq * Nq * Nq; iq++)
+        {
+            t[0][iq] = invJ[0][0][iq] * w1_d[0][iq] + invJ[0][1][iq] * w1_d[1][iq] + invJ[0][2][iq] * w1_d[2][iq];
+            t[1][iq] = invJ[1][0][iq] * w1_d[0][iq] + invJ[1][1][iq] * w1_d[1][iq] + invJ[1][2][iq] * w1_d[2][iq];
+            t[2][iq] = invJ[2][0][iq] * w1_d[0][iq] + invJ[2][1][iq] * w1_d[1][iq] + invJ[2][2][iq] * w1_d[2][iq];
+        }
+
+        T fw0[Nq * Nq * Nq] = {{0}};
+        T fw1[Nq * Nq * Nq] = {{0}};
+        T fw2[Nq * Nq * Nq] = {{0}};
+
+        // FLOPS : 7 * 3 * Nq
+        for (int iq = 0; iq < Nq * Nq * Nq; iq++)
+        {
+            fw0[iq] = (invJ[0][0][iq] * t[0][iq] + invJ[1][0][iq] * t[1][iq] + invJ[2][0][iq] * t[2][iq]) * w0[iq] * detJ[iq];
+            fw1[iq] = (invJ[0][1][iq] * t[0][iq] + invJ[1][1][iq] * t[1][iq] + invJ[2][1][iq] * t[2][iq]) * w0[iq] * detJ[iq];
+            fw2[iq] = (invJ[0][2][iq] * t[0][iq] + invJ[1][2][iq] * t[1][iq] + invJ[2][2][iq] * t[2][iq]) * w0[iq] * detJ[iq];
+        }
+
         {
             T temp0[Nq * Nq * Nd] = {0};
             T fw0transp[Nq * Nq * Nq] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw0transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw0[iq0][iq1][iq2];
+                        fw0transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw0[Nq * Nq * iq0 + Nq * iq1 + iq2];
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int id = 0; id < Nq * Nq; ++id)
@@ -860,7 +801,7 @@ struct Operator
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw1transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw1[iq0][iq1][iq2];
+                        fw1transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw1[Nq * Nq * iq0 + Nq * iq1 + iq2];
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int id = 0; id < Nq * Nq; ++id)
@@ -889,7 +830,7 @@ struct Operator
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw2transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw2[iq0][iq1][iq2];
+                        fw2transp[Nq * Nq * iq0 + Nq * iq1 + iq2] = fw2[Nq * Nq * iq0 + Nq * iq1 + iq2];
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int id = 0; id < Nq * Nq; ++id)
