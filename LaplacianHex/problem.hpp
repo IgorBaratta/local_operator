@@ -27,6 +27,17 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
                         jac[4 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+        T temp2[2 * Nq * Nq] = {0};
+        for (int iq1 = 0; iq1 < Nq; ++iq1)
+            for (int ic1 = 0; ic1 < 2; ++ic1)
+                for (int iq0 = 0; iq0 < Nq; ++iq0)
+                    for (int ic2 = 0; ic2 < 2; ++ic2)
+                        temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF2[0][0][iq1][ic1] * temp2[4 * iq0 + 2 * ic1 + ic2];
+        for (int iq2 = 0; iq2 < Nq; ++iq2)
+            for (int ic2 = 0; ic2 < 2; ++ic2)
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int iq0 = 0; iq0 < Nq; ++iq0)
+                        jac[5 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF3[0][0][0][ic2] * temp2[2 * Nq * iq1 + 2 * iq0 + ic2];
     }
     {
         T temp0[4 * Nq] = {0};
@@ -34,7 +45,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int ic1 = 0; ic1 < 2; ++ic1)
                     for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2 + 16];
+                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF3[0][0][0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2 + 8];
         T temp1[2 * Nq * Nq] = {0};
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
@@ -45,84 +56,9 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[8 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF3[0][0][0][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+                        jac[3 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
     }
-    {
-        T temp0[4 * Nq] = {0};
-        for (int iq0 = 0; iq0 < Nq; ++iq0)
-            for (int ic0 = 0; ic0 < 2; ++ic0)
-                for (int ic1 = 0; ic1 < 2; ++ic1)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2 + 8];
-        T temp1[2 * Nq * Nq] = {0};
-        for (int iq1 = 0; iq1 < Nq; ++iq1)
-            for (int ic1 = 0; ic1 < 2; ++ic1)
-                for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF2[0][0][iq1][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
-        for (int iq2 = 0; iq2 < Nq; ++iq2)
-            for (int ic2 = 0; ic2 < 2; ++ic2)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
-                    for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[5 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF3[0][0][0][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
-    }
-    {
-        T temp0[4 * Nq] = {0};
-        for (int iq0 = 0; iq0 < Nq; ++iq0)
-            for (int ic0 = 0; ic0 < 2; ++ic0)
-                for (int ic1 = 0; ic1 < 2; ++ic1)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2 + 16];
-        T temp1[2 * Nq * Nq] = {0};
-        for (int iq1 = 0; iq1 < Nq; ++iq1)
-            for (int ic1 = 0; ic1 < 2; ++ic1)
-                for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF3[0][0][0][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
-        for (int iq2 = 0; iq2 < Nq; ++iq2)
-            for (int ic2 = 0; ic2 < 2; ++ic2)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
-                    for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[7 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
-    }
-    {
-        T temp0[4 * Nq] = {0};
-        for (int iq0 = 0; iq0 < Nq; ++iq0)
-            for (int ic0 = 0; ic0 < 2; ++ic0)
-                for (int ic1 = 0; ic1 < 2; ++ic1)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF3[0][0][0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
-        T temp1[2 * Nq * Nq] = {0};
-        for (int iq1 = 0; iq1 < Nq; ++iq1)
-            for (int ic1 = 0; ic1 < 2; ++ic1)
-                for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF2[0][0][iq1][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
-        for (int iq2 = 0; iq2 < Nq; ++iq2)
-            for (int ic2 = 0; ic2 < 2; ++ic2)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
-                    for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[0 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
-    }
-    {
-        T temp0[4 * Nq] = {0};
-        for (int iq0 = 0; iq0 < Nq; ++iq0)
-            for (int ic0 = 0; ic0 < 2; ++ic0)
-                for (int ic1 = 0; ic1 < 2; ++ic1)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
-        T temp1[2 * Nq * Nq] = {0};
-        for (int iq1 = 0; iq1 < Nq; ++iq1)
-            for (int ic1 = 0; ic1 < 2; ++ic1)
-                for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF3[0][0][0][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
-        for (int iq2 = 0; iq2 < Nq; ++iq2)
-            for (int ic2 = 0; ic2 < 2; ++ic2)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
-                    for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[1 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
-    }
+    // ========================================
     {
         T temp0[4 * Nq] = {0};
         for (int iq0 = 0; iq0 < Nq; ++iq0)
@@ -148,7 +84,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int ic1 = 0; ic1 < 2; ++ic1)
                     for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF3[0][0][0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2 + 8];
+                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2 + 16];
         T temp1[2 * Nq * Nq] = {0};
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
@@ -159,26 +95,70 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[3 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+                        jac[8 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF3[0][0][0][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+        T temp2[2 * Nq * Nq] = {0};
+        for (int iq1 = 0; iq1 < Nq; ++iq1)
+            for (int ic1 = 0; ic1 < 2; ++ic1)
+                for (int iq0 = 0; iq0 < Nq; ++iq0)
+                    for (int ic2 = 0; ic2 < 2; ++ic2)
+                        temp2[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF3[0][0][0][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
+        for (int iq2 = 0; iq2 < Nq; ++iq2)
+            for (int ic2 = 0; ic2 < 2; ++ic2)
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int iq0 = 0; iq0 < Nq; ++iq0)
+                        jac[7 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp2[2 * Nq * iq1 + 2 * iq0 + ic2];
     }
+    // ========================================
     {
         T temp0[4 * Nq] = {0};
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int ic1 = 0; ic1 < 2; ++ic1)
                     for (int ic2 = 0; ic2 < 2; ++ic2)
-                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
+                        temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF3[0][0][0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
+
         T temp1[2 * Nq * Nq] = {0};
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int iq0 = 0; iq0 < Nq; ++iq0)
                     for (int ic2 = 0; ic2 < 2; ++ic2)
                         temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF2[0][0][iq1][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
+
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        jac[2 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF3[0][0][0][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+                        jac[0 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+        {
+            T temp0[4 * Nq] = {0};
+            for (int iq0 = 0; iq0 < Nq; ++iq0)
+                for (int ic0 = 0; ic0 < 2; ++ic0)
+                    for (int ic1 = 0; ic1 < 2; ++ic1)
+                        for (int ic2 = 0; ic2 < 2; ++ic2)
+                            temp0[4 * iq0 + 2 * ic1 + ic2] += FE_TF2[0][0][iq0][ic0] * coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
+            T temp1[2 * Nq * Nq] = {0};
+            for (int iq1 = 0; iq1 < Nq; ++iq1)
+                for (int ic1 = 0; ic1 < 2; ++ic1)
+                    for (int iq0 = 0; iq0 < Nq; ++iq0)
+                        for (int ic2 = 0; ic2 < 2; ++ic2)
+                            temp1[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF3[0][0][0][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
+            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                for (int ic2 = 0; ic2 < 2; ++ic2)
+                    for (int iq1 = 0; iq1 < Nq; ++iq1)
+                        for (int iq0 = 0; iq0 < Nq; ++iq0)
+                            jac[1 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF2[0][0][iq2][ic2] * temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+            T temp2[2 * Nq * Nq] = {0};
+            for (int iq1 = 0; iq1 < Nq; ++iq1)
+                for (int ic1 = 0; ic1 < 2; ++ic1)
+                    for (int iq0 = 0; iq0 < Nq; ++iq0)
+                        for (int ic2 = 0; ic2 < 2; ++ic2)
+                            temp2[2 * Nq * iq1 + 2 * iq0 + ic2] += FE_TF2[0][0][iq1][ic1] * temp0[4 * iq0 + 2 * ic1 + ic2];
+            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                for (int ic2 = 0; ic2 < 2; ++ic2)
+                    for (int iq1 = 0; iq1 < Nq; ++iq1)
+                        for (int iq0 = 0; iq0 < Nq; ++iq0)
+                            jac[2 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF3[0][0][0][ic2] * temp2[2 * Nq * iq1 + 2 * iq0 + ic2];
+        }
     }
 }
 
@@ -876,51 +856,48 @@ struct Operator
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
                     for (int id = 0; id < Nd * Nd; ++id)
                         temp0[Nd * Nd * iq0 + id] += FE_TF1[0][0][iq0][ic0] * w[8 + Nd * Nd * ic0 + id];
-            T temp1[Nq * Nq * Nd] = {0};
-            T temp0transp[Nq * Nd * Nd] = {0};
-            for (int ic1 = 0; ic1 < Nd; ++ic1)
-                for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    for (int ic2 = 0; ic2 < Nd; ++ic2)
-                        temp0transp[Nd * Nq * ic1 + Nd * iq0 + ic2] = temp0[Nd * Nd * iq0 + Nd * ic1 + ic2];
-            for (int iq1 = 0; iq1 < Nq; ++iq1)
+            {
+                T temp1[Nq * Nq * Nd] = {0};
+                T temp0transp[Nq * Nd * Nd] = {0};
                 for (int ic1 = 0; ic1 < Nd; ++ic1)
-                    for (int id = 0; id < Nd * Nq; ++id)
-                        temp1[Nd * Nq * iq1 + id] += FE_TF0[0][0][iq1][ic1] * temp0transp[Nd * Nq * ic1 + id];
-            T temp1transp[Nq * Nq * Nd] = {0};
-            for (int ic2 = 0; ic2 < Nd; ++ic2)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
-            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                        for (int ic2 = 0; ic2 < Nd; ++ic2)
+                            temp0transp[Nd * Nq * ic1 + Nd * iq0 + ic2] = temp0[Nd * Nd * iq0 + Nd * ic1 + ic2];
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int ic1 = 0; ic1 < Nd; ++ic1)
+                        for (int id = 0; id < Nd * Nq; ++id)
+                            temp1[Nd * Nq * iq1 + id] += FE_TF0[0][0][iq1][ic1] * temp0transp[Nd * Nq * ic1 + id];
+                T temp1transp[Nq * Nq * Nd] = {0};
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
-                    for (int id = 0; id < Nq * Nq; ++id)
-                        w1_d[cubNq + Nq * Nq * iq2 + id] += FE_TF1[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
-        }
-        {
-            T temp0[Nq * Nd * Nd] = {0};
-            for (int iq0 = 0; iq0 < Nq; ++iq0)
-                for (int ic0 = 0; ic0 < Nd; ++ic0)
-                    for (int id = 0; id < Nd * Nd; ++id)
-                        temp0[Nd * Nd * iq0 + id] += FE_TF1[0][0][iq0][ic0] * w[8 + Nd * Nd * ic0 + id];
-            T temp1[Nq * Nq * Nd] = {0};
-            T temp0transp[Nq * Nd * Nd] = {0};
-            for (int ic1 = 0; ic1 < Nd; ++ic1)
-                for (int iq0 = 0; iq0 < Nq; ++iq0)
+                    for (int iq1 = 0; iq1 < Nq; ++iq1)
+                        for (int iq0 = 0; iq0 < Nq; ++iq0)
+                            temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                for (int iq2 = 0; iq2 < Nq; ++iq2)
                     for (int ic2 = 0; ic2 < Nd; ++ic2)
-                        temp0transp[Nd * Nq * ic1 + Nd * iq0 + ic2] = temp0[Nd * Nd * iq0 + Nd * ic1 + ic2];
-            for (int iq1 = 0; iq1 < Nq; ++iq1)
+                        for (int id = 0; id < Nq * Nq; ++id)
+                            w1_d[cubNq + Nq * Nq * iq2 + id] += FE_TF1[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
+            }
+            {
+                T temp1[Nq * Nq * Nd] = {0};
+                T temp0transp[Nq * Nd * Nd] = {0};
                 for (int ic1 = 0; ic1 < Nd; ++ic1)
-                    for (int id = 0; id < Nd * Nq; ++id)
-                        temp1[Nd * Nq * iq1 + id] += FE_TF1[0][0][iq1][ic1] * temp0transp[Nd * Nq * ic1 + id];
-            T temp1transp[Nq * Nq * Nd] = {0};
-            for (int ic2 = 0; ic2 < Nd; ++ic2)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
-                        temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
-            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                        for (int ic2 = 0; ic2 < Nd; ++ic2)
+                            temp0transp[Nd * Nq * ic1 + Nd * iq0 + ic2] = temp0[Nd * Nd * iq0 + Nd * ic1 + ic2];
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int ic1 = 0; ic1 < Nd; ++ic1)
+                        for (int id = 0; id < Nd * Nq; ++id)
+                            temp1[Nd * Nq * iq1 + id] += FE_TF1[0][0][iq1][ic1] * temp0transp[Nd * Nq * ic1 + id];
+                T temp1transp[Nq * Nq * Nd] = {0};
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
-                    for (int id = 0; id < Nq * Nq; ++id)
-                        w1_d[2 * cubNq + Nq * Nq * iq2 + id] += FE_TF0[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
+                    for (int iq1 = 0; iq1 < Nq; ++iq1)
+                        for (int iq0 = 0; iq0 < Nq; ++iq0)
+                            temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                for (int iq2 = 0; iq2 < Nq; ++iq2)
+                    for (int ic2 = 0; ic2 < Nd; ++ic2)
+                        for (int id = 0; id < Nq * Nq; ++id)
+                            w1_d[2 * cubNq + Nq * Nq * iq2 + id] += FE_TF0[0][0][iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
+            }
         }
         T w0[Nq * Nq * Nq] = {0};
         {
