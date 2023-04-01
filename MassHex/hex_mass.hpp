@@ -251,10 +251,8 @@ struct Operator
         }
         T fw0[Nq * Nq * Nq] = {0};
         {
-            for (int iq0 = 0; iq0 < Nq; ++iq0)
-                for (int iq1 = 0; iq1 < Nq; ++iq1)
-                    for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        fw0[Nq * Nq * iq0 + Nq * iq1 + iq2] = w0[Nq * Nq * iq0 + Nq * iq1 + iq2] * detJ[Nq * Nq * iq0 + Nq * iq1 + iq2] * (weights[iq0] * weights[iq1] * weights[iq2]);
+            for (int iq = 0; iq < cubNq; iq++)
+                fw0[iq] = w0[iq] * detJ[iq];
         }
 
         T temp0[Nq * Nq * Nd] = {0};
