@@ -2,7 +2,7 @@
 #include <type_traits>          // for std::conditional_t
 #include <experimental/simd>    // for std::experimental
 
-using stdex = std::experimental;
+namespace stdex = std::experimental;
 
 template <std::size_t Precision, std::size_t BatchSize>
 struct VectorExtensions
