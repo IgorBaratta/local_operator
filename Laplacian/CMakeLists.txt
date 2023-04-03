@@ -4,7 +4,7 @@ set(PROJECT_NAME benchmark)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -g -Wall")
 
 add_executable(${PROJECT_NAME} main.cpp)
 add_compile_definitions(PRECISION=${PRECISION})
