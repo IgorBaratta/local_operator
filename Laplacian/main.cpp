@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     MPI_Comm comm = MPI_COMM_WORLD;
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
-
+    
     constexpr int bs = BLOCK_SIZE;
     constexpr int P = DEGREE;
 
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
     std::vector<T> A(num_batches * local_size);
 
     // Constants for cross element vectorization
-    T one = {1.};
-    T zero = {0.};
+    T one = {1};
+    T zero = {0};
 
     // Create geometry and coefficients
     std::vector<T> geometry = create_geometry<T>(num_batches, BATCH_SIZE, geom_size);

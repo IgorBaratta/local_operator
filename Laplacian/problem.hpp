@@ -27,7 +27,7 @@ void compute_geometry_tensor(const T *restrict coords, T G[3][3])
   detJ += J[2] * (J[3] * J[7] - J[6] * J[4]);
 
   // FLOPS : 9 * 5 * ip
-  T invJ[3][3] = {{0.0}};
+  T invJ[3][3] = {{0}};
   invJ[0][0] = (J[4] * J[8] - J[5] * J[7]);
   invJ[0][1] = (J[2] * J[7] - J[1] * J[8]);
   invJ[0][2] = (J[1] * J[5] - J[2] * J[4]);
@@ -2414,7 +2414,7 @@ struct Operator
 
   inline void apply(T *restrict A, const T *restrict w, const T *restrict coords)
   {
-    T G[3][3];
+    T G[3][3] = {{0}};
     compute_geometry_tensor(coords, G);
 
     // -------------------------------------------------------------------------------------------
