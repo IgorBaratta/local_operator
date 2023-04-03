@@ -6,9 +6,9 @@ export CXX_FLAGS="-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec
 export NUM_PROCS=48
 export BATCH_SIZE=1
 export PRECISION=8
-export BLOCK_SIZE=8
+export BLOCK_SIZE=1
 
-for DEGREE in 2 3 4 5 6 7 8
+for DEGREE in 1 2 3 4 5 6 7 8
 do
     rm -rf build
     cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
@@ -22,7 +22,7 @@ export BATCH_SIZE=8
 export PRECISION=8
 export BLOCK_SIZE=1
 
-for DEGREE in 2 3 4 5 6 7 8
+for DEGREE in 1 2 3 4 5 6 7 8
 do
     rm -rf build
     cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
