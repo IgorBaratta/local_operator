@@ -42,32 +42,31 @@ struct Operator<T, S, 1>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Qfad[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qfad[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Qfad[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Qfad[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Qfad[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Qfad[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Qfad[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Qfad[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Qfad[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Qfad[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Qfad[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Qfad[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Qfad[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Qfad[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Qfad[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Qfad[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Qfad[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Qfad[0][0][0][ic];
     }
-    T sp_fad[15];
+    T sp_fad[14];
     sp_fad[0] = J_c4 * J_c8;
     sp_fad[1] = J_c5 * J_c7;
-    sp_fad[2] = sp_fad[0] + -1 * sp_fad[1];
+    sp_fad[2] = sp_fad[0] - sp_fad[1];
     sp_fad[3] = J_c0 * sp_fad[2];
     sp_fad[4] = J_c5 * J_c6;
     sp_fad[5] = J_c3 * J_c8;
-    sp_fad[6] = sp_fad[4] + -1 * sp_fad[5];
+    sp_fad[6] = sp_fad[4] - sp_fad[5];
     sp_fad[7] = J_c1 * sp_fad[6];
     sp_fad[8] = sp_fad[3] + sp_fad[7];
     sp_fad[9] = J_c3 * J_c7;
     sp_fad[10] = J_c4 * J_c6;
-    sp_fad[11] = sp_fad[9] + -1 * sp_fad[10];
+    sp_fad[11] = sp_fad[9] - sp_fad[10];
     sp_fad[12] = J_c2 * sp_fad[11];
     sp_fad[13] = sp_fad[8] + sp_fad[12];
-    sp_fad[14] = sp_fad[13];
     for (int iq = 0; iq < 4; ++iq)
     {
       // Quadrature loop body setup for quadrature rule fad
@@ -76,7 +75,7 @@ struct Operator<T, S, 1>
       for (int ic = 0; ic < 4; ++ic)
         w0 += w[ic] * FE8_C0_Qfad[0][0][iq][ic];
       T sv_fad[1];
-      sv_fad[0] = sp_fad[14] * w0;
+      sv_fad[0] = sp_fad[13] * w0;
       const T fw0 = sv_fad[0] * weights_fad[iq];
       for (int i = 0; i < 4; ++i)
         A[i] += fw0 * FE8_C0_Qfad[0][0][iq][i];
@@ -127,32 +126,31 @@ struct Operator<T, S, 2>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Qd8a[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qd8a[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Qd8a[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Qd8a[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Qd8a[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Qd8a[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Qd8a[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Qd8a[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Qd8a[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Qd8a[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Qd8a[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Qd8a[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Qd8a[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Qd8a[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Qd8a[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Qd8a[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Qd8a[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Qd8a[0][0][0][ic];
     }
-    T sp_d8a[18];
+    T sp_d8a[14];
     sp_d8a[0] = J_c4 * J_c8;
     sp_d8a[1] = J_c5 * J_c7;
-    sp_d8a[2] = sp_d8a[0] + -1 * sp_d8a[1];
+    sp_d8a[2] = sp_d8a[0] - sp_d8a[1];
     sp_d8a[3] = J_c0 * sp_d8a[2];
     sp_d8a[4] = J_c5 * J_c6;
     sp_d8a[5] = J_c3 * J_c8;
-    sp_d8a[6] = sp_d8a[4] + -1 * sp_d8a[5];
+    sp_d8a[6] = sp_d8a[4] - sp_d8a[5];
     sp_d8a[7] = J_c1 * sp_d8a[6];
     sp_d8a[8] = sp_d8a[3] + sp_d8a[7];
     sp_d8a[9] = J_c3 * J_c7;
     sp_d8a[10] = J_c4 * J_c6;
-    sp_d8a[11] = sp_d8a[9] + -1 * sp_d8a[10];
+    sp_d8a[11] = sp_d8a[9] - sp_d8a[10];
     sp_d8a[12] = J_c2 * sp_d8a[11];
     sp_d8a[13] = sp_d8a[8] + sp_d8a[12];
-    sp_d8a[14] = sp_d8a[13];
     for (int iq = 0; iq < 14; ++iq)
     {
       // Quadrature loop body setup for quadrature rule d8a
@@ -161,7 +159,7 @@ struct Operator<T, S, 2>
       for (int ic = 0; ic < 10; ++ic)
         w0 += w[ic] * FE11_C0_Qd8a[0][0][iq][ic];
       T sv_d8a[1];
-      sv_d8a[0] = sp_d8a[14] * w0;
+      sv_d8a[0] = sp_d8a[13] * w0;
       const T fw0 = sv_d8a[0] * weights_d8a[iq];
       for (int i = 0; i < 10; ++i)
         A[i] += fw0 * FE11_C0_Qd8a[0][0][iq][i];
@@ -223,17 +221,17 @@ struct Operator<T, S, 3>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Q818[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q818[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Q818[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Q818[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Q818[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Q818[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Q818[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Q818[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Q818[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Q818[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Q818[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Q818[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Q818[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Q818[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Q818[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Q818[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Q818[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Q818[0][0][0][ic];
     }
-    T sp_818[18];
+    T sp_818[14];
     sp_818[0] = J_c4 * J_c8;
     sp_818[1] = J_c5 * J_c7;
     sp_818[2] = sp_818[0] - sp_818[1];
@@ -248,7 +246,6 @@ struct Operator<T, S, 3>
     sp_818[11] = sp_818[9] - sp_818[10];
     sp_818[12] = J_c2 * sp_818[11];
     sp_818[13] = sp_818[8] + sp_818[12];
-    sp_818[14] = sp_818[13];
     for (int iq = 0; iq < 24; ++iq)
     {
       // Quadrature loop body setup for quadrature rule 818
@@ -257,7 +254,7 @@ struct Operator<T, S, 3>
       for (int ic = 0; ic < 20; ++ic)
         w0 += w[ic] * FE11_C0_Q818[0][0][iq][ic];
       T sv_818[1];
-      sv_818[0] = sp_818[14] * w0;
+      sv_818[0] = sp_818[13] * w0;
       const T fw0 = sv_818[0] * weights_818[iq];
       for (int i = 0; i < 20; ++i)
         A[i] += fw0 * FE11_C0_Q818[0][0][iq][i];
@@ -339,15 +336,15 @@ struct Operator<T, S, 4>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Qa86[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qa86[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Qa86[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Qa86[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Qa86[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Qa86[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Qa86[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Qa86[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Qa86[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Qa86[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Qa86[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Qa86[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Qa86[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Qa86[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Qa86[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Qa86[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Qa86[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Qa86[0][0][0][ic];
     }
     T sp_a86[14];
     sp_a86[0] = J_c4 * J_c8;
@@ -483,15 +480,15 @@ struct Operator<T, S, 5>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Q1eb[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q1eb[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Q1eb[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Q1eb[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Q1eb[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Q1eb[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Q1eb[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Q1eb[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Q1eb[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Q1eb[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Q1eb[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Q1eb[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Q1eb[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Q1eb[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Q1eb[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Q1eb[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Q1eb[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Q1eb[0][0][0][ic];
     }
     T sp_1eb[14];
     sp_1eb[0] = J_c4 * J_c8;
@@ -675,15 +672,15 @@ struct Operator<T, S, 6>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Qa65[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qa65[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Qa65[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Qa65[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Qa65[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Qa65[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Qa65[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Qa65[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Qa65[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Qa65[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Qa65[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Qa65[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Qa65[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Qa65[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Qa65[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Qa65[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Qa65[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Qa65[0][0][0][ic];
     }
     T sp_a65[14];
     sp_a65[0] = J_c4 * J_c8;
@@ -923,15 +920,15 @@ struct Operator<T, S, 7>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Qc40[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Qc40[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Qc40[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Qc40[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Qc40[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Qc40[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Qc40[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Qc40[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Qc40[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Qc40[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Qc40[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Qc40[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Qc40[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Qc40[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Qc40[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Qc40[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Qc40[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Qc40[0][0][0][ic];
     }
     T sp_c40[14];
     sp_c40[0] = J_c4 * J_c8;
@@ -1722,17 +1719,17 @@ struct Operator<T, S, 8>
     T J_c2 = {0.0};
     for (int ic = 0; ic < 4; ++ic)
     {
-      J_c0 += coordinate_dofs[ic * 3] * FE9_C0_D100_Q17d[0][0][0][ic];
-      J_c4 += coordinate_dofs[ic * 3 + 1] * FE9_C1_D010_Q17d[0][0][0][ic];
-      J_c8 += coordinate_dofs[ic * 3 + 2] * FE9_C2_D001_Q17d[0][0][0][ic];
-      J_c5 += coordinate_dofs[ic * 3 + 1] * FE9_C2_D001_Q17d[0][0][0][ic];
-      J_c7 += coordinate_dofs[ic * 3 + 2] * FE9_C1_D010_Q17d[0][0][0][ic];
-      J_c1 += coordinate_dofs[ic * 3] * FE9_C1_D010_Q17d[0][0][0][ic];
-      J_c6 += coordinate_dofs[ic * 3 + 2] * FE9_C0_D100_Q17d[0][0][0][ic];
-      J_c3 += coordinate_dofs[ic * 3 + 1] * FE9_C0_D100_Q17d[0][0][0][ic];
-      J_c2 += coordinate_dofs[ic * 3] * FE9_C2_D001_Q17d[0][0][0][ic];
+      J_c0 += coordinate_dofs[ic] * FE9_C0_D100_Q17d[0][0][0][ic];
+      J_c4 += coordinate_dofs[ic  + 4] * FE9_C1_D010_Q17d[0][0][0][ic];
+      J_c8 += coordinate_dofs[ic  + 8]  * FE9_C2_D001_Q17d[0][0][0][ic];
+      J_c5 += coordinate_dofs[ic  + 4] * FE9_C2_D001_Q17d[0][0][0][ic];
+      J_c7 += coordinate_dofs[ic  + 8]  * FE9_C1_D010_Q17d[0][0][0][ic];
+      J_c1 += coordinate_dofs[ic] * FE9_C1_D010_Q17d[0][0][0][ic];
+      J_c6 += coordinate_dofs[ic  + 8]  * FE9_C0_D100_Q17d[0][0][0][ic];
+      J_c3 += coordinate_dofs[ic  + 4] * FE9_C0_D100_Q17d[0][0][0][ic];
+      J_c2 += coordinate_dofs[ic] * FE9_C2_D001_Q17d[0][0][0][ic];
     }
-    T sp_17d[13];
+    T sp_17d[14];
     sp_17d[0] = J_c4 * J_c8;
     sp_17d[1] = J_c5 * J_c7;
     sp_17d[2] = sp_17d[0] - sp_17d[1];
