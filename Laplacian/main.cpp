@@ -23,6 +23,10 @@
 #  error Polynomial degree not defined.
 #endif
 
+#ifndef BLOCK_SIZE
+#  error Block size not defined.
+#endif
+
 int main(int argc, char *argv[])
 {
 
@@ -37,7 +41,11 @@ int main(int argc, char *argv[])
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
-    Operator<T, S, DEGREE> op;
+    constexpr int bs = BLOCK_SIZE;
+    constexpr int P = DEGREE;
+
+
+    Operator<T, S, P, bs> op;
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
@@ -80,7 +88,7 @@ int main(int argc, char *argv[])
 
     if (mpi_rank == 0)
     {
-      std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
+      std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time << ", " << BLOCK_SIZE;
     }
   }
   MPI_Finalize();

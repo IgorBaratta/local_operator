@@ -53,7 +53,7 @@ void compute_geometry_tensor(const T *restrict coords, T G[3][3])
   G[2][2] = (invJ[0][2] * invJ[0][2] + invJ[1][2] * invJ[1][2] + invJ[2][2] * invJ[2][2]) / detJ;
 }
 
-template <typename T, typename S, int P>
+template <typename T, typename S, int P, int block_size>
 struct Operator
 {
   constexpr static std::size_t num_dofs = (P + 1) * (P + 2) * (P + 3) / 6;
@@ -2418,7 +2418,6 @@ struct Operator
     compute_geometry_tensor(coords, G);
 
     // -------------------------------------------------------------------------------------------
-    constexpr int block_size = 8;
     constexpr int num_blocks = Nq / block_size;
     constexpr int remainder = Nq % block_size;
     for (int b = 0; b < num_blocks; ++b)
