@@ -6,6 +6,7 @@
 #include <array>
 #include <chrono>
 #include <iostream>
+#include <numeric>
 #include <mpi.h>
 #include <vector>
 #include <cassert>
@@ -50,8 +51,10 @@ int main(int argc, char *argv[])
     std::vector<T> A(num_batches * local_size);
 
     // Constants for cross element vectorization
-    T one = {1.};
-    T zero = {0.};
+    T one = {1};
+    T zero = {0};
+
+    T reference = T(0.16666666666666666);
 
     // Create geometry and coefficients
     std::vector<T> geometry = create_geometry<T>(num_batches, BATCH_SIZE, geom_size);
@@ -60,8 +63,19 @@ int main(int argc, char *argv[])
     { e = one; };
     std::for_each(coefficients.begin(), coefficients.end(), set_);
 
-    std::array<T, op.num_dofs> Ae;
 
+    // Sanity check: Are we computing the correct values?
+    for (int batch = 0; batch < 100; batch++)
+    {
+      std::array<T, op.num_dofs> Ae = {0};
+      T *coeffs = coefficients.data() + batch * stride;
+      T *geo = geometry.data() + batch * geom_size;
+      op.apply(Ae.data(), coeffs, geo);
+      T acc = std::accumulate(Ae.begin(), Ae.end(), 0);
+      assert((acc - reference) * (acc - reference) < T(0.1));
+    }
+
+    std::array<T, op.num_dofs> Ae;
     double start = MPI_Wtime();
     for (int batch = 0; batch < num_batches; batch++)
     {

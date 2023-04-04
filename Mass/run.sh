@@ -2,7 +2,7 @@
 
 export CXX=g++
 export CXX_FLAGS="-march=native -Ofast"
-export BATCH_SIZE=1
+export BATCH_SIZE=4
 export PRECISION=8
 export NUM_PROCS=1
 
