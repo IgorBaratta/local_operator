@@ -133,8 +133,6 @@ struct Operator<T, S, 2>
     detJ -= J[1] * (J[3] * J[8] - J[6] * J[5]);
     detJ += J[2] * (J[3] * J[7] - J[6] * J[4]);
 
-    std::cout << detJ << "=================znzn\n";
-
     for (int iq = 0; iq < 14; ++iq)
     {
       // Quadrature loop body setup for quadrature rule d8a
