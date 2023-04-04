@@ -94,3 +94,13 @@
 4, 16, 119047, 6, 0.197239, '-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512'
 4, 16, 83333, 7, 0.26185, '-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512'
 4, 16, 60606, 8, 0.499044, '-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512'
+
+8, 1, 2500000, 1, 0.0989356, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 1000000, 2, 0.241745, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 500000, 3, 0.37287, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 285714, 4, 0.915947, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 178571, 5, 0.684701, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 119047, 6, 1.69788, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 83333, 7, 1.84355, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+8, 1, 60606, 8, 6.40921, '-Ofast -march=armv8.2-a+sve -msve-vector-bits=512'
+
