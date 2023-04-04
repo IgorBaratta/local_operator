@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     T zero = {0.};
 
     // Create geometry and coefficients
-    std::vector<T> geometry = create_geometry<T>(num_batches, BATCH_SIZE, geom_size);
+    std::vector<T> geometry = create_geometry<T, S>(num_batches, BATCH_SIZE, geom_size);
     std::vector<T> coefficients(num_batches * stride);
     auto set_ = [one](auto &e)
     { e = one; };

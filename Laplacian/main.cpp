@@ -1,7 +1,7 @@
 #include "types.hpp"
-
 #include "problem.hpp"
 #include "geometry.hpp"
+
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -12,19 +12,19 @@
 #include <any>
 
 #ifndef PRECISION
-#  error Floating point precision not defined.
+#error Floating point precision not defined.
 #endif
 
 #ifndef BATCH_SIZE
-#  error Batch size not defined.
+#error Batch size not defined.
 #endif
 
 #ifndef DEGREE
-#  error Polynomial degree not defined.
+#error Polynomial degree not defined.
 #endif
 
 #ifndef BLOCK_SIZE
-#  error Block size not defined.
+#error Block size not defined.
 #endif
 
 int main(int argc, char *argv[])
@@ -40,10 +40,9 @@ int main(int argc, char *argv[])
     MPI_Comm comm = MPI_COMM_WORLD;
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
-    
+
     constexpr int bs = BLOCK_SIZE;
     constexpr int P = DEGREE;
-
 
     Operator<T, S, P, bs> op;
 
@@ -62,7 +61,7 @@ int main(int argc, char *argv[])
     T zero = {0};
 
     // Create geometry and coefficients
-    std::vector<T> geometry = create_geometry<T>(num_batches, BATCH_SIZE, geom_size);
+    std::vector<T> geometry = create_geometry<T, S>(num_batches, BATCH_SIZE, geom_size);
     std::vector<T> coefficients(num_batches * stride);
     auto set_ = [one](auto &e)
     { e = one; };

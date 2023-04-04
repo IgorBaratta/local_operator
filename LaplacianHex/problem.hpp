@@ -346,7 +346,25 @@ struct Operator
     inline void apply(T *restrict A, const T *restrict w, const T *restrict coords)
     {
 #if DEGREE == 1
-#error "not implemented"
+        // Quadrature rules
+        static const S weights[4] = {0.1739274225687268, 0.3260725774312731, 0.326072577431273, 0.1739274225687268};
+        // Precomputed values of basis functions and precomputations
+        // FE* dimensions: [permutation][entities][points][dofs]
+        static const S FE_TF0[1][1][4][2] =
+            {{{{-1.0, 1.0},
+               {-1.0, 1.0},
+               {-1.0, 1.0},
+               {-1.0, 1.0}}}};
+        static const S FE_TF1[1][1][4][2] =
+            {{{{0.9305681557970263, 0.06943184420297366},
+               {0.6699905217924281, 0.3300094782075719},
+               {0.3300094782075719, 0.6699905217924281},
+               {0.06943184420297371, 0.9305681557970262}}}};
+        static const S FE_TF2[1][1][4][2] =
+            {{{{0.9305681557970263, 0.06943184420297366},
+               {0.6699905217924281, 0.3300094782075719},
+               {0.3300094782075719, 0.6699905217924281},
+               {0.06943184420297371, 0.9305681557970262}}}};
 #elif DEGREE == 2
         static const S weights[5] = {0.1184634425280946, 0.2393143352496833, 0.2844444444444444, 0.2393143352496833, 0.1184634425280946};
         // Precomputed values of basis functions and precomputations
@@ -945,9 +963,6 @@ struct Operator
         constexpr int Nd = P + 1;
         constexpr int cubNq = Nq * Nq * Nq;
 
-        T jac[9 * cubNq] = {0};
-        compute_jacobian<T, S, Nq>(jac, coords, FE_TF2);
-
         // Quadrature loop independent computations for quadrature rule 037
         // Quadrature loop body setup for quadrature rule 037
         // Varying computations for quadrature rule 037
@@ -1062,6 +1077,18 @@ struct Operator
         // -------------------------------------------------------------------------------------------
         constexpr int num_blocks = cubNq / block_size;
         constexpr int remainder = cubNq % block_size;
+
+        T jac[9 * cubNq] = {0};
+        compute_jacobian<T, S, Nq>(jac, coords, FE_TF2);
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                std::cout << jac[i * 3 + j] << " ";
+            }
+            std::cout << std::endl;
+        }
+
         T fw[3 * cubNq] = {0};
         for (int i = 0; i < num_blocks; i++)
         {

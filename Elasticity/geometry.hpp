@@ -2,7 +2,7 @@
 #include <array>
 #include <iostream>
 
-template <typename T>
+template <typename T, typename S>
 std::vector<T> create_geometry(int num_batches, int batch_size, int geom_size)
 {
     std::array<double, 24> coords = {0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0,
@@ -19,7 +19,7 @@ std::vector<T> create_geometry(int num_batches, int batch_size, int geom_size)
         for (int c = 0; c < num_batches; c++)
             for (int i = 0; i < geom_size; i++)
                 for (int j = 0; j < batch_size; j++)
-                    geometry[c * geom_size + i][j] = static_cast<T::value_type>(coords[i]);
+                    geometry[c * geom_size + i][j] = static_cast<S>(coords[i]);
     }
 
     return geometry;
