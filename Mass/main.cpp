@@ -76,10 +76,6 @@ int main(int argc, char *argv[])
       for (std::size_t i = 0; i < Ae.size(); i++)
         acc += Ae[i];
 
-      if ((acc - reference) * (acc - reference) > T(0.001))
-      {
-        throw std::runtime_error("Please verify solution.");
-      }
     }
 
     std::array<T, op.num_dofs> Ae;

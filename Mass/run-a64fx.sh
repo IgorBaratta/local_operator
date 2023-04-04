@@ -1,12 +1,12 @@
 #bin/bash
 
-export CXX=g++
-export CXX_FLAGS="-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512"
+export CXX=clang++
+export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
 
 export NUM_PROCS=48
-export BATCH_SIZE=1
+export BATCH_SIZE=8
 export PRECISION=8
-export BLOCK_SIZE=8
+export BLOCK_SIZE=1
 
 for DEGREE in 1 2 3 4 5 6 7 8
 do
@@ -18,9 +18,9 @@ do
 done
 
 export NUM_PROCS=48
-export BATCH_SIZE=8
+export BATCH_SIZE=1
 export PRECISION=8
-export BLOCK_SIZE=1
+export BLOCK_SIZE=8
 
 for DEGREE in 1 2 3 4 5 6 7 8
 do
