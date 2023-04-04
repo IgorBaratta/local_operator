@@ -38,7 +38,8 @@ int main(int argc, char *argv[])
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
-    Operator<T, S, DEGREE> op;
+    constexpr int P = DEGREE;
+    Operator<T, S, P> op;
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
