@@ -1,5 +1,6 @@
 #include "types.hpp"
-#include "hex_mass.hpp"
+#include "problem.hpp"
+
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -35,7 +36,8 @@ int main(int argc, char *argv[])
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
-    Operator<T, S, DEGREE> op;
+    constexpr int P = DEGREE;
+    Operator<T, S, P> op;
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
@@ -43,14 +45,15 @@ int main(int argc, char *argv[])
     constexpr int num_cells = global_size / op.num_dofs;
     constexpr int num_batches = num_cells / BATCH_SIZE;
 
-    constexpr int geom_size = (DEGREE + 2) * (DEGREE + 2) * (DEGREE + 2);
+    constexpr int geom_size = (P + 2) * (P + 2) * (P + 2);
 
     // Allocate and initialize data
     std::vector<T> A(num_batches * local_size);
 
     // Constants for cross element vectorization
-    T one = {1.};
-    T zero = {0.};
+    T one = {1};
+    T zero = {0};
+    T reference = T((P + 2) * (P + 2) * (P + 2));
 
     std::vector<T> geometry(geom_size * num_batches);
     std::vector<T> coefficients(num_batches * stride);
@@ -59,9 +62,27 @@ int main(int argc, char *argv[])
     std::for_each(coefficients.begin(), coefficients.end(), set_);
     std::for_each(geometry.begin(), geometry.end(), set_);
 
+    // Sanity check: Are we computing the correct values?
+    for (int batch = 0; batch < 100; batch++)
+    {
+      std::array<T, op.num_dofs> Ae = {0};
+      T *coeffs = coefficients.data() + batch * stride;
+      T *geo = geometry.data() + batch * geom_size;
+      op.apply(Ae.data(), coeffs, geo);
+
+      // Compute area of cell times number of quadrature points
+      T acc = 0;
+      for (std::size_t i = 0; i < Ae.size(); i++)
+        acc += Ae[i];
+
+      if ((acc - reference) * (acc - reference) > T(0.001))
+      {
+        throw std::runtime_error("Please verify solution.");
+      }
+    }
+
     // Working array
     std::array<T, op.num_dofs> Ae;
-
     double start = MPI_Wtime();
     for (int batch = 0; batch < num_batches; batch++)
     {
@@ -83,6 +104,7 @@ int main(int argc, char *argv[])
       std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
     }
   }
+
   MPI_Finalize();
 
   return 0;
