@@ -63,7 +63,6 @@ int main(int argc, char *argv[])
     { e = one; };
     std::for_each(coefficients.begin(), coefficients.end(), set_);
 
-
     // Sanity check: Are we computing the correct values?
     for (int batch = 0; batch < 100; batch++)
     {
@@ -71,8 +70,15 @@ int main(int argc, char *argv[])
       T *coeffs = coefficients.data() + batch * stride;
       T *geo = geometry.data() + batch * geom_size;
       op.apply(Ae.data(), coeffs, geo);
-      T acc = std::accumulate(Ae.begin(), Ae.end(), 0);
-      assert((acc - reference) * (acc - reference) < T(0.1));
+
+      T acc = 0;
+      for (std::size_t i = 0; i < Ae.size(); i++)
+        acc += Ae[i];
+
+      if ((acc - reference) * (acc - reference) > T(0.001))
+      {
+        throw std::runtime_error("Please verify solution.");
+      }
     }
 
     std::array<T, op.num_dofs> Ae;
