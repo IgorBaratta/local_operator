@@ -1,9 +1,12 @@
 #bin/bash
 
-export CXX=g++
-export CC=gcc
-export CXX_FLAGS="-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512"
-export OUTPUT="out-a64fx-gcc.txt"
+
+# repeat for clang
+
+export CXX=clang++
+export CC=clang
+export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
+export OUTPUT="out-a64fx-clang.txt"
 
 export NUM_PROCS=48
 export BATCH_SIZE=1
@@ -18,6 +21,8 @@ do
     mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
     echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
 done
+
+eubfrfef
 
 export NUM_PROCS=48
 export BATCH_SIZE=8
@@ -61,12 +66,12 @@ do
     echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
 done
 
-# repeat for clang
+# repeat for gcc
 
-export CXX=clang++
-export CC=clang
-export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
-export OUTPUT="out-a64fx-clang.txt"
+export CXX=g++
+export CC=gcc
+export CXX_FLAGS="-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512"
+export OUTPUT="out-a64fx-gcc.txt"
 
 export NUM_PROCS=48
 export BATCH_SIZE=1
