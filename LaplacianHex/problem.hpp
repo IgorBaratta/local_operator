@@ -1102,26 +1102,6 @@ struct Operator
         T jac[9 * cubNq] = {0};
         compute_jacobian<T, S, Nq>(jac, coords, FE_TF2);
 
-#ifdef PRINTOUT
-        for (int iq = 0; iq < cubNq; iq++)
-        {
-            std::cout << w1_d[iq] << std::endl;
-            std::cout << w1_d[iq + cubNq] << std::endl;
-            std::cout << w1_d[iq + 2 * cubNq] << std::endl;
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    int offset = iq + cubNq * (i * 3 + j);
-                    std::cout << jac[offset] << " ";
-                }
-                std::cout << std::endl;
-            }
-            std::cout << "---------\n";
-        }
-#endif
-
         T fw[3 * cubNq] = {0};
         for (int i = 0; i < num_blocks; i++)
         {
@@ -1131,7 +1111,7 @@ struct Operator
         if constexpr (remainder > 0)
         {
             int offset = block_size * num_blocks;
-            transform<remainder, T, cubNq>(jac + offset, w1_d + 3 * offset, w0 + offset, fw + offset);
+            transform<remainder, T, cubNq>(jac + offset, w1_d + offset, w0 + offset, fw + offset);
         }
 
         // -------------------------------------------------------------------------------------------
