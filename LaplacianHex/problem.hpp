@@ -1102,6 +1102,7 @@ struct Operator
         T jac[9 * cubNq] = {0};
         compute_jacobian<T, S, Nq>(jac, coords, FE_TF2);
 
+#ifdef PRINTOUT
         for (int iq = 0; iq < cubNq; iq++)
         {
             std::cout << w1_d[iq] << std::endl;
@@ -1119,6 +1120,7 @@ struct Operator
             }
             std::cout << "---------\n";
         }
+#endif
 
         T fw[3 * cubNq] = {0};
         for (int i = 0; i < num_blocks; i++)
