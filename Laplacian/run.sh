@@ -10,7 +10,7 @@ export BATCH_SIZE=1
 export PRECISION=8
 export BLOCK_SIZE=4
 
-for DEGREE in 8
+for DEGREE in 1 2 3 4 5 6 7 8
 do
     rm -rf build
     cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
