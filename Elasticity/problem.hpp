@@ -25,15 +25,15 @@ void compute_geometry_tensor(const T *restrict coords, T K[3][3])
            J[0][2] * (J[1][0] * J[2][1] - J[1][1] * J[2][0]);  // 1 additions, 3 multiplication
 
   // FLOPS : 9 * 4
-  K[0][0] = (J[1][1] * J[2][2] - J[1][2] * J[2][1]) / detJ;
-  K[0][1] = (J[0][2] * J[2][1] - J[0][1] * J[2][2]) / detJ;
-  K[0][2] = (J[0][1] * J[1][2] - J[0][2] * J[1][1]) / detJ;
-  K[1][0] = (J[1][2] * J[2][0] - J[1][0] * J[2][2]) / detJ;
-  K[1][1] = (J[0][0] * J[2][2] - J[0][2] * J[2][0]) / detJ;
-  K[1][2] = (J[0][2] * J[1][0] - J[0][0] * J[1][2]) / detJ;
-  K[2][0] = (J[1][0] * J[2][1] - J[1][1] * J[2][0]) / detJ;
-  K[2][1] = (J[0][1] * J[2][0] - J[0][0] * J[2][1]) / detJ;
-  K[2][2] = (J[0][0] * J[1][1] - J[0][1] * J[1][0]) / detJ;
+  K[0][0] = (J[1][1] * J[2][2] - J[1][2] * J[2][1]) / detJ; // 1 additions, 3 multiplication
+  K[0][1] = (J[0][2] * J[2][1] - J[0][1] * J[2][2]) / detJ; // 1 additions, 3 multiplication
+  K[0][2] = (J[0][1] * J[1][2] - J[0][2] * J[1][1]) / detJ; // 1 additions, 3 multiplication
+  K[1][0] = (J[1][2] * J[2][0] - J[1][0] * J[2][2]) / detJ; // 1 additions, 3 multiplication
+  K[1][1] = (J[0][0] * J[2][2] - J[0][2] * J[2][0]) / detJ; // 1 additions, 3 multiplication
+  K[1][2] = (J[0][2] * J[1][0] - J[0][0] * J[1][2]) / detJ; // 1 additions, 3 multiplication
+  K[2][0] = (J[1][0] * J[2][1] - J[1][1] * J[2][0]) / detJ; // 1 additions, 3 multiplication
+  K[2][1] = (J[0][1] * J[2][0] - J[0][0] * J[2][1]) / detJ; // 1 additions, 3 multiplication
+  K[2][2] = (J[0][0] * J[1][1] - J[0][1] * J[1][0]) / detJ; // 1 additions, 3 multiplication
 }
 
 template <typename T, typename S, int P>
