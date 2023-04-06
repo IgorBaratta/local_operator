@@ -1,7 +1,7 @@
 #include "types.hpp"
-
 #include "problem.hpp"
 #include "geometry.hpp"
+
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -12,15 +12,19 @@
 #include <any>
 
 #ifndef PRECISION
-#  error Floating point precision not defined.
+#error Floating point precision not defined.
 #endif
 
 #ifndef BATCH_SIZE
-#  error Batch size not defined.
+#error Batch size not defined.
 #endif
 
 #ifndef DEGREE
-#  error Polynomial degree not defined.
+#error Polynomial degree not defined.
+#endif
+
+#ifndef BLOCK_SIZE
+#error Block size not defined.
 #endif
 
 int main(int argc, char *argv[])
@@ -28,7 +32,7 @@ int main(int argc, char *argv[])
 
   using T = VectorExtensions<PRECISION, BATCH_SIZE>::T;
   using S = VectorExtensions<PRECISION, BATCH_SIZE>::S;
-  constexpr int global_size = 100000000;
+  constexpr int global_size = 10000000;
 
   MPI_Init(&argc, &argv);
   {
@@ -37,11 +41,14 @@ int main(int argc, char *argv[])
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
-    Operator<T, S, DEGREE> op;
+    constexpr int bs = BLOCK_SIZE;
+    constexpr int P = DEGREE;
+
+    Operator<T, S, P, bs> op;
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
-    constexpr int stride = op.num_dofs;
+    constexpr int stride = op.input_size;
     constexpr int num_cells = global_size / op.num_dofs;
     constexpr int num_batches = num_cells / BATCH_SIZE;
     constexpr int geom_size = 4 * 3;
@@ -50,8 +57,8 @@ int main(int argc, char *argv[])
     std::vector<T> A(num_batches * local_size);
 
     // Constants for cross element vectorization
-    T one = {1.};
-    T zero = {0.};
+    T one = {1};
+    T zero = {0};
 
     // Create geometry and coefficients
     std::vector<T> geometry = create_geometry<T, S>(num_batches, BATCH_SIZE, geom_size);
@@ -80,7 +87,7 @@ int main(int argc, char *argv[])
 
     if (mpi_rank == 0)
     {
-      std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
+      std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time << ", " << BLOCK_SIZE;
     }
   }
   MPI_Finalize();

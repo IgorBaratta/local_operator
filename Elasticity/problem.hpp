@@ -36,17 +36,18 @@ void compute_geometry_tensor(const T *restrict coords, T K[3][3], T &detJ)
   K[2][2] = (J[0][0] * J[1][1] - J[0][1] * J[1][0]) / detJ; // 1 additions, 3 multiplication
 }
 
-template <typename T, typename S, int P>
+template <typename T, typename S, int P, int block_size>
 struct Operator
 {
   constexpr static int num_dofs = (P + 1) * (P + 2) * (P + 3) / 2;
+  constexpr static int input_size = num_dofs + 4;
   constexpr static int Nc = (P + 1) * (P + 2) * (P + 3) / 6;
 
   inline void apply(T *restrict A, const T *restrict w, const T *restrict coords)
   {
     T K[3][3] = {{0}};
     T detJ = {0};
-    compute_geometry_tensor(coords, G, detJ);
+    compute_geometry_tensor(coords, K, detJ);
 
     // -------------------------------------------------------------------------------------------
     constexpr int num_blocks = Nq / block_size;
@@ -71,6 +72,7 @@ struct Operator
 
     // Restrict finite element coefficients to values values at Np quadrature points
     // Note: Auto-vectorize across degrees of freedom.
+    // Np * 9 additions + Np * 9  multiplications
     for (int ip = 0; ip < Np; ip++)
     {
       for (int ic = 0; ic < Nc; ++ic)
@@ -96,6 +98,7 @@ struct Operator
     }
 
     T t0[3][3][Np] = {0};
+    // Note: Auto-vectorize across quadrature points.
     for (int ip = 0; ip < Np; ip++)
     {
       T temp[3][3] = {{0}};
@@ -110,59 +113,52 @@ struct Operator
       temp[2][1] = K[0][2] * w1[0][1][ip] + K[1][2] * w1[1][1][ip] + K[2][2] * w1[2][1][ip]; // 2 additions, 3 multiplications
       temp[2][2] = K[0][2] * w1[0][2][ip] + K[1][2] * w1[1][2][ip] + K[2][2] * w1[2][2][ip]; // 2 additions, 3 multiplications
 
-      t0[0][0][ip] = temp[0][0] + temp[0][0]; // 1 additions
-      t0[0][1][ip] = temp[0][1] + temp[1][0]; // 1 additions
-      t0[0][2][ip] = temp[0][2] + temp[2][0]; // 1 additions
-      t0[1][0][ip] = temp[1][0] + temp[0][1]; // 1 additions
-      t0[1][1][ip] = temp[1][1] + temp[1][1]; // 1 additions
-      t0[1][2][ip] = temp[1][2] + temp[2][1]; // 1 additions
-      t0[2][0][ip] = temp[2][0] + temp[0][2]; // 1 additions
-      t0[2][1][ip] = temp[2][1] + temp[1][2]; // 1 additions
-      t0[2][2][ip] = temp[2][2] + temp[2][2]; // 1 additions
+      t0[0][0][ip] = (temp[0][0] + temp[0][0]) / 2; // 1 additions
+      t0[0][1][ip] = (temp[0][1] + temp[1][0]) / 2; // 1 additions
+      t0[0][2][ip] = (temp[0][2] + temp[2][0]) / 2; // 1 additions
+      t0[1][0][ip] = (temp[1][0] + temp[0][1]) / 2; // 1 additions
+      t0[1][1][ip] = (temp[1][1] + temp[1][1]) / 2; // 1 additions
+      t0[1][2][ip] = (temp[1][2] + temp[2][1]) / 2; // 1 additions
+      t0[2][0][ip] = (temp[2][0] + temp[0][2]) / 2; // 1 additions
+      t0[2][1][ip] = (temp[2][1] + temp[1][2]) / 2; // 1 additions
+      t0[2][2][ip] = (temp[2][2] + temp[2][2]) / 2; // 1 additions
     }
 
     T t1[3][3][Np] = {0};
+    // Note: Auto-vectorize across quadrature points.
     for (int ip = 0; ip < Np; ip++)
     {
-      t1[0][0][ip] = (K[0][0] * t0[0][0][ip] + K[1][0] * t0[1][0][ip] + K[2][0] * t0[2][0][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[0][1][ip] = (K[0][0] * t0[0][1][ip] + K[1][0] * t0[1][1][ip] + K[2][0] * t0[2][1][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[0][2][ip] = (K[0][0] * t0[0][2][ip] + K[1][0] * t0[1][2][ip] + K[2][0] * t0[2][2][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[1][0][ip] = (K[0][1] * t0[0][0][ip] + K[1][1] * t0[1][0][ip] + K[2][1] * t0[2][0][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[1][1][ip] = (K[0][1] * t0[0][1][ip] + K[1][1] * t0[1][1][ip] + K[2][1] * t0[2][1][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[1][2][ip] = (K[0][1] * t0[0][2][ip] + K[1][1] * t0[1][2][ip] + K[2][1] * t0[2][2][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[2][0][ip] = (K[0][2] * t0[0][0][ip] + K[1][2] * t0[1][0][ip] + K[2][2] * t0[2][0][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[2][1][ip] = (K[0][2] * t0[0][1][ip] + K[1][2] * t0[1][1][ip] + K[2][2] * t0[2][1][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
-      t1[2][2][ip] = (K[0][2] * t0[0][2][ip] + K[1][2] * t0[1][2][ip] + K[2][2] * t0[2][2][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      T temp[3][3] = {{0}};
+      temp[0][0] = (K[0][0] * t0[0][0][ip] + K[1][0] * t0[1][0][ip] + K[2][0] * t0[2][0][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[0][1] = (K[0][0] * t0[0][1][ip] + K[1][0] * t0[1][1][ip] + K[2][0] * t0[2][1][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[0][2] = (K[0][0] * t0[0][2][ip] + K[1][0] * t0[1][2][ip] + K[2][0] * t0[2][2][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[1][0] = (K[0][1] * t0[0][0][ip] + K[1][1] * t0[1][0][ip] + K[2][1] * t0[2][0][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[1][1] = (K[0][1] * t0[0][1][ip] + K[1][1] * t0[1][1][ip] + K[2][1] * t0[2][1][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[1][2] = (K[0][1] * t0[0][2][ip] + K[1][1] * t0[1][2][ip] + K[2][1] * t0[2][2][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[2][0] = (K[0][2] * t0[0][0][ip] + K[1][2] * t0[1][0][ip] + K[2][2] * t0[2][0][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[2][1] = (K[0][2] * t0[0][1][ip] + K[1][2] * t0[1][1][ip] + K[2][2] * t0[2][1][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+      temp[2][2] = (K[0][2] * t0[0][2][ip] + K[1][2] * t0[1][2][ip] + K[2][2] * t0[2][2][ip]) * weights[offset + ip] * w0[ip]; // 2 additions, 3 multiplications
+
+      t1[0][0][ip] = (temp[0][0] + temp[0][0]) / 2; // 1 additions, 1 multiplications
+      t1[0][1][ip] = (temp[0][1] + temp[1][0]) / 2; // 1 additions, 1 multiplications
+      t1[0][2][ip] = (temp[0][2] + temp[2][0]) / 2; // 1 additions, 1 multiplications
+      t1[1][0][ip] = (temp[1][0] + temp[0][1]) / 2; // 1 additions, 1 multiplications
+      t1[1][1][ip] = (temp[1][1] + temp[1][1]) / 2; // 1 additions, 1 multiplications
+      t1[1][2][ip] = (temp[1][2] + temp[2][1]) / 2; // 1 additions, 1 multiplications
+      t1[2][0][ip] = (temp[2][0] + temp[0][2]) / 2; // 1 additions, 1 multiplications
+      t1[2][1][ip] = (temp[2][1] + temp[1][2]) / 2; // 1 additions, 1 multiplications
+      t1[2][2][ip] = (temp[2][2] + temp[2][2]) / 2; // 1 additions, 1 multiplications
     }
 
-    T fw1[3][3][Nc] = {0};
-    // Np * (9 + 18) additions + Np * 9  multiplications
+    // Np * 9 additions + Np * 9  multiplications
     for (int ip = 0; ip < Np; ip++)
     {
+      // Note: Auto-vectorize across degrees of freedom
       for (int ic = 0; ic < Nc; ++ic)
       {
-        fw1[0][0][ic] += t1[0][0][ip] * D0[offset + ip][ic]; // 1 additions, 1 multiplications
-        fw1[0][1][ic] += t1[0][1][ip] * D0[offset + ip][ic]; // 1 additions, 1 multiplications
-        fw1[0][2][ic] += t1[0][2][ip] * D0[offset + ip][ic]; // 1 additions, 1 multiplications
-      }
-      for (int ic = 0; ic < Nc; ++ic)
-      {
-        fw1[1][0][ic] += t1[1][0][ip] * D1[offset + ip][ic]; // 1 additions, 1 multiplications
-        fw1[1][1][ic] += t1[1][1][ip] * D1[offset + ip][ic]; // 1 additions, 1 multiplications
-        fw1[1][2][ic] += t1[1][2][ip] * D1[offset + ip][ic]; // 1 additions, 1 multiplications
-      }
-      for (int ic = 0; ic < Nc; ++ic)
-      {
-        fw1[2][0][ic] += t1[2][0][ip] * D2[offset + ip][ic]; // 1 additions, 1 multiplications
-        fw1[2][1][ic] += t1[2][1][ip] * D2[offset + ip][ic]; // 1 additions, 1 multiplications
-        fw1[2][2][ic] += t1[2][2][ip] * D2[offset + ip][ic]; // 1 additions, 1 multiplications
-      }
-
-      for (int ic = 0; ic < Nc; ++ic)
-      {
-        A[ic] += fw1[0][0][ic] + fw1[0][0][ic] + fw1[1][0][ic] + fw1[0][1][ic] + fw1[2][0][ic] + fw1[0][2][ic];          // 6 additions
-        A[ic + Nc] += fw1[0][1][ic] + fw1[1][0][ic] + fw1[1][1][ic] + fw1[1][1][ic] + fw1[2][1][ic] + fw1[1][2][ic];     // 6 additions
-        A[ic + 2 * Nc] += fw1[0][2][ic] + fw1[2][0][ic] + fw1[1][2][ic] + fw1[2][1][ic] + fw1[2][2][ic] + fw1[2][2][ic]; // 6 additions
+        A[ic] += t1[0][0][ip] * D0[offset + ip][ic] + t1[1][0][ip] * D1[offset + ip][ic] + t1[2][0][ip] * D2[offset + ip][ic];          // 3 additions, 3 multiplications
+        A[ic + Nc] += t1[0][1][ip] * D0[offset + ip][ic] + t1[1][1][ip] * D1[offset + ip][ic] + t1[2][1][ip] * D2[offset + ip][ic];     // 3 additions, 3 multiplications
+        A[ic + 2 * Nc] += t1[0][2][ip] * D0[offset + ip][ic] + t1[1][2][ip] * D1[offset + ip][ic] + t1[2][2][ip] * D2[offset + ip][ic]; // 3 additions, 3 multiplications
       }
     }
   }
@@ -203,7 +199,7 @@ struct Operator
   static constexpr S weights[15] = {0.03028367809708918, 0.006026785714285717, 0.006026785714285717, 0.006026785714285717, 0.006026785714285717, 0.01164524908602897, 0.01164524908602897, 0.01164524908602897, 0.01164524908602897, 0.01094914156138645, 0.01094914156138645, 0.01094914156138645, 0.01094914156138645, 0.01094914156138645, 0.01094914156138645};
   // Precomputed values of basis functions and precomputations
   // FE* dimensions: [permutation][entities][points][dofs]
-  static constexpr S D0[15][20] =
+  static constexpr S D2[15][20] =
       {{0.4999999999999999, 0.0, 0.0, -0.4999999999999999, -0.1931356214843423, 0.505635621484342, -0.1931356214843425, 0.5056356214843425, 0.0, 0.0, -0.6987712429686845, 0.6987712429686843, -0.5056356214843424, 0.1931356214843419, -0.5056356214843419, 0.193135621484342, 1.6875, 0.0, 0.0, -1.6875},
        {0.6666666666666669, 0.0, 0.0, -0.6666666666666666, 0.2122033395833916, 1.454463327083275, 0.0, 0.0, 0.0, 0.0, -1.242259987499884, 1.242259987499883, -1.454463327083276, -0.212203339583392, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
        {-1.333333333333332, -0.1111111111111113, -0.111111111111111, -0.777777777777778, 0.2122033395833907, 1.454463327083276, 0.2122033395833915, 1.454463327083276, 0.0, 0.0, 1.454463327083274, 0.2122033395833926, 1.454463327083274, 0.2122033395833915, 1.454463327083273, 0.2122033395833923, 2.999999999999999, -2.999999999999997, -3.0, -3.0},
