@@ -513,7 +513,7 @@ struct Operator
             if constexpr (remainder > 0)
             {
                 int offset = block_size * num_blocks;
-                transform_precompute<remainder, T, cubNq>(w1_d + offset, w0 + offset, geom + offset, w + offset);
+                transform_precompute<remainder, T, cubNq>(w1_d + offset, w0 + offset, geom + offset, fw + offset);
             }
         }
         // Compute jacobian on the fly
