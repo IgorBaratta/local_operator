@@ -1,13 +1,13 @@
 #bin/bash
 
-export CXX=g++
+export CXX=clang++-15
 export CXX_FLAGS="-march=native -Ofast"
 
-export BATCH_SIZE=8
+export BATCH_SIZE=4
 export BLOCK_SIZE=1
 export PRECISION=8
 export NUM_PROCS=1
-export PRECOMPUTE=0
+export PRECOMPUTE=1
 
 for DEGREE in {1..15}
 do
