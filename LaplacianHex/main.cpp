@@ -80,20 +80,7 @@ int main(int argc, char *argv[])
                   { e = count < num_nodes? T(1) : T(count-num_nodes);
                     count = (count + 1) % (nd + num_nodes); });
 
-    // Sanity check: Are we computing the correct values?
-    for (int batch = 0; batch < 1; batch++)
-    {
-      std::array<T, op.num_dofs> Ae = {0};
-      T *coeffs = coefficients.data() + batch * stride;
-
-      T *geo = geometry.data() + batch * geom_size;
-      op.apply(Ae.data(), coeffs, geo);
-
-      T acc = 0;
-      for (std::size_t i = 0; i < Ae.size(); i++)
-        acc += Ae[i];
-      check_solution<T, S>(acc, reference);
-    }
+    MPI_Barrier(comm);
 
     std::array<T, op.num_dofs> Ae;
     double start = MPI_Wtime();
@@ -111,6 +98,15 @@ int main(int argc, char *argv[])
 
     double max_time = 0;
     MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);
+
+    // Sanity check: Are we computing the correct values?
+    for (int batch = 0; batch < num_batches; batch++)
+    {
+      T acc = 0;
+      for (int i = 0; i < local_size; i++)
+        acc += A[i + batch * local_size];
+      check_solution<T, S>(acc, reference);
+    }
 
     if (mpi_rank == 0)
     {
