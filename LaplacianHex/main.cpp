@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
   using T = VectorExtensions<precision, batch_size>::T;
   using S = VectorExtensions<precision, batch_size>::S;
-  constexpr int global_size = 10000000;
+  constexpr int global_size = precompute ? 5000000: 10000000;
 
   MPI_Init(&argc, &argv);
   {
@@ -67,21 +67,16 @@ int main(int argc, char *argv[])
     T one = {1};
     T zero = {0};
     T reference = {0};
-    auto set_ = [one](auto &e)
-    { e = one; };
 
     // Create geometry and coefficients
     std::vector<T> geometry(geom_size * num_batches);
     if (precompute)
-    {
-      std::for_each(geometry.begin(), geometry.end(), set_);
-    }
+      std::fill(geometry.begin(), geometry.end(), one);
     else
-    {
       geometry = create_geometry<T, S>(num_batches, BATCH_SIZE, geom_size);
-    }
+
     std::vector<T> coefficients(num_batches * stride);
-    std::for_each(coefficients.begin(), coefficients.end(), set_);
+    std::fill(coefficients.begin(), coefficients.end(), one);
 
     // Sanity check: Are we computing the correct values?
     for (int batch = 0; batch < 100; batch++)
