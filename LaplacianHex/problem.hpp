@@ -320,6 +320,11 @@ template <int Np, typename T, int cubNq>
 static inline void transform(const T *restrict jac, const T *restrict w1_d, const T *restrict w0, T *restrict fw)
 {
 
+    // std::cout << jac[0] << " " << jac[cubNq] << " " << jac[2 * cubNq] << std::endl;
+    // std::cout << jac[3 * cubNq] << " " << jac[4 * cubNq] << " " << jac[5 * cubNq] << std::endl;
+    // std::cout << jac[6 * cubNq] << " " << jac[7 * cubNq] << " " << jac[8 * cubNq] << std::endl;
+    // std::cout << "============\n\n";
+
     // Compute determinant of the jacobian
     // FLOPS : 4 * 3 * Np
     T detJ[Np] = {0};
@@ -335,16 +340,22 @@ static inline void transform(const T *restrict jac, const T *restrict w1_d, cons
     T invJ[3][3][Np] = {{{0.0}}};
     for (int ip = 0; ip < Np; ip++)
     {
-        invJ[0][0][ip] = (jac[4 * cubNq + ip] * jac[8 * cubNq + ip] - jac[5 * cubNq + ip] * jac[7 * cubNq + ip]);
-        invJ[0][1][ip] = (jac[2 * cubNq + ip] * jac[7 * cubNq + ip] - jac[cubNq + ip] * jac[8 * cubNq + ip]);
-        invJ[0][2][ip] = (jac[cubNq + ip] * jac[5 * cubNq + ip] - jac[2 * cubNq + ip] * jac[4 * cubNq + ip]);
-        invJ[1][0][ip] = (jac[5 * cubNq + ip] * jac[6 * cubNq + ip] - jac[3 * cubNq + ip] * jac[8 * cubNq + ip]);
-        invJ[1][1][ip] = (jac[ip] * jac[8 * cubNq + ip] - jac[2 * cubNq + ip] * jac[6 * cubNq + ip]);
-        invJ[1][2][ip] = (jac[2 * cubNq + ip] * jac[3 * cubNq + ip] - jac[ip] * jac[5 * cubNq + ip]);
-        invJ[2][0][ip] = (jac[3 * cubNq + ip] * jac[7 * cubNq + ip] - jac[4 * cubNq + ip] * jac[6 * cubNq + ip]);
-        invJ[2][1][ip] = (jac[cubNq + ip] * jac[6 * cubNq + ip] - jac[ip] * jac[7 * cubNq + ip]);
-        invJ[2][2][ip] = (jac[ip] * jac[4 * cubNq + ip] - jac[cubNq + ip] * jac[3 * cubNq + ip]);
+        invJ[0][0][ip] = (jac[4 * cubNq + ip] * jac[8 * cubNq + ip] - jac[5 * cubNq + ip] * jac[7 * cubNq + ip]) / detJ[ip];
+        invJ[0][1][ip] = (jac[2 * cubNq + ip] * jac[7 * cubNq + ip] - jac[cubNq + ip] * jac[8 * cubNq + ip]) / detJ[ip];
+        invJ[0][2][ip] = (jac[cubNq + ip] * jac[5 * cubNq + ip] - jac[2 * cubNq + ip] * jac[4 * cubNq + ip]) / detJ[ip];
+        invJ[1][0][ip] = (jac[5 * cubNq + ip] * jac[6 * cubNq + ip] - jac[3 * cubNq + ip] * jac[8 * cubNq + ip]) / detJ[ip];
+        invJ[1][1][ip] = (jac[ip] * jac[8 * cubNq + ip] - jac[2 * cubNq + ip] * jac[6 * cubNq + ip]) / detJ[ip];
+        invJ[1][2][ip] = (jac[2 * cubNq + ip] * jac[3 * cubNq + ip] - jac[ip] * jac[5 * cubNq + ip]) / detJ[ip];
+        invJ[2][0][ip] = (jac[3 * cubNq + ip] * jac[7 * cubNq + ip] - jac[4 * cubNq + ip] * jac[6 * cubNq + ip]) / detJ[ip];
+        invJ[2][1][ip] = (jac[cubNq + ip] * jac[6 * cubNq + ip] - jac[ip] * jac[7 * cubNq + ip]) / detJ[ip];
+        invJ[2][2][ip] = (jac[ip] * jac[4 * cubNq + ip] - jac[cubNq + ip] * jac[3 * cubNq + ip]) / detJ[ip];
     }
+
+    // std::cout << "Jacobian inverse \n";
+    // std::cout << invJ[0][0][0] << " " << invJ[0][1][0] << " " << invJ[0][2][0] << std::endl;
+    // std::cout << invJ[1][0][0] << " " << invJ[1][1][0] << " " << invJ[1][2][0] << std::endl;
+    // std::cout << invJ[2][0][0] << " " << invJ[2][1][0] << " " << invJ[2][2][0] << std::endl;
+    // std::cout << "============\n\n";
 
     // Compute t = K * w_d
     // FLOPS : 3 * 5 * Np

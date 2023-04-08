@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
   constexpr int precision = PRECISION;
   constexpr int batch_size = BATCH_SIZE;
   constexpr int P = DEGREE;
-  constexpr int cubNq = (P + 3) * (P + 3) * (P + 3);
-  constexpr int bs = BLOCK_SIZE > 0 ? BLOCK_SIZE : cubNq;
+  constexpr int cub_nq = (P + 3) * (P + 3) * (P + 3);
+  constexpr int bs = BLOCK_SIZE > 0 ? BLOCK_SIZE : cub_nq;
 
   constexpr bool precompute = PRECOMPUTE;
 
@@ -56,41 +56,42 @@ int main(int argc, char *argv[])
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
-    constexpr int stride = op.num_dofs + 4;
+    constexpr int num_nodes = 8;
+    constexpr int stride = op.num_dofs + num_nodes;
     constexpr int num_cells = global_size / op.num_dofs;
     constexpr int num_batches = num_cells / batch_size;
-    constexpr int geom_size = precompute ? cubNq * 6 : 8 * 3;
+    constexpr int geom_size = precompute ? cub_nq * 6 : num_nodes * 3;
 
     // Allocate and initialize data
     std::vector<T> A(num_batches * local_size);
 
     // Constants for cross element vectorization
-    T one = {1};
     T zero = {0};
     T reference = {0};
 
     // Create geometry and coefficients
-    std::vector<T> geometry(geom_size * num_batches);
-    if (precompute)
-      std::fill(geometry.begin(), geometry.end(), one);
-    else
-      geometry = create_geometry<T, S>(num_batches, batch_size, geom_size);
+    std::vector<T> geometry = create_geometry<T, S>(num_batches, batch_size, cub_nq, precompute);
 
     std::vector<T> coefficients(num_batches * stride);
-    std::fill(coefficients.begin(), coefficients.end(), one);
+    // std::fill(coefficients.begin(), coefficients.end(), one);
+
+    std::size_t count = {0};
+    std::for_each(coefficients.begin(), coefficients.end(), [&count, nd = op.num_dofs](auto &e)
+                  { e = count < num_nodes? T(1) : T(count-num_nodes);
+                    count = (count + 1) % (nd + num_nodes); });
 
     // Sanity check: Are we computing the correct values?
-    for (int batch = 0; batch < 100; batch++)
+    for (int batch = 0; batch < 1; batch++)
     {
       std::array<T, op.num_dofs> Ae = {0};
       T *coeffs = coefficients.data() + batch * stride;
+
       T *geo = geometry.data() + batch * geom_size;
       op.apply(Ae.data(), coeffs, geo);
 
       T acc = 0;
       for (std::size_t i = 0; i < Ae.size(); i++)
         acc += Ae[i];
-
       check_solution<T, S>(acc, reference);
     }
 
