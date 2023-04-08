@@ -35,13 +35,15 @@ int main(int argc, char *argv[])
 
   constexpr int precision = PRECISION;
   constexpr int batch_size = BATCH_SIZE;
-  constexpr int bs = BLOCK_SIZE;
   constexpr int P = DEGREE;
+  constexpr int cubNq = (P + 3) * (P + 3) * (P + 3);
+  constexpr int bs = BLOCK_SIZE > 0 ? BLOCK_SIZE : cubNq;
+
   constexpr bool precompute = PRECOMPUTE;
 
   using T = VectorExtensions<precision, batch_size>::T;
   using S = VectorExtensions<precision, batch_size>::S;
-  constexpr int global_size = precompute ? 5000000: 10000000;
+  constexpr int global_size = precompute ? 5000000 : 10000000;
 
   MPI_Init(&argc, &argv);
   {
@@ -53,12 +55,11 @@ int main(int argc, char *argv[])
     Operator<T, S, P, bs, precompute> op;
 
     // Const data from kernel
-    constexpr int Nq = (P + 3) * (P + 3) * (P + 3);
     constexpr int local_size = op.num_dofs;
     constexpr int stride = op.num_dofs + 4;
     constexpr int num_cells = global_size / op.num_dofs;
-    constexpr int num_batches = num_cells / BATCH_SIZE;
-    constexpr int geom_size = precompute ? Nq * 6 : 8 * 3;
+    constexpr int num_batches = num_cells / batch_size;
+    constexpr int geom_size = precompute ? cubNq * 6 : 8 * 3;
 
     // Allocate and initialize data
     std::vector<T> A(num_batches * local_size);
@@ -73,7 +74,7 @@ int main(int argc, char *argv[])
     if (precompute)
       std::fill(geometry.begin(), geometry.end(), one);
     else
-      geometry = create_geometry<T, S>(num_batches, BATCH_SIZE, geom_size);
+      geometry = create_geometry<T, S>(num_batches, batch_size, geom_size);
 
     std::vector<T> coefficients(num_batches * stride);
     std::fill(coefficients.begin(), coefficients.end(), one);

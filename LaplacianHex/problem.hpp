@@ -15,7 +15,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 8];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 8];
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int id = 0; id < 4; ++id)
@@ -25,14 +25,14 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] += temp0[4 * iq0 + 2 * ic1 + ic2];
+                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] = temp0[4 * iq0 + 2 * ic1 + ic2];
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int id = 0; id < 2 * Nq; ++id)
                 temp1[id] += FE_TF3[ic1] * temp0transp[2 * Nq * ic1 + id];
         T temp1transp[2 * Nq] = {0};
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
-                temp1transp[Nq * ic2 + iq0] += temp1[2 * iq0 + ic2];
+                temp1transp[Nq * ic2 + iq0] = temp1[2 * iq0 + ic2];
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int id = 0; id < Nq; ++id)
@@ -45,7 +45,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 16];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 16];
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int id = 0; id < 4; ++id)
@@ -55,7 +55,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] += temp0[4 * iq0 + 2 * ic1 + ic2];
+                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] = temp0[4 * iq0 + 2 * ic1 + ic2];
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int id = 0; id < 2 * Nq; ++id)
@@ -64,7 +64,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] += temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+                    temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int id = 0; id < Nq * Nq; ++id)
                 J_c8[id] += FE_TF3[ic2] * temp1transp[Nq * Nq * ic2 + id];
@@ -76,7 +76,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 8];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 8];
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int id = 0; id < 4; ++id)
@@ -86,7 +86,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] += temp0[4 * iq0 + 2 * ic1 + ic2];
+                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] = temp0[4 * iq0 + 2 * ic1 + ic2];
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int id = 0; id < 2 * Nq; ++id)
@@ -95,7 +95,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] += temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+                    temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int id = 0; id < Nq * Nq; ++id)
                 J_c5[id] += FE_TF3[ic2] * temp1transp[Nq * Nq * ic2 + id];
@@ -107,7 +107,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 16];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 16];
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int id = 0; id < 4; ++id)
@@ -117,14 +117,14 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] += temp0[4 * iq0 + 2 * ic1 + ic2];
+                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] = temp0[4 * iq0 + 2 * ic1 + ic2];
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int id = 0; id < 2 * Nq; ++id)
                 temp1[id] += FE_TF3[ic1] * temp0transp[2 * Nq * ic1 + id];
         T temp1transp[2 * Nq] = {0};
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
-                temp1transp[Nq * ic2 + iq0] += temp1[2 * iq0 + ic2];
+                temp1transp[Nq * ic2 + iq0] = temp1[2 * iq0 + ic2];
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int id = 0; id < Nq; ++id)
@@ -137,7 +137,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int id = 0; id < 4; ++id)
                 temp0[id] += FE_TF3[ic0] * coordinate_dofstransp[4 * ic0 + id];
@@ -145,7 +145,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         T temp0transp[4] = {0};
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int ic2 = 0; ic2 < 2; ++ic2)
-                temp0transp[2 * ic1 + ic2] += temp0[2 * ic1 + ic2];
+                temp0transp[2 * ic1 + ic2] = temp0[2 * ic1 + ic2];
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int id = 0; id < 2; ++id)
@@ -153,7 +153,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         T temp1transp[2 * Nq] = {0};
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq1 = 0; iq1 < Nq; ++iq1)
-                temp1transp[Nq * ic2 + iq1] += temp1[2 * iq1 + ic2];
+                temp1transp[Nq * ic2 + iq1] = temp1[2 * iq1 + ic2];
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int id = 0; id < Nq; ++id)
@@ -166,7 +166,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int id = 0; id < 4; ++id)
@@ -176,14 +176,14 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] += temp0[4 * iq0 + 2 * ic1 + ic2];
+                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] = temp0[4 * iq0 + 2 * ic1 + ic2];
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int id = 0; id < 2 * Nq; ++id)
                 temp1[id] += FE_TF3[ic1] * temp0transp[2 * Nq * ic1 + id];
         T temp1transp[2 * Nq] = {0};
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
-                temp1transp[Nq * ic2 + iq0] += temp1[2 * iq0 + ic2];
+                temp1transp[Nq * ic2 + iq0] = temp1[2 * iq0 + ic2];
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int id = 0; id < Nq; ++id)
@@ -196,7 +196,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 16];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 16];
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int id = 0; id < 4; ++id)
                 temp0[id] += FE_TF3[ic0] * coordinate_dofstransp[4 * ic0 + id];
@@ -204,7 +204,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         T temp0transp[4] = {0};
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int ic2 = 0; ic2 < 2; ++ic2)
-                temp0transp[2 * ic1 + ic2] += temp0[2 * ic1 + ic2];
+                temp0transp[2 * ic1 + ic2] = temp0[2 * ic1 + ic2];
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int id = 0; id < 2; ++id)
@@ -212,7 +212,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         T temp1transp[2 * Nq] = {0};
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq1 = 0; iq1 < Nq; ++iq1)
-                temp1transp[Nq * ic2 + iq1] += temp1[2 * iq1 + ic2];
+                temp1transp[Nq * ic2 + iq1] = temp1[2 * iq1 + ic2];
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int id = 0; id < Nq; ++id)
@@ -225,7 +225,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 8];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[(4 * ic0 + 2 * ic1 + ic2) + 8];
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int id = 0; id < 4; ++id)
                 temp0[id] += FE_TF3[ic0] * coordinate_dofstransp[4 * ic0 + id];
@@ -233,7 +233,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         T temp0transp[4] = {0};
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int ic2 = 0; ic2 < 2; ++ic2)
-                temp0transp[2 * ic1 + ic2] += temp0[2 * ic1 + ic2];
+                temp0transp[2 * ic1 + ic2] = temp0[2 * ic1 + ic2];
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int id = 0; id < 2; ++id)
@@ -241,7 +241,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         T temp1transp[2 * Nq] = {0};
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq1 = 0; iq1 < Nq; ++iq1)
-                temp1transp[Nq * ic2 + iq1] += temp1[2 * iq1 + ic2];
+                temp1transp[Nq * ic2 + iq1] = temp1[2 * iq1 + ic2];
         for (int iq2 = 0; iq2 < Nq; ++iq2)
             for (int ic2 = 0; ic2 < 2; ++ic2)
                 for (int id = 0; id < Nq; ++id)
@@ -254,7 +254,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic0 = 0; ic0 < 2; ++ic0)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] += coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
+                    coordinate_dofstransp[4 * ic0 + 2 * ic1 + ic2] = coordinate_dofs[4 * ic0 + 2 * ic1 + ic2];
         for (int iq0 = 0; iq0 < Nq; ++iq0)
             for (int ic0 = 0; ic0 < 2; ++ic0)
                 for (int id = 0; id < 4; ++id)
@@ -264,7 +264,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic1 = 0; ic1 < 2; ++ic1)
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic2 = 0; ic2 < 2; ++ic2)
-                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] += temp0[4 * iq0 + 2 * ic1 + ic2];
+                    temp0transp[2 * Nq * ic1 + 2 * iq0 + ic2] = temp0[4 * iq0 + 2 * ic1 + ic2];
         for (int iq1 = 0; iq1 < Nq; ++iq1)
             for (int ic1 = 0; ic1 < 2; ++ic1)
                 for (int id = 0; id < 2 * Nq; ++id)
@@ -273,7 +273,7 @@ void compute_jacobian(T *restrict jac, const T *restrict coordinate_dofs, const 
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int iq0 = 0; iq0 < Nq; ++iq0)
-                    temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] += temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
+                    temp1transp[Nq * Nq * ic2 + Nq * iq1 + iq0] = temp1[2 * Nq * iq1 + 2 * iq0 + ic2];
         for (int ic2 = 0; ic2 < 2; ++ic2)
             for (int id = 0; id < Nq * Nq; ++id)
                 J_c2[id] += FE_TF3[ic2] * temp1transp[Nq * Nq * ic2 + id];
@@ -571,7 +571,7 @@ struct Operator
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        temp2transp[Nd * Nq * iq1 + Nq * i0 + iq2] += temp2[Nq * Nq * i0 + Nq * iq1 + iq2];
+                        temp2transp[Nd * Nq * iq1 + Nq * i0 + iq2] = temp2[Nq * Nq * i0 + Nq * iq1 + iq2];
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int i1 = 0; i1 < Nd; ++i1)
                     for (int id = 0; id < Nd * Nq; ++id)
@@ -580,7 +580,7 @@ struct Operator
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int i1 = 0; i1 < Nd; ++i1)
                     for (int i0 = 0; i0 < Nd; ++i0)
-                        temp3transp[Nd * Nd * iq2 + Nd * i1 + i0] += temp3[Nd * Nq * i1 + Nq * i0 + iq2];
+                        temp3transp[Nd * Nd * iq2 + Nd * i1 + i0] = temp3[Nd * Nq * i1 + Nq * i0 + iq2];
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int i2 = 0; i2 < Nd; ++i2)
                     for (int id = 0; id < Nd * Nd; ++id)
@@ -600,7 +600,7 @@ struct Operator
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int i0 = 0; i0 < Nd; ++i0)
                     for (int iq2 = 0; iq2 < Nq; ++iq2)
-                        temp4transp[Nd * Nq * iq1 + Nq * i0 + iq2] += temp4[Nq * Nq * i0 + Nq * iq1 + iq2];
+                        temp4transp[Nd * Nq * iq1 + Nq * i0 + iq2] = temp4[Nq * Nq * i0 + Nq * iq1 + iq2];
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int i1 = 0; i1 < Nd; ++i1)
                     for (int id = 0; id < Nd * Nq; ++id)
@@ -609,7 +609,7 @@ struct Operator
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int i1 = 0; i1 < Nd; ++i1)
                     for (int i0 = 0; i0 < Nd; ++i0)
-                        temp5transp[Nd * Nd * iq2 + Nd * i1 + i0] += temp5[Nd * Nq * i1 + Nq * i0 + iq2];
+                        temp5transp[Nd * Nd * iq2 + Nd * i1 + i0] = temp5[Nd * Nq * i1 + Nq * i0 + iq2];
             for (int iq2 = 0; iq2 < Nq; ++iq2)
                 for (int i2 = 0; i2 < Nd; ++i2)
                     for (int id = 0; id < Nd * Nd; ++id)
