@@ -469,7 +469,7 @@ struct Operator
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int iq1 = 0; iq1 < Nq; ++iq1)
                         for (int iq0 = 0; iq0 < Nq; ++iq0)
-                             w1_d[cubNq +Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF1[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                            w1_d[cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF1[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
 #endif
         }
         {
@@ -515,7 +515,7 @@ struct Operator
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int iq1 = 0; iq1 < Nq; ++iq1)
                         for (int iq0 = 0; iq0 < Nq; ++iq0)
-                            w1_d[2 * cubNq +Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF0[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                            w1_d[2 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF0[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
 #endif
         }
         T w0[Nq * Nq * Nq] = {0};
@@ -604,6 +604,7 @@ struct Operator
         }
         // -------------------------------------------------------------------------------------------
         {
+#if BATCH_SIZE == 1
             {
                 T temp0[Nq * Nq * Nd] = {0};
                 T fw0transp[Nq * Nq * Nq] = {0};
@@ -697,6 +698,65 @@ struct Operator
                         for (int id = 0; id < Nd * Nd; ++id)
                             A[Nd * Nd * i2 + id] += FE_TF0[iq2][i2] * temp1transp[Nd * Nd * iq2 + id];
             }
+#else
+            {
+                T temp0[Nd * Nq * Nq] = {0};
+                for (int iq0 = 0; iq0 < Nq; ++iq0)
+                    for (int i0 = 0; i0 < Nd; ++i0)
+                        for (int iq1 = 0; iq1 < Nq; ++iq1)
+                            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                                temp0[Nq * Nq * i0 + Nq * iq1 + iq2] += FE_TF0[iq0][i0] * fw[Nq * Nq * iq0 + Nq * iq1 + iq2];
+                T temp1[Nd * Nd * Nq] = {0};
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int i1 = 0; i1 < Nd; ++i1)
+                        for (int i0 = 0; i0 < Nd; ++i0)
+                            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                                temp1[Nd * Nq * i1 + Nq * i0 + iq2] += FE_TF1[iq1][i1] * temp0[Nq * Nq * i0 + Nq * iq1 + iq2];
+                for (int iq2 = 0; iq2 < Nq; ++iq2)
+                    for (int i2 = 0; i2 < Nd; ++i2)
+                        for (int i1 = 0; i1 < Nd; ++i1)
+                            for (int i0 = 0; i0 < Nd; ++i0)
+                                A[Nd * Nd * i0 + Nd * i1 + i2] += FE_TF1[iq2][i2] * temp1[Nd * Nq * i1 + Nq * i0 + iq2];
+            }
+            {
+                T temp2[Nd * Nq * Nq] = {0};
+                for (int iq0 = 0; iq0 < Nq; ++iq0)
+                    for (int i0 = 0; i0 < Nd; ++i0)
+                        for (int iq1 = 0; iq1 < Nq; ++iq1)
+                            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                                temp2[Nq * Nq * i0 + Nq * iq1 + iq2] += FE_TF1[iq0][i0] * fw[1 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2];
+                T temp3[Nd * Nd * Nq] = {0};
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int i1 = 0; i1 < Nd; ++i1)
+                        for (int i0 = 0; i0 < Nd; ++i0)
+                            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                                temp3[Nd * Nq * i1 + Nq * i0 + iq2] += FE_TF0[iq1][i1] * temp2[Nq * Nq * i0 + Nq * iq1 + iq2];
+                for (int iq2 = 0; iq2 < Nq; ++iq2)
+                    for (int i2 = 0; i2 < Nd; ++i2)
+                        for (int i1 = 0; i1 < Nd; ++i1)
+                            for (int i0 = 0; i0 < Nd; ++i0)
+                                A[Nd * Nd * i0 + Nd * i1 + i2] += FE_TF1[iq2][i2] * temp3[Nd * Nq * i1 + Nq * i0 + iq2];
+            }
+            {
+                T temp4[Nd * Nq * Nq] = {0};
+                for (int iq0 = 0; iq0 < Nq; ++iq0)
+                    for (int i0 = 0; i0 < Nd; ++i0)
+                        for (int iq1 = 0; iq1 < Nq; ++iq1)
+                            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                                temp4[Nq * Nq * i0 + Nq * iq1 + iq2] += FE_TF1[iq0][i0] * fw[2 * cubNq + Nq * Nq * iq0 + Nq * iq1 + iq2];
+                T temp5[Nd * Nd * Nq] = {0};
+                for (int iq1 = 0; iq1 < Nq; ++iq1)
+                    for (int i1 = 0; i1 < Nd; ++i1)
+                        for (int i0 = 0; i0 < Nd; ++i0)
+                            for (int iq2 = 0; iq2 < Nq; ++iq2)
+                                temp5[Nd * Nq * i1 + Nq * i0 + iq2] += FE_TF1[iq1][i1] * temp4[Nq * Nq * i0 + Nq * iq1 + iq2];
+                for (int iq2 = 0; iq2 < Nq; ++iq2)
+                    for (int i2 = 0; i2 < Nd; ++i2)
+                        for (int i1 = 0; i1 < Nd; ++i1)
+                            for (int i0 = 0; i0 < Nd; ++i0)
+                                A[Nd * Nd * i0 + Nd * i1 + i2] += FE_TF0[iq2][i2] * temp5[Nd * Nq * i1 + Nq * i0 + iq2];
+            }
+#endif
         }
     }
 #if DEGREE == 1
