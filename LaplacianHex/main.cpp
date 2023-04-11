@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 
     std::size_t count = {0};
     std::for_each(coefficients.begin(), coefficients.end(), [&count, nd = op.num_dofs](auto &e)
-                  { e = count < num_nodes? T(1) : T(count-num_nodes);
+                  { e = count < num_nodes? T(1) : T(S(count-num_nodes));
                     count = (count + 1) % (nd + num_nodes); });
 
     MPI_Barrier(comm);
