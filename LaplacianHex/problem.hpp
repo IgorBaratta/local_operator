@@ -320,11 +320,6 @@ template <int Np, typename T, int cubNq>
 static inline void transform(const T *restrict jac, const T *restrict w1_d, const T *restrict w0, T *restrict fw)
 {
 
-    // std::cout << jac[0] << " " << jac[cubNq] << " " << jac[2 * cubNq] << std::endl;
-    // std::cout << jac[3 * cubNq] << " " << jac[4 * cubNq] << " " << jac[5 * cubNq] << std::endl;
-    // std::cout << jac[6 * cubNq] << " " << jac[7 * cubNq] << " " << jac[8 * cubNq] << std::endl;
-    // std::cout << "============\n\n";
-
     // Compute determinant of the jacobian
     // FLOPS : 4 * 3 * Np
     T detJ[Np] = {0};
@@ -350,12 +345,6 @@ static inline void transform(const T *restrict jac, const T *restrict w1_d, cons
         invJ[2][1][ip] = (jac[cubNq + ip] * jac[6 * cubNq + ip] - jac[ip] * jac[7 * cubNq + ip]) / detJ[ip];
         invJ[2][2][ip] = (jac[ip] * jac[4 * cubNq + ip] - jac[cubNq + ip] * jac[3 * cubNq + ip]) / detJ[ip];
     }
-
-    // std::cout << "Jacobian inverse \n";
-    // std::cout << invJ[0][0][0] << " " << invJ[0][1][0] << " " << invJ[0][2][0] << std::endl;
-    // std::cout << invJ[1][0][0] << " " << invJ[1][1][0] << " " << invJ[1][2][0] << std::endl;
-    // std::cout << invJ[2][0][0] << " " << invJ[2][1][0] << " " << invJ[2][2][0] << std::endl;
-    // std::cout << "============\n\n";
 
     // Compute t = K * w_d
     // FLOPS : 3 * 5 * Np
@@ -387,7 +376,6 @@ struct Operator
         constexpr int Nq = P + 3;
         constexpr int Nd = P + 1;
         constexpr int cubNq = Nq * Nq * Nq;
-
         // Quadrature loop independent computations for quadrature rule 037
         // Quadrature loop body setup for quadrature rule 037
         // Varying computations for quadrature rule 037
@@ -419,13 +407,13 @@ struct Operator
                     for (int id = 0; id < Nq * Nq; ++id)
                         w1_d[Nq * Nq * iq2 + id] += FE_TF1[iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
 #else
-            double4 temp0[Nq * Nd * Nd] = {0};
+            T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
                     for (int ic1 = 0; ic1 < Nd; ++ic1)
                         for (int ic2 = 0; ic2 < Nd; ++ic2)
                             temp0[Nd * Nd * iq0 + Nd * ic1 + ic2] += FE_TF0[iq0][ic0] * w[8 + (Nd * Nd * ic0 + Nd * ic1 + ic2)];
-            double4 temp1[Nq * Nq * Nd] = {0};
+            T temp1[Nq * Nq * Nd] = {0};
             for (int iq1 = 0; iq1 < Nq; ++iq1)
                 for (int ic1 = 0; ic1 < Nd; ++ic1)
                     for (int iq0 = 0; iq0 < Nq; ++iq0)
@@ -435,7 +423,7 @@ struct Operator
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int iq1 = 0; iq1 < Nq; ++iq1)
                         for (int iq0 = 0; iq0 < Nq; ++iq0)
-                            w1_d100[Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF1[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                            w1_d[Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF1[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
 #endif
         }
         {
@@ -481,7 +469,7 @@ struct Operator
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int iq1 = 0; iq1 < Nq; ++iq1)
                         for (int iq0 = 0; iq0 < Nq; ++iq0)
-                            w1_d010[Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF1[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                             w1_d[cubNq +Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF1[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
 #endif
         }
         {
@@ -527,7 +515,7 @@ struct Operator
                 for (int ic2 = 0; ic2 < Nd; ++ic2)
                     for (int iq1 = 0; iq1 < Nq; ++iq1)
                         for (int iq0 = 0; iq0 < Nq; ++iq0)
-                            w1_d001[Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF0[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
+                            w1_d[2 * cubNq +Nq * Nq * iq0 + Nq * iq1 + iq2] += FE_TF0[iq2][ic2] * temp1[Nd * Nq * iq1 + Nd * iq0 + ic2];
 #endif
         }
         T w0[Nq * Nq * Nq] = {0};
