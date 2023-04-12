@@ -332,7 +332,7 @@ static inline void transform(const T *restrict jac, const T *restrict w1_d, cons
 
     // Compute the inverse of the jacobian
     // FLOPS : 9 * 5 * Np
-    T invJ[3][3][Np] = {{{0.0}}};
+    T invJ[3][3][Np] = {{{0}}};
     for (int ip = 0; ip < Np; ip++)
     {
         invJ[0][0][ip] = (jac[4 * cubNq + ip] * jac[8 * cubNq + ip] - jac[5 * cubNq + ip] * jac[7 * cubNq + ip]) / detJ[ip];
