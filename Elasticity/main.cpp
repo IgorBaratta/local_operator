@@ -34,15 +34,17 @@ int main(int argc, char *argv[])
   using S = VectorExtensions<PRECISION, BATCH_SIZE>::S;
   constexpr int global_size = 10000000;
 
+  constexpr int precision = PRECISION;
+  constexpr int batch_size = BATCH_SIZE;
+  constexpr int P = DEGREE;
+  constexpr int bs = BLOCK_SIZE;
+
   MPI_Init(&argc, &argv);
   {
 
     MPI_Comm comm = MPI_COMM_WORLD;
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
-
-    constexpr int bs = BLOCK_SIZE;
-    constexpr int P = DEGREE;
 
     Operator<T, S, P, bs> op;
 
@@ -87,7 +89,9 @@ int main(int argc, char *argv[])
 
     if (mpi_rank == 0)
     {
-      std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time << ", " << BLOCK_SIZE;
+      std::cout << precision << ", " << batch_size << ", ";
+      std::cout << num_cells << ", " << P << ", " << max_time << ", ";
+      std::cout << bs << ", ";
     }
   }
   MPI_Finalize();
