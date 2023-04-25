@@ -38,8 +38,7 @@ void compute_geometry_tensor(const T *restrict coords, T G[3][3])
   invJ[2][1] = (J[1] * J[6] - J[0] * J[7]);
   invJ[2][2] = (J[0] * J[4] - J[1] * J[3]);
 
-  // Multiply invJ^T and invJ
-
+  // invJ^T * invJ * detJ
   G[0][0] = (invJ[0][0] * invJ[0][0] + invJ[1][0] * invJ[1][0] + invJ[2][0] * invJ[2][0]) / detJ;
   G[0][1] = (invJ[0][0] * invJ[0][1] + invJ[1][0] * invJ[1][1] + invJ[2][0] * invJ[2][1]) / detJ;
   G[0][2] = (invJ[0][0] * invJ[0][2] + invJ[1][0] * invJ[1][2] + invJ[2][0] * invJ[2][2]) / detJ;
