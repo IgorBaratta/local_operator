@@ -8,6 +8,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -g -Wall")
 
 add_executable(${PROJECT_NAME} main.cpp)
 
+if (DEFINED OPTIMIZE_SUM_FACTORIZATION)
+    message( STATUS "OPTIMIZE_SUM_FACTORIZATION=${OPTIMIZE_SUM_FACTORIZATION}")
+    add_compile_definitions(OPTIMIZE_SUM_FACTORIZATION=${OPTIMIZE_SUM_FACTORIZATION})
+else()
+    message( FATAL_ERROR "OPTIMIZE_SUM_FACTORIZATION should be defined at compitle time.")
+endif()
+
 if (DEFINED PRECISION)
     message( STATUS "PRECISION=${PRECISION}")
     add_compile_definitions(PRECISION=${PRECISION})
@@ -17,11 +24,10 @@ endif()
 
 if (DEFINED BATCH_SIZE)
     message( STATUS "BATCH_SIZE=${BATCH_SIZE}")
-add_compile_definitions(BATCH_SIZE=${BATCH_SIZE})
+    add_compile_definitions(BATCH_SIZE=${BATCH_SIZE})
 else()
     message( FATAL_ERROR "BATCH_SIZE should be defined at compitle time.")
 endif()
-
 
 if (DEFINED BLOCK_SIZE)
     message( STATUS "BLOCK_SIZE=${BLOCK_SIZE}")
@@ -29,7 +35,6 @@ if (DEFINED BLOCK_SIZE)
 else()
     message( FATAL_ERROR "BLOCK_SIZE should be defined at compitle time.")
 endif()
-
 
 if (DEFINED PRECOMPUTE)
     message( STATUS "PRECOMPUTE=${PRECOMPUTE}")
@@ -44,7 +49,6 @@ if(${DEGREE} GREATER_EQUAL 1 AND ${DEGREE} LESS_EQUAL 15)
 else()
     message(FATAL_ERROR "Degree >= 1 and Degree <= 15")
 endif()
-
 
 find_package(MPI 3 REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX)

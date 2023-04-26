@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdint>
 #include <iostream>
+
 #define restrict __restrict__
 
 template <typename T, typename S, int Nq>
@@ -371,17 +372,18 @@ struct Operator
 {
     constexpr static std::size_t num_dofs = (P + 1) * (P + 1) * (P + 1);
     constexpr static int Nq = (P + 3) * (P + 3) * (P + 3);
+
     inline void apply(T *restrict A, const T *restrict w, const T *restrict geom)
     {
-        constexpr int Nq = P + 3;
-        constexpr int Nd = P + 1;
+        constexpr int Nq = P + 3; // Number of quadrature points in 1d
+        constexpr int Nd = P + 1; // Number of degrees of freedom in 1d
         constexpr int cubNq = Nq * Nq * Nq;
         // Quadrature loop independent computations for quadrature rule 037
         // Quadrature loop body setup for quadrature rule 037
         // Varying computations for quadrature rule 037
         T w1_d[3 * Nq * Nq * Nq] = {{0}};
         {
-#if BATCH_SIZE == 1
+#if OPTIMIZE_SUM_FACTORIZATION == 1
             T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
@@ -427,7 +429,7 @@ struct Operator
 #endif
         }
         {
-#if BATCH_SIZE == 1
+#if OPTIMIZE_SUM_FACTORIZATION == 1
             T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
@@ -473,7 +475,7 @@ struct Operator
 #endif
         }
         {
-#if BATCH_SIZE == 1
+#if OPTIMIZE_SUM_FACTORIZATION == 1
             T temp0[Nq * Nd * Nd] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
@@ -520,7 +522,7 @@ struct Operator
         }
         T w0[Nq * Nq * Nq] = {0};
         {
-#if BATCH_SIZE == 1
+#if OPTIMIZE_SUM_FACTORIZATION == 1
             T temp0[4 * Nq] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < 2; ++ic0)
@@ -604,7 +606,7 @@ struct Operator
         }
         // -------------------------------------------------------------------------------------------
         {
-#if BATCH_SIZE == 1
+#if OPTIMIZE_SUM_FACTORIZATION == 1
             {
                 T temp0[Nq * Nq * Nd] = {0};
                 T fw0transp[Nq * Nq * Nq] = {0};

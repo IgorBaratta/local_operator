@@ -48,15 +48,24 @@ int main(int argc, char *argv[])
   MPI_Init(&argc, &argv);
   {
 
+    // Make sure that sizeof(T) == batch_size * sizeof(S)
+    if (sizeof(T) != batch_size * sizeof(S))
+    {
+      std::string error_msg = "Size of T should be " + std::to_string(batch_size * sizeof(S));
+      error_msg += " but current size is " + std::to_string(sizeof(T));
+      throw std::runtime_error(error_msg);
+    }
+
     MPI_Comm comm = MPI_COMM_WORLD;
     int mpi_rank;
     MPI_Comm_rank(comm, &mpi_rank);
 
+    // Create finite element operator
     Operator<T, S, P, bs, precompute> op;
 
     // Const data from kernel
     constexpr int local_size = op.num_dofs;
-    constexpr int num_nodes = 8;
+    constexpr int num_nodes = 8; // 1st order hexahedron
     constexpr int stride = op.num_dofs + num_nodes;
     constexpr int num_cells = global_size / op.num_dofs;
     constexpr int num_batches = num_cells / batch_size;
