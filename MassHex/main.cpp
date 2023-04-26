@@ -26,6 +26,25 @@
 #define DEGREE 0
 #endif
 
+template <typename T, typename S>
+void check_solution(T &acc, T &reference)
+{
+  if constexpr (std::is_same<T, S>::value)
+  {
+    if ((acc - reference) * (acc - reference) > T(0.001))
+    {
+      throw std::runtime_error("Please verify solution.");
+    }
+  }
+  else
+  {
+    if ((acc[0] - reference[0]) * (acc[0] - reference[0]) > S(0.001))
+    {
+      throw std::runtime_error("Please verify solution.");
+    }
+  }
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -87,10 +106,7 @@ int main(int argc, char *argv[])
       for (std::size_t i = 0; i < Ae.size(); i++)
         acc += Ae[i];
 
-      if ((acc - reference) * (acc - reference) > T(0.001))
-      {
-        throw std::runtime_error("Please verify solution.");
-      }
+      check_solution<T, S>(acc, reference);
     }
 
     // Working array
