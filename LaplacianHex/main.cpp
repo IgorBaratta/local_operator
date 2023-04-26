@@ -123,7 +123,6 @@ int main(int argc, char *argv[])
       std::cout << num_cells << ", " << P << ", " << max_time << ", ";
       std::cout << bs << ", " << precompute  << ", ";
       std::cout << OPTIMIZE_SUM_FACTORIZATION;
-
     }
   }
   MPI_Finalize();
