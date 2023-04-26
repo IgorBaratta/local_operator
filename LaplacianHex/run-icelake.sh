@@ -25,7 +25,14 @@ run () {
     done
 }
 
-
+# Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
 run 8 1 1 16 0 "out-icelake-gcc-precompute.txt"
 run 8 1 1 16 1 "out-icelake-gcc-precompute-optimize.txt"
+
+run 8 1 0 16 0 "out-icelake-gcc-no-precompute.txt"
+run 8 1 0 16 1 "out-icelake-gcc-no-precompute-optimize.txt"
+
+run 8 8 1 1 0 "out-icelake-gcc-precompute.txt"
+run 8 8 0 1 0 "out-icelake-gcc-no-precompute.txt"
+
 

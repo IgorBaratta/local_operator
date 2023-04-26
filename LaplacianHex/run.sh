@@ -8,7 +8,7 @@ export BATCH_SIZE=1
 export BLOCK_SIZE=16
 export PRECISION=8
 export NUM_PROCS=1
-export PRECOMPUTE=1
+export PRECOMPUTE=0
 export OPTIMIZE=1
 export DEGREE=5
 
