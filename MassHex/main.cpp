@@ -11,7 +11,11 @@
 #include <any>
 
 #ifndef PRECISION
-#define PRECISION 8
+#define PRECISION 0
+#endif
+
+#ifndef OPTIMIZE_SUM_FACTORIZATION
+#define OPTIMIZE_SUM_FACTORIZATION 0
 #endif
 
 #ifndef BATCH_SIZE
@@ -19,7 +23,7 @@
 #endif
 
 #ifndef DEGREE
-#define DEGREE 1
+#define DEGREE 0
 #endif
 
 int main(int argc, char *argv[])
@@ -31,6 +35,14 @@ int main(int argc, char *argv[])
 
   MPI_Init(&argc, &argv);
   {
+
+    // Make sure that sizeof(T) == batch_size * sizeof(S)
+    if (sizeof(T) != BATCH_SIZE * sizeof(S))
+    {
+      std::string error_msg = "Size of T should be " + std::to_string(BATCH_SIZE * sizeof(S));
+      error_msg += " but current size is " + std::to_string(sizeof(T));
+      throw std::runtime_error(error_msg);
+    }
 
     MPI_Comm comm = MPI_COMM_WORLD;
     int mpi_rank;
@@ -101,7 +113,9 @@ int main(int argc, char *argv[])
 
     if (mpi_rank == 0)
     {
-      std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
+      std::cout << PRECISION << ", " << BATCH_SIZE << ", ";
+      std::cout << num_cells << ", " << DEGREE << ", " << max_time;
+      std::cout << ", " << OPTIMIZE_SUM_FACTORIZATION;
     }
   }
 
