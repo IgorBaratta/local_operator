@@ -26,16 +26,16 @@ run () {
 }
 
 # Order : Precision, Batch Size, Optimize Sum Factorization
-run 8 1 0 "out-icelake-gcc.txt"
-run 8 8 0 "out-icelake-gcc.txt"
-run 8 1 1 "out-icelake-gcc-optimize.txt"
-run 8 8 1 "out-icelake-gcc-optimize.txt"
+run 8 1 0 "mass-hex-icelake-gcc.txt"
+run 8 8 0 "mass-hex-icelake-gcc.txt"
+run 8 1 1 "mass-hex-icelake-gcc-optimize.txt"
+run 8 8 1 "mass-hex-icelake-gcc-optimize.txt"
 
 
 
 # Single Precision
 # Order : Precision, Batch Size, Optimize Sum Factorization
-run 4 1 0 "out-icelake-gcc.txt"
-run 4 16 0 "out-icelake-gcc.txt"
-run 4 1 1 "out-icelake-gcc-optimize.txt"
-run 4 16 1 "out-icelake-gcc-optimize.txt"
+run 4 1 0 "mass-hex-icelake-gcc.txt"
+run 4 16 0 "mass-hex-icelake-gcc.txt"
+run 4 1 1 "mass-hex-icelake-gcc-optimize.txt"
+run 4 16 1 "mass-hex-icelake-gcc-optimize.txt"
