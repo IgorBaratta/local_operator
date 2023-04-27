@@ -10,7 +10,7 @@ export NUM_PROCS=76
 export PRECISION=8
 export BATCH_SIZE=1
 
-run () {
+run512 () {
     export CXX_FLAGS="-Ofast -march=native -mprefer-vector-width=512"
     for DEGREE in {1..15}
         do
@@ -25,17 +25,47 @@ run () {
     done
 }
 
+run256 () {
+    export CXX_FLAGS="-Ofast -march=native -mprefer-vector-width=256"
+    for DEGREE in {1..15}
+        do
+            rm -rf build
+            cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=$1 -DBATCH_SIZE=$2 -DDEGREE=${DEGREE} -DOPTIMIZE_SUM_FACTORIZATION=$3 .
+            cmake --build build -j 10
+        for i in {1..3}
+        do
+            mpirun -n ${NUM_PROCS} ./build/benchmark >> $4
+            echo ", '${CXX_FLAGS}', ${NUM_PROCS}" >> $4
+        done
+    done
+}
+
 # Order : Precision, Batch Size, Optimize Sum Factorization
-run 8 1 0 "mass-hex-icelake-gcc.txt"
-run 8 8 0 "mass-hex-icelake-gcc.txt"
-run 8 1 1 "mass-hex-icelake-gcc-optimize.txt"
-run 8 8 1 "mass-hex-icelake-gcc-optimize.txt"
+run512 8 1 0 "mass-hex-icelake-gcc.txt"
+run512 8 8 0 "mass-hex-icelake-gcc.txt"
+run512 8 1 1 "mass-hex-icelake-gcc-optimize.txt"
+run512 8 8 1 "mass-hex-icelake-gcc-optimize.txt"
 
 
 
 # Single Precision
 # Order : Precision, Batch Size, Optimize Sum Factorization
-run 4 1 0 "mass-hex-icelake-gcc.txt"
-run 4 16 0 "mass-hex-icelake-gcc.txt"
-run 4 1 1 "mass-hex-icelake-gcc-optimize.txt"
-run 4 16 1 "mass-hex-icelake-gcc-optimize.txt"
+run512 4 1 0 "mass-hex-icelake-gcc.txt"
+run512 4 16 0 "mass-hex-icelake-gcc.txt"
+run512 4 1 1 "mass-hex-icelake-gcc-optimize.txt"
+run512 4 16 1 "mass-hex-icelake-gcc-optimize.txt"
+
+
+
+# Order : Precision, Batch Size, Optimize Sum Factorization
+run256 8 1 0 "mass-hex-icelake-gcc.txt"
+run256 8 1 1 "mass-hex-icelake-gcc-optimize.txt"
+
+
+# Single Precision
+# Order : Precision, Batch Size, Optimize Sum Factorization
+run256 4 1 0 "mass-hex-icelake-gcc.txt"
+run256 4 1 1 "mass-hex-icelake-gcc-optimize.txt"
+
+
+
