@@ -7,8 +7,20 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
 
 add_executable(${PROJECT_NAME} main.cpp)
-add_compile_definitions(PRECISION=${PRECISION})
-add_compile_definitions(BATCH_SIZE=${BATCH_SIZE})
+
+if (DEFINED PRECISION)
+    message( STATUS "PRECISION=${PRECISION}")
+    add_compile_definitions(PRECISION=${PRECISION})
+else()
+    message( FATAL_ERROR "PRECISION should be defined at compitle time.")
+endif()
+
+if (DEFINED BATCH_SIZE)
+    message( STATUS "BATCH_SIZE=${BATCH_SIZE}")
+    add_compile_definitions(BATCH_SIZE=${BATCH_SIZE})
+else()
+    message( FATAL_ERROR "BATCH_SIZE should be defined at compitle time.")
+endif()
 
 if(${DEGREE} GREATER_EQUAL 1 AND ${DEGREE} LESS_EQUAL 8)
     add_compile_definitions(DEGREE=${DEGREE})

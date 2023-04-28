@@ -55,8 +55,6 @@ int main(int argc, char *argv[])
     T one = {1};
     T zero = {0};
 
-    T reference = T(0.16666666666666666);
-
     // Create geometry and coefficients
     std::vector<T> geometry = create_geometry<T, S>(num_batches, BATCH_SIZE, geom_size);
     std::vector<T> coefficients(num_batches * stride);
