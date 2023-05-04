@@ -53,7 +53,7 @@ struct Operator<T, S, 1>
     {
       // Quadrature loop body setup for quadrature rule fad
       // Varying computations for quadrature rule fad
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 4; ++ic)
         w0 += w[ic] * FE8_C0_Qfad[0][0][iq][ic];
       T sv_fad[1];
@@ -118,7 +118,7 @@ struct Operator<T, S, 2>
     {
       // Quadrature loop body setup for quadrature rule d8a
       // Varying computations for quadrature rule d8a
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 10; ++ic)
         w0 += w[ic] * FE11_C0_Qd8a[0][0][iq][ic];
       T sv_d8a[1];
@@ -193,7 +193,7 @@ struct Operator<T, S, 3>
     {
       // Quadrature loop body setup for quadrature rule 818
       // Varying computations for quadrature rule 818
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 20; ++ic)
         w0 += w[ic] * FE11_C0_Q818[0][0][iq][ic];
       T sv_818[1];
@@ -289,7 +289,7 @@ struct Operator<T, S, 4>
     {
       // Quadrature loop body setup for quadrature rule a86
       // Varying computations for quadrature rule a86
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 35; ++ic)
         w0 += w[ic] * FE11_C0_Qa86[0][0][iq][ic];
       T sv_a86[1];
@@ -414,7 +414,7 @@ struct Operator<T, S, 5>
     {
       // Quadrature loop body setup for quadrature rule 1eb
       // Varying computations for quadrature rule 1eb
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 56; ++ic)
         w0 += w[ic] * FE11_C0_Q1eb[0][0][iq][ic];
       T sv_1eb[1];
@@ -587,7 +587,7 @@ struct Operator<T, S, 6>
     {
       // Quadrature loop body setup for quadrature rule a65
       // Varying computations for quadrature rule a65
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 84; ++ic)
         w0 += w[ic] * FE11_C0_Qa65[0][0][iq][ic];
       T sv_a65[1];
@@ -816,7 +816,7 @@ struct Operator<T, S, 7>
     {
       // Quadrature loop body setup for quadrature rule c40
       // Varying computations for quadrature rule c40
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 120; ++ic)
         w0 += w[ic] * FE11_C0_Qc40[0][0][iq][ic];
       T sv_c40[1];
@@ -1598,7 +1598,7 @@ struct Operator<T, S, 8>
     {
       // Quadrature loop body setup for quadrature rule 17d
       // Varying computations for quadrature rule 17d
-      T w0 = {0.0};
+      T w0 = {0};
       for (int ic = 0; ic < 165; ++ic)
         w0 += w[ic] * FE11_C0_Q17d[0][0][iq][ic];
       T sv_17d[1];

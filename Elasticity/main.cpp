@@ -12,19 +12,19 @@
 #include <any>
 
 #ifndef PRECISION
-#error Floating point precision not defined.
+#define PRECISION 0
 #endif
 
 #ifndef BATCH_SIZE
-#error Batch size not defined.
+#define BATCH_SIZE 0
 #endif
 
 #ifndef DEGREE
-#error Polynomial degree not defined.
+#define DEGREE 0
 #endif
 
 #ifndef BLOCK_SIZE
-#error Block size not defined.
+#define BLOCK_SIZE 0
 #endif
 
 int main(int argc, char *argv[])

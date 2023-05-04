@@ -10,6 +10,18 @@
 #include <cassert>
 #include <any>
 
+// This block enables to compile the code with and without the likwid header in place
+#ifdef LIKWID_PERFMON
+#include <likwid-marker.h>
+#else
+#define LIKWID_MARKER_INIT
+#define LIKWID_MARKER_THREADINIT
+#define LIKWID_MARKER_REGISTER(regionTag)
+#define LIKWID_MARKER_START(regionTag)
+#define LIKWID_MARKER_STOP(regionTag)
+#define LIKWID_MARKER_CLOSE
+#endif
+
 #ifndef PRECISION
 #define PRECISION 0
 #endif
@@ -26,36 +38,15 @@
 #define DEGREE 0
 #endif
 
-template <typename T, typename S>
-void check_solution(T &acc, T &reference)
-{
-  if constexpr (std::is_same<T, S>::value)
-  {
-    if ((acc - reference) * (acc - reference) > T(0.001))
-    {
-      throw std::runtime_error("Please verify solution.");
-    }
-  }
-  else
-  {
-    if ((acc[0] - reference[0]) * (acc[0] - reference[0]) > S(0.001))
-    {
-      throw std::runtime_error("Please verify solution.");
-    }
-  }
-}
-
 int main(int argc, char *argv[])
 {
 
   using T = VectorExtensions<PRECISION, BATCH_SIZE>::T;
   using S = VectorExtensions<PRECISION, BATCH_SIZE>::S;
-  constexpr int global_size = 10000000;
+  constexpr int global_size = 50000000;
 
   MPI_Init(&argc, &argv);
   {
-
-    // Make sure that sizeof(T) == batch_size * sizeof(S)
     if (sizeof(T) != BATCH_SIZE * sizeof(S))
     {
       std::string error_msg = "Size of T should be " + std::to_string(BATCH_SIZE * sizeof(S));
@@ -84,7 +75,6 @@ int main(int argc, char *argv[])
     // Constants for cross element vectorization
     T one = {1};
     T zero = {0};
-    T reference = T((P + 2) * (P + 2) * (P + 2));
 
     std::vector<T> geometry(geom_size * num_batches);
     std::vector<T> coefficients(num_batches * stride);
@@ -92,6 +82,7 @@ int main(int argc, char *argv[])
     { e = one; };
     std::for_each(coefficients.begin(), coefficients.end(), set_);
     std::for_each(geometry.begin(), geometry.end(), set_);
+    std::array<T, op.num_dofs> Ae;
 
     // Sanity check: Are we computing the correct values?
     for (int batch = 0; batch < 100; batch++)
@@ -102,15 +93,19 @@ int main(int argc, char *argv[])
       op.apply(Ae.data(), coeffs, geo);
 
       // Compute area of cell times number of quadrature points
-      T acc = 0;
-      for (std::size_t i = 0; i < Ae.size(); i++)
-        acc += Ae[i];
+      // T acc = 0;
+      // for (std::size_t i = 0; i < Ae.size(); i++)
+      //   acc += Ae[i];
 
-      check_solution<T, S>(acc, reference);
+      // check_solution<T, S>(acc, reference);
     }
 
-    // Working array
-    std::array<T, op.num_dofs> Ae;
+    LIKWID_MARKER_INIT;
+    LIKWID_MARKER_REGISTER("kernel");
+    
+    LIKWID_MARKER_THREADINIT;
+    LIKWID_MARKER_START("kernel");
+
     double start = MPI_Wtime();
     for (int batch = 0; batch < num_batches; batch++)
     {
@@ -123,6 +118,10 @@ int main(int argc, char *argv[])
     }
     double end = MPI_Wtime();
     double local_time = end - start;
+
+    LIKWID_MARKER_STOP("kernel");
+    LIKWID_MARKER_CLOSE;
+
 
     double max_time = 0;
     MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);

@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
   using T = VectorExtensions<PRECISION, BATCH_SIZE>::T;
   using S = VectorExtensions<PRECISION, BATCH_SIZE>::S;
-  constexpr int global_size = 10000000;
+  constexpr int global_size = 50000000;
 
   MPI_Init(&argc, &argv);
   {

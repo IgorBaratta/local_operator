@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
   using T = VectorExtensions<PRECISION, BATCH_SIZE>::T;
   using S = VectorExtensions<PRECISION, BATCH_SIZE>::S;
-  constexpr int global_size = 10000000;
+  constexpr int global_size = 50000000;
 
   MPI_Init(&argc, &argv);
   {
@@ -63,20 +63,8 @@ int main(int argc, char *argv[])
     std::for_each(coefficients.begin(), coefficients.end(), set_);
 
     // Sanity check: Are we computing the correct values?
-    for (int batch = 0; batch < 100; batch++)
-    {
-      std::array<T, op.num_dofs> Ae = {0};
-      T *coeffs = coefficients.data() + batch * stride;
-      T *geo = geometry.data() + batch * geom_size;
-      op.apply(Ae.data(), coeffs, geo);
-
-      T acc = 0;
-      for (std::size_t i = 0; i < Ae.size(); i++)
-        acc += Ae[i];
-
-    }
-
     std::array<T, op.num_dofs> Ae;
+    
     double start = MPI_Wtime();
     for (int batch = 0; batch < num_batches; batch++)
     {

@@ -2417,16 +2417,19 @@ struct Operator
     compute_geometry_tensor(coords, G);
 
     // -------------------------------------------------------------------------------------------
-    constexpr int num_blocks = Nq / block_size;
-    constexpr int remainder = Nq % block_size;
+    constexpr int bs = block_size > 0 ? block_size : Nq;
+    constexpr int num_blocks = Nq / bs;
+    constexpr int remainder = Nq % bs;
+    // -------------------------------------------------------------------------------------------
+
     for (int b = 0; b < num_blocks; ++b)
     {
-      int offset = b * block_size;
-      laplacian<block_size>(A, w, G, offset);
+      int offset = b * bs;
+      laplacian<bs>(A, w, G, offset);
     }
     if constexpr (remainder > 0)
     {
-      int offset = block_size * num_blocks;
+      int offset = bs * num_blocks;
       laplacian<remainder>(A, w, G, offset);
     }
   }

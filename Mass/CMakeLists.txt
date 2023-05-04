@@ -29,10 +29,6 @@ else()
 endif()
 
 
-if(${BATCH_SIZE}>1)
-    add_compile_definitions(USE_VECTOR_EXTENSIONS=True)
-endif()
-
 find_package(MPI 3 REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX)
 
