@@ -46,4 +46,6 @@ if [ "$SLURM_JOB_NODELIST" ]; then
 fi
 
 cd /home/ia397/rds/hpc-work/Kernels/local_operator/MassHex
-. run-icelake-clang.sh
+. run-icelake-gcc.sh
+. run-icelake-llvm.sh
+
