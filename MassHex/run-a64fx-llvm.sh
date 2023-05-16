@@ -9,7 +9,7 @@ export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-a64fx/llvm-11.2.
 export NUM_PROCS=48
 
 run512 () {
-    export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec"
+    export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
     for DEGREE in {1..15}
         do
             rm -rf build
