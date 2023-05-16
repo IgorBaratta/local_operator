@@ -43,7 +43,7 @@ struct Operator
                     for (int id = 0; id < Nq * Nq; ++id)
                         w0[Nq * Nq * iq2 + id] += phi[iq2][ic2] * temp1transp[Nq * Nq * ic2 + id];
 #else
-            T temp0[Nq * Nd * Nd] = {0};
+            T temp0[cubNq] = {0};
             for (int iq0 = 0; iq0 < Nq; ++iq0)
                 for (int ic0 = 0; ic0 < Nd; ++ic0)
                     for (int ic1 = 0; ic1 < Nd; ++ic1)

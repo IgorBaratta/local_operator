@@ -84,21 +84,22 @@ int main(int argc, char *argv[])
     std::array<T, op.num_dofs> Ae;
 
     // Sanity check: Are we computing the correct values?
-    for (int batch = 0; batch < 100; batch++)
-    {
-      std::array<T, op.num_dofs> Ae = {0};
-      T *coeffs = coefficients.data() + batch * stride;
-      T *geo = geometry.data() + batch * geom_size;
-      op.apply(Ae.data(), coeffs, geo);
+    // for (int batch = 0; batch < 100; batch++)
+    // {
+    //   std::array<T, op.num_dofs> Ae = {0};
+    //   T *coeffs = coefficients.data() + batch * stride;
+    //   T *geo = geometry.data() + batch * geom_size;
+    //   op.apply(Ae.data(), coeffs, geo);
 
-      // Compute area of cell times number of quadrature points
-      // T acc = 0;
-      // for (std::size_t i = 0; i < Ae.size(); i++)
-      //   acc += Ae[i];
+    //   // Compute area of cell times number of quadrature points
+    //   // T acc = 0;
+    //   // for (std::size_t i = 0; i < Ae.size(); i++)
+    //   //   acc += Ae[i];
 
-      // check_solution<T, S>(acc, reference);
-    }
-
+    //   // check_solution<T, S>(acc, reference);
+    // }
+    MPI_Barrier(comm);
+    
     LIKWID_MARKER_INIT;
     LIKWID_MARKER_REGISTER("kernel");
     
@@ -122,14 +123,20 @@ int main(int argc, char *argv[])
     LIKWID_MARKER_CLOSE;
 
 
+    MPI_Barrier(comm);
+
+
     double max_time = 0;
+    double min_time = 0;
     MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);
+    MPI_Allreduce(&local_time, &min_time, 1, MPI_DOUBLE, MPI_MIN, comm);
+
 
     if (mpi_rank == 0)
     {
       std::cout << PRECISION << ", " << BATCH_SIZE << ", ";
-      std::cout << num_cells << ", " << DEGREE << ", " << max_time;
-      std::cout << ", " << OPTIMIZE_SUM_FACTORIZATION;
+      std::cout << BATCH_SIZE * num_batches << ", " << DEGREE << ", " << max_time;
+      std::cout << ", " << min_time << ", " << OPTIMIZE_SUM_FACTORIZATION;
     }
   }
 
