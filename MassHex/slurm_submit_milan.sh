@@ -47,4 +47,4 @@ if [ "$SLURM_JOB_NODELIST" ]; then
 fi
 
 cd /home/ia397/rds/hpc-work/Kernels/local_operator/MassHex
-. run-milan.sh
+. run-milan-clang.sh

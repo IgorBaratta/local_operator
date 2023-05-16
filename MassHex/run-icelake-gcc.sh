@@ -43,29 +43,11 @@ run256 () {
 # Order : Precision, Batch Size, Optimize Sum Factorization
 run512 8 1 0 "mass-hex-icelake-gcc.txt"
 run512 8 8 0 "mass-hex-icelake-gcc.txt"
-run512 8 1 1 "mass-hex-icelake-gcc-optimize.txt"
-run512 8 8 1 "mass-hex-icelake-gcc-optimize.txt"
-
-
+run512 8 1 1 "mass-hex-icelake-gcc.txt"
+run256 8 1 1 "mass-hex-icelake-gcc.txt"
 
 # Single Precision
-# Order : Precision, Batch Size, Optimize Sum Factorization
 run512 4 1 0 "mass-hex-icelake-gcc.txt"
 run512 4 16 0 "mass-hex-icelake-gcc.txt"
-run512 4 1 1 "mass-hex-icelake-gcc-optimize.txt"
-run512 4 16 1 "mass-hex-icelake-gcc-optimize.txt"
-
-
-
-# Order : Precision, Batch Size, Optimize Sum Factorization
-run256 8 1 0 "mass-hex-icelake-gcc.txt"
-run256 8 1 1 "mass-hex-icelake-gcc-optimize.txt"
-
-
-# Single Precision
-# Order : Precision, Batch Size, Optimize Sum Factorization
-run256 4 1 0 "mass-hex-icelake-gcc.txt"
-run256 4 1 1 "mass-hex-icelake-gcc-optimize.txt"
-
-
-
+run512 4 1 1 "mass-hex-icelake-gcc.txt"
+run256 4 1 1 "mass-hex-icelake-gcc.txt"

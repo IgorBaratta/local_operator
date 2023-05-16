@@ -20,6 +20,7 @@ mpi_tasks_per_node=$(echo "$SLURM_TASKS_PER_NODE" | sed -e  's/^\([0-9][0-9]*\).
 . /etc/profile.d/modules.sh                # Leave this line (enables the module command)
 module purge
 module load rhel8/default-icl
+module load likwid
 
 unset I_MPI_PMI_LIBRARY 
 export I_MPI_JOB_RESPECT_PROCESS_PLACEMENT=0   # the option -ppn only works if you set this before
@@ -45,4 +46,4 @@ if [ "$SLURM_JOB_NODELIST" ]; then
 fi
 
 cd /home/ia397/rds/hpc-work/Kernels/local_operator/MassHex
-. run-icelake.sh
+. run-icelake-clang.sh
