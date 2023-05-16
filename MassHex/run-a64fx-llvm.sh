@@ -3,8 +3,8 @@
 ############################
 # llvm
 ############################
-export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-a64fx/llvm-11.2.0/llvm-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/g++
-export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-a64fx/llvm-11.2.0/llvm-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/llvm
+export CXX=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-12.2.0/llvm-16.0.0-hikjh2jya43tsrs4i35sduiswnccnl4p/bin/clang++
+export CC=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-12.2.0/llvm-16.0.0-hikjh2jya43tsrs4i35sduiswnccnl4p/bin/clang
 
 export NUM_PROCS=48
 

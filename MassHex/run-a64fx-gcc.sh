@@ -3,8 +3,8 @@
 ############################
 # GCC
 ############################
-export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-a64fx/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/g++
-export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-a64fx/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/gcc
+export CXX=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-10.3.0/gcc-12.2.0-zf65tfzmboe3t6lkegf4rrw2zwnprvtn/bin/g++
+export CC=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-10.3.0/gcc-12.2.0-zf65tfzmboe3t6lkegf4rrw2zwnprvtn/bin/gcc
 
 export NUM_PROCS=48
 
