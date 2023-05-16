@@ -98,7 +98,8 @@ int main(int argc, char *argv[])
 
     //   // check_solution<T, S>(acc, reference);
     // }
-
+    MPI_Barrier(comm);
+    
     LIKWID_MARKER_INIT;
     LIKWID_MARKER_REGISTER("kernel");
     
