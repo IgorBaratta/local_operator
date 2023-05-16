@@ -3,8 +3,8 @@
 ############################
 # GCC
 ############################
-export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-16.0.0-7o7njhjb7ggirmrmnddky3ymb2vopwn3/bin/clang++
-export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-16.0.0-7o7njhjb7ggirmrmnddky3ymb2vopwn3/bin/clang
+export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/g++
+export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/gcc
 
 run512 () {
     export CXX_FLAGS="-Ofast -march=native -mprefer-vector-width=512"
