@@ -8,7 +8,6 @@
 #include <mpi.h>
 #include <vector>
 #include <cassert>
-#include <any>
 
 // This block enables to compile the code with and without the likwid header in place
 #ifdef LIKWID_PERFMON
