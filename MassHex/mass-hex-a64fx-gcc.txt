@@ -1,156 +1,150 @@
-, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.551517, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.556036, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.550157, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 185185, 2, 0.392598, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 185185, 2, 0.410242, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 185185, 2, 0.392479, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 78125, 3, 0.390115, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 78125, 3, 0.391089, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 78125, 3, 0.393503, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 40000, 4, 0.298671, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 40000, 4, 0.298756, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 40000, 4, 0.298424, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 23148, 5, 0.279324, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 23148, 5, 0.279144, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 23148, 5, 0.27704, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 14577, 6, 0.251195, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 14577, 6, 0.253142, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 14577, 6, 0.270094, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 9765, 7, 0.323939, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 9765, 7, 0.323459, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 9765, 7, 0.324176, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 6858, 8, 0.308225, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 6858, 8, 0.301456, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 6858, 8, 0.300967, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 5000, 9, 0.363932, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 5000, 9, 0.363715, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 5000, 9, 0.363402, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 3756, 10, 0.280148, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 3756, 10, 0.280334, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 3756, 10, 0.279988, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2893, 11, 0.357921, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2893, 11, 0.358002, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2893, 11, 0.360284, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2275, 12, 0.363025, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2275, 12, 0.363764, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2275, 12, 0.364169, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1822, 13, 0.398509, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1822, 13, 0.399661, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1822, 13, 0.399962, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1481, 14, 0.428385, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1481, 14, 0.424356, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1481, 14, 0.427835, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1220, 15, 1.18741, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1220, 15, 1.18879, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1220, 15, 1.18954, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 625000, 1, 4.42589, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 625000, 1, 4.4275, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 625000, 1, 4.42875, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 185185, 2, 5.02258, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 185185, 2, 5.03344, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 185185, 2, 5.01819, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 78125, 3, 5.7152, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 78125, 3, 5.7138, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 78125, 3, 5.71551, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 40000, 4, 6.5537, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 40000, 4, 6.55636, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 40000, 4, 6.55662, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 23148, 5, 7.20937, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 23148, 5, 7.20979, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 23148, 5, 7.21217, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 14577, 6, 8.03933, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 14577, 6, 8.0426, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 14577, 6, 8.03818, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 9765, 7, 8.83237, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 9765, 7, 8.84271, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 9765, 7, 8.83613, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 6858, 8, 9.67327, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 6858, 8, 9.67712, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 6858, 8, 9.66998, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 5000, 9, 10.5416, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 5000, 9, 10.5464, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 5000, 9, 10.5397, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 3756, 10, 11.3901, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 3756, 10, 11.3813, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 3756, 10, 11.3872, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 2893, 11, 12.2666, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 2893, 11, 12.2735, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 2893, 11, 12.2715, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 2275, 12, 13.117, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 2275, 12, 13.1143, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 2275, 12, 13.1129, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1822, 13, 13.9461, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1822, 13, 13.95, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1822, 13, 13.9424, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1481, 14, 14.8522, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1481, 14, 14.8532, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1481, 14, 14.853, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1220, 15, 15.6541, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1220, 15, 15.6554, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 8, 1220, 15, 15.6477, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.469065, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.465597, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.463089, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 185185, 2, 0.427198, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 185185, 2, 0.428245, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 185185, 2, 0.427257, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 78125, 3, 0.308801, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 78125, 3, 0.314081, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 78125, 3, 0.324196, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 40000, 4, 0.276029, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 40000, 4, 0.278753, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 40000, 4, 0.278593, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 23148, 5, 0.220458, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 23148, 5, 0.239543, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 23148, 5, 0.225192, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 14577, 6, 0.151683, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 14577, 6, 0.153598, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 14577, 6, 0.152335, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 9765, 7, 0.14534, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 9765, 7, 0.142378, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 9765, 7, 0.143771, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 6858, 8, 0.153121, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 6858, 8, 0.153794, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 6858, 8, 0.160413, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 5000, 9, 0.144959, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 5000, 9, 0.144595, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 5000, 9, 0.144679, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 3756, 10, 0.138742, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 3756, 10, 0.138382, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 3756, 10, 0.139064, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2893, 11, 0.182391, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2893, 11, 0.166707, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2893, 11, 0.167354, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2275, 12, 0.186503, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2275, 12, 0.186456, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 2275, 12, 0.186396, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1822, 13, 0.186389, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1822, 13, 0.194067, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1822, 13, 0.186691, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1481, 14, 0.17378, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1481, 14, 0.176644, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1481, 14, 0.1739, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1220, 15, 0.178199, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1220, 15, 0.181567, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 1220, 15, 0.178895, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-8, 1, 625000, 1, 0.439091, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 625000, 1, 0.437328, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 625000, 1, 0.425827, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 185185, 2, 0.1358, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 185185, 2, 0.136152, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 185185, 2, 0.137291, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 78125, 3, 0.365384, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 78125, 3, 0.362782, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 78125, 3, 0.362456, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 40000, 4, 0.486, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 40000, 4, 0.485827, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 40000, 4, 0.488342, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 625000, 1, 0.152185, 0.148582, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 625000, 1, 0.15235, 0.148896, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 625000, 1, 0.152244, 0.148574, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 185185, 2, 0.431606, 0.356982, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 185185, 2, 0.425414, 0.354283, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 185185, 2, 0.430866, 0.356743, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 78125, 3, 0.45528, 0.428563, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 78125, 3, 0.457584, 0.429939, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 78125, 3, 0.457606, 0.427783, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 40000, 4, 0.364404, 0.347863, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 40000, 4, 0.361027, 0.3462, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 40000, 4, 0.362743, 0.348423, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 23148, 5, 0.280309, 0.267165, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 23148, 5, 0.287743, 0.270439, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 23148, 5, 0.280265, 0.268091, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 14577, 6, 0.254059, 0.236061, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 14577, 6, 0.254797, 0.233997, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 14577, 6, 0.255883, 0.235346, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 9765, 7, 0.321176, 0.310934, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 9765, 7, 0.320742, 0.310737, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 9765, 7, 0.319703, 0.31083, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 6858, 8, 0.302868, 0.296646, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 6858, 8, 0.302429, 0.296296, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 6858, 8, 0.303854, 0.296643, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 5000, 9, 0.364662, 0.358478, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 5000, 9, 0.365022, 0.358711, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 5000, 9, 0.365516, 0.358305, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 3756, 10, 0.280077, 0.276697, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 3756, 10, 0.279806, 0.276323, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 3756, 10, 0.279986, 0.276649, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2893, 11, 0.357729, 0.354271, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2893, 11, 0.358609, 0.35441, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2893, 11, 0.358705, 0.354248, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2275, 12, 0.348614, 0.345598, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2275, 12, 0.348875, 0.345005, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2275, 12, 0.348617, 0.34538, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1822, 13, 0.396811, 0.36573, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1822, 13, 0.401161, 0.365765, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1822, 13, 0.400962, 0.365775, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1481, 14, 0.43411, 0.376165, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1481, 14, 0.429398, 0.375252, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1481, 14, 0.431882, 0.374581, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1220, 15, 1.16148, 1.12055, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1220, 15, 1.15916, 1.1222, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1220, 15, 1.15767, 1.12024, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 625000, 1, 4.4412, 4.40209, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 625000, 1, 4.43758, 4.40565, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 625000, 1, 4.44705, 4.40679, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 185184, 2, 5.02441, 4.98781, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 185184, 2, 5.02164, 4.98849, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 185184, 2, 5.02039, 4.98877, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 78120, 3, 5.72352, 5.70715, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 78120, 3, 5.72418, 5.7071, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 78120, 3, 5.7164, 5.70742, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 40000, 4, 7.17397, 7.1459, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 40000, 4, 7.1693, 7.14575, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 40000, 4, 7.17849, 7.14505, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 23144, 5, 8.02386, 7.9837, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 23144, 5, 7.99184, 7.98367, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 23144, 5, 7.99572, 7.98349, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 14576, 6, 8.84627, 8.83413, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 14576, 6, 8.86895, 8.83372, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 14576, 6, 8.85319, 8.83592, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 9760, 7, 9.84444, 9.83035, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 9760, 7, 9.84504, 9.82935, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 9760, 7, 9.84495, 9.82885, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 6856, 8, 10.7053, 10.6863, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 6856, 8, 10.706, 10.6867, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 6856, 8, 10.7032, 10.6851, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 5000, 9, 11.7905, 11.7704, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 5000, 9, 11.7881, 11.7734, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 5000, 9, 11.788, 11.7689, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 3752, 10, 12.592, 12.5575, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 3752, 10, 12.5914, 12.5536, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 3752, 10, 12.5828, 12.5581, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 2888, 11, 13.6151, 13.562, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 2888, 11, 13.6216, 13.5628, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 2888, 11, 13.6179, 13.5615, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 2272, 12, 14.5357, 14.4752, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 2272, 12, 14.5416, 14.4719, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 2272, 12, 14.5387, 14.4743, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1816, 13, 15.4345, 15.3863, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1816, 13, 15.4341, 15.3844, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1816, 13, 15.4298, 15.3841, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1480, 14, 16.3011, 16.2303, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1480, 14, 16.3028, 16.2311, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1480, 14, 16.3109, 16.2297, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1216, 15, 17.5272, 17.4092, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1216, 15, 17.5219, 17.4045, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 8, 1216, 15, 17.521, 17.4051, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 625000, 1, 0.126311, 0.123497, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 625000, 1, 0.125916, 0.123355, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 625000, 1, 0.130735, 0.123421, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 185185, 2, 0.430357, 0.366484, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 185185, 2, 0.426628, 0.363911, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 185185, 2, 0.422381, 0.365884, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 78125, 3, 0.317577, 0.282537, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 78125, 3, 0.315231, 0.283625, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 78125, 3, 0.313469, 0.284069, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 40000, 4, 0.274438, 0.254656, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 40000, 4, 0.278708, 0.254462, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 40000, 4, 0.276409, 0.254256, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 23148, 5, 0.221757, 0.204268, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 23148, 5, 0.223059, 0.203214, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 23148, 5, 0.221644, 0.20565, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 14577, 6, 0.152506, 0.134667, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 14577, 6, 0.151729, 0.134214, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 14577, 6, 0.150919, 0.132943, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 9765, 7, 0.144801, 0.130037, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 9765, 7, 0.143748, 0.129454, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 9765, 7, 0.14392, 0.127851, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 6858, 8, 0.156041, 0.143239, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 6858, 8, 0.153729, 0.14227, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 6858, 8, 0.154318, 0.14301, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 5000, 9, 0.145952, 0.137265, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 5000, 9, 0.144035, 0.13808, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 5000, 9, 0.144753, 0.136185, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 3756, 10, 0.138775, 0.129244, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 3756, 10, 0.1384, 0.12963, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 3756, 10, 0.139061, 0.130411, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2893, 11, 0.167477, 0.16217, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2893, 11, 0.167546, 0.161514, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2893, 11, 0.167054, 0.161273, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2275, 12, 0.186649, 0.182043, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2275, 12, 0.188135, 0.181969, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 2275, 12, 0.186916, 0.182606, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1822, 13, 0.186772, 0.183122, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1822, 13, 0.186925, 0.183377, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1822, 13, 0.186867, 0.183188, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1481, 14, 0.175292, 0.161798, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1481, 14, 0.177145, 0.162022, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1481, 14, 0.173721, 0.161422, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1220, 15, 0.180358, 0.16354, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1220, 15, 0.177302, 0.16383, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 1220, 15, 0.180482, 0.163493, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+8, 1, 625000, 1, 0.139852, 0.132616, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 625000, 1, 0.138563, 0.132633, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 625000, 1, 0.138586, 0.132635, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 185185, 2, 0.13306, 0.130774, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 185185, 2, 0.138145, 0.13083, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 185185, 2, 0.134871, 0.130818, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 78125, 3, 0.366992, 0.337111, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 78125, 3, 0.365392, 0.342825, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 78125, 3, 0.365512, 0.336125, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 40000, 4, 0.484719, 0.463306, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 40000, 4, 0.479729, 0.46615, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 40000, 4, 0.484937, 0.460584, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
@@ -160,180 +154,180 @@
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 6858, 8, 1.84126, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 6858, 8, 1.83383, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 6858, 8, 1.83469, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 5000, 9, 1.92974, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 5000, 9, 1.92832, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 5000, 9, 1.92722, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 3756, 10, 1.97626, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 3756, 10, 1.97173, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 3756, 10, 1.97081, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 2893, 11, 2.06511, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 2893, 11, 2.0635, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 2893, 11, 2.06291, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 2275, 12, 2.37196, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 2275, 12, 2.37145, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 2275, 12, 2.37387, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1822, 13, 2.48412, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1822, 13, 2.48725, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1822, 13, 2.48821, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1481, 14, 2.35221, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1481, 14, 2.35558, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1481, 14, 2.35342, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1220, 15, 2.41939, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1220, 15, 2.42853, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-8, 1, 1220, 15, 2.41925, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 625000, 1, 0.552113, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 625000, 1, 0.552913, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 625000, 1, 0.553342, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 185185, 2, 0.171215, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 185185, 2, 0.191318, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 185185, 2, 0.201245, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 78125, 3, 0.315104, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 78125, 3, 0.312416, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 78125, 3, 0.315182, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 40000, 4, 0.326895, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 40000, 4, 0.323255, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 40000, 4, 0.346342, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 23148, 5, 0.311839, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 23148, 5, 0.272507, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 23148, 5, 0.294414, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 14577, 6, 0.279024, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 14577, 6, 0.265374, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 14577, 6, 0.245719, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 9765, 7, 0.391971, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 9765, 7, 0.387985, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 9765, 7, 0.362567, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 6858, 8, 0.298284, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 6858, 8, 0.304125, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 6858, 8, 0.304017, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 5000, 9, 0.325274, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 5000, 9, 0.325787, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 5000, 9, 0.319957, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 3756, 10, 0.290022, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 3756, 10, 0.296631, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 3756, 10, 0.305744, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2893, 11, 0.335758, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2893, 11, 0.336243, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2893, 11, 0.343454, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2275, 12, 0.315761, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2275, 12, 0.315578, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2275, 12, 0.315345, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1822, 13, 0.356567, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1822, 13, 0.347999, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1822, 13, 0.347735, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1481, 14, 0.34465, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1481, 14, 0.343139, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1481, 14, 0.343517, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1220, 15, 0.68913, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1220, 15, 0.688512, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1220, 15, 0.692144, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 625000, 1, 2.19102, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 625000, 1, 2.19063, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 625000, 1, 2.19125, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 185185, 2, 2.45164, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 185185, 2, 2.45165, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 185185, 2, 2.45135, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 78125, 3, 2.8156, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 78125, 3, 2.81551, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 78125, 3, 2.81713, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 40000, 4, 3.22706, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 40000, 4, 3.22266, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 40000, 4, 3.22393, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 23148, 5, 3.62278, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 23148, 5, 3.62139, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 23148, 5, 3.62213, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 14577, 6, 4.03119, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 14577, 6, 4.02559, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 14577, 6, 4.0233, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 9765, 7, 4.42913, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 9765, 7, 4.43391, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 9765, 7, 4.4299, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 6858, 8, 4.84124, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 6858, 8, 4.84129, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 6858, 8, 4.8445, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 5000, 9, 5.2693, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 5000, 9, 5.26964, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 5000, 9, 5.27167, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 3756, 10, 5.6866, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 3756, 10, 5.68929, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 3756, 10, 5.68863, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 2893, 11, 6.10802, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 2893, 11, 6.10834, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 2893, 11, 6.10928, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 2275, 12, 6.56667, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 2275, 12, 6.56551, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 2275, 12, 6.56338, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1822, 13, 6.94758, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1822, 13, 6.94907, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1822, 13, 6.94909, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1481, 14, 7.38283, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1481, 14, 7.37401, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1481, 14, 7.37333, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1220, 15, 7.82637, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1220, 15, 7.82459, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 16, 1220, 15, 7.82513, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 625000, 1, 0.606712, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 625000, 1, 0.605912, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 625000, 1, 0.607338, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 185185, 2, 0.183522, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 185185, 2, 0.183738, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 185185, 2, 0.164066, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 78125, 3, 0.348594, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 78125, 3, 0.330631, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 78125, 3, 0.328712, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 40000, 4, 0.240961, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 40000, 4, 0.253531, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 40000, 4, 0.229979, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 23148, 5, 0.183277, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 23148, 5, 0.198656, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 23148, 5, 0.189432, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 14577, 6, 0.148338, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 14577, 6, 0.148256, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 14577, 6, 0.139076, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 9765, 7, 0.135134, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 9765, 7, 0.124263, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 9765, 7, 0.111225, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 6858, 8, 0.146318, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 6858, 8, 0.150081, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 6858, 8, 0.125058, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 5000, 9, 0.148417, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 5000, 9, 0.118942, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 5000, 9, 0.111496, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 3756, 10, 0.0955121, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 3756, 10, 0.104139, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 3756, 10, 0.100348, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2893, 11, 0.108372, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2893, 11, 0.109479, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2893, 11, 0.105147, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2275, 12, 0.121411, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2275, 12, 0.0949208, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 2275, 12, 0.122571, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1822, 13, 0.100274, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1822, 13, 0.100865, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1822, 13, 0.110346, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1481, 14, 0.0878224, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1481, 14, 0.0802274, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1481, 14, 0.110226, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1220, 15, 0.0985896, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1220, 15, 0.120459, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 1220, 15, 0.104144, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
-4, 1, 625000, 1, 0.516309, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 625000, 1, 0.509269, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 625000, 1, 0.511719, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 185185, 2, 0.210432, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 185185, 2, 0.227969, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 185185, 2, 0.213368, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 78125, 3, 0.353947, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 78125, 3, 0.359096, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 78125, 3, 0.349925, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 40000, 4, 0.330045, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 40000, 4, 0.33433, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 40000, 4, 0.332517, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 23148, 5, 0.372881, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 23148, 5, 0.350892, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 23148, 5, 0.349553, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 6858, 8, 1.83634, 1.78039, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 6858, 8, 1.83499, 1.77914, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 6858, 8, 1.83637, 1.77876, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 5000, 9, 1.91689, 1.89309, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 5000, 9, 1.91417, 1.89226, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 5000, 9, 1.91514, 1.89423, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 3756, 10, 1.97258, 1.89561, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 3756, 10, 1.97061, 1.89596, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 3756, 10, 1.9714, 1.89517, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 2893, 11, 2.03831, 2.02747, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 2893, 11, 2.03804, 2.02735, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 2893, 11, 2.04436, 2.02639, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 2275, 12, 2.37126, 2.33456, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 2275, 12, 2.37126, 2.33501, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 2275, 12, 2.37102, 2.33454, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1822, 13, 2.47347, 2.45516, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1822, 13, 2.47588, 2.45432, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1822, 13, 2.47767, 2.45425, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1481, 14, 2.36016, 2.29078, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1481, 14, 2.35376, 2.28952, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1481, 14, 2.35423, 2.29003, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1220, 15, 2.42119, 2.36496, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1220, 15, 2.42109, 2.36446, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+8, 1, 1220, 15, 2.42155, 2.36466, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 625000, 1, 0.130096, 0.129358, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 625000, 1, 0.129857, 0.129359, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 625000, 1, 0.136032, 0.129375, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 185185, 2, 0.204227, 0.195177, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 185185, 2, 0.198837, 0.195152, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 185185, 2, 0.204185, 0.196241, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 78125, 3, 0.340622, 0.304194, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 78125, 3, 0.339496, 0.30417, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 78125, 3, 0.340641, 0.303972, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 40000, 4, 0.367426, 0.352191, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 40000, 4, 0.366304, 0.352907, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 40000, 4, 0.367959, 0.354092, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 23148, 5, 0.269056, 0.262764, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 23148, 5, 0.269135, 0.260747, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 23148, 5, 0.277974, 0.260693, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 14577, 6, 0.24695, 0.237328, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 14577, 6, 0.245469, 0.238045, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 14577, 6, 0.247755, 0.237742, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 9765, 7, 0.365544, 0.356049, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 9765, 7, 0.368659, 0.355574, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 9765, 7, 0.365607, 0.354444, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 6858, 8, 0.297569, 0.291394, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 6858, 8, 0.306915, 0.29147, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 6858, 8, 0.298259, 0.291723, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 5000, 9, 0.319878, 0.314107, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 5000, 9, 0.31952, 0.314534, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 5000, 9, 0.31865, 0.31455, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 3756, 10, 0.290313, 0.286684, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 3756, 10, 0.289721, 0.286527, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 3756, 10, 0.289486, 0.286324, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2893, 11, 0.333389, 0.33071, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2893, 11, 0.333982, 0.329801, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2893, 11, 0.33334, 0.32989, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2275, 12, 0.335208, 0.313994, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2275, 12, 0.325007, 0.313883, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2275, 12, 0.32459, 0.313605, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1822, 13, 0.348097, 0.346444, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1822, 13, 0.348338, 0.346013, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1822, 13, 0.348012, 0.346343, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1481, 14, 0.352308, 0.340672, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1481, 14, 0.34344, 0.340848, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1481, 14, 0.343792, 0.340623, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1220, 15, 0.692733, 0.682283, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1220, 15, 0.690731, 0.682402, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1220, 15, 0.69217, 0.682661, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 624992, 1, 2.18974, 2.17612, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 624992, 1, 2.19123, 2.17571, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 624992, 1, 2.20564, 2.17562, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 185184, 2, 2.45208, 2.43946, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 185184, 2, 2.45174, 2.43932, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 185184, 2, 2.45133, 2.43974, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 78112, 3, 2.81488, 2.80276, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 78112, 3, 2.812, 2.80319, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 78112, 3, 2.81575, 2.80327, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 40000, 4, 3.61835, 3.60682, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 40000, 4, 3.61819, 3.60659, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 40000, 4, 3.61981, 3.6063, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 23136, 5, 4.02659, 4.01412, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 23136, 5, 4.01761, 4.0141, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 23136, 5, 4.02262, 4.01463, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 14576, 6, 4.42153, 4.41543, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 14576, 6, 4.42001, 4.41542, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 14576, 6, 4.42222, 4.41582, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 9760, 7, 4.96287, 4.95373, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 9760, 7, 4.96485, 4.95361, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 9760, 7, 4.97901, 4.95374, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 6848, 8, 5.39689, 5.38758, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 6848, 8, 5.39742, 5.38729, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 6848, 8, 5.39721, 5.38787, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 4992, 9, 5.93987, 5.93077, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 4992, 9, 5.9423, 5.92911, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 4992, 9, 5.94288, 5.9307, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 3744, 10, 6.35683, 6.34333, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 3744, 10, 6.35912, 6.33939, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 3744, 10, 6.36004, 6.3407, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 2880, 11, 6.87293, 6.84752, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 2880, 11, 6.8728, 6.84948, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 2880, 11, 6.8714, 6.84831, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 2272, 12, 7.36059, 7.32034, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 2272, 12, 7.35299, 7.3227, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 2272, 12, 7.35358, 7.32065, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1808, 13, 7.78247, 7.75496, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1808, 13, 7.7881, 7.7551, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1808, 13, 7.78173, 7.75499, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1472, 14, 8.13598, 8.10261, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1472, 14, 8.12829, 8.10032, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1472, 14, 8.1402, 8.10168, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1216, 15, 8.85741, 8.79846, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1216, 15, 8.86082, 8.79791, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 16, 1216, 15, 8.86124, 8.79523, 0, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 625000, 1, 0.108744, 0.107264, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 625000, 1, 0.108375, 0.10721, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 625000, 1, 0.10871, 0.107225, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 185185, 2, 0.148058, 0.147237, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 185185, 2, 0.148175, 0.147162, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 185185, 2, 0.149317, 0.147245, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 78125, 3, 0.317079, 0.283624, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 78125, 3, 0.320621, 0.283764, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 78125, 3, 0.32451, 0.281591, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 40000, 4, 0.231952, 0.215397, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 40000, 4, 0.228599, 0.217824, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 40000, 4, 0.228242, 0.217246, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 23148, 5, 0.18472, 0.172019, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 23148, 5, 0.185103, 0.172471, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 23148, 5, 0.182743, 0.171034, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 14577, 6, 0.13679, 0.121616, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 14577, 6, 0.137917, 0.120851, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 14577, 6, 0.137878, 0.121322, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 9765, 7, 0.111202, 0.102391, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 9765, 7, 0.110769, 0.102856, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 9765, 7, 0.110816, 0.10224, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 6858, 8, 0.121471, 0.115465, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 6858, 8, 0.121851, 0.114781, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 6858, 8, 0.131523, 0.115179, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 5000, 9, 0.112822, 0.104969, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 5000, 9, 0.140255, 0.105118, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 5000, 9, 0.114735, 0.104644, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 3756, 10, 0.0939199, 0.0884232, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 3756, 10, 0.0953536, 0.0888947, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 3756, 10, 0.094551, 0.088795, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2893, 11, 0.0894535, 0.0845713, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2893, 11, 0.0903268, 0.08538, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2893, 11, 0.0897356, 0.0849095, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2275, 12, 0.0937131, 0.0898472, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2275, 12, 0.113206, 0.089775, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 2275, 12, 0.0944352, 0.0896865, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1822, 13, 0.0912899, 0.0889451, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1822, 13, 0.0918507, 0.0884193, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1822, 13, 0.0914873, 0.0886006, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1481, 14, 0.0808665, 0.0734307, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1481, 14, 0.0808686, 0.0724854, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1481, 14, 0.0797981, 0.0729862, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1220, 15, 0.0923927, 0.0828122, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1220, 15, 0.0918927, 0.0829387, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+4, 1, 1220, 15, 0.0945883, 0.0842594, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec', 48
+, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 185185, 2, 0.197947, 0.183401, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 185185, 2, 0.194864, 0.183907, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 185185, 2, 0.197614, 0.184077, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 78125, 3, 0.347363, 0.319169, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 78125, 3, 0.346797, 0.317528, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 78125, 3, 0.349152, 0.31871, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 40000, 4, 0.3327, 0.311634, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 40000, 4, 0.32995, 0.311828, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 40000, 4, 0.349388, 0.311194, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 23148, 5, 0.350727, 0.33359, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 23148, 5, 0.351106, 0.335569, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 23148, 5, 0.350028, 0.337169, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
@@ -349,18 +343,18 @@
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
 , '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 2893, 11, 1.16119, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 2893, 11, 1.1562, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 2893, 11, 1.15636, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 2275, 12, 1.21111, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 2275, 12, 1.21451, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 2275, 12, 1.21178, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1822, 13, 1.27396, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1822, 13, 1.27378, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1822, 13, 1.2786, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1481, 14, 1.36428, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1481, 14, 1.36401, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1481, 14, 1.36423, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1220, 15, 1.44259, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1220, 15, 1.44319, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
-4, 1, 1220, 15, 1.44258, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 2893, 11, 1.15357, 1.13451, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 2893, 11, 1.17986, 1.1347, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 2893, 11, 1.15557, 1.13553, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 2275, 12, 1.21064, 1.20551, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 2275, 12, 1.21724, 1.20538, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 2275, 12, 1.21066, 1.20526, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1822, 13, 1.27334, 1.26939, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1822, 13, 1.27443, 1.27038, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1822, 13, 1.2917, 1.27023, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1481, 14, 1.36419, 1.29769, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1481, 14, 1.36369, 1.29668, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1481, 14, 1.37199, 1.29711, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1220, 15, 1.48032, 1.37114, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1220, 15, 1.44597, 1.37127, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
+4, 1, 1220, 15, 1.4446, 1.37104, 1, '-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256', 48
