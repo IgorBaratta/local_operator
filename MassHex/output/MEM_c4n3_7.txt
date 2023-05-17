@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+CPU name:	
+CPU type:	Fujitsu A64FX
+CPU clock:	0.00 GHz
+--------------------------------------------------------------------------------
+Region kernel, Group 1: MEM
++-------------------+-------------+
+|    Region Info    | HWThread 36 |
++-------------------+-------------+
+| RDTSC Runtime [s] |    2.255106 |
+|     call count    |           1 |
++-------------------+-------------+
++----------------------+---------+-------------+
+|         Event        | Counter | HWThread 36 |
++----------------------+---------+-------------+
+|     INST_RETIRED     |   PMC0  |   503928000 |
+|      CPU_CYCLES      |   PMC1  |   368104300 |
+|   L2D_CACHE_REFILL   |   PMC2  |      551540 |
+|     L2D_CACHE_WB     |   PMC3  |      164084 |
+|      L2D_SWAP_DM     |   PMC4  |       37384 |
+| L2D_CACHE_MIBMCH_PRF |   PMC5  |        8696 |
++----------------------+---------+-------------+
++-----------------------------------+-------------+
+|               Metric              | HWThread 36 |
++-----------------------------------+-------------+
+|        Runtime (RDTSC) [s]        |      2.2551 |
+|                CPI                |      0.7305 |
+|  Memory read bandwidth [MBytes/s] |     57.3799 |
+|  Memory read data volume [GBytes] |      0.1294 |
+| Memory write bandwidth [MBytes/s] |     18.6268 |
+| Memory write data volume [GBytes] |      0.0420 |
+|    Memory bandwidth [MBytes/s]    |     76.0067 |
+|    Memory data volume [GBytes]    |      0.1714 |
++-----------------------------------+-------------+

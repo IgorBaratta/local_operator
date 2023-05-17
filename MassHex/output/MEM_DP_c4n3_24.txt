@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------
+CPU name:	
+CPU type:	Fujitsu A64FX
+CPU clock:	0.00 GHz
+--------------------------------------------------------------------------------
+Region kernel, Group 1: MEM_DP
++-------------------+------------+
+|    Region Info    | HWThread 0 |
++-------------------+------------+
+| RDTSC Runtime [s] |   2.231278 |
+|     call count    |          1 |
++-------------------+------------+
++----------------------+---------+------------+
+|         Event        | Counter | HWThread 0 |
++----------------------+---------+------------+
+| FP_DP_FIXED_OPS_SPEC |   PMC0  |   22585880 |
+| FP_DP_SCALE_OPS_SPEC |   PMC1  |  268214600 |
+|   L2D_CACHE_REFILL   |   PMC2  |     561262 |
+|     L2D_CACHE_WB     |   PMC3  |     167606 |
+|      L2D_SWAP_DM     |   PMC4  |      45911 |
+| L2D_CACHE_MIBMCH_PRF |   PMC5  |       8878 |
++----------------------+---------+------------+
++-----------------------------------+------------+
+|               Metric              | HWThread 0 |
++-----------------------------------+------------+
+|        Runtime (RDTSC) [s]        |     2.2313 |
+|         DP (FP) [MFLOP/s]         |    10.1224 |
+|      DP (FP+SVE128) [MFLOP/s]     |   130.3291 |
+|      DP (FP+SVE256) [MFLOP/s]     |   250.5358 |
+|      DP (FP+SVE512) [MFLOP/s]     |   490.9493 |
+|  Memory read bandwidth [MBytes/s] |    58.1089 |
+|  Memory read data volume [GBytes] |     0.1297 |
+| Memory write bandwidth [MBytes/s] |    19.2298 |
+| Memory write data volume [GBytes] |     0.0429 |
+|    Memory bandwidth [MBytes/s]    |    77.3387 |
+|    Memory data volume [GBytes]    |     0.1726 |
+|     Operational intensity (FP)    |     0.1309 |
+| Operational intensity (FP+SVE128) |     1.6852 |
+| Operational intensity (FP+SVE256) |     3.2395 |
+| Operational intensity (FP+SVE512) |     6.3480 |
++-----------------------------------+------------+

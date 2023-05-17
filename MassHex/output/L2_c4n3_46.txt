@@ -1,0 +1,35 @@
+--------------------------------------------------------------------------------
+CPU name:	
+CPU type:	Fujitsu A64FX
+CPU clock:	0.00 GHz
+--------------------------------------------------------------------------------
+Region kernel, Group 1: L2
++-------------------+-------------+
+|    Region Info    | HWThread 24 |
++-------------------+-------------+
+| RDTSC Runtime [s] |    2.068628 |
+|     call count    |           1 |
++-------------------+-------------+
++------------------+---------+-------------+
+|       Event      | Counter | HWThread 24 |
++------------------+---------+-------------+
+|   INST_RETIRED   |   PMC0  |   503927600 |
+|    CPU_CYCLES    |   PMC1  |   355024700 |
+| L1D_CACHE_REFILL |   PMC2  |     5654847 |
+|   L1D_CACHE_WB   |   PMC3  |     3029107 |
+| L1I_CACHE_REFILL |   PMC4  |      598589 |
++------------------+---------+-------------+
++------------------------------------+-------------+
+|               Metric               | HWThread 24 |
++------------------------------------+-------------+
+|         Runtime (RDTSC) [s]        |      2.0686 |
+|                 CPI                |      0.7045 |
+|  L1D<-L2 load bandwidth [MBytes/s] |    699.8072 |
+|  L1D<-L2 load data volume [GBytes] |      1.4476 |
+| L1D->L2 evict bandwidth [MBytes/s] |    374.8627 |
+| L1D->L2 evict data volume [GBytes] |      0.7755 |
+|  L1I<-L2 load bandwidth [MBytes/s] |     74.0775 |
+|  L1I<-L2 load data volume [GBytes] |      0.1532 |
+|    L1<->L2 bandwidth [MBytes/s]    |   1148.7474 |
+|    L1<->L2 data volume [GBytes]    |      2.3763 |
++------------------------------------+-------------+
