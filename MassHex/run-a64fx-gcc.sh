@@ -9,7 +9,7 @@ export CC=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-10
 export NUM_PROCS=48
 
 run512 () {
-    export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec"
+    export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -fopt-info-vec"
     for DEGREE in {1..15}
         do
             rm -rf build
@@ -42,10 +42,10 @@ run256 () {
 run512 8 1 0 "mass-hex-a64fx-gcc.txt"
 run512 8 8 0 "mass-hex-a64fx-gcc.txt"
 run512 8 1 1 "mass-hex-a64fx-gcc.txt"
-run256 8 1 1 "mass-hex-a64fx-gcc.txt"
+# run256 8 1 1 "mass-hex-a64fx-gcc.txt"
 
 # Single Precision
 run512 4 1 0 "mass-hex-a64fx-gcc.txt"
 run512 4 16 0 "mass-hex-a64fx-gcc.txt"
 run512 4 1 1 "mass-hex-a64fx-gcc.txt"
-run256 4 1 1 "mass-hex-a64fx-gcc.txt"
+# run256 4 1 1 "mass-hex-a64fx-gcc.txt"

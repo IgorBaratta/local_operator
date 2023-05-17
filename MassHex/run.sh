@@ -1,14 +1,16 @@
 #bin/bash
 
-export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/g++
-export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/gcc
+export CXX=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-10.3.0/gcc-12.2.0-zf65tfzmboe3t6lkegf4rrw2zwnprvtn/bin/g++
+export CC=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-10.3.0/gcc-12.2.0-zf65tfzmboe3t6lkegf4rrw2zwnprvtn/bin/gcc
 
-export CXX_FLAGS="-march=native -Ofast -mprefer-vector-width=512"
+
+# export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -mcmodel=large -fopt-info-vec"
+export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=256"
 export BATCH_SIZE=1
 export PRECISION=8
-export NUM_PROCS=76
+export NUM_PROCS=48
 export OPTIMIZE=0
-export DEGREE=13
+export DEGREE=5
 
 rm -rf build
 cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DOPTIMIZE_SUM_FACTORIZATION=${OPTIMIZE} .
