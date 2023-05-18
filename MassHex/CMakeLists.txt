@@ -36,6 +36,10 @@ else()
     message(FATAL_ERROR "Degree >= 1 and Degree <= 15")
 endif()
 
+find_package(likwid)
+include_directories(PUBLIC /snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-12.2.0/likwid-5.2.2-q6jwxu7jsdm4wvzgo4tulzwohwq23nz6/include/)
+target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX likwid::likwid)
+
 find_package(MPI 3 REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX)
 
