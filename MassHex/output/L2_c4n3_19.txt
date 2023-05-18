@@ -7,29 +7,29 @@ Region kernel, Group 1: L2
 +-------------------+-------------+
 |    Region Info    | HWThread 36 |
 +-------------------+-------------+
-| RDTSC Runtime [s] |    2.206878 |
+| RDTSC Runtime [s] |    2.289594 |
 |     call count    |           1 |
 +-------------------+-------------+
 +------------------+---------+-------------+
 |       Event      | Counter | HWThread 36 |
 +------------------+---------+-------------+
 |   INST_RETIRED   |   PMC0  |   503976600 |
-|    CPU_CYCLES    |   PMC1  |   352214300 |
-| L1D_CACHE_REFILL |   PMC2  |     5743311 |
-|   L1D_CACHE_WB   |   PMC3  |     2970207 |
-| L1I_CACHE_REFILL |   PMC4  |      598513 |
+|    CPU_CYCLES    |   PMC1  |   359306500 |
+| L1D_CACHE_REFILL |   PMC2  |     5689490 |
+|   L1D_CACHE_WB   |   PMC3  |     3005418 |
+| L1I_CACHE_REFILL |   PMC4  |      598627 |
 +------------------+---------+-------------+
 +------------------------------------+-------------+
 |               Metric               | HWThread 36 |
 +------------------------------------+-------------+
-|         Runtime (RDTSC) [s]        |      2.2069 |
-|                 CPI                |      0.6989 |
-|  L1D<-L2 load bandwidth [MBytes/s] |    666.2297 |
-|  L1D<-L2 load data volume [GBytes] |      1.4703 |
-| L1D->L2 evict bandwidth [MBytes/s] |    344.5469 |
-| L1D->L2 evict data volume [GBytes] |      0.7604 |
-|  L1I<-L2 load bandwidth [MBytes/s] |     69.4281 |
+|         Runtime (RDTSC) [s]        |      2.2896 |
+|                 CPI                |      0.7129 |
+|  L1D<-L2 load bandwidth [MBytes/s] |    636.1431 |
+|  L1D<-L2 load data volume [GBytes] |      1.4565 |
+| L1D->L2 evict bandwidth [MBytes/s] |    336.0364 |
+| L1D->L2 evict data volume [GBytes] |      0.7694 |
+|  L1I<-L2 load bandwidth [MBytes/s] |     66.9326 |
 |  L1I<-L2 load data volume [GBytes] |      0.1532 |
-|    L1<->L2 bandwidth [MBytes/s]    |   1080.2047 |
-|    L1<->L2 data volume [GBytes]    |      2.3839 |
+|    L1<->L2 bandwidth [MBytes/s]    |   1039.1122 |
+|    L1<->L2 data volume [GBytes]    |      2.3791 |
 +------------------------------------+-------------+

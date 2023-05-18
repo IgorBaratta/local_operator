@@ -7,29 +7,29 @@ Region kernel, Group 1: L2
 +-------------------+-------------+
 |    Region Info    | HWThread 12 |
 +-------------------+-------------+
-| RDTSC Runtime [s] |    2.370289 |
+| RDTSC Runtime [s] |    2.313378 |
 |     call count    |           1 |
 +-------------------+-------------+
 +------------------+---------+-------------+
 |       Event      | Counter | HWThread 12 |
 +------------------+---------+-------------+
 |   INST_RETIRED   |   PMC0  |   503932200 |
-|    CPU_CYCLES    |   PMC1  |   359196100 |
-| L1D_CACHE_REFILL |   PMC2  |     5626624 |
-|   L1D_CACHE_WB   |   PMC3  |     2979759 |
-| L1I_CACHE_REFILL |   PMC4  |      598637 |
+|    CPU_CYCLES    |   PMC1  |   346723900 |
+| L1D_CACHE_REFILL |   PMC2  |     5589267 |
+|   L1D_CACHE_WB   |   PMC3  |     2917711 |
+| L1I_CACHE_REFILL |   PMC4  |      598571 |
 +------------------+---------+-------------+
 +------------------------------------+-------------+
 |               Metric               | HWThread 12 |
 +------------------------------------+-------------+
-|         Runtime (RDTSC) [s]        |      2.3703 |
-|                 CPI                |      0.7128 |
-|  L1D<-L2 load bandwidth [MBytes/s] |    607.6963 |
-|  L1D<-L2 load data volume [GBytes] |      1.4404 |
-| L1D->L2 evict bandwidth [MBytes/s] |    321.8250 |
-| L1D->L2 evict data volume [GBytes] |      0.7628 |
-|  L1I<-L2 load bandwidth [MBytes/s] |     64.6550 |
-|  L1I<-L2 load data volume [GBytes] |      0.1533 |
-|    L1<->L2 bandwidth [MBytes/s]    |    994.1763 |
-|    L1<->L2 data volume [GBytes]    |      2.3565 |
+|         Runtime (RDTSC) [s]        |      2.3134 |
+|                 CPI                |      0.6880 |
+|  L1D<-L2 load bandwidth [MBytes/s] |    618.5121 |
+|  L1D<-L2 load data volume [GBytes] |      1.4309 |
+| L1D->L2 evict bandwidth [MBytes/s] |    322.8759 |
+| L1D->L2 evict data volume [GBytes] |      0.7469 |
+|  L1I<-L2 load bandwidth [MBytes/s] |     66.2383 |
+|  L1I<-L2 load data volume [GBytes] |      0.1532 |
+|    L1<->L2 bandwidth [MBytes/s]    |   1007.6263 |
+|    L1<->L2 data volume [GBytes]    |      2.3310 |
 +------------------------------------+-------------+

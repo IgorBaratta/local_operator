@@ -7,7 +7,7 @@ Region kernel, Group 1: MEM_DP
 +-------------------+-------------+
 |    Region Info    | HWThread 36 |
 +-------------------+-------------+
-| RDTSC Runtime [s] |    2.207330 |
+| RDTSC Runtime [s] |    2.275013 |
 |     call count    |           1 |
 +-------------------+-------------+
 +----------------------+---------+-------------+
@@ -15,27 +15,27 @@ Region kernel, Group 1: MEM_DP
 +----------------------+---------+-------------+
 | FP_DP_FIXED_OPS_SPEC |   PMC0  |    22585880 |
 | FP_DP_SCALE_OPS_SPEC |   PMC1  |   268214600 |
-|   L2D_CACHE_REFILL   |   PMC2  |      557511 |
-|     L2D_CACHE_WB     |   PMC3  |      166785 |
-|      L2D_SWAP_DM     |   PMC4  |       42607 |
-| L2D_CACHE_MIBMCH_PRF |   PMC5  |        8276 |
+|   L2D_CACHE_REFILL   |   PMC2  |      560492 |
+|     L2D_CACHE_WB     |   PMC3  |      167908 |
+|      L2D_SWAP_DM     |   PMC4  |       43664 |
+| L2D_CACHE_MIBMCH_PRF |   PMC5  |       10299 |
 +----------------------+---------+-------------+
 +-----------------------------------+-------------+
 |               Metric              | HWThread 36 |
 +-----------------------------------+-------------+
-|        Runtime (RDTSC) [s]        |      2.2073 |
-|         DP (FP) [MFLOP/s]         |     10.2322 |
-|      DP (FP+SVE128) [MFLOP/s]     |    131.7431 |
-|      DP (FP+SVE256) [MFLOP/s]     |    253.2540 |
-|      DP (FP+SVE512) [MFLOP/s]     |    496.2757 |
-|  Memory read bandwidth [MBytes/s] |     58.7573 |
+|        Runtime (RDTSC) [s]        |      2.2750 |
+|         DP (FP) [MFLOP/s]         |      9.9278 |
+|      DP (FP+SVE128) [MFLOP/s]     |    127.8237 |
+|      DP (FP+SVE256) [MFLOP/s]     |    245.7195 |
+|      DP (FP+SVE512) [MFLOP/s]     |    481.5112 |
+|  Memory read bandwidth [MBytes/s] |     56.9981 |
 |  Memory read data volume [GBytes] |      0.1297 |
-| Memory write bandwidth [MBytes/s] |     19.3433 |
-| Memory write data volume [GBytes] |      0.0427 |
-|    Memory bandwidth [MBytes/s]    |     78.1006 |
-|    Memory data volume [GBytes]    |      0.1724 |
-|     Operational intensity (FP)    |      0.1310 |
-| Operational intensity (FP+SVE128) |      1.6868 |
-| Operational intensity (FP+SVE256) |      3.2427 |
-| Operational intensity (FP+SVE512) |      6.3543 |
+| Memory write bandwidth [MBytes/s] |     18.8942 |
+| Memory write data volume [GBytes] |      0.0430 |
+|    Memory bandwidth [MBytes/s]    |     75.8923 |
+|    Memory data volume [GBytes]    |      0.1727 |
+|     Operational intensity (FP)    |      0.1308 |
+| Operational intensity (FP+SVE128) |      1.6843 |
+| Operational intensity (FP+SVE256) |      3.2377 |
+| Operational intensity (FP+SVE512) |      6.3447 |
 +-----------------------------------+-------------+

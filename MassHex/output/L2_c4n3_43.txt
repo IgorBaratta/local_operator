@@ -7,29 +7,29 @@ Region kernel, Group 1: L2
 +-------------------+-------------+
 |    Region Info    | HWThread 36 |
 +-------------------+-------------+
-| RDTSC Runtime [s] |    2.273418 |
+| RDTSC Runtime [s] |    2.275666 |
 |     call count    |           1 |
 +-------------------+-------------+
 +------------------+---------+-------------+
 |       Event      | Counter | HWThread 36 |
 +------------------+---------+-------------+
-|   INST_RETIRED   |   PMC0  |   503932600 |
-|    CPU_CYCLES    |   PMC1  |   363795800 |
-| L1D_CACHE_REFILL |   PMC2  |     6036321 |
-|   L1D_CACHE_WB   |   PMC3  |     3192960 |
-| L1I_CACHE_REFILL |   PMC4  |      598738 |
+|   INST_RETIRED   |   PMC0  |   503942400 |
+|    CPU_CYCLES    |   PMC1  |   368725000 |
+| L1D_CACHE_REFILL |   PMC2  |     5992310 |
+|   L1D_CACHE_WB   |   PMC3  |     3159663 |
+| L1I_CACHE_REFILL |   PMC4  |      598651 |
 +------------------+---------+-------------+
 +------------------------------------+-------------+
 |               Metric               | HWThread 36 |
 +------------------------------------+-------------+
-|         Runtime (RDTSC) [s]        |      2.2734 |
-|                 CPI                |      0.7219 |
-|  L1D<-L2 load bandwidth [MBytes/s] |    679.7246 |
-|  L1D<-L2 load data volume [GBytes] |      1.5453 |
-| L1D->L2 evict bandwidth [MBytes/s] |    359.5457 |
-| L1D->L2 evict data volume [GBytes] |      0.8174 |
-|  L1I<-L2 load bandwidth [MBytes/s] |     67.4214 |
+|         Runtime (RDTSC) [s]        |      2.2757 |
+|                 CPI                |      0.7317 |
+|  L1D<-L2 load bandwidth [MBytes/s] |    674.1022 |
+|  L1D<-L2 load data volume [GBytes] |      1.5340 |
+| L1D->L2 evict bandwidth [MBytes/s] |    355.4448 |
+| L1D->L2 evict data volume [GBytes] |      0.8089 |
+|  L1I<-L2 load bandwidth [MBytes/s] |     67.3450 |
 |  L1I<-L2 load data volume [GBytes] |      0.1533 |
-|    L1<->L2 bandwidth [MBytes/s]    |   1106.6917 |
-|    L1<->L2 data volume [GBytes]    |      2.5160 |
+|    L1<->L2 bandwidth [MBytes/s]    |   1096.8920 |
+|    L1<->L2 data volume [GBytes]    |      2.4962 |
 +------------------------------------+-------------+

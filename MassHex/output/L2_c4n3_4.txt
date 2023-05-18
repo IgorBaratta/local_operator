@@ -7,29 +7,29 @@ Region kernel, Group 1: L2
 +-------------------+------------+
 |    Region Info    | HWThread 0 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   2.211854 |
+| RDTSC Runtime [s] |   2.095781 |
 |     call count    |          1 |
 +-------------------+------------+
 +------------------+---------+------------+
 |       Event      | Counter | HWThread 0 |
 +------------------+---------+------------+
 |   INST_RETIRED   |   PMC0  |  503976000 |
-|    CPU_CYCLES    |   PMC1  |  360813400 |
-| L1D_CACHE_REFILL |   PMC2  |    5716662 |
-|   L1D_CACHE_WB   |   PMC3  |    2976879 |
-| L1I_CACHE_REFILL |   PMC4  |     598585 |
+|    CPU_CYCLES    |   PMC1  |  351151500 |
+| L1D_CACHE_REFILL |   PMC2  |    5697160 |
+|   L1D_CACHE_WB   |   PMC3  |    2988079 |
+| L1I_CACHE_REFILL |   PMC4  |     598626 |
 +------------------+---------+------------+
 +------------------------------------+------------+
 |               Metric               | HWThread 0 |
 +------------------------------------+------------+
-|         Runtime (RDTSC) [s]        |     2.2119 |
-|                 CPI                |     0.7159 |
-|  L1D<-L2 load bandwidth [MBytes/s] |   661.6465 |
-|  L1D<-L2 load data volume [GBytes] |     1.4635 |
-| L1D->L2 evict bandwidth [MBytes/s] |   344.5440 |
-| L1D->L2 evict data volume [GBytes] |     0.7621 |
-|  L1I<-L2 load bandwidth [MBytes/s] |    69.2802 |
+|         Runtime (RDTSC) [s]        |     2.0958 |
+|                 CPI                |     0.6968 |
+|  L1D<-L2 load bandwidth [MBytes/s] |   695.9090 |
+|  L1D<-L2 load data volume [GBytes] |     1.4585 |
+| L1D->L2 evict bandwidth [MBytes/s] |   364.9944 |
+| L1D->L2 evict data volume [GBytes] |     0.7649 |
+|  L1I<-L2 load bandwidth [MBytes/s] |    73.1223 |
 |  L1I<-L2 load data volume [GBytes] |     0.1532 |
-|    L1<->L2 bandwidth [MBytes/s]    |  1075.4707 |
-|    L1<->L2 data volume [GBytes]    |     2.3788 |
+|    L1<->L2 bandwidth [MBytes/s]    |  1134.0257 |
+|    L1<->L2 data volume [GBytes]    |     2.3767 |
 +------------------------------------+------------+

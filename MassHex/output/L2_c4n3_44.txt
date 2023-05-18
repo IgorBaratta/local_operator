@@ -7,29 +7,29 @@ Region kernel, Group 1: L2
 +-------------------+------------+
 |    Region Info    | HWThread 0 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   2.183581 |
+| RDTSC Runtime [s] |   2.195190 |
 |     call count    |          1 |
 +-------------------+------------+
 +------------------+---------+------------+
 |       Event      | Counter | HWThread 0 |
 +------------------+---------+------------+
-|   INST_RETIRED   |   PMC0  |  503936900 |
-|    CPU_CYCLES    |   PMC1  |  365270300 |
-| L1D_CACHE_REFILL |   PMC2  |    6014264 |
-|   L1D_CACHE_WB   |   PMC3  |    3181646 |
-| L1I_CACHE_REFILL |   PMC4  |     598928 |
+|   INST_RETIRED   |   PMC0  |  503976000 |
+|    CPU_CYCLES    |   PMC1  |  350240300 |
+| L1D_CACHE_REFILL |   PMC2  |    5681089 |
+|   L1D_CACHE_WB   |   PMC3  |    2947416 |
+| L1I_CACHE_REFILL |   PMC4  |     598686 |
 +------------------+---------+------------+
 +------------------------------------+------------+
 |               Metric               | HWThread 0 |
 +------------------------------------+------------+
-|         Runtime (RDTSC) [s]        |     2.1836 |
-|                 CPI                |     0.7248 |
-|  L1D<-L2 load bandwidth [MBytes/s] |   705.1039 |
-|  L1D<-L2 load data volume [GBytes] |     1.5397 |
-| L1D->L2 evict bandwidth [MBytes/s] |   373.0118 |
-| L1D->L2 evict data volume [GBytes] |     0.8145 |
-|  L1I<-L2 load bandwidth [MBytes/s] |    70.2175 |
+|         Runtime (RDTSC) [s]        |     2.1952 |
+|                 CPI                |     0.6950 |
+|  L1D<-L2 load bandwidth [MBytes/s] |   662.5207 |
+|  L1D<-L2 load data volume [GBytes] |     1.4544 |
+| L1D->L2 evict bandwidth [MBytes/s] |   343.7235 |
+| L1D->L2 evict data volume [GBytes] |     0.7545 |
+|  L1I<-L2 load bandwidth [MBytes/s] |    69.8179 |
 |  L1I<-L2 load data volume [GBytes] |     0.1533 |
-|    L1<->L2 bandwidth [MBytes/s]    |  1148.3332 |
-|    L1<->L2 data volume [GBytes]    |     2.5075 |
+|    L1<->L2 bandwidth [MBytes/s]    |  1076.0622 |
+|    L1<->L2 data volume [GBytes]    |     2.3622 |
 +------------------------------------+------------+

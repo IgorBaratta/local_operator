@@ -7,25 +7,25 @@ Region kernel, Group 1: FLOPS_DP
 +-------------------+-------------+
 |    Region Info    | HWThread 36 |
 +-------------------+-------------+
-| RDTSC Runtime [s] |    2.054921 |
+| RDTSC Runtime [s] |    2.279778 |
 |     call count    |           1 |
 +-------------------+-------------+
 +----------------------+---------+-------------+
 |         Event        | Counter | HWThread 36 |
 +----------------------+---------+-------------+
-|     INST_RETIRED     |   PMC0  |   503932400 |
-|      CPU_CYCLES      |   PMC1  |   349713700 |
+|     INST_RETIRED     |   PMC0  |   503986100 |
+|      CPU_CYCLES      |   PMC1  |   357369300 |
 | FP_DP_FIXED_OPS_SPEC |   PMC3  |    22585880 |
 | FP_DP_SCALE_OPS_SPEC |   PMC4  |   268214600 |
 +----------------------+---------+-------------+
 +--------------------------+-------------+
 |          Metric          | HWThread 36 |
 +--------------------------+-------------+
-|    Runtime (RDTSC) [s]   |      2.0549 |
-|        Clock [MHz]       |    170.1835 |
-|            CPI           |      0.6940 |
-|     DP (FP) [MFLOP/s]    |     10.9911 |
-| DP (FP+SVE128) [MFLOP/s] |    141.5142 |
-| DP (FP+SVE256) [MFLOP/s] |    272.0373 |
-| DP (FP+SVE512) [MFLOP/s] |    533.0834 |
+|    Runtime (RDTSC) [s]   |      2.2798 |
+|        Clock [MHz]       |    156.7562 |
+|            CPI           |      0.7091 |
+|     DP (FP) [MFLOP/s]    |      9.9071 |
+| DP (FP+SVE128) [MFLOP/s] |    127.5565 |
+| DP (FP+SVE256) [MFLOP/s] |    245.2059 |
+| DP (FP+SVE512) [MFLOP/s] |    480.5048 |
 +--------------------------+-------------+
