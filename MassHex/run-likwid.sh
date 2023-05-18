@@ -20,7 +20,7 @@ do
   cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DOPTIMIZE_SUM_FACTORIZATION=${OPTIMIZE} .
   cmake --build build -j 10
   mpirun -n ${NUM_PROCS} likwid-perfctr -m -C E:N:1 -g L2 -o output/L2_%h_%r.txt ./build/benchmark
-  grep -e "L2 data volume" output/L2* >> likwid-llvm/mass_L2_${BATCH_SIZE}_${DEGREE}_${OPTIMIZE}_512.txt
+  grep -e "L2 data volume" output/L2* >> likwid/mass_L2_${BATCH_SIZE}_${DEGREE}_${OPTIMIZE}_512.txt
   grep -e "L2 bandwidth" output/L2* >> likwid/mass_L2_${BATCH_SIZE}_${DEGREE}_${OPTIMIZE}_512.txt
   
   mpirun -n ${NUM_PROCS} likwid-perfctr -m -C E:N:1 -g MEM_DP -o output/MEM_DP_%h_%r.txt ./build/benchmark
