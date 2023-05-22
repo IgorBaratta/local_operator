@@ -21,11 +21,11 @@ run () {
 }
 
 # Order : Precision, Batch Size, Optimize Sum Factorization
-run 8 4 "mass-tet-a64fx-llvm.txt"
+run 8 8 "mass-tet-a64fx-llvm.txt"
 run 8 1 "mass-tet-a64fx-llvm.txt"
 
 
 # Single Precision
 # Order : Precision, Batch Size, Optimize Sum Factorization
+run 4 16 "mass-tet-a64fx-llvm.txt"
 run 4 1 "mass-tet-a64fx-llvm.txt"
-run 4 8 "mass-tet-a64fx-llvm.txt"

@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 
   using T = VectorExtensions<precision, batch_size>::T;
   using S = VectorExtensions<precision, batch_size>::S;
-  constexpr int global_size = precompute ? 5000000 : 10000000;
+  constexpr int global_size = precompute ? 500000 : 1000000;
 
   MPI_Init(&argc, &argv);
   {
