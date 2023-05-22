@@ -32,7 +32,7 @@ do
 done
 
 
-export BLOCK_SIZE=8
+export BATCH_SIZE=8
 for DEGREE in {1..8}
 do
   rm -rf output
