@@ -4,9 +4,11 @@
 
 namespace stdex = std::experimental;
 
+
 template <std::size_t Precision, std::size_t BatchSize>
 struct VectorExtensions
 {
-    using S = std::conditional_t<Precision == 8, double, float>;
-    using T = std::conditional_t<BatchSize == 1, S, stdex::fixed_size_simd<S, BatchSize>>;
+  using S = std::conditional_t<Precision == 8, double, float>;
+  typedef S scalarB __attribute__((ext_vector_type(BatchSize)));
+  using T = std::conditional_t<BatchSize == 1, S, scalarB>;
 };
