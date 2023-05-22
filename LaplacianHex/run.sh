@@ -1,7 +1,7 @@
 #bin/bash
 
-export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/g++
-export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-icelake/gcc-11.2.0/gcc-12.2.0-ipuhem4nelxd7n2us6tcshvwzkce5ip6/bin/gcc
+export CXX=g++
+export CC=gcc
 
 export CXX_FLAGS="-march=native -Ofast -mprefer-vector-width=256"
 export BATCH_SIZE=1

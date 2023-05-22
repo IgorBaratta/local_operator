@@ -11,24 +11,33 @@
 #include <cassert>
 #include <any>
 
-template <typename T, typename S>
-void check_solution(T &acc, T &reference)
-{
-  if constexpr (std::is_same<T, S>::value)
-  {
-    if ((acc - reference) * (acc - reference) > T(0.001))
-    {
-      throw std::runtime_error("Please verify solution.");
-    }
-  }
-  else
-  {
-    if ((acc[0] - reference[0]) * (acc[0] - reference[0]) > S(0.001))
-    {
-      throw std::runtime_error("Please verify solution.");
-    }
-  }
-}
+#ifndef PRECISION
+#error Floating point precision not defined.
+#endif
+
+#ifndef BATCH_SIZE
+#error Batch size not defined.
+#endif
+
+#ifndef DEGREE
+#error Polynomial degree not defined.
+#endif
+
+#ifndef BLOCK_SIZE
+#error Block size not defined.
+#endif
+
+// This block enables to compile the code with and without the likwid header in place
+#ifdef LIKWID_PERFMON
+#include <likwid-marker.h>
+#else
+#define LIKWID_MARKER_INIT
+#define LIKWID_MARKER_THREADINIT
+#define LIKWID_MARKER_REGISTER(regionTag)
+#define LIKWID_MARKER_START(regionTag)
+#define LIKWID_MARKER_STOP(regionTag)
+#define LIKWID_MARKER_CLOSE
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -76,22 +85,26 @@ int main(int argc, char *argv[])
 
     // Constants for cross element vectorization
     T zero = {0};
-    T reference = {0};
 
     // Create geometry and coefficients
     std::vector<T> geometry = create_geometry<T, S>(num_batches, batch_size, cub_nq, precompute);
-
     std::vector<T> coefficients(num_batches * stride);
-    // std::fill(coefficients.begin(), coefficients.end(), one);
 
     std::size_t count = {0};
     std::for_each(coefficients.begin(), coefficients.end(), [&count, nd = op.num_dofs](auto &e)
                   { e = count < num_nodes? T(1) : T(S(count-num_nodes));
                     count = (count + 1) % (nd + num_nodes); });
 
+    std::array<T, op.num_dofs> Ae;
+
     MPI_Barrier(comm);
 
-    std::array<T, op.num_dofs> Ae;
+    LIKWID_MARKER_INIT;
+    LIKWID_MARKER_REGISTER("kernel");
+
+    LIKWID_MARKER_THREADINIT;
+    LIKWID_MARKER_START("kernel");
+
     double start = MPI_Wtime();
     for (int batch = 0; batch < num_batches; batch++)
     {
@@ -105,23 +118,21 @@ int main(int argc, char *argv[])
     double end = MPI_Wtime();
     double local_time = end - start;
 
-    double max_time = 0;
-    MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);
+    LIKWID_MARKER_STOP("kernel");
+    LIKWID_MARKER_CLOSE;
 
-    // Sanity check: Are we computing the correct values?
-    for (int batch = 0; batch < num_batches; batch++)
-    {
-      T acc = 0;
-      for (int i = 0; i < local_size; i++)
-        acc += A[i + batch * local_size];
-      check_solution<T, S>(acc, reference);
-    }
+    MPI_Barrier(comm);
+
+    double max_time = 0;
+    double min_time = 0;
+    MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);
+    MPI_Allreduce(&local_time, &min_time, 1, MPI_DOUBLE, MPI_MIN, comm);
 
     if (mpi_rank == 0)
     {
       std::cout << precision << ", " << batch_size << ", ";
       std::cout << num_cells << ", " << P << ", " << max_time << ", ";
-      std::cout << bs << ", " << precompute  << ", ";
+      std::cout << min_time << ", " << bs << ", " << precompute << ", ";
       std::cout << OPTIMIZE_SUM_FACTORIZATION;
     }
   }

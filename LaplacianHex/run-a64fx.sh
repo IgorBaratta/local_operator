@@ -1,130 +1,41 @@
 #bin/bash
 
-
-# repeat for clang
-
-export CXX=clang++
-export CC=clang
-export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
-export OUTPUT="out-a64fx-clang.txt"
-
+export CXX=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-12.2.0/llvm-16.0.0-hikjh2jya43tsrs4i35sduiswnccnl4p/bin/clang++
+export CC=/snx11273/home/ri-crichardson/spack/opt/spack/linux-rhel8-a64fx/gcc-12.2.0/llvm-16.0.0-hikjh2jya43tsrs4i35sduiswnccnl4p/bin/clang
 export NUM_PROCS=48
-export BATCH_SIZE=1
-export PRECISION=8
-export BLOCK_SIZE=8
 
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
 
-eubfrfef
+run () {
+    export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
+    for DEGREE in {1..15}
+        do
+            rm -rf build_a64fx
+            cmake -B build_a64fx/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=$1 -DBATCH_SIZE=$2 -DDEGREE=${DEGREE} -DPRECOMPUTE=$3 -DBLOCK_SIZE=$4 -DOPTIMIZE_SUM_FACTORIZATION=$5 .
+            cmake --build build_a64fx -j 10
+        for i in {1..3}
+        do
+            mpirun -n ${NUM_PROCS} ./build_a64fx/benchmark >> $6
+            echo ", '${CXX_FLAGS}', ${NUM_PROCS}" >> $6
+        done
+    done
+}
 
-export NUM_PROCS=48
-export BATCH_SIZE=8
-export PRECISION=8
-export BLOCK_SIZE=1
 
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15	      
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
+# Double Precision
+# Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
+run 8 1 1 16 0 "laplacian-hex-a64fx-llvm.txt"
+run 8 1 1 16 1 "laplacian-hex-a64fx-llvm.txt"
+run 8 1 0 16 0 "laplacian-hex-a64fx-llvm.txt"
+run 8 1 0 16 1 "laplacian-hex-a64fx-llvm.txt"
+run 8 8 1 1 0 "laplacian-hex-a64fx-llvm.txt"
+run 8 8 0 1 0 "laplacian-hex-a64fx-llvm.txt"
 
-export NUM_PROCS=48
-export BATCH_SIZE=1
-export PRECISION=4
-export BLOCK_SIZE=16
 
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
-
-export NUM_PROCS=48
-export BATCH_SIZE=16
-export PRECISION=4
-export BLOCK_SIZE=1
-
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15	      
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
-
-# repeat for gcc
-
-export CXX=g++
-export CC=gcc
-export CXX_FLAGS="-Ofast -march=native -mcpu=a64fx -mcmodel=large -fopt-info-vec -msve-vector-bits=512"
-export OUTPUT="out-a64fx-gcc.txt"
-
-export NUM_PROCS=48
-export BATCH_SIZE=1
-export PRECISION=8
-export BLOCK_SIZE=8
-
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
-
-export NUM_PROCS=48
-export BATCH_SIZE=8
-export PRECISION=8
-export BLOCK_SIZE=1
-
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15	      
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
-
-export NUM_PROCS=48
-export BATCH_SIZE=1
-export PRECISION=4
-export BLOCK_SIZE=16
-
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
-
-export NUM_PROCS=48
-export BATCH_SIZE=16
-export PRECISION=4
-export BLOCK_SIZE=1
-
-for DEGREE in 2 3 4 5 6 7 8 9 10 11 12 13 14 15	      
-do
-    rm -rf build
-    cmake -B build/ -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DPRECISION=${PRECISION} -DBATCH_SIZE=${BATCH_SIZE} -DDEGREE=${DEGREE} -DBLOCK_SIZE=${BLOCK_SIZE} .
-    cmake --build build -j 10
-    mpirun -n ${NUM_PROCS} ./build/benchmark >> ${OUTPUT}
-    echo ", '${CXX_FLAGS}'" >> ${OUTPUT}
-done
+# Single Precision
+## Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
+run 4 1 1 16 0 "laplacian-hex-a64fx-llvm.txt"
+run 4 1 1 16 1 "laplacian-hex-a64fx-llvm.txt"
+run 4 1 0 16 0 "laplacian-hex-a64fx-llvm.txt"
+run 4 1 0 16 1 "laplacian-hex-a64fx-llvm.txt"
+run 4 16 1 1 0 "laplacian-hex-a64fx-llvm.txt"
+run 4 16 0 1 0 "laplacian-hex-a64fx-llvm.txt"

@@ -51,6 +51,9 @@ else()
 endif()
 
 find_package(MPI 3 REQUIRED)
-target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX)
+find_package(likwid REQUIRED)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${LIKWID_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX likwid::likwid)
 
 message(${CMAKE_CXX_FLAGS})
