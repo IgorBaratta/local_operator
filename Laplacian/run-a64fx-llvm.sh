@@ -21,7 +21,7 @@ run () {
     done
 }
 
-# Order :  1 - Precision 
+# Param :  1 - Precision 
 #          2 - Batch Size 
 #          3 - Block Size
 #          4 - Output file name
@@ -36,7 +36,7 @@ run 8 8 16 "laplacian-tet-a64fx-llvm.txt"
 
 
 
-# Order :  1 - Precision 
+# Param :  1 - Precision 
 #          2 - Batch Size 
 #          3 - Block Size
 #          4 - Output file name
