@@ -43,32 +43,32 @@ run256 () {
 
 # Double Precision
 # Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
-run 8 1 1 16 0 "out-icelake-gcc-precompute.txt"
-run 8 1 1 16 1 "out-icelake-gcc-precompute-optimize.txt"
-run 8 1 0 16 0 "out-icelake-gcc-no-precompute.txt"
-run 8 1 0 16 1 "out-icelake-gcc-no-precompute-optimize.txt"
-run 8 8 1 1 0 "out-icelake-gcc-precompute.txt"
-run 8 8 0 1 0 "out-icelake-gcc-no-precompute.txt"
+run 8 1 1 16 0 "laplacian-hex-icelake-gcc.txt"
+run 8 1 1 16 1 "laplacian-hex-icelake-gcc.txt"
+run 8 1 0 16 0 "laplacian-hex-icelake-gcc.txt"
+run 8 1 0 16 1 "laplacian-hex-icelake-gcc.txt"
+run 8 8 1 1 0 "laplacian-hex-icelake-gcc.txt"
+run 8 8 0 1 0 "laplacian-hex-icelake-gcc.txt"
 
 
 # Single Precision
 ## Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
-run 4 1 1 16 0 "out-icelake-gcc-precompute.txt"
-run 4 1 1 16 1 "out-icelake-gcc-precompute-optimize.txt"
-run 4 1 0 16 0 "out-icelake-gcc-no-precompute.txt"
-run 4 1 0 16 1 "out-icelake-gcc-no-precompute-optimize.txt"
-run 4 16 1 1 0 "out-icelake-gcc-precompute.txt"
-run 4 16 0 1 0 "out-icelake-gcc-no-precompute.txt"
+run 4 1 1 16 0 "laplacian-hex-icelake-gcc.txt"
+run 4 1 1 16 1 "laplacian-hex-icelake-gcc.txt"
+run 4 1 0 16 0 "laplacian-hex-icelake-gcc.txt"
+run 4 1 0 16 1 "laplacian-hex-icelake-gcc.txt"
+run 4 16 1 1 0 "laplacian-hex-icelake-gcc.txt"
+run 4 16 0 1 0 "laplacian-hex-icelake-gcc.txt"
 
 
 ## Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
-run256 8 1 1 1 0 "out-icelake-gcc-precompute.txt"
-run256 8 1 1 1 1 "out-icelake-gcc-precompute-optimize.txt"
-run256 8 1 0 16 0 "out-icelake-gcc-no-precompute.txt"
-run256 8 1 0 16 1 "out-icelake-gcc-no-precompute-optimize.txt"
+run256 8 1 1 1 0 "laplacian-hex-icelake-gcc.txt"
+run256 8 1 1 1 1 "laplacian-hex-icelake-gcc.txt"
+run256 8 1 0 16 0 "laplacian-hex-icelake-gcc.txt"
+run256 8 1 0 16 1 "laplacian-hex-icelake-gcc.txt"
 
 ## Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
-run256 4 1 1 16 0 "out-icelake-gcc-precompute.txt"
-run256 4 1 1 16 1 "out-icelake-gcc-precompute-optimize.txt"
-run256 4 1 0 16 0 "out-icelake-gcc-no-precompute.txt"
-run256 4 1 0 16 1 "out-icelake-gcc-no-precompute-optimize.txt"
+run256 4 1 1 16 0 "laplacian-hex-icelake-gcc.txt"
+run256 4 1 1 16 1 "laplacian-hex-icelake-gcc.txt"
+run256 4 1 0 16 0 "laplacian-hex-icelake-gcc.txt"
+run256 4 1 0 16 1 "laplacian-hex-icelake-gcc.txt"

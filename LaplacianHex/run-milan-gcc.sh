@@ -6,7 +6,6 @@
 export CXX=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-zen/gcc-8.4.0/gcc-12.2.0-vabb3h6ueyk5rgnkslaixjzbuoacjjxo/bin/g++
 export CC=/rds/user/ia397/hpc-work/spack/opt/spack/linux-rocky8-zen/gcc-8.4.0/gcc-12.2.0-vabb3h6ueyk5rgnkslaixjzbuoacjjxo/bin/gcc
 
-
 export NUM_PROCS=128
 
 run () {
@@ -27,24 +26,22 @@ run () {
 
 # Double Precision
 # Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
-run 8 1 1 16 0 "out-milan-gcc-precompute.txt"
-run 8 1 1 16 1 "out-milan-gcc-precompute-optimize.txt"
-run 8 1 1 1 1 "out-milan-gcc-precompute-optimize.txt"
-run 8 1 1 0 1 "out-milan-gcc-precompute-optimize.txt"
-
-run 8 1 0 16 0 "out-milan-gcc-no-precompute.txt"
-run 8 1 0 16 1 "out-milan-gcc-no-precompute-optimize.txt"
-
-run 8 4 1 1 0 "out-milan-gcc-precompute.txt"
-run 8 4 0 1 0 "out-milan-gcc-no-precompute.txt"
+run 8 1 1 16 0 "laplacian-hex-icelake-gcc.txt"
+run 8 1 1 16 1 "laplacian-hex-icelake-gcc.txt"
+run 8 1 1 1 1 "laplacian-hex-icelake-gcc.txt"
+run 8 1 1 0 1 "laplacian-hex-icelake-gcc.txt"
+run 8 1 0 16 0 "laplacian-hex-icelake-gcc.txt"
+run 8 1 0 16 1 "laplacian-hex-icelake-gcc.txt"
+run 8 4 1 1 0 "laplacian-hex-icelake-gcc.txt"
+run 8 4 0 1 0 "laplacian-hex-icelake-gcc.txt"
 
 
 # Single Precision
-## Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
-# run 4 1 1 16 0 "out-milan-gcc-precompute.txt"
-# run 4 1 1 16 1 "out-milan-gcc-precompute-optimize.txt"
-# run 4 1 0 16 0 "out-milan-gcc-no-precompute.txt"
-# run 4 1 0 16 1 "out-milan-gcc-no-precompute-optimize.txt"
-# run 4 8 1 1 0 "out-milan-gcc-precompute.txt"
-# run 4 8 0 1 0 "out-milan-gcc-no-precompute.txt"
+# Order : Precision, Batch Size, PRECOMPUTE, Block Size, Optimize Sum Factorization
+run 4 1 1 16 0 "laplacian-hex-icelake-gcc.txt"
+run 4 1 1 16 1 "laplacian-hex-icelake-gcc.txt"
+run 4 1 0 16 0 "laplacian-hex-icelake-gcc.txt"
+run 4 1 0 16 1 "laplacian-hex-icelake-gcc.txt"
+run 4 8 1 1 0 "laplacian-hex-icelake-gcc.txt"
+run 4 8 0 1 0 "laplacian-hex-icelake-gcc.txt"
 
