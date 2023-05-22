@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
     {
       std::cout << precision << ", " << batch_size << ", ";
       std::cout << num_cells << ", " << P << ", " << max_time << ", ";
-      std::cout << min_time << ", " bs << ", " << precompute << ", ";
+      std::cout << min_time << ", " << bs << ", " << precompute << ", ";
       std::cout << OPTIMIZE_SUM_FACTORIZATION;
     }
   }
