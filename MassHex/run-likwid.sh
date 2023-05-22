@@ -7,8 +7,8 @@ export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512"
 export CXX_FLAGS="-Ofast -march=armv8.2-a+sve -mcpu=a64fx -msve-vector-bits=512 -DLIKWID_PERFMON"
 
 
-export BATCH_SIZE=8
-export PRECISION=8
+export BATCH_SIZE=16
+export PRECISION=4
 export NUM_PROCS=48
 export OPTIMIZE=1
 

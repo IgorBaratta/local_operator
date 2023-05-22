@@ -39,13 +39,13 @@ run256 () {
 }
 
 # Order : Precision, Batch Size, Optimize Sum Factorization
-run512 8 1 0 "mass-hex-a64fx-llvm.txt"
-run512 8 8 0 "mass-hex-a64fx-llvm.txt"
-run512 8 1 1 "mass-hex-a64fx-llvm.txt"
-run256 8 1 1 "mass-hex-a64fx-llvm.txt"
+# run512 8 1 0 "mass-hex-a64fx-llvm.txt"
+# run512 8 8 0 "mass-hex-a64fx-llvm-8.txt"
+# run512 8 1 1 "mass-hex-a64fx-llvm.txt"
+# run256 8 1 1 "mass-hex-a64fx-llvm.txt"
 
 # Single Precision
-run512 4 1 0 "mass-hex-a64fx-llvm.txt"
-run512 4 16 0 "mass-hex-a64fx-llvm.txt"
-run512 4 1 1 "mass-hex-a64fx-llvm.txt"
-run256 4 1 1 "mass-hex-a64fx-llvm.txt"
+# run512 4 1 0 "mass-hex-a64fx-llvm.txt"
+run512 4 16 0 "mass-hex-a64fx-llvm-16.txt"
+# run512 4 1 1 "mass-hex-a64fx-llvm.txt"
+# run256 4 1 1 "mass-hex-a64fx-llvm.txt"
