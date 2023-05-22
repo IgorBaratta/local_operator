@@ -12,6 +12,18 @@
 #include <cassert>
 #include <any>
 
+// This block enables to compile the code with and without the likwid header in place
+#ifdef LIKWID_PERFMON
+#include <likwid-marker.h>
+#else
+#define LIKWID_MARKER_INIT
+#define LIKWID_MARKER_THREADINIT
+#define LIKWID_MARKER_REGISTER(regionTag)
+#define LIKWID_MARKER_START(regionTag)
+#define LIKWID_MARKER_STOP(regionTag)
+#define LIKWID_MARKER_CLOSE
+#endif
+
 #ifndef PRECISION
 #define PRECISION 8
 #endif
@@ -64,6 +76,14 @@ int main(int argc, char *argv[])
 
     // Sanity check: Are we computing the correct values?
     std::array<T, op.num_dofs> Ae;
+
+    MPI_Barrier(comm);
+    
+    LIKWID_MARKER_INIT;
+    LIKWID_MARKER_REGISTER("kernel");
+    
+    LIKWID_MARKER_THREADINIT;
+    LIKWID_MARKER_START("kernel");
     
     double start = MPI_Wtime();
     for (int batch = 0; batch < num_batches; batch++)
@@ -78,12 +98,20 @@ int main(int argc, char *argv[])
     double end = MPI_Wtime();
     double local_time = end - start;
 
+    LIKWID_MARKER_STOP("kernel");
+    LIKWID_MARKER_CLOSE;
+
+    MPI_Barrier(comm);
+
     double max_time = 0;
+    double min_time = 0;
     MPI_Allreduce(&local_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, comm);
+    MPI_Allreduce(&local_time, &min_time, 1, MPI_DOUBLE, MPI_MIN, comm);
 
     if (mpi_rank == 0)
     {
       std::cout << PRECISION << ", " << BATCH_SIZE << ", " << num_cells << ", " << DEGREE << ", " << max_time;
+      std::cout << ", " << min_time;
     }
   }
   MPI_Finalize();
