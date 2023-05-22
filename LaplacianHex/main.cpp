@@ -85,13 +85,10 @@ int main(int argc, char *argv[])
 
     // Constants for cross element vectorization
     T zero = {0};
-    T reference = {0};
 
     // Create geometry and coefficients
     std::vector<T> geometry = create_geometry<T, S>(num_batches, batch_size, cub_nq, precompute);
-
     std::vector<T> coefficients(num_batches * stride);
-    // std::fill(coefficients.begin(), coefficients.end(), one);
 
     std::size_t count = {0};
     std::for_each(coefficients.begin(), coefficients.end(), [&count, nd = op.num_dofs](auto &e)
