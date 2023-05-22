@@ -1,0 +1,192 @@
+output/L2_gw4a64fxlogin01_0.txt:|    L1<->L2 data volume [GBytes]    |    26.9654 |
+output/L2_gw4a64fxlogin01_10.txt:|    L1<->L2 data volume [GBytes]    |     26.9372 |
+output/L2_gw4a64fxlogin01_11.txt:|    L1<->L2 data volume [GBytes]    |     27.0851 |
+output/L2_gw4a64fxlogin01_12.txt:|    L1<->L2 data volume [GBytes]    |    26.9642 |
+output/L2_gw4a64fxlogin01_13.txt:|    L1<->L2 data volume [GBytes]    |     26.9597 |
+output/L2_gw4a64fxlogin01_14.txt:|    L1<->L2 data volume [GBytes]    |     26.9549 |
+output/L2_gw4a64fxlogin01_15.txt:|    L1<->L2 data volume [GBytes]    |     27.0061 |
+output/L2_gw4a64fxlogin01_16.txt:|    L1<->L2 data volume [GBytes]    |    26.9734 |
+output/L2_gw4a64fxlogin01_17.txt:|    L1<->L2 data volume [GBytes]    |     27.1502 |
+output/L2_gw4a64fxlogin01_18.txt:|    L1<->L2 data volume [GBytes]    |     26.9673 |
+output/L2_gw4a64fxlogin01_19.txt:|    L1<->L2 data volume [GBytes]    |     27.1189 |
+output/L2_gw4a64fxlogin01_1.txt:|    L1<->L2 data volume [GBytes]    |     26.9562 |
+output/L2_gw4a64fxlogin01_20.txt:|    L1<->L2 data volume [GBytes]    |    26.9793 |
+output/L2_gw4a64fxlogin01_21.txt:|    L1<->L2 data volume [GBytes]    |     26.9732 |
+output/L2_gw4a64fxlogin01_22.txt:|    L1<->L2 data volume [GBytes]    |     27.0787 |
+output/L2_gw4a64fxlogin01_23.txt:|    L1<->L2 data volume [GBytes]    |     26.9914 |
+output/L2_gw4a64fxlogin01_24.txt:|    L1<->L2 data volume [GBytes]    |    26.9627 |
+output/L2_gw4a64fxlogin01_25.txt:|    L1<->L2 data volume [GBytes]    |     26.9402 |
+output/L2_gw4a64fxlogin01_26.txt:|    L1<->L2 data volume [GBytes]    |     27.0171 |
+output/L2_gw4a64fxlogin01_27.txt:|    L1<->L2 data volume [GBytes]    |     26.9487 |
+output/L2_gw4a64fxlogin01_28.txt:|    L1<->L2 data volume [GBytes]    |    27.0994 |
+output/L2_gw4a64fxlogin01_29.txt:|    L1<->L2 data volume [GBytes]    |     26.9333 |
+output/L2_gw4a64fxlogin01_2.txt:|    L1<->L2 data volume [GBytes]    |     26.9847 |
+output/L2_gw4a64fxlogin01_30.txt:|    L1<->L2 data volume [GBytes]    |     26.9628 |
+output/L2_gw4a64fxlogin01_31.txt:|    L1<->L2 data volume [GBytes]    |     26.9739 |
+output/L2_gw4a64fxlogin01_32.txt:|    L1<->L2 data volume [GBytes]    |    26.9967 |
+output/L2_gw4a64fxlogin01_33.txt:|    L1<->L2 data volume [GBytes]    |     26.9397 |
+output/L2_gw4a64fxlogin01_34.txt:|    L1<->L2 data volume [GBytes]    |     26.9601 |
+output/L2_gw4a64fxlogin01_35.txt:|    L1<->L2 data volume [GBytes]    |     27.1497 |
+output/L2_gw4a64fxlogin01_36.txt:|    L1<->L2 data volume [GBytes]    |    27.1982 |
+output/L2_gw4a64fxlogin01_37.txt:|    L1<->L2 data volume [GBytes]    |     27.0367 |
+output/L2_gw4a64fxlogin01_38.txt:|    L1<->L2 data volume [GBytes]    |     26.9915 |
+output/L2_gw4a64fxlogin01_39.txt:|    L1<->L2 data volume [GBytes]    |     27.0472 |
+output/L2_gw4a64fxlogin01_3.txt:|    L1<->L2 data volume [GBytes]    |     26.9375 |
+output/L2_gw4a64fxlogin01_40.txt:|    L1<->L2 data volume [GBytes]    |    27.0908 |
+output/L2_gw4a64fxlogin01_41.txt:|    L1<->L2 data volume [GBytes]    |     26.9529 |
+output/L2_gw4a64fxlogin01_42.txt:|    L1<->L2 data volume [GBytes]    |     26.9881 |
+output/L2_gw4a64fxlogin01_43.txt:|    L1<->L2 data volume [GBytes]    |     26.9423 |
+output/L2_gw4a64fxlogin01_44.txt:|    L1<->L2 data volume [GBytes]    |    26.9437 |
+output/L2_gw4a64fxlogin01_45.txt:|    L1<->L2 data volume [GBytes]    |     26.9768 |
+output/L2_gw4a64fxlogin01_46.txt:|    L1<->L2 data volume [GBytes]    |     26.9611 |
+output/L2_gw4a64fxlogin01_47.txt:|    L1<->L2 data volume [GBytes]    |     27.1198 |
+output/L2_gw4a64fxlogin01_4.txt:|    L1<->L2 data volume [GBytes]    |    26.9705 |
+output/L2_gw4a64fxlogin01_5.txt:|    L1<->L2 data volume [GBytes]    |     26.9858 |
+output/L2_gw4a64fxlogin01_6.txt:|    L1<->L2 data volume [GBytes]    |     26.9457 |
+output/L2_gw4a64fxlogin01_7.txt:|    L1<->L2 data volume [GBytes]    |     27.1365 |
+output/L2_gw4a64fxlogin01_8.txt:|    L1<->L2 data volume [GBytes]    |    27.1057 |
+output/L2_gw4a64fxlogin01_9.txt:|    L1<->L2 data volume [GBytes]    |     27.1028 |
+output/L2_gw4a64fxlogin01_0.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1515.1267 |
+output/L2_gw4a64fxlogin01_10.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1518.0306 |
+output/L2_gw4a64fxlogin01_11.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1520.5830 |
+output/L2_gw4a64fxlogin01_12.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1514.0276 |
+output/L2_gw4a64fxlogin01_13.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1521.1496 |
+output/L2_gw4a64fxlogin01_14.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1514.2577 |
+output/L2_gw4a64fxlogin01_15.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1494.3060 |
+output/L2_gw4a64fxlogin01_16.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1519.0654 |
+output/L2_gw4a64fxlogin01_17.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1500.8726 |
+output/L2_gw4a64fxlogin01_18.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1509.4665 |
+output/L2_gw4a64fxlogin01_19.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1510.9667 |
+output/L2_gw4a64fxlogin01_1.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1527.1839 |
+output/L2_gw4a64fxlogin01_20.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1508.9852 |
+output/L2_gw4a64fxlogin01_21.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1520.2585 |
+output/L2_gw4a64fxlogin01_22.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1529.2545 |
+output/L2_gw4a64fxlogin01_23.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1524.5943 |
+output/L2_gw4a64fxlogin01_24.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1524.5519 |
+output/L2_gw4a64fxlogin01_25.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1512.2727 |
+output/L2_gw4a64fxlogin01_26.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1536.5466 |
+output/L2_gw4a64fxlogin01_27.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1506.2894 |
+output/L2_gw4a64fxlogin01_28.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1532.1495 |
+output/L2_gw4a64fxlogin01_29.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1496.4255 |
+output/L2_gw4a64fxlogin01_2.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1522.9632 |
+output/L2_gw4a64fxlogin01_30.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1525.7970 |
+output/L2_gw4a64fxlogin01_31.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1507.1424 |
+output/L2_gw4a64fxlogin01_32.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1526.7010 |
+output/L2_gw4a64fxlogin01_33.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1480.1290 |
+output/L2_gw4a64fxlogin01_34.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1528.9111 |
+output/L2_gw4a64fxlogin01_35.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1500.2500 |
+output/L2_gw4a64fxlogin01_36.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1532.9313 |
+output/L2_gw4a64fxlogin01_37.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1519.6521 |
+output/L2_gw4a64fxlogin01_38.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1513.8145 |
+output/L2_gw4a64fxlogin01_39.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1526.7665 |
+output/L2_gw4a64fxlogin01_3.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1516.5739 |
+output/L2_gw4a64fxlogin01_40.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1517.5669 |
+output/L2_gw4a64fxlogin01_41.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1517.1579 |
+output/L2_gw4a64fxlogin01_42.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1516.1436 |
+output/L2_gw4a64fxlogin01_43.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1521.5485 |
+output/L2_gw4a64fxlogin01_44.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1520.6222 |
+output/L2_gw4a64fxlogin01_45.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1517.7044 |
+output/L2_gw4a64fxlogin01_46.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1490.3069 |
+output/L2_gw4a64fxlogin01_47.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1517.5407 |
+output/L2_gw4a64fxlogin01_4.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1491.7189 |
+output/L2_gw4a64fxlogin01_5.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1522.5137 |
+output/L2_gw4a64fxlogin01_6.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1513.4551 |
+output/L2_gw4a64fxlogin01_7.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1501.7598 |
+output/L2_gw4a64fxlogin01_8.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1532.5474 |
+output/L2_gw4a64fxlogin01_9.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1519.1345 |
+output/L2_gw4a64fxlogin01_0.txt:|    L1<->L2 data volume [GBytes]    |    28.1990 |
+output/L2_gw4a64fxlogin01_10.txt:|    L1<->L2 data volume [GBytes]    |     28.4603 |
+output/L2_gw4a64fxlogin01_11.txt:|    L1<->L2 data volume [GBytes]    |     27.8528 |
+output/L2_gw4a64fxlogin01_12.txt:|    L1<->L2 data volume [GBytes]    |    27.9416 |
+output/L2_gw4a64fxlogin01_13.txt:|    L1<->L2 data volume [GBytes]    |     28.2485 |
+output/L2_gw4a64fxlogin01_14.txt:|    L1<->L2 data volume [GBytes]    |     28.4225 |
+output/L2_gw4a64fxlogin01_15.txt:|    L1<->L2 data volume [GBytes]    |     27.8267 |
+output/L2_gw4a64fxlogin01_16.txt:|    L1<->L2 data volume [GBytes]    |    28.1790 |
+output/L2_gw4a64fxlogin01_17.txt:|    L1<->L2 data volume [GBytes]    |     28.0338 |
+output/L2_gw4a64fxlogin01_18.txt:|    L1<->L2 data volume [GBytes]    |     27.6104 |
+output/L2_gw4a64fxlogin01_19.txt:|    L1<->L2 data volume [GBytes]    |     28.1482 |
+output/L2_gw4a64fxlogin01_1.txt:|    L1<->L2 data volume [GBytes]    |     28.0900 |
+output/L2_gw4a64fxlogin01_20.txt:|    L1<->L2 data volume [GBytes]    |    27.9933 |
+output/L2_gw4a64fxlogin01_21.txt:|    L1<->L2 data volume [GBytes]    |     28.0120 |
+output/L2_gw4a64fxlogin01_22.txt:|    L1<->L2 data volume [GBytes]    |     27.8663 |
+output/L2_gw4a64fxlogin01_23.txt:|    L1<->L2 data volume [GBytes]    |     28.2610 |
+output/L2_gw4a64fxlogin01_24.txt:|    L1<->L2 data volume [GBytes]    |    28.8615 |
+output/L2_gw4a64fxlogin01_25.txt:|    L1<->L2 data volume [GBytes]    |     27.8270 |
+output/L2_gw4a64fxlogin01_26.txt:|    L1<->L2 data volume [GBytes]    |     27.9168 |
+output/L2_gw4a64fxlogin01_27.txt:|    L1<->L2 data volume [GBytes]    |     28.5156 |
+output/L2_gw4a64fxlogin01_28.txt:|    L1<->L2 data volume [GBytes]    |    28.0392 |
+output/L2_gw4a64fxlogin01_29.txt:|    L1<->L2 data volume [GBytes]    |     28.1331 |
+output/L2_gw4a64fxlogin01_2.txt:|    L1<->L2 data volume [GBytes]    |     28.7216 |
+output/L2_gw4a64fxlogin01_30.txt:|    L1<->L2 data volume [GBytes]    |     28.6193 |
+output/L2_gw4a64fxlogin01_31.txt:|    L1<->L2 data volume [GBytes]    |     28.7953 |
+output/L2_gw4a64fxlogin01_32.txt:|    L1<->L2 data volume [GBytes]    |    28.4246 |
+output/L2_gw4a64fxlogin01_33.txt:|    L1<->L2 data volume [GBytes]    |     28.3562 |
+output/L2_gw4a64fxlogin01_34.txt:|    L1<->L2 data volume [GBytes]    |     28.0427 |
+output/L2_gw4a64fxlogin01_35.txt:|    L1<->L2 data volume [GBytes]    |     28.4517 |
+output/L2_gw4a64fxlogin01_36.txt:|    L1<->L2 data volume [GBytes]    |    28.4692 |
+output/L2_gw4a64fxlogin01_37.txt:|    L1<->L2 data volume [GBytes]    |     27.7952 |
+output/L2_gw4a64fxlogin01_38.txt:|    L1<->L2 data volume [GBytes]    |     27.6938 |
+output/L2_gw4a64fxlogin01_39.txt:|    L1<->L2 data volume [GBytes]    |     27.8197 |
+output/L2_gw4a64fxlogin01_3.txt:|    L1<->L2 data volume [GBytes]    |     28.1483 |
+output/L2_gw4a64fxlogin01_40.txt:|    L1<->L2 data volume [GBytes]    |    27.9994 |
+output/L2_gw4a64fxlogin01_41.txt:|    L1<->L2 data volume [GBytes]    |     27.7637 |
+output/L2_gw4a64fxlogin01_42.txt:|    L1<->L2 data volume [GBytes]    |     28.2360 |
+output/L2_gw4a64fxlogin01_43.txt:|    L1<->L2 data volume [GBytes]    |     28.5020 |
+output/L2_gw4a64fxlogin01_44.txt:|    L1<->L2 data volume [GBytes]    |    28.1348 |
+output/L2_gw4a64fxlogin01_45.txt:|    L1<->L2 data volume [GBytes]    |     28.0571 |
+output/L2_gw4a64fxlogin01_46.txt:|    L1<->L2 data volume [GBytes]    |     27.9900 |
+output/L2_gw4a64fxlogin01_47.txt:|    L1<->L2 data volume [GBytes]    |     28.4810 |
+output/L2_gw4a64fxlogin01_4.txt:|    L1<->L2 data volume [GBytes]    |    27.8724 |
+output/L2_gw4a64fxlogin01_5.txt:|    L1<->L2 data volume [GBytes]    |     28.0371 |
+output/L2_gw4a64fxlogin01_6.txt:|    L1<->L2 data volume [GBytes]    |     27.9774 |
+output/L2_gw4a64fxlogin01_7.txt:|    L1<->L2 data volume [GBytes]    |     28.0562 |
+output/L2_gw4a64fxlogin01_8.txt:|    L1<->L2 data volume [GBytes]    |    27.9740 |
+output/L2_gw4a64fxlogin01_9.txt:|    L1<->L2 data volume [GBytes]    |     28.4845 |
+output/L2_gw4a64fxlogin01_0.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1604.0040 |
+output/L2_gw4a64fxlogin01_10.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1622.4800 |
+output/L2_gw4a64fxlogin01_11.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1606.8475 |
+output/L2_gw4a64fxlogin01_12.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1603.0380 |
+output/L2_gw4a64fxlogin01_13.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1604.2829 |
+output/L2_gw4a64fxlogin01_14.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1636.2427 |
+output/L2_gw4a64fxlogin01_15.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1606.1253 |
+output/L2_gw4a64fxlogin01_16.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1621.8856 |
+output/L2_gw4a64fxlogin01_17.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1607.6008 |
+output/L2_gw4a64fxlogin01_18.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1586.8634 |
+output/L2_gw4a64fxlogin01_19.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1642.9101 |
+output/L2_gw4a64fxlogin01_1.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1583.1222 |
+output/L2_gw4a64fxlogin01_20.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1609.1166 |
+output/L2_gw4a64fxlogin01_21.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1632.6471 |
+output/L2_gw4a64fxlogin01_22.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1574.2160 |
+output/L2_gw4a64fxlogin01_23.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1611.3159 |
+output/L2_gw4a64fxlogin01_24.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1638.9319 |
+output/L2_gw4a64fxlogin01_25.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1619.6656 |
+output/L2_gw4a64fxlogin01_26.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1602.5795 |
+output/L2_gw4a64fxlogin01_27.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1645.3197 |
+output/L2_gw4a64fxlogin01_28.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1612.1954 |
+output/L2_gw4a64fxlogin01_29.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1634.7197 |
+output/L2_gw4a64fxlogin01_2.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1611.6406 |
+output/L2_gw4a64fxlogin01_30.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1598.6570 |
+output/L2_gw4a64fxlogin01_31.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1642.5831 |
+output/L2_gw4a64fxlogin01_32.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1623.8314 |
+output/L2_gw4a64fxlogin01_33.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1603.9063 |
+output/L2_gw4a64fxlogin01_34.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1606.0938 |
+output/L2_gw4a64fxlogin01_35.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1632.0517 |
+output/L2_gw4a64fxlogin01_36.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1624.9295 |
+output/L2_gw4a64fxlogin01_37.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1585.3188 |
+output/L2_gw4a64fxlogin01_38.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1590.7798 |
+output/L2_gw4a64fxlogin01_39.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1583.8685 |
+output/L2_gw4a64fxlogin01_3.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1602.6352 |
+output/L2_gw4a64fxlogin01_40.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1636.1265 |
+output/L2_gw4a64fxlogin01_41.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1591.6535 |
+output/L2_gw4a64fxlogin01_42.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1599.6504 |
+output/L2_gw4a64fxlogin01_43.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1613.6479 |
+output/L2_gw4a64fxlogin01_44.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1601.7070 |
+output/L2_gw4a64fxlogin01_45.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1597.6911 |
+output/L2_gw4a64fxlogin01_46.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1632.4681 |
+output/L2_gw4a64fxlogin01_47.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1637.3365 |
+output/L2_gw4a64fxlogin01_4.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1596.4108 |
+output/L2_gw4a64fxlogin01_5.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1593.8118 |
+output/L2_gw4a64fxlogin01_6.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1602.8045 |
+output/L2_gw4a64fxlogin01_7.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1591.2982 |
+output/L2_gw4a64fxlogin01_8.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1608.3942 |
+output/L2_gw4a64fxlogin01_9.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1618.1785 |

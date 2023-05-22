@@ -1,0 +1,192 @@
+output/MEM_DP_gw4a64fxlogin01_0.txt:|    Memory data volume [GBytes]    |     0.1526 |
+output/MEM_DP_gw4a64fxlogin01_10.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_11.txt:|    Memory data volume [GBytes]    |      0.1528 |
+output/MEM_DP_gw4a64fxlogin01_12.txt:|    Memory data volume [GBytes]    |     0.1521 |
+output/MEM_DP_gw4a64fxlogin01_13.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_14.txt:|    Memory data volume [GBytes]    |      0.1520 |
+output/MEM_DP_gw4a64fxlogin01_15.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_16.txt:|    Memory data volume [GBytes]    |     0.1527 |
+output/MEM_DP_gw4a64fxlogin01_17.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_18.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_19.txt:|    Memory data volume [GBytes]    |      0.1540 |
+output/MEM_DP_gw4a64fxlogin01_1.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_20.txt:|    Memory data volume [GBytes]    |     0.1522 |
+output/MEM_DP_gw4a64fxlogin01_21.txt:|    Memory data volume [GBytes]    |      0.1535 |
+output/MEM_DP_gw4a64fxlogin01_22.txt:|    Memory data volume [GBytes]    |      0.1522 |
+output/MEM_DP_gw4a64fxlogin01_23.txt:|    Memory data volume [GBytes]    |      0.1519 |
+output/MEM_DP_gw4a64fxlogin01_24.txt:|    Memory data volume [GBytes]    |     0.1523 |
+output/MEM_DP_gw4a64fxlogin01_25.txt:|    Memory data volume [GBytes]    |      0.1522 |
+output/MEM_DP_gw4a64fxlogin01_26.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_27.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_28.txt:|    Memory data volume [GBytes]    |     0.1522 |
+output/MEM_DP_gw4a64fxlogin01_29.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_2.txt:|    Memory data volume [GBytes]    |      0.1520 |
+output/MEM_DP_gw4a64fxlogin01_30.txt:|    Memory data volume [GBytes]    |      0.1521 |
+output/MEM_DP_gw4a64fxlogin01_31.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_32.txt:|    Memory data volume [GBytes]    |     0.1520 |
+output/MEM_DP_gw4a64fxlogin01_33.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_34.txt:|    Memory data volume [GBytes]    |      0.1518 |
+output/MEM_DP_gw4a64fxlogin01_35.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_36.txt:|    Memory data volume [GBytes]    |     0.1528 |
+output/MEM_DP_gw4a64fxlogin01_37.txt:|    Memory data volume [GBytes]    |      0.1521 |
+output/MEM_DP_gw4a64fxlogin01_38.txt:|    Memory data volume [GBytes]    |      0.1528 |
+output/MEM_DP_gw4a64fxlogin01_39.txt:|    Memory data volume [GBytes]    |      0.1528 |
+output/MEM_DP_gw4a64fxlogin01_3.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_40.txt:|    Memory data volume [GBytes]    |     0.1527 |
+output/MEM_DP_gw4a64fxlogin01_41.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_42.txt:|    Memory data volume [GBytes]    |      0.1523 |
+output/MEM_DP_gw4a64fxlogin01_43.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_44.txt:|    Memory data volume [GBytes]    |     0.1522 |
+output/MEM_DP_gw4a64fxlogin01_45.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_46.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_47.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_4.txt:|    Memory data volume [GBytes]    |     0.1524 |
+output/MEM_DP_gw4a64fxlogin01_5.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_6.txt:|    Memory data volume [GBytes]    |      0.1533 |
+output/MEM_DP_gw4a64fxlogin01_7.txt:|    Memory data volume [GBytes]    |      0.1519 |
+output/MEM_DP_gw4a64fxlogin01_8.txt:|    Memory data volume [GBytes]    |     0.1527 |
+output/MEM_DP_gw4a64fxlogin01_9.txt:|    Memory data volume [GBytes]    |      0.1520 |
+output/MEM_DP_gw4a64fxlogin01_0.txt:|    Memory bandwidth [MBytes/s]    |    38.6561 |
+output/MEM_DP_gw4a64fxlogin01_10.txt:|    Memory bandwidth [MBytes/s]    |     39.4877 |
+output/MEM_DP_gw4a64fxlogin01_11.txt:|    Memory bandwidth [MBytes/s]    |     37.9909 |
+output/MEM_DP_gw4a64fxlogin01_12.txt:|    Memory bandwidth [MBytes/s]    |    39.0117 |
+output/MEM_DP_gw4a64fxlogin01_13.txt:|    Memory bandwidth [MBytes/s]    |     38.5392 |
+output/MEM_DP_gw4a64fxlogin01_14.txt:|    Memory bandwidth [MBytes/s]    |     40.8972 |
+output/MEM_DP_gw4a64fxlogin01_15.txt:|    Memory bandwidth [MBytes/s]    |     40.0536 |
+output/MEM_DP_gw4a64fxlogin01_16.txt:|    Memory bandwidth [MBytes/s]    |    38.8786 |
+output/MEM_DP_gw4a64fxlogin01_17.txt:|    Memory bandwidth [MBytes/s]    |     40.6443 |
+output/MEM_DP_gw4a64fxlogin01_18.txt:|    Memory bandwidth [MBytes/s]    |     39.3763 |
+output/MEM_DP_gw4a64fxlogin01_19.txt:|    Memory bandwidth [MBytes/s]    |     41.4403 |
+output/MEM_DP_gw4a64fxlogin01_1.txt:|    Memory bandwidth [MBytes/s]    |     40.5588 |
+output/MEM_DP_gw4a64fxlogin01_20.txt:|    Memory bandwidth [MBytes/s]    |    38.7369 |
+output/MEM_DP_gw4a64fxlogin01_21.txt:|    Memory bandwidth [MBytes/s]    |     39.7694 |
+output/MEM_DP_gw4a64fxlogin01_22.txt:|    Memory bandwidth [MBytes/s]    |     39.6176 |
+output/MEM_DP_gw4a64fxlogin01_23.txt:|    Memory bandwidth [MBytes/s]    |     37.4104 |
+output/MEM_DP_gw4a64fxlogin01_24.txt:|    Memory bandwidth [MBytes/s]    |    37.9700 |
+output/MEM_DP_gw4a64fxlogin01_25.txt:|    Memory bandwidth [MBytes/s]    |     39.2208 |
+output/MEM_DP_gw4a64fxlogin01_26.txt:|    Memory bandwidth [MBytes/s]    |     38.8845 |
+output/MEM_DP_gw4a64fxlogin01_27.txt:|    Memory bandwidth [MBytes/s]    |     39.1823 |
+output/MEM_DP_gw4a64fxlogin01_28.txt:|    Memory bandwidth [MBytes/s]    |    39.4423 |
+output/MEM_DP_gw4a64fxlogin01_29.txt:|    Memory bandwidth [MBytes/s]    |     38.7740 |
+output/MEM_DP_gw4a64fxlogin01_2.txt:|    Memory bandwidth [MBytes/s]    |     37.8324 |
+output/MEM_DP_gw4a64fxlogin01_30.txt:|    Memory bandwidth [MBytes/s]    |     39.2021 |
+output/MEM_DP_gw4a64fxlogin01_31.txt:|    Memory bandwidth [MBytes/s]    |     39.1831 |
+output/MEM_DP_gw4a64fxlogin01_32.txt:|    Memory bandwidth [MBytes/s]    |    39.0830 |
+output/MEM_DP_gw4a64fxlogin01_33.txt:|    Memory bandwidth [MBytes/s]    |     39.5470 |
+output/MEM_DP_gw4a64fxlogin01_34.txt:|    Memory bandwidth [MBytes/s]    |     40.1680 |
+output/MEM_DP_gw4a64fxlogin01_35.txt:|    Memory bandwidth [MBytes/s]    |     39.5368 |
+output/MEM_DP_gw4a64fxlogin01_36.txt:|    Memory bandwidth [MBytes/s]    |    38.3939 |
+output/MEM_DP_gw4a64fxlogin01_37.txt:|    Memory bandwidth [MBytes/s]    |     38.0299 |
+output/MEM_DP_gw4a64fxlogin01_38.txt:|    Memory bandwidth [MBytes/s]    |     38.4258 |
+output/MEM_DP_gw4a64fxlogin01_39.txt:|    Memory bandwidth [MBytes/s]    |     37.8275 |
+output/MEM_DP_gw4a64fxlogin01_3.txt:|    Memory bandwidth [MBytes/s]    |     39.4158 |
+output/MEM_DP_gw4a64fxlogin01_40.txt:|    Memory bandwidth [MBytes/s]    |    38.2938 |
+output/MEM_DP_gw4a64fxlogin01_41.txt:|    Memory bandwidth [MBytes/s]    |     38.5294 |
+output/MEM_DP_gw4a64fxlogin01_42.txt:|    Memory bandwidth [MBytes/s]    |     39.4783 |
+output/MEM_DP_gw4a64fxlogin01_43.txt:|    Memory bandwidth [MBytes/s]    |     37.5739 |
+output/MEM_DP_gw4a64fxlogin01_44.txt:|    Memory bandwidth [MBytes/s]    |    39.2197 |
+output/MEM_DP_gw4a64fxlogin01_45.txt:|    Memory bandwidth [MBytes/s]    |     39.4743 |
+output/MEM_DP_gw4a64fxlogin01_46.txt:|    Memory bandwidth [MBytes/s]    |     39.7314 |
+output/MEM_DP_gw4a64fxlogin01_47.txt:|    Memory bandwidth [MBytes/s]    |     39.8584 |
+output/MEM_DP_gw4a64fxlogin01_4.txt:|    Memory bandwidth [MBytes/s]    |    37.5430 |
+output/MEM_DP_gw4a64fxlogin01_5.txt:|    Memory bandwidth [MBytes/s]    |     38.5267 |
+output/MEM_DP_gw4a64fxlogin01_6.txt:|    Memory bandwidth [MBytes/s]    |     40.7922 |
+output/MEM_DP_gw4a64fxlogin01_7.txt:|    Memory bandwidth [MBytes/s]    |     38.2847 |
+output/MEM_DP_gw4a64fxlogin01_8.txt:|    Memory bandwidth [MBytes/s]    |    41.3018 |
+output/MEM_DP_gw4a64fxlogin01_9.txt:|    Memory bandwidth [MBytes/s]    |     38.6975 |
+output/MEM_DP_gw4a64fxlogin01_0.txt:|    Memory data volume [GBytes]    |     0.1525 |
+output/MEM_DP_gw4a64fxlogin01_10.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_11.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_12.txt:|    Memory data volume [GBytes]    |     0.1523 |
+output/MEM_DP_gw4a64fxlogin01_13.txt:|    Memory data volume [GBytes]    |      0.1528 |
+output/MEM_DP_gw4a64fxlogin01_14.txt:|    Memory data volume [GBytes]    |      0.1523 |
+output/MEM_DP_gw4a64fxlogin01_15.txt:|    Memory data volume [GBytes]    |      0.1522 |
+output/MEM_DP_gw4a64fxlogin01_16.txt:|    Memory data volume [GBytes]    |     0.1524 |
+output/MEM_DP_gw4a64fxlogin01_17.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_18.txt:|    Memory data volume [GBytes]    |      0.1531 |
+output/MEM_DP_gw4a64fxlogin01_19.txt:|    Memory data volume [GBytes]    |      0.1522 |
+output/MEM_DP_gw4a64fxlogin01_1.txt:|    Memory data volume [GBytes]    |      0.1523 |
+output/MEM_DP_gw4a64fxlogin01_20.txt:|    Memory data volume [GBytes]    |     0.1520 |
+output/MEM_DP_gw4a64fxlogin01_21.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_22.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_23.txt:|    Memory data volume [GBytes]    |      0.1531 |
+output/MEM_DP_gw4a64fxlogin01_24.txt:|    Memory data volume [GBytes]    |     0.1525 |
+output/MEM_DP_gw4a64fxlogin01_25.txt:|    Memory data volume [GBytes]    |      0.1521 |
+output/MEM_DP_gw4a64fxlogin01_26.txt:|    Memory data volume [GBytes]    |      0.1522 |
+output/MEM_DP_gw4a64fxlogin01_27.txt:|    Memory data volume [GBytes]    |      0.1523 |
+output/MEM_DP_gw4a64fxlogin01_28.txt:|    Memory data volume [GBytes]    |     0.1522 |
+output/MEM_DP_gw4a64fxlogin01_29.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_2.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_30.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_31.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_32.txt:|    Memory data volume [GBytes]    |     0.1521 |
+output/MEM_DP_gw4a64fxlogin01_33.txt:|    Memory data volume [GBytes]    |      0.1519 |
+output/MEM_DP_gw4a64fxlogin01_34.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_35.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_36.txt:|    Memory data volume [GBytes]    |     0.1524 |
+output/MEM_DP_gw4a64fxlogin01_37.txt:|    Memory data volume [GBytes]    |      0.1529 |
+output/MEM_DP_gw4a64fxlogin01_38.txt:|    Memory data volume [GBytes]    |      0.1523 |
+output/MEM_DP_gw4a64fxlogin01_39.txt:|    Memory data volume [GBytes]    |      0.1526 |
+output/MEM_DP_gw4a64fxlogin01_3.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_40.txt:|    Memory data volume [GBytes]    |     0.1523 |
+output/MEM_DP_gw4a64fxlogin01_41.txt:|    Memory data volume [GBytes]    |      0.1525 |
+output/MEM_DP_gw4a64fxlogin01_42.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_43.txt:|    Memory data volume [GBytes]    |      0.1528 |
+output/MEM_DP_gw4a64fxlogin01_44.txt:|    Memory data volume [GBytes]    |     0.1528 |
+output/MEM_DP_gw4a64fxlogin01_45.txt:|    Memory data volume [GBytes]    |      0.1537 |
+output/MEM_DP_gw4a64fxlogin01_46.txt:|    Memory data volume [GBytes]    |      0.1522 |
+output/MEM_DP_gw4a64fxlogin01_47.txt:|    Memory data volume [GBytes]    |      0.1536 |
+output/MEM_DP_gw4a64fxlogin01_4.txt:|    Memory data volume [GBytes]    |     0.1525 |
+output/MEM_DP_gw4a64fxlogin01_5.txt:|    Memory data volume [GBytes]    |      0.1524 |
+output/MEM_DP_gw4a64fxlogin01_6.txt:|    Memory data volume [GBytes]    |      0.1527 |
+output/MEM_DP_gw4a64fxlogin01_7.txt:|    Memory data volume [GBytes]    |      0.1523 |
+output/MEM_DP_gw4a64fxlogin01_8.txt:|    Memory data volume [GBytes]    |     0.1521 |
+output/MEM_DP_gw4a64fxlogin01_9.txt:|    Memory data volume [GBytes]    |      0.1530 |
+output/MEM_DP_gw4a64fxlogin01_0.txt:|    Memory bandwidth [MBytes/s]    |    39.4147 |
+output/MEM_DP_gw4a64fxlogin01_10.txt:|    Memory bandwidth [MBytes/s]    |     38.7716 |
+output/MEM_DP_gw4a64fxlogin01_11.txt:|    Memory bandwidth [MBytes/s]    |     40.2557 |
+output/MEM_DP_gw4a64fxlogin01_12.txt:|    Memory bandwidth [MBytes/s]    |    39.5368 |
+output/MEM_DP_gw4a64fxlogin01_13.txt:|    Memory bandwidth [MBytes/s]    |     40.4613 |
+output/MEM_DP_gw4a64fxlogin01_14.txt:|    Memory bandwidth [MBytes/s]    |     41.5532 |
+output/MEM_DP_gw4a64fxlogin01_15.txt:|    Memory bandwidth [MBytes/s]    |     37.6462 |
+output/MEM_DP_gw4a64fxlogin01_16.txt:|    Memory bandwidth [MBytes/s]    |    39.0724 |
+output/MEM_DP_gw4a64fxlogin01_17.txt:|    Memory bandwidth [MBytes/s]    |     39.4906 |
+output/MEM_DP_gw4a64fxlogin01_18.txt:|    Memory bandwidth [MBytes/s]    |     38.7302 |
+output/MEM_DP_gw4a64fxlogin01_19.txt:|    Memory bandwidth [MBytes/s]    |     39.7275 |
+output/MEM_DP_gw4a64fxlogin01_1.txt:|    Memory bandwidth [MBytes/s]    |     38.5528 |
+output/MEM_DP_gw4a64fxlogin01_20.txt:|    Memory bandwidth [MBytes/s]    |    40.1346 |
+output/MEM_DP_gw4a64fxlogin01_21.txt:|    Memory bandwidth [MBytes/s]    |     39.0904 |
+output/MEM_DP_gw4a64fxlogin01_22.txt:|    Memory bandwidth [MBytes/s]    |     39.4412 |
+output/MEM_DP_gw4a64fxlogin01_23.txt:|    Memory bandwidth [MBytes/s]    |     40.5409 |
+output/MEM_DP_gw4a64fxlogin01_24.txt:|    Memory bandwidth [MBytes/s]    |    39.9215 |
+output/MEM_DP_gw4a64fxlogin01_25.txt:|    Memory bandwidth [MBytes/s]    |     37.9163 |
+output/MEM_DP_gw4a64fxlogin01_26.txt:|    Memory bandwidth [MBytes/s]    |     41.4727 |
+output/MEM_DP_gw4a64fxlogin01_27.txt:|    Memory bandwidth [MBytes/s]    |     40.2952 |
+output/MEM_DP_gw4a64fxlogin01_28.txt:|    Memory bandwidth [MBytes/s]    |    39.1867 |
+output/MEM_DP_gw4a64fxlogin01_29.txt:|    Memory bandwidth [MBytes/s]    |     40.4546 |
+output/MEM_DP_gw4a64fxlogin01_2.txt:|    Memory bandwidth [MBytes/s]    |     39.1234 |
+output/MEM_DP_gw4a64fxlogin01_30.txt:|    Memory bandwidth [MBytes/s]    |     40.0371 |
+output/MEM_DP_gw4a64fxlogin01_31.txt:|    Memory bandwidth [MBytes/s]    |     38.9969 |
+output/MEM_DP_gw4a64fxlogin01_32.txt:|    Memory bandwidth [MBytes/s]    |    40.7066 |
+output/MEM_DP_gw4a64fxlogin01_33.txt:|    Memory bandwidth [MBytes/s]    |     40.2229 |
+output/MEM_DP_gw4a64fxlogin01_34.txt:|    Memory bandwidth [MBytes/s]    |     39.5773 |
+output/MEM_DP_gw4a64fxlogin01_35.txt:|    Memory bandwidth [MBytes/s]    |     41.2305 |
+output/MEM_DP_gw4a64fxlogin01_36.txt:|    Memory bandwidth [MBytes/s]    |    38.3984 |
+output/MEM_DP_gw4a64fxlogin01_37.txt:|    Memory bandwidth [MBytes/s]    |     38.1730 |
+output/MEM_DP_gw4a64fxlogin01_38.txt:|    Memory bandwidth [MBytes/s]    |     38.6695 |
+output/MEM_DP_gw4a64fxlogin01_39.txt:|    Memory bandwidth [MBytes/s]    |     39.0577 |
+output/MEM_DP_gw4a64fxlogin01_3.txt:|    Memory bandwidth [MBytes/s]    |     39.5781 |
+output/MEM_DP_gw4a64fxlogin01_40.txt:|    Memory bandwidth [MBytes/s]    |    39.3136 |
+output/MEM_DP_gw4a64fxlogin01_41.txt:|    Memory bandwidth [MBytes/s]    |     40.6124 |
+output/MEM_DP_gw4a64fxlogin01_42.txt:|    Memory bandwidth [MBytes/s]    |     38.4718 |
+output/MEM_DP_gw4a64fxlogin01_43.txt:|    Memory bandwidth [MBytes/s]    |     39.5117 |
+output/MEM_DP_gw4a64fxlogin01_44.txt:|    Memory bandwidth [MBytes/s]    |    38.7074 |
+output/MEM_DP_gw4a64fxlogin01_45.txt:|    Memory bandwidth [MBytes/s]    |     39.3302 |
+output/MEM_DP_gw4a64fxlogin01_46.txt:|    Memory bandwidth [MBytes/s]    |     39.0685 |
+output/MEM_DP_gw4a64fxlogin01_47.txt:|    Memory bandwidth [MBytes/s]    |     39.8156 |
+output/MEM_DP_gw4a64fxlogin01_4.txt:|    Memory bandwidth [MBytes/s]    |    37.0565 |
+output/MEM_DP_gw4a64fxlogin01_5.txt:|    Memory bandwidth [MBytes/s]    |     40.1435 |
+output/MEM_DP_gw4a64fxlogin01_6.txt:|    Memory bandwidth [MBytes/s]    |     39.0582 |
+output/MEM_DP_gw4a64fxlogin01_7.txt:|    Memory bandwidth [MBytes/s]    |     39.3000 |
+output/MEM_DP_gw4a64fxlogin01_8.txt:|    Memory bandwidth [MBytes/s]    |    38.0070 |
+output/MEM_DP_gw4a64fxlogin01_9.txt:|    Memory bandwidth [MBytes/s]    |     39.5970 |
