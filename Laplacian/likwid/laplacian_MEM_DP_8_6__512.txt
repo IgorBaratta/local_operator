@@ -1,0 +1,96 @@
+output/MEM_DP_c4n3_0.txt:|    Memory data volume [GBytes]    |       0.1293 |
+output/MEM_DP_c4n3_10.txt:|    Memory data volume [GBytes]    |       0.1277 |
+output/MEM_DP_c4n3_11.txt:|    Memory data volume [GBytes]    |       0.1281 |
+output/MEM_DP_c4n3_12.txt:|    Memory data volume [GBytes]    |       0.1287 |
+output/MEM_DP_c4n3_13.txt:|    Memory data volume [GBytes]    |       0.1282 |
+output/MEM_DP_c4n3_14.txt:|    Memory data volume [GBytes]    |       0.1283 |
+output/MEM_DP_c4n3_15.txt:|    Memory data volume [GBytes]    |       0.1272 |
+output/MEM_DP_c4n3_16.txt:|    Memory data volume [GBytes]    |       0.1286 |
+output/MEM_DP_c4n3_17.txt:|    Memory data volume [GBytes]    |       0.1290 |
+output/MEM_DP_c4n3_18.txt:|    Memory data volume [GBytes]    |       0.1281 |
+output/MEM_DP_c4n3_19.txt:|    Memory data volume [GBytes]    |       0.1295 |
+output/MEM_DP_c4n3_1.txt:|    Memory data volume [GBytes]    |       0.1287 |
+output/MEM_DP_c4n3_20.txt:|    Memory data volume [GBytes]    |       0.1285 |
+output/MEM_DP_c4n3_21.txt:|    Memory data volume [GBytes]    |       0.1299 |
+output/MEM_DP_c4n3_22.txt:|    Memory data volume [GBytes]    |       0.1284 |
+output/MEM_DP_c4n3_23.txt:|    Memory data volume [GBytes]    |       0.1286 |
+output/MEM_DP_c4n3_24.txt:|    Memory data volume [GBytes]    |       0.1288 |
+output/MEM_DP_c4n3_25.txt:|    Memory data volume [GBytes]    |       0.1279 |
+output/MEM_DP_c4n3_26.txt:|    Memory data volume [GBytes]    |       0.1275 |
+output/MEM_DP_c4n3_27.txt:|    Memory data volume [GBytes]    |       0.1280 |
+output/MEM_DP_c4n3_28.txt:|    Memory data volume [GBytes]    |       0.1287 |
+output/MEM_DP_c4n3_29.txt:|    Memory data volume [GBytes]    |       0.1290 |
+output/MEM_DP_c4n3_2.txt:|    Memory data volume [GBytes]    |       0.1279 |
+output/MEM_DP_c4n3_30.txt:|    Memory data volume [GBytes]    |       0.1288 |
+output/MEM_DP_c4n3_31.txt:|    Memory data volume [GBytes]    |       0.1288 |
+output/MEM_DP_c4n3_32.txt:|    Memory data volume [GBytes]    |       0.1282 |
+output/MEM_DP_c4n3_33.txt:|    Memory data volume [GBytes]    |       0.1297 |
+output/MEM_DP_c4n3_34.txt:|    Memory data volume [GBytes]    |       0.1276 |
+output/MEM_DP_c4n3_35.txt:|    Memory data volume [GBytes]    |       0.1278 |
+output/MEM_DP_c4n3_36.txt:|    Memory data volume [GBytes]    |       0.1284 |
+output/MEM_DP_c4n3_37.txt:|    Memory data volume [GBytes]    |       0.1288 |
+output/MEM_DP_c4n3_38.txt:|    Memory data volume [GBytes]    |       0.1289 |
+output/MEM_DP_c4n3_39.txt:|    Memory data volume [GBytes]    |       0.1280 |
+output/MEM_DP_c4n3_3.txt:|    Memory data volume [GBytes]    |       0.1277 |
+output/MEM_DP_c4n3_40.txt:|    Memory data volume [GBytes]    |       0.1277 |
+output/MEM_DP_c4n3_41.txt:|    Memory data volume [GBytes]    |       0.1287 |
+output/MEM_DP_c4n3_42.txt:|    Memory data volume [GBytes]    |       0.1282 |
+output/MEM_DP_c4n3_43.txt:|    Memory data volume [GBytes]    |       0.1286 |
+output/MEM_DP_c4n3_44.txt:|    Memory data volume [GBytes]    |       0.1276 |
+output/MEM_DP_c4n3_45.txt:|    Memory data volume [GBytes]    |       0.1275 |
+output/MEM_DP_c4n3_46.txt:|    Memory data volume [GBytes]    |       0.1276 |
+output/MEM_DP_c4n3_47.txt:|    Memory data volume [GBytes]    |       0.1284 |
+output/MEM_DP_c4n3_4.txt:|    Memory data volume [GBytes]    |       0.1291 |
+output/MEM_DP_c4n3_5.txt:|    Memory data volume [GBytes]    |       0.1285 |
+output/MEM_DP_c4n3_6.txt:|    Memory data volume [GBytes]    |       0.1284 |
+output/MEM_DP_c4n3_7.txt:|    Memory data volume [GBytes]    |       0.1279 |
+output/MEM_DP_c4n3_8.txt:|    Memory data volume [GBytes]    |       0.1287 |
+output/MEM_DP_c4n3_9.txt:|    Memory data volume [GBytes]    |       0.1287 |
+output/MEM_DP_c4n3_0.txt:|    Memory bandwidth [MBytes/s]    |      20.9284 |
+output/MEM_DP_c4n3_10.txt:|    Memory bandwidth [MBytes/s]    |      21.2985 |
+output/MEM_DP_c4n3_11.txt:|    Memory bandwidth [MBytes/s]    |      20.3662 |
+output/MEM_DP_c4n3_12.txt:|    Memory bandwidth [MBytes/s]    |      20.7639 |
+output/MEM_DP_c4n3_13.txt:|    Memory bandwidth [MBytes/s]    |      20.8163 |
+output/MEM_DP_c4n3_14.txt:|    Memory bandwidth [MBytes/s]    |      20.7699 |
+output/MEM_DP_c4n3_15.txt:|    Memory bandwidth [MBytes/s]    |      20.3512 |
+output/MEM_DP_c4n3_16.txt:|    Memory bandwidth [MBytes/s]    |      20.3809 |
+output/MEM_DP_c4n3_17.txt:|    Memory bandwidth [MBytes/s]    |      20.3117 |
+output/MEM_DP_c4n3_18.txt:|    Memory bandwidth [MBytes/s]    |      20.6363 |
+output/MEM_DP_c4n3_19.txt:|    Memory bandwidth [MBytes/s]    |      20.8262 |
+output/MEM_DP_c4n3_1.txt:|    Memory bandwidth [MBytes/s]    |      21.0756 |
+output/MEM_DP_c4n3_20.txt:|    Memory bandwidth [MBytes/s]    |      20.9710 |
+output/MEM_DP_c4n3_21.txt:|    Memory bandwidth [MBytes/s]    |      20.4620 |
+output/MEM_DP_c4n3_22.txt:|    Memory bandwidth [MBytes/s]    |      21.5851 |
+output/MEM_DP_c4n3_23.txt:|    Memory bandwidth [MBytes/s]    |      20.6811 |
+output/MEM_DP_c4n3_24.txt:|    Memory bandwidth [MBytes/s]    |      21.1605 |
+output/MEM_DP_c4n3_25.txt:|    Memory bandwidth [MBytes/s]    |      20.9088 |
+output/MEM_DP_c4n3_26.txt:|    Memory bandwidth [MBytes/s]    |      20.6449 |
+output/MEM_DP_c4n3_27.txt:|    Memory bandwidth [MBytes/s]    |      20.6545 |
+output/MEM_DP_c4n3_28.txt:|    Memory bandwidth [MBytes/s]    |      20.9686 |
+output/MEM_DP_c4n3_29.txt:|    Memory bandwidth [MBytes/s]    |      20.6447 |
+output/MEM_DP_c4n3_2.txt:|    Memory bandwidth [MBytes/s]    |      20.8063 |
+output/MEM_DP_c4n3_30.txt:|    Memory bandwidth [MBytes/s]    |      20.9595 |
+output/MEM_DP_c4n3_31.txt:|    Memory bandwidth [MBytes/s]    |      21.5851 |
+output/MEM_DP_c4n3_32.txt:|    Memory bandwidth [MBytes/s]    |      20.4925 |
+output/MEM_DP_c4n3_33.txt:|    Memory bandwidth [MBytes/s]    |      20.6268 |
+output/MEM_DP_c4n3_34.txt:|    Memory bandwidth [MBytes/s]    |      20.5236 |
+output/MEM_DP_c4n3_35.txt:|    Memory bandwidth [MBytes/s]    |      20.9185 |
+output/MEM_DP_c4n3_36.txt:|    Memory bandwidth [MBytes/s]    |      21.1225 |
+output/MEM_DP_c4n3_37.txt:|    Memory bandwidth [MBytes/s]    |      20.9120 |
+output/MEM_DP_c4n3_38.txt:|    Memory bandwidth [MBytes/s]    |      20.3290 |
+output/MEM_DP_c4n3_39.txt:|    Memory bandwidth [MBytes/s]    |      20.3791 |
+output/MEM_DP_c4n3_3.txt:|    Memory bandwidth [MBytes/s]    |      20.4648 |
+output/MEM_DP_c4n3_40.txt:|    Memory bandwidth [MBytes/s]    |      20.9374 |
+output/MEM_DP_c4n3_41.txt:|    Memory bandwidth [MBytes/s]    |      20.9115 |
+output/MEM_DP_c4n3_42.txt:|    Memory bandwidth [MBytes/s]    |      21.1955 |
+output/MEM_DP_c4n3_43.txt:|    Memory bandwidth [MBytes/s]    |      21.4412 |
+output/MEM_DP_c4n3_44.txt:|    Memory bandwidth [MBytes/s]    |      20.6941 |
+output/MEM_DP_c4n3_45.txt:|    Memory bandwidth [MBytes/s]    |      20.7033 |
+output/MEM_DP_c4n3_46.txt:|    Memory bandwidth [MBytes/s]    |      21.3823 |
+output/MEM_DP_c4n3_47.txt:|    Memory bandwidth [MBytes/s]    |      20.7203 |
+output/MEM_DP_c4n3_4.txt:|    Memory bandwidth [MBytes/s]    |      20.7317 |
+output/MEM_DP_c4n3_5.txt:|    Memory bandwidth [MBytes/s]    |      21.1441 |
+output/MEM_DP_c4n3_6.txt:|    Memory bandwidth [MBytes/s]    |      20.7756 |
+output/MEM_DP_c4n3_7.txt:|    Memory bandwidth [MBytes/s]    |      20.7760 |
+output/MEM_DP_c4n3_8.txt:|    Memory bandwidth [MBytes/s]    |      21.5753 |
+output/MEM_DP_c4n3_9.txt:|    Memory bandwidth [MBytes/s]    |      20.1373 |
