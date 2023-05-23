@@ -1,0 +1,96 @@
+output/L2_c4n3_0.txt:|    L1<->L2 data volume [GBytes]    |     0.1707 |
+output/L2_c4n3_10.txt:|    L1<->L2 data volume [GBytes]    |      0.1720 |
+output/L2_c4n3_11.txt:|    L1<->L2 data volume [GBytes]    |      0.1720 |
+output/L2_c4n3_12.txt:|    L1<->L2 data volume [GBytes]    |     0.1707 |
+output/L2_c4n3_13.txt:|    L1<->L2 data volume [GBytes]    |      0.1707 |
+output/L2_c4n3_14.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_15.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_16.txt:|    L1<->L2 data volume [GBytes]    |     0.1707 |
+output/L2_c4n3_17.txt:|    L1<->L2 data volume [GBytes]    |      0.1706 |
+output/L2_c4n3_18.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_19.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_1.txt:|    L1<->L2 data volume [GBytes]    |      0.1709 |
+output/L2_c4n3_20.txt:|    L1<->L2 data volume [GBytes]    |     0.1716 |
+output/L2_c4n3_21.txt:|    L1<->L2 data volume [GBytes]    |      0.1706 |
+output/L2_c4n3_22.txt:|    L1<->L2 data volume [GBytes]    |      0.1707 |
+output/L2_c4n3_23.txt:|    L1<->L2 data volume [GBytes]    |      0.1718 |
+output/L2_c4n3_24.txt:|    L1<->L2 data volume [GBytes]    |     0.1707 |
+output/L2_c4n3_25.txt:|    L1<->L2 data volume [GBytes]    |      0.1706 |
+output/L2_c4n3_26.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_27.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_28.txt:|    L1<->L2 data volume [GBytes]    |     0.1709 |
+output/L2_c4n3_29.txt:|    L1<->L2 data volume [GBytes]    |      0.1707 |
+output/L2_c4n3_2.txt:|    L1<->L2 data volume [GBytes]    |      0.1712 |
+output/L2_c4n3_30.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_31.txt:|    L1<->L2 data volume [GBytes]    |      0.1720 |
+output/L2_c4n3_32.txt:|    L1<->L2 data volume [GBytes]    |     0.1719 |
+output/L2_c4n3_33.txt:|    L1<->L2 data volume [GBytes]    |      0.1706 |
+output/L2_c4n3_34.txt:|    L1<->L2 data volume [GBytes]    |      0.1721 |
+output/L2_c4n3_35.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_36.txt:|    L1<->L2 data volume [GBytes]    |     0.1712 |
+output/L2_c4n3_37.txt:|    L1<->L2 data volume [GBytes]    |      0.1706 |
+output/L2_c4n3_38.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_39.txt:|    L1<->L2 data volume [GBytes]    |      0.1709 |
+output/L2_c4n3_3.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_40.txt:|    L1<->L2 data volume [GBytes]    |     0.1706 |
+output/L2_c4n3_41.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_42.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_43.txt:|    L1<->L2 data volume [GBytes]    |      0.1709 |
+output/L2_c4n3_44.txt:|    L1<->L2 data volume [GBytes]    |     0.1706 |
+output/L2_c4n3_45.txt:|    L1<->L2 data volume [GBytes]    |      0.1706 |
+output/L2_c4n3_46.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_47.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_4.txt:|    L1<->L2 data volume [GBytes]    |     0.1706 |
+output/L2_c4n3_5.txt:|    L1<->L2 data volume [GBytes]    |      0.1718 |
+output/L2_c4n3_6.txt:|    L1<->L2 data volume [GBytes]    |      0.1707 |
+output/L2_c4n3_7.txt:|    L1<->L2 data volume [GBytes]    |      0.1708 |
+output/L2_c4n3_8.txt:|    L1<->L2 data volume [GBytes]    |     0.1706 |
+output/L2_c4n3_9.txt:|    L1<->L2 data volume [GBytes]    |      0.1707 |
+output/L2_c4n3_0.txt:|    L1<->L2 bandwidth [MBytes/s]    |   974.5332 |
+output/L2_c4n3_10.txt:|    L1<->L2 bandwidth [MBytes/s]    |    798.7891 |
+output/L2_c4n3_11.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1372.3738 |
+output/L2_c4n3_12.txt:|    L1<->L2 bandwidth [MBytes/s]    |  1262.8081 |
+output/L2_c4n3_13.txt:|    L1<->L2 bandwidth [MBytes/s]    |    620.2344 |
+output/L2_c4n3_14.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1257.2524 |
+output/L2_c4n3_15.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1171.2851 |
+output/L2_c4n3_16.txt:|    L1<->L2 bandwidth [MBytes/s]    |   974.0603 |
+output/L2_c4n3_17.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1362.3782 |
+output/L2_c4n3_18.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1168.2542 |
+output/L2_c4n3_19.txt:|    L1<->L2 bandwidth [MBytes/s]    |    757.4372 |
+output/L2_c4n3_1.txt:|    L1<->L2 bandwidth [MBytes/s]    |    967.9465 |
+output/L2_c4n3_20.txt:|    L1<->L2 bandwidth [MBytes/s]    |   761.2987 |
+output/L2_c4n3_21.txt:|    L1<->L2 bandwidth [MBytes/s]    |    792.5186 |
+output/L2_c4n3_22.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1175.6001 |
+output/L2_c4n3_23.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1270.0377 |
+output/L2_c4n3_24.txt:|    L1<->L2 bandwidth [MBytes/s]    |   758.4497 |
+output/L2_c4n3_25.txt:|    L1<->L2 bandwidth [MBytes/s]    |    696.0937 |
+output/L2_c4n3_26.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1100.6255 |
+output/L2_c4n3_27.txt:|    L1<->L2 bandwidth [MBytes/s]    |    758.4538 |
+output/L2_c4n3_28.txt:|    L1<->L2 bandwidth [MBytes/s]    |   918.5781 |
+output/L2_c4n3_29.txt:|    L1<->L2 bandwidth [MBytes/s]    |    758.3703 |
+output/L2_c4n3_2.txt:|    L1<->L2 bandwidth [MBytes/s]    |    924.2038 |
+output/L2_c4n3_30.txt:|    L1<->L2 bandwidth [MBytes/s]    |    793.7077 |
+output/L2_c4n3_31.txt:|    L1<->L2 bandwidth [MBytes/s]    |    763.8522 |
+output/L2_c4n3_32.txt:|    L1<->L2 bandwidth [MBytes/s]    |   977.8561 |
+output/L2_c4n3_33.txt:|    L1<->L2 bandwidth [MBytes/s]    |   2269.2151 |
+output/L2_c4n3_34.txt:|    L1<->L2 bandwidth [MBytes/s]    |    878.3122 |
+output/L2_c4n3_35.txt:|    L1<->L2 bandwidth [MBytes/s]    |    696.8236 |
+output/L2_c4n3_36.txt:|    L1<->L2 bandwidth [MBytes/s]    |  2630.3145 |
+output/L2_c4n3_37.txt:|    L1<->L2 bandwidth [MBytes/s]    |    695.1825 |
+output/L2_c4n3_38.txt:|    L1<->L2 bandwidth [MBytes/s]    |    922.1457 |
+output/L2_c4n3_39.txt:|    L1<->L2 bandwidth [MBytes/s]    |    724.8313 |
+output/L2_c4n3_3.txt:|    L1<->L2 bandwidth [MBytes/s]    |    620.5262 |
+output/L2_c4n3_40.txt:|    L1<->L2 bandwidth [MBytes/s]    |   974.3512 |
+output/L2_c4n3_41.txt:|    L1<->L2 bandwidth [MBytes/s]    |   3095.7764 |
+output/L2_c4n3_42.txt:|    L1<->L2 bandwidth [MBytes/s]    |   2272.9639 |
+output/L2_c4n3_43.txt:|    L1<->L2 bandwidth [MBytes/s]    |    921.6480 |
+output/L2_c4n3_44.txt:|    L1<->L2 bandwidth [MBytes/s]    |   598.2315 |
+output/L2_c4n3_45.txt:|    L1<->L2 bandwidth [MBytes/s]    |    695.9982 |
+output/L2_c4n3_46.txt:|    L1<->L2 bandwidth [MBytes/s]    |    758.2724 |
+output/L2_c4n3_47.txt:|    L1<->L2 bandwidth [MBytes/s]    |   3063.1506 |
+output/L2_c4n3_4.txt:|    L1<->L2 bandwidth [MBytes/s]    |   918.6113 |
+output/L2_c4n3_5.txt:|    L1<->L2 bandwidth [MBytes/s]    |    672.9077 |
+output/L2_c4n3_6.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1255.6723 |
+output/L2_c4n3_7.txt:|    L1<->L2 bandwidth [MBytes/s]    |    793.2697 |
+output/L2_c4n3_8.txt:|    L1<->L2 bandwidth [MBytes/s]    |   725.9296 |
+output/L2_c4n3_9.txt:|    L1<->L2 bandwidth [MBytes/s]    |   1033.6884 |
