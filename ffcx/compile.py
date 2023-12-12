@@ -4,7 +4,7 @@ from ffcx.analysis import analyze_ufl_objects
 from ffcx.ir.representation import compute_ir
 from ffcx.codegeneration.integral_generator import IntegralGenerator
 from ffcx.codegeneration.C.c_implementation import CFormatter
-from basix import create_element
+from basix.ufl import convert_ufl_element
 from ffcx.options import get_options
 import basix
 import ufl
@@ -112,8 +112,7 @@ def compile_form(form: ufl.Form, name: str,
         geom_type += str(batch_size)
         scalar_type += str(batch_size)
 
-    settings = {"scalar_type": scalar_type, "geom_type": geom_type}
-    arguments = _arguments.format(**settings)
+    arguments = _arguments.format(scalar_type=scalar_type, geom_type=geom_type)
     signature = "inline void " + name + arguments
     # Configure kernel generator
     ig = IntegralGenerator(integral_ir, backend)
@@ -145,18 +144,17 @@ def generate_code(action, scalar_type, global_size, batch_size):
             [problem.a], parameters).form_data[0].num_coefficients
         rank = 2
 
-    print(dir(problem.element))
-    element = problem.element
+    element = convert_ufl_element(problem.element)
     num_nodes = element.cell().num_vertices()
     geom_type = scalar_type.replace(' _Complex', '')
 
     if batch_size > 1:
-        headers = _headers_batched.format(dim=element.value_shape()[0], global_size=global_size,
+        headers = _headers_batched.format(dim=element.dim, global_size=global_size,
                                           scalar_type=scalar_type, rank=rank, geom_type=geom_type,
                                           batch_size=batch_size, num_nodes=num_nodes,
                                           num_coefficients=num_coefficients)
     else:
-        headers = _headers.format(dim=element.value_shape()[0], global_size=global_size,
+        headers = _headers.format(dim=element.dim, global_size=global_size,
                                   scalar_type=scalar_type, rank=rank, geom_type=geom_type,
                                   batch_size=batch_size, num_nodes=num_nodes, num_coefficients=num_coefficients)
 
