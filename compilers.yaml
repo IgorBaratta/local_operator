@@ -1,27 +1,11 @@
-gcc-12:
+gcc-13:
   version:
-    - 12
+    - 13
   cpp:
-    - /home/jhale/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-12.2.0-huc2sescmw646r26mnp2vgu54rybd4kr/bin/g++ 
+    - /home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/bin/g++
   cc:
-    - /home/jhale/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-12.2.0-huc2sescmw646r26mnp2vgu54rybd4kr/bin/gcc
+    - /home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/bin/gcc
   flags:
-    - -Ofast -march=armv8.4-a+sve -mtune=neoverse-512tvb -msve-vector-bits=256
-    - -Ofast -march=armv8.4-a+sve -mtune=neoverse-512tvb -msve-vector-bits=scalable
-    - -Ofast -march=armv8.4-a+sve -mtune=neoverse-512tvb -fno-tree-vectorize
-    - -O2 -march=armv8.4-a+sve -mtune=neoverse-512tvb
-    - -O2
-      
-clang-15:
-  version:
-    - 15
-  cc: 
-    - /home/jhale/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-12.2.0/llvm-15.0.7-yogi5jj4qamtiwozx7tj7b3imdf3nsku/bin/clang
-  cpp: 
-    - /home/jhale/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-12.2.0/llvm-15.0.7-yogi5jj4qamtiwozx7tj7b3imdf3nsku/bin/clang++
-  flags:
-    - -Ofast -march=armv8.4-a+sve -mtune=neoverse-512tvb -mprefer-vector-width=256
-    - -Ofast -march=armv8.4-a+sve -mtune=neoverse-512tvb
-    - -Ofast -march=armv8.4-a+sve -mtune=neoverse-512tvb -fno-slp-vectorize
-    - -O2 -march=armv8.4-a+sve -mtune=neoverse-512tvb
-    - -O2
+    - -Ofast -mcpu=neoverse-v1
+    - -Ofast -mcpu=neoverse-v1 -fno-tree-vectorize
+    - -O2 -fno-tree-vectorize

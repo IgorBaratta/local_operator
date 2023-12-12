@@ -1,4 +1,6 @@
-from ufl import *
+import basix.ufl
+from ufl import (Mesh, FiniteElement, FunctionSpace, TrialFunction, TestFunction, Coefficient,
+                sym, grad, inner, dx, action, tetrahedron, VectorElement)
 
 element = VectorElement("Lagrange", $cell, $degree)
 mesh = Mesh(VectorElement("Lagrange", $cell, 1))
