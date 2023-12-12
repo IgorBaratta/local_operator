@@ -78,11 +78,7 @@ def run(problem: str, degree: int, nrepeats: int, flag: str, action: bool,
 
     if os.system(build) != 0:
         raise RuntimeError("build failed")
-    result = []
-    for i in range(nrepeats):
-        with Popen(run.split(), stdout=PIPE) as p:
-            out = p.stdout.read().decode("ascii").strip()
-        result.append(out)
+    result = [Popen(run.split(), stdout=PIPE).stdout.read().decode("ascii").strip() for i in range(nrepeats)]
     print(result)
 
     return result
