@@ -1,9 +1,23 @@
-gcc-10:
+gcc-13:
   version:
-    - 10
+    - 13
   cpp:
-    - g++-10
+    - /home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/bin/g++
   cc:
-    - gcc-10
+    - /home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/bin/gcc
   flags:
-    - -Ofast -march=native -mprefer-vector-width=256
+    - -Ofast -mcpu=neoverse-v1
+    - -Ofast -mcpu=neoverse-v1 -fno-tree-vectorize
+    - -O2 -fno-tree-vectorize
+
+llvm-17:
+  version:
+    - 17
+  cpp:
+    - /home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-13.2.0/llvm-17.0.4-ti5dvewumkoer6wsn6v4eipjrrkb4cg5/bin/clang++
+  cc:
+    - /home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-13.2.0/llvm-17.0.4-ti5dvewumkoer6wsn6v4eipjrrkb4cg5/bin/clang
+  flags:
+    - -Ofast -mcpu=neoverse-v1 -Wl,-rpath,/home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/lib64
+    - -Ofast -mcpu=neoverse-v1 -fno-vectorize -fno-slp-vectorize -Wl,-rpath,/home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/lib64
+    - -O2 -fno-vectorize -fno-slp-vectorize -Wl,-rpath,/home/mhabera/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.2.0-nxk6zirma34efpxq7yod2wuyjhwwagwh/lib64

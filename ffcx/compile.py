@@ -2,9 +2,9 @@
 from ffcx.codegeneration.backend import FFCXBackend
 from ffcx.analysis import analyze_ufl_objects
 from ffcx.ir.representation import compute_ir
-from ffcx.codegeneration.integrals import IntegralGenerator
-from ffcx.element_interface import create_element
-from ffcx.codegeneration.C.format_lines import format_indented_lines
+from ffcx.codegeneration.integral_generator import IntegralGenerator
+from ffcx.codegeneration.C.c_implementation import CFormatter
+from basix.ufl import convert_ufl_element
 from ffcx.options import get_options
 import basix
 import ufl
@@ -80,13 +80,7 @@ using namespace std;
 
 
 def compute_integral_body(ir, backend):
-    # Configure kernel generator
-    ig = IntegralGenerator(ir, backend)
-    # Generate code ast for the tabulate_tensor body
-    parts = ig.generate()
-    # Format code as string
-    body = format_indented_lines(parts.cs_format(ir.precision), 1)
-    return body
+    return parts
 
 
 def compile_form(form: ufl.Form, name: str,
@@ -118,11 +112,15 @@ def compile_form(form: ufl.Form, name: str,
         geom_type += str(batch_size)
         scalar_type += str(batch_size)
 
-    settings = {"scalar_type": scalar_type, "geom_type": geom_type}
-    arguments = _arguments.format(**settings)
+    arguments = _arguments.format(scalar_type=scalar_type, geom_type=geom_type)
     signature = "inline void " + name + arguments
-    body = compute_integral_body(integral_ir, backend)
-    code = signature + " {\n" + body + "\n}\n"
+    # Configure kernel generator
+    ig = IntegralGenerator(integral_ir, backend)
+    # Generate code ast for the tabulate_tensor body
+    parts = ig.generate()
+    formatter = CFormatter(scalar_type)
+    body_c = formatter.c_format(parts)
+    code = signature + " {\n" + body_c + "\n}\n"
 
     return code
 
@@ -146,7 +144,7 @@ def generate_code(action, scalar_type, global_size, batch_size):
             [problem.a], parameters).form_data[0].num_coefficients
         rank = 2
 
-    element = create_element(problem.element)
+    element = convert_ufl_element(problem.element)
     num_nodes = element.cell().num_vertices()
     geom_type = scalar_type.replace(' _Complex', '')
 

@@ -20,6 +20,9 @@ if __name__ == "__main__":
 
     parser.add_argument('--conf', dest='conf', type=str, default="compilers.yaml",
                         help="Configuration file describing the compilers and flags.")
+    
+    parser.add_argument('--output_file', dest='output_file', type=str, default="output/output.csv",
+                        help="Configuration file describing the compilers and flags.")
 
     parser.add_argument('--degree', dest='degree', default=range(1, 4), nargs='+',
                         help='Polynomial degree to evaluate the operators.')
@@ -55,9 +58,10 @@ if __name__ == "__main__":
     scalar_type = args.scalar_type
     mpi_size = args.mpi_size
     cell_type = args.cell_type
+    output_file = args.output_file
 
     machine = utils.machine_name()
-    out_file = utils.create_ouput(problem)
+    out_file = utils.create_output(problem, output_file)
     compilers = utils.parse_compiler_configuration(conf_file)
 
     # Set rank to 1 for matrix free, 2 otherwise
